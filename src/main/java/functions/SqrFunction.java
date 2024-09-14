@@ -4,6 +4,6 @@ public class SqrFunction implements MathFunction {
 
     @Override
     public double apply(double x) {
-        return x * x;
+        return Math.pow(x, 2);
     }
 }
