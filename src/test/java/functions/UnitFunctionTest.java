@@ -4,27 +4,27 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class SqrFunctionTest {
-    private SqrFunction func;
+
+class UnitFunctionTest {
+    private UnitFunction func;
 
     @BeforeEach
     void createFunction() {
-        func = new SqrFunction();
+        func = new UnitFunction();
     }
-
 
     @Test
     void applyTest1() {
-        Assertions.assertEquals(4, func.apply(2));
+        Assertions.assertEquals(func.apply(4), 1);
     }
 
     @Test
     void applyTest2() {
-        Assertions.assertEquals(100, func.apply(-10));
+        Assertions.assertEquals(func.apply(7), 1);
     }
 
     @Test
     void applyTest3() {
-        Assertions.assertEquals(30.25, func.apply(5.5));
+        Assertions.assertEquals(func.apply(1), 1);
     }
 }
