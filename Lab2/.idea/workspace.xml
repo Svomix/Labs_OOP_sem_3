@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="944a8c38-f06f-479f-8ec5-f7da68d30585" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_jupiter.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functions/CompositeFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functions/ConstantFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functions/ConstantFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functions/IdentityFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functions/MathFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functions/SqrFunction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functions/UnitFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functions/UnitFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functions/ZeroFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functions/ZeroFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/functions/CompositeFunctionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/functions/ConstantFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/functions/ConstantFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/functions/IdentityFunctionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/functions/SqrFunctionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/functions/UnitFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/functions/UnitFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/functions/ZeroFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/functions/ZeroFunctionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,23 +15,38 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2m4UlZbKYDOOsZxo6B5lHfMh5M4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Reverting in main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Projects/Labs_OOP_sem_3"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Projects/Labs_OOP_sem_3/Lab2&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Lab2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Lab2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
