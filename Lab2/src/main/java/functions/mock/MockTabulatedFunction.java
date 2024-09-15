@@ -4,6 +4,8 @@ import functions.AbstractTabulateFunction;
 
 public class MockTabulatedFunction extends AbstractTabulateFunction {
 
+    private double[] arrX;
+    private double[] arrY;
     public MockTabulatedFunction() {
         count = 2;
         arrX = new double[count];

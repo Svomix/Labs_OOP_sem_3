@@ -7,9 +7,6 @@ public abstract class AbstractTabulateFunction implements MathFunction {
         return count;
     }
 
-    protected double[] arrX;
-    protected double[] arrY;
-
     abstract public double getY(int index);
 
     abstract public double getX(int index);
@@ -29,13 +26,13 @@ public abstract class AbstractTabulateFunction implements MathFunction {
     }
 
     public double apply(double x) {
-        if (arrX[0] > x)
+        if (getX(0) > x)
             return extrapolateLeft(x);
-        else if (arrX[count - 1] < x)
+        else if (getX(count - 1) < x)
             return extrapolateRight(x);
         else if (indexOfX(x) != -1)
-            return arrY[indexOfX(x)];
+            return getY(indexOfX(x));
         int index = floorIndexOfX(x);
-        return interpolate(x, arrX[index], arrX[index + 1], arrY[index], arrY[index + 1]);
+        return interpolate(x, getX(index), getX(index + 1), getY(index), getY(index + 1));
     }
 }
