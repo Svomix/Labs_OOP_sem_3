@@ -2,8 +2,8 @@ package functions;
 
 public class CompositeFunction implements MathFunction
 {
-    private MathFunction firstFunction;
-    private MathFunction secondFunction;
+    final private MathFunction firstFunction;
+    final private MathFunction secondFunction;
     public CompositeFunction(MathFunction firstf, MathFunction secondf)
     {
         firstFunction = firstf;
