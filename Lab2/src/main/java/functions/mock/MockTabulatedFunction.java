@@ -15,6 +15,16 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
     }
 
     @Override
+    public double getY(int index) {
+        return arrY[index];
+    }
+
+    @Override
+    public double getX(int index) {
+        return arrX[index];
+    }
+
+    @Override
     protected int indexOfX(double x) {
         if (arrX[0] == x) return 0;
         if (arrX[1] == x) return 1;
@@ -22,7 +32,7 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
     }
 
     @Override
-    protected int floorIndexOfX(double x) {
+   protected int floorIndexOfX(double x) {
         if (x > arrX[1]) return count;
         if (indexOfX(x) != -1) return indexOfX(x);
         return 0;

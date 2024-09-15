@@ -10,13 +10,9 @@ public abstract class AbstractTabulateFunction implements MathFunction {
     protected double[] arrX;
     protected double[] arrY;
 
-    public double getY(int index) {
-        return arrY[index];
-    }
+    abstract public double getY(int index);
 
-    public double getX(int index) {
-        return arrX[index];
-    }
+    abstract public double getX(int index);
 
     abstract protected int indexOfX(double x);
 
