@@ -2,9 +2,9 @@ package functions;
 
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction {
-    private final double[] arrX;
-    private final double[] arrY;
+public class ArrayTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable{
+    protected double[] arrX;
+    protected double[] arrY;
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         count = xValues.length;
@@ -101,5 +101,44 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
     protected double interpolate(double x, int floorIndex) {
         if (count == 1) return arrY[0];
         return arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (x - arrX[floorIndex]);
+    }
+    @Override
+    public void insert(double x,double y)
+    {
+        ++count;
+        int index = 0;
+        int oldBound = count - 1;
+        while (index != oldBound && x > arrX[index])
+            ++index;
+        if(index < arrX.length)
+        {
+            if(arrX[index] == x)
+            {
+                arrY[index] = y;
+                return;
+            }
+        }
+        if(oldBound + 1 >= arrX.length)
+        {
+            double[] newArrX = new double[arrX.length * 2];
+            double[] newArrY = new double[arrX.length * 2];
+            System.arraycopy(arrX,0,newArrX,0,arrX.length);
+            System.arraycopy(arrY,0,newArrY,0,arrY.length);
+            arrX = newArrX;
+            arrY = newArrY;
+        }
+        if(index == oldBound)
+        {
+            arrX[index] = x;
+            arrY[index] = y;
+            return;
+        }
+        for(int i = oldBound; i >= index; --i)
+        {
+            arrX[i + 1] = arrX[i];
+            arrY[i + 1] = arrY[i];
+        }
+        arrX[index] = x;
+        arrY[index] = y;
     }
 }
