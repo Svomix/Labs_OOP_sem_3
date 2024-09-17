@@ -57,6 +57,19 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         }
         return cur;
     }
+    protected Node floorNodeOfX(double x)
+    {
+        Node cur = head;
+        int i = 0;
+       do
+       {
+           if(cur.x >= x)
+               return i == 0? getNode(0): getNode(i - 1);
+           ++i;
+           cur = cur.next;
+       }while (cur != head);
+       return getNode(count);
+    }
     public LinkedListTabulatedFunction(double[] x, double[] y)
     {
         for (int i = 0; i < x.length; ++i)
@@ -81,7 +94,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         }
         else
         {
-            double deltaX = (xFrom - xTo) / count;
+            double deltaX = (xTo - xFrom) / (count - 1);
             double x;
             for (int i = 0; i < count - 1; i++)
             {
@@ -137,29 +150,37 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     {
         Node cur = head;
         int i = 0;
-       do
-       {
-           if(cur.x >= x)
-               return i == 0? 0: i - 1;
-           ++i;
-           cur = cur.next;
-       }while (cur != head);
-       return count;
+        do
+        {
+            if(cur.x >= x)
+                 return i == 0? 0: i - 1;
+             ++i;
+             cur = cur.next;
+        }while (cur != head);
+        return count;
     }
 
     @Override
     protected double extrapolateLeft(double x) {
-        return 0;
+        if(count == 1)
+            return head.y;
+        return getNode(0).y + (getNode(1).y - getNode(0).y) / (getNode(1).x - getNode(0).x)* (x - getNode(0).x);
+
     }
 
     @Override
-    protected double extrapolateRight(double x) {
-        return 0;
+    protected double extrapolateRight(double x)
+    {
+        if(count == 1)
+            return head.y;
+       return getNode(count - 2).y + (getNode(count - 1).y - getNode(count - 2).y) / (getNode(count - 1).x - getNode(count - 2).x) * (x - getNode(count - 2).x);
     }
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        return 0;
+        if(count == 1)
+            return head.y;
+        return getNode(floorIndex).y + (getNode(floorIndex + 1).y - getNode(floorIndex).y) / (getNode(floorIndex+ 1).x - getNode(floorIndex).x) * (x - getNode(floorIndex).x);
     }
 
     @Override
@@ -180,5 +201,16 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     public int getCount() {
         return super.getCount();
     }
-
+    @Override
+    public double apply(double x)
+    {
+        if(getX(0) > 0)
+            return extrapolateLeft(x);
+        else if(getX(count - 1) < x)
+            return extrapolateRight(x);
+        else if(indexOfX(x) != -1)
+            return getY((indexOfX(x)));
+        Node floorNode = floorNodeOfX(x);
+        return interpolate(x,floorNode.x,floorNode.next.x,floorNode.y,floorNode.next.y);
+    }
 }
