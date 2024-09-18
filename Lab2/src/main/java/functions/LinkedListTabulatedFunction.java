@@ -1,7 +1,5 @@
 package functions;
 
-import java.util.logging.XMLFormatter;
-
 public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable {
 
     class Node {
