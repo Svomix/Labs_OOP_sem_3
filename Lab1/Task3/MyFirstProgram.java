@@ -17,7 +17,7 @@ class MyFirstClass {
 class MySecondClass{
 	private int a;
 	private int b;
-	public MySecondClass(final int a, final int b)
+	public MySecondClass(int a, int b)
 	{
 		this.a = a;
 		this.b = b;
@@ -30,10 +30,10 @@ class MySecondClass{
 	{
 		return b;
 	}
-	public void setA(final int a){
+	public void setA(int a){
 	this.a = a;
 	}
-	public void setB(final int b){
+	public void setB(int b){
 	this.b = b;
 	}
 	public int divide()
