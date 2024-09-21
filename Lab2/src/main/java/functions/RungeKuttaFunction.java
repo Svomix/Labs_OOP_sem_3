@@ -1,9 +1,9 @@
 package functions;
 
 public class RungeKuttaFunction implements MathFunction {
-    private double h; // Шаг сетки
-    private double x0, y0;// Начальные значения
-    private DifferentialEquations equations;
+    private final double h; // Шаг сетки
+    private final double x0, y0;// Начальные значения
+    private final DifferentialEquations equations;
 
     public RungeKuttaFunction(double h, double x0, double y0, DifferentialEquations equations) {
         this.h = h;
