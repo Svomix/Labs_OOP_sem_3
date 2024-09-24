@@ -1,6 +1,6 @@
 package functions;
 
-public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable {
+public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable,Removable {
 
     class Node {
         public Node next;
@@ -39,11 +39,11 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
 
     private Node getNode(int index) {
         Node cur = head;
-        if (index > count / 2) {
+        if (index < count / 2) {
             for (int i = 0; i < index; ++i)
                 cur = cur.next;
         } else {
-            for (int i = 0; i < count - index; i++)
+            for (int i = count - 1; i >= index; --i) // подумать
                 cur = cur.prev;
 
         }
@@ -62,9 +62,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         return getNode(count);
     }
 
-    public LinkedListTabulatedFunction(double[] x, double[] y) {
-        for (int i = 0; i < x.length; ++i) {
-            addNode(x[i], y[i]);
+    public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
+        for (int i = 0; i < xValues.length; ++i) {
+            addNode(xValues[i], yValues[i]);
         }
     }
 
@@ -197,7 +197,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     public void insert(double x, double y) {
         if (head == null) {
             addNode(x, y);
-            count++;
+            count++;// инсерт уже есть в адд
             return;
         }
         Node cur = head;
@@ -240,5 +240,14 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
             cur.y = y;
         }
     }
-
+    @Override
+    public void remove(int index)
+    {
+        Node remNode = getNode(index);
+        remNode.prev.next = remNode.next;
+        remNode.next.prev = remNode.prev;
+        if(head == remNode)
+            head = remNode.next;
+        --count;
+    }
 }

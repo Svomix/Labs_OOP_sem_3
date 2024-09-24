@@ -4,7 +4,7 @@ public class CompositeFunction implements MathFunction
 {
     final private MathFunction firstFunction;
     final private MathFunction secondFunction;
-    public CompositeFunction(MathFunction firstf, MathFunction secondf)
+    public CompositeFunction(MathFunction firstf, MathFunction secondf) // правильный порядок функций
     {
         firstFunction = firstf;
         secondFunction = secondf;

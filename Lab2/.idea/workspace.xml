@@ -29,35 +29,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.ConstantFunctionTest.applyTest1.executor": "Run",
-    "JUnit.InsertTest.insertCenterTest.executor": "Debug",
-    "JUnit.InsertTest.insertStartFinish.executor": "Debug",
-    "JUnit.InsertTest.insertStartTest.executor": "Debug",
-    "JUnit.InsertTest.insertrelocatingFinish.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXBoundTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXMiddleTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.getCountTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.getXTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.getYTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.indexOfXExistingTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.indexOfXNotExistingTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.indexOfYExistingTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.indexOfYNotExistingTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.leftBoundTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.rightBoundTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.setYTest.executor": "Run",
-    "JUnit.MockTabulatedFunctionTest.extrapolateLeft.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Projects/hello"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.ConstantFunctionTest.applyTest1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsertTest.insertCenterTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertTest.insertStartFinish.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertTest.insertStartTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertTest.insertrelocatingFinish.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXBoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXMiddleTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.getCountTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.getXTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.getYTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.indexOfXExistingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.indexOfXNotExistingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.indexOfYExistingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.indexOfYNotExistingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.leftBoundTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.removeLeftBoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.removeRightBoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.rightBoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.setYTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MockTabulatedFunctionTest.extrapolateLeft.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Projects/Labs_OOP_sem_3/Lab2&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.InsertTest.insertCenterTest">
+}</component>
+  <component name="RunManager" selected="JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest">
     <configuration name="InsertTest.insertCenterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
@@ -69,38 +72,6 @@
       <option name="PACKAGE_NAME" value="functions" />
       <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
       <option name="METHOD_NAME" value="insertCenterTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InsertTest.insertStartFinish" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
-      <option name="METHOD_NAME" value="insertStartFinish" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InsertTest.insertStartTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
-      <option name="METHOD_NAME" value="insertStartTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -122,7 +93,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.getCountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionTest.removeLeftBoundTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -132,7 +103,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
       <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="getCountTest" />
+      <option name="METHOD_NAME" value="removeLeftBoundTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedListTabulatedFunctionTest.removeMiddleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="removeMiddleTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedListTabulatedFunctionTest.removeRightBoundTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="removeRightBoundTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -153,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.removeLeftBoundTest" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.removeRightBoundTest" />
         <item itemvalue="JUnit.InsertTest.insertCenterTest" />
         <item itemvalue="JUnit.InsertTest.insertrelocatingFinish" />
-        <item itemvalue="JUnit.InsertTest.insertStartFinish" />
-        <item itemvalue="JUnit.InsertTest.insertStartTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.getCountTest" />
       </list>
     </recent_temporary>
   </component>
@@ -189,6 +192,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
           <line>14</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

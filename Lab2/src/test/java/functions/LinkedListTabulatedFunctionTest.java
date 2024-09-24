@@ -68,7 +68,7 @@ public class LinkedListTabulatedFunctionTest
         int index = 2;
         double y = 4;
         list.setY(2,4);
-        Assertions.assertEquals(list.getY(2),4);
+        Assertions.assertEquals(4,list.getY(2));
     }
     @Test
     void leftBoundTest()
@@ -122,7 +122,25 @@ public class LinkedListTabulatedFunctionTest
     void getCountTest()
     {
         Assertions.assertEquals(8,list.getCount());
-
     }
-
+    @Test
+    void removeMiddleTest()
+    {
+        list.remove(2);
+        list.remove(5);
+        Assertions.assertEquals(3,list.getX(2));
+        Assertions.assertEquals(7,list.getX(5));
+    }
+    @Test
+    void removeLeftBoundTest()
+    {
+        list.remove(0);
+        Assertions.assertEquals(1,list.getX(0));
+    }
+    @Test
+    void removeRightBoundTest()
+    {
+        list.remove(list.getCount() - 1);
+        Assertions.assertEquals(6,list.getX(list.getCount() - 1));
+    }
 }
