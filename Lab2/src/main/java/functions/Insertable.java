@@ -1,6 +1,5 @@
 package functions;
 
-interface Insertable
-{
+interface Insertable {
     void insert(double x, double y);
 }

@@ -39,8 +39,8 @@ public class InsertTest {
     @Test
     void insertFinishFinish() {
         arr.insert(10, 15);
-        Assertions.assertEquals(10, arr.getX(arr.count - 1));
-        Assertions.assertEquals(15, arr.getY(arr.count - 1));
+        Assertions.assertEquals(10, arr.getX(arr.getCount() - 1));
+        Assertions.assertEquals(15, arr.getY(arr.getCount() - 1));
     }
 
     @Test
@@ -59,16 +59,19 @@ public class InsertTest {
         list.insert(2.5, 3.2);
         Assertions.assertEquals(list.getX(2), 2.5);
     }
+
     @Test
     void insertLeftListTest() {
         list.insert(0, 3.6);
         Assertions.assertEquals(list.getX(0), 0);
     }
+
     @Test
     void insertRightListTest() {
         list.insert(8.9, 4.4);
         Assertions.assertEquals(list.getX(6), 8.9);
     }
+
     @Test
     void insertListTest() {
         list.insert(1, 2);

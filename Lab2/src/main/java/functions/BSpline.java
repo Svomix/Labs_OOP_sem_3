@@ -1,7 +1,6 @@
 package functions;
 
-public class BSpline
-{
+public class BSpline {
     private int k;
     private int[] t;
     private int[] c;

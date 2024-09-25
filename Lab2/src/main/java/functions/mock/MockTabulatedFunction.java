@@ -6,6 +6,7 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
 
     private double[] arrX;
     private double[] arrY;
+
     public MockTabulatedFunction() {
         count = 2;
         arrX = new double[count];
@@ -34,7 +35,7 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
     }
 
     @Override
-   protected int floorIndexOfX(double x) {
+    protected int floorIndexOfX(double x) {
         if (x > arrX[1]) return count;
         if (indexOfX(x) != -1) return indexOfX(x);
         return 0;

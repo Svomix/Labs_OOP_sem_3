@@ -8,7 +8,7 @@ class ZeroFunctionTest {
     private ZeroFunction func;
 
     @BeforeEach
-    void setFunc(){
+    void setFunc() {
         func = new ZeroFunction();
     }
 

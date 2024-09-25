@@ -11,25 +11,25 @@ class MathFunctionTest {
 
     @Test
     void andThenTest1() {
-        h = new FirstFunc();
+        f = new FirstFunc();
         g = new ConstantFunction(1);
-        f = new IdentityFunction();
-        Assertions.assertEquals(h.apply(g.apply(f.apply(5))), h.andThen(g).andThen(f).apply(5));
+        h = new IdentityFunction();
+        Assertions.assertEquals(h.apply(g.apply(f.apply(5))), f.andThen(g).andThen(h).apply(5));
     }
 
     @Test
     void andThenTest2() {
-        h = new SqrFunction();
+        f = new SqrFunction();
         g = new UnitFunction();
-        f = new ZeroFunction().andThen(new ConstantFunction(3));
-        Assertions.assertEquals(h.apply(g.apply(f.apply(1))), h.andThen(g).andThen(f).apply(1));
+        h = new ZeroFunction().andThen(new ConstantFunction(3));
+        Assertions.assertEquals(h.apply(g.apply(f.apply(1))), f.andThen(g).andThen(h).apply(1));
     }
 
     @Test
     void andThenTest3() {
-        h = new UnitFunction().andThen(new SecondFunc());
+        f = new UnitFunction().andThen(new SecondFunc());
         g = new ConstantFunction(1);
-        f = new IdentityFunction();
-        Assertions.assertEquals(h.apply(g.apply(f.apply(0))), h.andThen(g).andThen(f).apply(0));
+        h = new IdentityFunction();
+        Assertions.assertEquals(h.apply(g.apply(f.apply(0))), f.andThen(g).andThen(h).apply(0));
     }
 }

@@ -1,6 +1,6 @@
 package functions;
 
-public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable,Removable {
+public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
 
     class Node {
         public Node next;
@@ -193,24 +193,34 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         return interpolate(x, floorNode.x, floorNode.next.x, floorNode.y, floorNode.next.y);
     }
 
+    private void changeHead(double x, double y, Node cur) {
+        Node newNode = new Node(x, y);
+        newNode.next = cur;
+        newNode.prev = cur.prev;
+        cur.prev.next = newNode;
+        cur.prev = newNode;
+        head = newNode;
+        count++;
+    }
+
     @Override
     public void insert(double x, double y) {
         if (head == null) {
             addNode(x, y);
-            count++;// инсерт уже есть в адд
             return;
         }
         Node cur = head;
+        if (cur.x > x) {
+            changeHead(x, y, cur);
+            return;
+        } else if (cur.x == x) {
+            cur.y = y;
+            return;
+        } else if (cur.prev.x < x) {
+            addNode(x, y);
+            return;
+        }
         while (cur.next != head.prev) {
-            if (cur.x > x) {
-                Node newNode = new Node(x, y);
-                newNode.next = cur;
-                newNode.prev = cur.prev;
-                cur.prev.next = newNode;
-                cur.prev = newNode;
-                head = newNode;
-                count++;
-            }
             if (cur.next.x > x) {
                 Node newNode = new Node(x, y);
                 newNode.next = cur.next;
@@ -225,28 +235,14 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
             }
             cur = cur.next;
         }
-        if (cur.x > x) {
-            Node newNode = new Node(x, y);
-            newNode.next = cur;
-            newNode.prev = cur.prev;
-            cur.prev.next = newNode;
-            cur.prev = newNode;
-            head = newNode;
-            count++;
-        } else if (cur.x < x) {
-            addNode(x, y);
-            count++;
-        } else if (cur.x == x) {
-            cur.y = y;
-        }
     }
+
     @Override
-    public void remove(int index)
-    {
+    public void remove(int index) {
         Node remNode = getNode(index);
         remNode.prev.next = remNode.next;
         remNode.next.prev = remNode.prev;
-        if(head == remNode)
+        if (head == remNode)
             head = remNode.next;
         --count;
     }

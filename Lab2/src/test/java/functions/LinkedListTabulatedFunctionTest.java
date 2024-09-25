@@ -4,143 +4,142 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class LinkedListTabulatedFunctionTest
-{
+public class LinkedListTabulatedFunctionTest {
     private LinkedListTabulatedFunction list;
-    private double[] a = {0,1,2,3,4,5,6,7};
-    private double[] b = {0,1,4,9,16,25,36,49};
+    private double[] a = {0, 1, 2, 3, 4, 5, 6, 7};
+    private double[] b = {0, 1, 4, 9, 16, 25, 36, 49};
+
     @Test
-    void createList4argumentsTestInts()
-    {
+    void createList4argumentsTestInts() {
         MathFunction func = new SqrFunction();
-        list = new LinkedListTabulatedFunction(func,0,10,11);
+        list = new LinkedListTabulatedFunction(func, 0, 10, 11);
         for (int i = 0; i < 11; i++) {
             System.out.println(list.getY(i));
         }
     }
+
     @Test
-    void createList4argumentsTestRotating()
-    {
+    void createList4argumentsTestRotating() {
         MathFunction func = new SqrFunction();
-        list = new LinkedListTabulatedFunction(func,10,0,11);
+        list = new LinkedListTabulatedFunction(func, 10, 0, 11);
         for (int i = 0; i < 11; i++) {
             System.out.println(list.getY(i));
         }
     }
+
     @Test
-    void createList4argumentsTestSimilar()
-    {
+    void createList4argumentsTestSimilar() {
         MathFunction func = new SqrFunction();
-        list = new LinkedListTabulatedFunction(func,10,10,10);
+        list = new LinkedListTabulatedFunction(func, 10, 10, 10);
         for (int i = 0; i < 11; i++) {
             System.out.println(list.getY(i));
         }
     }
+
     @Test
-    void createList4argumentsTestDoubles()
-    {
+    void createList4argumentsTestDoubles() {
         MathFunction func = new SqrFunction();
-        list = new LinkedListTabulatedFunction(func,5.5,13.2,4);
+        list = new LinkedListTabulatedFunction(func, 5.5, 13.2, 4);
         for (int i = 0; i < 4; i++) {
             System.out.println(list.getY(i));
         }
     }
+
     @BeforeEach
-    void createList2argumentsTest()
-    {
-        list = new LinkedListTabulatedFunction(a,b);
+    void createList2argumentsTest() {
+        list = new LinkedListTabulatedFunction(a, b);
     }
+
     @Test
-    void getXTest()
-    {
+    void getXTest() {
         double res = list.getX(4);
-        Assertions.assertEquals(4,res);
+        Assertions.assertEquals(4, res);
     }
+
     @Test
-    void getYTest()
-    {
+    void getYTest() {
         double res = list.getY(3);
-        Assertions.assertEquals(9,res);
+        Assertions.assertEquals(9, res);
     }
+
     @Test
-    void setYTest()
-    {
+    void setYTest() {
         int index = 2;
         double y = 4;
-        list.setY(2,4);
-        Assertions.assertEquals(4,list.getY(2));
+        list.setY(2, 4);
+        Assertions.assertEquals(4, list.getY(2));
     }
+
     @Test
-    void leftBoundTest()
-    {
+    void leftBoundTest() {
         double res = list.leftBound();
-        Assertions.assertEquals(0,res);
+        Assertions.assertEquals(0, res);
     }
+
     @Test
-    void rightBoundTest()
-    {
+    void rightBoundTest() {
         double res = list.rightBound();
-        Assertions.assertEquals(7,res);
+        Assertions.assertEquals(7, res);
     }
+
     @Test
-    void indexOfXExistingTest()
-    {
+    void indexOfXExistingTest() {
         int res = list.indexOfX(4);
-        Assertions.assertEquals(4,res);
+        Assertions.assertEquals(4, res);
     }
+
     @Test
-    void indexOfXNotExistingTest()
-    {
+    void indexOfXNotExistingTest() {
         int res = list.indexOfX(10);
-        Assertions.assertEquals(-1,res);
+        Assertions.assertEquals(-1, res);
     }
+
     @Test
-    void indexOfYExistingTest()
-    {
+    void indexOfYExistingTest() {
         int res = list.indexOfY(4);
-        Assertions.assertEquals(2,res);
+        Assertions.assertEquals(2, res);
     }
+
     @Test
-    void indexOfYNotExistingTest()
-    {
+    void indexOfYNotExistingTest() {
         int res = list.indexOfY(100);
-        Assertions.assertEquals(-1,res);
+        Assertions.assertEquals(-1, res);
     }
+
     @Test
-    void floorIndexOfXMiddleTest()
-    {
+    void floorIndexOfXMiddleTest() {
         int res = list.floorIndexOfX(5.5);
-        Assertions.assertEquals(5,res);
+        Assertions.assertEquals(5, res);
     }
+
     @Test
-    void floorIndexOfXBoundTest()
-    {
+    void floorIndexOfXBoundTest() {
         int res = list.floorIndexOfX(100);
-        Assertions.assertEquals(8,res);
+        Assertions.assertEquals(8, res);
     }
+
     @Test
-    void getCountTest()
-    {
-        Assertions.assertEquals(8,list.getCount());
+    void getCountTest() {
+        Assertions.assertEquals(8, list.getCount());
     }
+
     @Test
-    void removeMiddleTest()
-    {
+    void removeMiddleTest() {
         list.remove(2);
         list.remove(5);
-        Assertions.assertEquals(3,list.getX(2));
-        Assertions.assertEquals(7,list.getX(5));
+        Assertions.assertEquals(3, list.getX(2));
+        Assertions.assertEquals(7, list.getX(5));
     }
+
     @Test
-    void removeLeftBoundTest()
-    {
+    void removeLeftBoundTest() {
         list.remove(0);
-        Assertions.assertEquals(1,list.getX(0));
+        Assertions.assertEquals(1, list.getX(0));
     }
+
     @Test
-    void removeRightBoundTest()
-    {
+    void removeRightBoundTest() {
         list.remove(list.getCount() - 1);
-        Assertions.assertEquals(6,list.getX(list.getCount() - 1));
+        Assertions.assertEquals(6, list.getX(list.getCount() - 1));
     }
 }
