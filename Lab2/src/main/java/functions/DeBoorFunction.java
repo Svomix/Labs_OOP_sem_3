@@ -10,7 +10,7 @@ public class DeBoorFunction implements MathFunction
     @Override
     public double apply(double x)
     {
-        double[] d = new double[][spline.getP()];
+        double[] d = new double[spline.getP()];
         for (int i = 0; i < d.length; ++i)
         {
             d[i] = spline.getC()[i + spline.getK() - spline.getP()];
