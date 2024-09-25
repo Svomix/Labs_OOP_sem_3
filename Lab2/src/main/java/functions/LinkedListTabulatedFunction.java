@@ -183,7 +183,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
 
     @Override
     public double apply(double x) {
-        if (getX(0) > 0)
+        if (getX(0) > x)
             return extrapolateLeft(x);
         else if (getX(count - 1) < x)
             return extrapolateRight(x);
