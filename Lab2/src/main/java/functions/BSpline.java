@@ -7,6 +7,14 @@ public class BSpline
     private int[] c;
     private int p;
 
+    BSpline(int k, int[] t, int[] c, int p)
+    {
+        this.k = k;
+        this.t = t;
+        this.c = c;
+        this.p = p;
+    }
+
     public int getP() {
         return p;
     }

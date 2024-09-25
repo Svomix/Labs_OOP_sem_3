@@ -16,7 +16,7 @@ public class CompositeFunctionTest
         SecondFunc func2 = new SecondFunc();
         cFunc = new CompositeFunction(func1,func2);
         double res = cFunc.apply(5);
-        Assertions.assertEquals(Math.sin(Math.pow(5,3)),res);
+        Assertions.assertEquals(Math.pow(Math.sin(5),3),res);
     }
     @Test
     void applyCompositeFuncIdentify1()

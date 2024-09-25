@@ -44,7 +44,7 @@ public class InsertTest {
     }
 
     @Test
-    void insertrelocatingFinish() {
+    void insertRelocatingFinish() {
         int size = arrX.length;
         arr.insert(0, 2);
         Assertions.assertEquals(size * 2, arr.arrX.length);

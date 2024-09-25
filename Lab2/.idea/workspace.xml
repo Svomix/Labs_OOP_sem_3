@@ -32,10 +32,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.All in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.CompositeFunctionTest.applyCompositeFunc.executor": "Run",
+    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify1.executor": "Run",
+    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2.executor": "Run",
     "JUnit.ConstantFunctionTest.applyTest1.executor": "Run",
     "JUnit.ConstantFunctionTest.applyTest2.executor": "Run",
     "JUnit.IdentityFunctionTest.applyTestDouble.executor": "Run",
     "JUnit.InsertTest.insertCenterTest.executor": "Debug",
+    "JUnit.InsertTest.insertLeftListTest.executor": "Run",
+    "JUnit.InsertTest.insertRightListTest.executor": "Debug",
     "JUnit.InsertTest.insertStartFinish.executor": "Debug",
     "JUnit.InsertTest.insertStartTest.executor": "Debug",
     "JUnit.InsertTest.insertrelocatingFinish.executor": "Run",
@@ -63,7 +68,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Projects/Labs_OOP_sem_3/Lab2"
+    "last_opened_file_path": "E:/Projects/Labs_OOP_sem_3/Lab2",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RunManager" selected="JUnit.All in Labs_OOP_sem_3">
@@ -75,7 +83,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConstantFunctionTest.applyTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompositeFunctionTest.applyCompositeFuncIdentify1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -84,14 +92,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.ConstantFunctionTest" />
-      <option name="METHOD_NAME" value="applyTest2" />
+      <option name="MAIN_CLASS_NAME" value="functions.CompositeFunctionTest" />
+      <option name="METHOD_NAME" value="applyCompositeFuncIdentify1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IdentityFunctionTest.applyTestDouble" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CompositeFunctionTest.applyCompositeFuncIdentify2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -100,14 +108,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.IdentityFunctionTest" />
-      <option name="METHOD_NAME" value="applyTestDouble" />
+      <option name="MAIN_CLASS_NAME" value="functions.CompositeFunctionTest" />
+      <option name="METHOD_NAME" value="applyCompositeFuncIdentify2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.removeMiddleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InsertTest.insertLeftListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -116,14 +124,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="removeMiddleTest" />
+      <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
+      <option name="METHOD_NAME" value="insertLeftListTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.removeRightBoundTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InsertTest.insertRightListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -132,8 +140,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="removeRightBoundTest" />
+      <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
+      <option name="METHOD_NAME" value="insertRightListTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -155,10 +163,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.removeRightBoundTest" />
-        <item itemvalue="JUnit.ConstantFunctionTest.applyTest2" />
-        <item itemvalue="JUnit.IdentityFunctionTest.applyTestDouble" />
+        <item itemvalue="JUnit.InsertTest.insertRightListTest" />
+        <item itemvalue="JUnit.InsertTest.insertLeftListTest" />
+        <item itemvalue="JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2" />
+        <item itemvalue="JUnit.CompositeFunctionTest.applyCompositeFuncIdentify1" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +203,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
           <line>131</line>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/functions/CompositeFunctionTest.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
