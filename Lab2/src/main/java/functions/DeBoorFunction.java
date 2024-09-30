@@ -3,6 +3,7 @@ package functions;
 public class DeBoorFunction implements MathFunction
 {
     private BSpline spline;
+    private int indexSig;
     public DeBoorFunction(BSpline spline)
     {
         this.spline = spline;
@@ -10,17 +11,19 @@ public class DeBoorFunction implements MathFunction
     @Override
     public double apply(double x)
     {
+        indexSig = spline.whichInterval(x);
         double[] d = new double[spline.getP() + 1];
-        for (int i = 0; i < d.length; ++i)
+        for (int i = 0; i <= spline.getP(); ++i)
         {
-            d[i] = spline.getC()[i + spline.getK() - spline.getP()];
+            d[i] = spline.getC()[i + indexSig - spline.getP()];
         }
-        for (int i = 1; i < d.length; ++i)
+        for (int i = 1; i <= spline.getP(); ++i)
         {
-            for(int j = d.length - 1; j >= i;--j)
+            for(int j = spline.getP(); j >= i;--j)
             {
-                double alpha = (x - spline.getT()[j + spline.getK() - spline.getP()]) / (spline.getT()[j + 1 + spline.getK() - i] - spline.getT()[j + spline.getK() - spline.getP()]);
+                double alpha = (x - spline.getT()[j + indexSig - spline.getP()]) / (spline.getT()[j + 1 + indexSig - i] - spline.getT()[j + indexSig - spline.getP()]);
                 d[j] = (1 - alpha) * d[j - 1] + alpha * d[j];
+
             }
         }
         return d[spline.getP()];

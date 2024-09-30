@@ -1,16 +1,14 @@
 package functions;
 
-public class BSpline {
-    private int k;
-    private int[] t;
-    private int[] c;
+public class BSpline{
+    private double[] t;
+    private double[] arrControl;
     private int p;
 
-    BSpline(int k, int[] t, int[] c, int p)
+    BSpline(double[] t, double[] arrControl, int p)
     {
-        this.k = k;
         this.t = t;
-        this.c = c;
+        this.arrControl = arrControl;
         this.p = p;
     }
 
@@ -18,31 +16,34 @@ public class BSpline {
         return p;
     }
 
-    public int[] getC() {
-        return c;
+    public double[] getC() {
+        return arrControl;
     }
 
-    public int[] getT() {
+    public double[] getT() {
         return t;
-    }
-
-    public int getK() {
-        return k;
     }
 
     public void setP(int p) {
         this.p = p;
     }
 
-    public void setC(int[] c) {
-        this.c = c;
+    public void setC(double[] arrControl) {
+        this.arrControl = arrControl;
     }
 
-    public void setT(int[] t) {
+    public void setT(double[] t) {
         this.t = t;
     }
 
-    public void setK(int k) {
-        this.k = k;
+    public int whichInterval(double x)
+    {
+        for (int i = 1; i < t.length - 1; ++i) {
+            if (x < t[i])
+                return (i - 1);
+            else if (x == t[t.length - 1])
+                return (t.length - 1);
+        }
+        return -1;
     }
 }

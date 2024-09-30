@@ -142,4 +142,19 @@ public class LinkedListTabulatedFunctionTest {
         list.remove(list.getCount() - 1);
         Assertions.assertEquals(6, list.getX(list.getCount() - 1));
     }
+    @Test
+    void extrapolateRightTest() {
+        double a = list.apply(9);
+        Assertions.assertEquals(75,a);
+    }
+    @Test
+    void extrapolateLeftTest() {
+        double a = list.apply(-2);
+        Assertions.assertEquals(-2,a);
+    }
+    @Test
+    void interpolateTest() {
+        double a = list.apply(2.5);
+        Assertions.assertEquals(6.5,a);
+    }
 }

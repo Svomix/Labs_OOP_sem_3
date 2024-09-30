@@ -53,6 +53,14 @@ public class ComplexCompositeFunctionTest {
         Assertions.assertEquals(func.apply(-2), -34.53333333333334);
         Assertions.assertEquals(func.apply(22), 4.996078431372549);
     }
+    @Test
+    public void test6()
+    {
+        BSpline spline = new BSpline(new double[]{ 0, 0, 0, 1, 2, 3, 4, 4, 5, 5, 5 }, new double[]{1,0,0,2,2,4,5,3}, 2);
+        MathFunction func = new CompositeFunction(new LinkedListTabulatedFunction(new double[]{1,2.5,3},new double[]{1,15.625,27}),new DeBoorFunction(spline));
+
+        Assertions.assertEquals(1,func.apply(1.2));
+    }
 
 
 }

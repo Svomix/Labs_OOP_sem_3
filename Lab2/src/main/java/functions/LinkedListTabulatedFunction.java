@@ -1,8 +1,6 @@
 package functions;
 
-public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
-
-    class Node {
+class Node {
         public Node next;
         public Node prev;
         public double x;
@@ -20,6 +18,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         }
     }
 
+public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
     private Node head;
 
     private void addNode(final double x, final double y) {
@@ -145,22 +144,22 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     protected double extrapolateLeft(double x) {
         if (count == 1)
             return head.y;
-        return getNode(0).y + (getNode(1).y - getNode(0).y) / (getNode(1).x - getNode(0).x) * (x - getNode(0).x);
-
+        return interpolate(x,head.x,head.next.x,head.y,head.next.y);
     }
 
     @Override
     protected double extrapolateRight(double x) {
         if (count == 1)
             return head.y;
-        return getNode(count - 2).y + (getNode(count - 1).y - getNode(count - 2).y) / (getNode(count - 1).x - getNode(count - 2).x) * (x - getNode(count - 2).x);
+        return interpolate(x,getNode(count - 2).x,getNode(count - 1).x,getNode(count - 2).y,getNode(count - 1).y);
     }
 
     @Override
     protected double interpolate(double x, int floorIndex) {
         if (count == 1)
             return head.y;
-        return getNode(floorIndex).y + (getNode(floorIndex + 1).y - getNode(floorIndex).y) / (getNode(floorIndex + 1).x - getNode(floorIndex).x) * (x - getNode(floorIndex).x);
+        Node floorNode = getNode(floorIndex);
+        return interpolate(x,floorNode.x,floorNode.next.x,floorNode.y,floorNode.next.y);
     }
 
     @Override

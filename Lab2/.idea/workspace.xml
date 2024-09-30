@@ -31,12 +31,20 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.All in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.All in Labs_OOP_sem_3.executor": "Debug",
+    "JUnit.ComplexCompositeFunctionTest.test4.executor": "Debug",
+    "JUnit.ComplexCompositeFunctionTest.test5.executor": "Debug",
+    "JUnit.ComplexCompositeFunctionTest.test6.executor": "Debug",
     "JUnit.CompositeFunctionTest.applyCompositeFunc.executor": "Run",
-    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify1.executor": "Run",
+    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify1.executor": "Debug",
     "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2.executor": "Run",
     "JUnit.ConstantFunctionTest.applyTest1.executor": "Run",
     "JUnit.ConstantFunctionTest.applyTest2.executor": "Run",
+    "JUnit.DeBoorFunctionTest.DeBoorFunction.executor": "Run",
+    "JUnit.DeBoorFunctionTest.DeBoorFunction1.executor": "Run",
+    "JUnit.DeBoorFunctionTest.DeBoorFunction2.executor": "Run",
+    "JUnit.DeBoorFunctionTest.DeBoorFunction3.executor": "Debug",
+    "JUnit.DeBoorFunctionTest.DeBoorFunctionTest3.executor": "Run",
     "JUnit.IdentityFunctionTest.applyTestDouble.executor": "Run",
     "JUnit.InsertTest.insertCenterTest.executor": "Debug",
     "JUnit.InsertTest.insertLeftListTest.executor": "Run",
@@ -46,6 +54,8 @@
     "JUnit.InsertTest.insertrelocatingFinish.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.extrapolateLeftTest.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.extrapolateRightTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXBoundTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXMiddleTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.getCountTest.executor": "Debug",
@@ -55,6 +65,7 @@
     "JUnit.LinkedListTabulatedFunctionTest.indexOfXNotExistingTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.indexOfYExistingTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.indexOfYNotExistingTest.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.interpolateTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.leftBoundTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.removeLeftBoundTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest.executor": "Run",
@@ -74,11 +85,51 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.All in Labs_OOP_sem_3">
-    <configuration name="All in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ComplexCompositeFunctionTest.test6">
+    <configuration name="ComplexCompositeFunctionTest.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.ComplexCompositeFunctionTest" />
+      <option name="METHOD_NAME" value="test4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComplexCompositeFunctionTest.test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.ComplexCompositeFunctionTest" />
+      <option name="METHOD_NAME" value="test5" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComplexCompositeFunctionTest.test6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.ComplexCompositeFunctionTest" />
+      <option name="METHOD_NAME" value="test6" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,7 +150,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompositeFunctionTest.applyCompositeFuncIdentify2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionTest.interpolateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -108,40 +159,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.CompositeFunctionTest" />
-      <option name="METHOD_NAME" value="applyCompositeFuncIdentify2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InsertTest.insertLeftListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
-      <option name="METHOD_NAME" value="insertLeftListTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InsertTest.insertRightListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
-      <option name="METHOD_NAME" value="insertRightListTest" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="interpolateTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -162,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
-        <item itemvalue="JUnit.InsertTest.insertRightListTest" />
-        <item itemvalue="JUnit.InsertTest.insertLeftListTest" />
-        <item itemvalue="JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2" />
+        <item itemvalue="JUnit.ComplexCompositeFunctionTest.test6" />
+        <item itemvalue="JUnit.ComplexCompositeFunctionTest.test4" />
         <item itemvalue="JUnit.CompositeFunctionTest.applyCompositeFuncIdentify1" />
+        <item itemvalue="JUnit.ComplexCompositeFunctionTest.test5" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.interpolateTest" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +210,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/functions/LinkedListTabulatedFunction.java</url>
-          <line>94</line>
+          <line>93</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -200,14 +219,19 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
-          <line>130</line>
-          <option name="timeStamp" value="26" />
+          <url>file://$PROJECT_DIR$/src/test/java/functions/CompositeFunctionTest.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/functions/CompositeFunctionTest.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/src/test/java/functions/ComplexCompositeFunctionTest.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/functions/ComplexCompositeFunctionTest.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
