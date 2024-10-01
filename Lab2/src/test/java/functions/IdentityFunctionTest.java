@@ -23,5 +23,4 @@ public class IdentityFunctionTest {
         double res = func.apply(-10.3);
         Assertions.assertEquals(-10.3, res);
     }
-
 }

@@ -36,6 +36,15 @@ public class CompositeFunctionTest
         double res = cFunc.apply(.52);
         Assertions.assertEquals(.52,res);
     }
+       @Test
+    void applyCompositeFuncComposite()
+       {
+           FirstFunc func1 = new FirstFunc();
+           CompositeFunction cfunc = new CompositeFunction(new SqrFunction(),new UnitFunction());
+           CompositeFunction func = new CompositeFunction(func1,cfunc);
+           double res = func.apply(10);
+           Assertions.assertEquals(1,res);
+       }
 }
 
 

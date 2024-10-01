@@ -11,7 +11,7 @@ public class InsertTest {
     private double[] arrY = new double[]{1, 2, 3, 4, 5, 6};
 
     @BeforeEach
-    void createarr() {
+    void createArr() {
         arr = new ArrayTabulatedFunction(arrX, arrY);
         list = new LinkedListTabulatedFunction(arrX, arrY);
     }
@@ -77,5 +77,4 @@ public class InsertTest {
         list.insert(1, 2);
         Assertions.assertEquals(list.getX(0), 1);
     }
-
 }

@@ -3,7 +3,6 @@ package functions;
 public class DeBoorFunction implements MathFunction
 {
     private BSpline spline;
-    private int indexSig;
     public DeBoorFunction(BSpline spline)
     {
         this.spline = spline;
@@ -11,11 +10,11 @@ public class DeBoorFunction implements MathFunction
     @Override
     public double apply(double x)
     {
-        indexSig = spline.whichInterval(x);
+        final int indexSig = spline.whichInterval(x);
         double[] d = new double[spline.getP() + 1];
         for (int i = 0; i <= spline.getP(); ++i)
         {
-            d[i] = spline.getC()[i + indexSig - spline.getP()];
+            d[i] = spline.getArrControl()[i + indexSig - spline.getP()];
         }
         for (int i = 1; i <= spline.getP(); ++i)
         {

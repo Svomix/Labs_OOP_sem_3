@@ -1,12 +1,11 @@
 package functions;
 
-public class BSpline{
+public class BSpline {
     private double[] t;
     private double[] arrControl;
     private int p;
 
-    BSpline(double[] t, double[] arrControl, int p)
-    {
+    BSpline(double[] t, double[] arrControl, int p) {
         this.t = t;
         this.arrControl = arrControl;
         this.p = p;
@@ -16,7 +15,7 @@ public class BSpline{
         return p;
     }
 
-    public double[] getC() {
+    public double[] getArrControl() {
         return arrControl;
     }
 
@@ -28,7 +27,7 @@ public class BSpline{
         this.p = p;
     }
 
-    public void setC(double[] arrControl) {
+    public void setArrControl(double[] arrControl) {
         this.arrControl = arrControl;
     }
 
@@ -36,8 +35,7 @@ public class BSpline{
         this.t = t;
     }
 
-    public int whichInterval(double x)
-    {
+    public int whichInterval(double x) {
         for (int i = 1; i < t.length - 1; ++i) {
             if (x < t[i])
                 return (i - 1);

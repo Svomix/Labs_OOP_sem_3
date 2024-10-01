@@ -110,13 +110,11 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
         int oldBound = count - 1;
         while (index != oldBound && x > arrX[index])
             ++index;
-        if (index < arrX.length) {
-            if (arrX[index] == x) {
-                arrY[index] = y;
-                return;
-            }
+        if (index < arrX.length && arrX[index] == x) {
+            arrY[index] = y;
+            return;
         }
-        if (oldBound + 1 >= arrX.length) {
+        else if (oldBound + 1 >= arrX.length) {
             double[] newArrX = new double[arrX.length * 2];
             double[] newArrY = new double[arrX.length * 2];
             System.arraycopy(arrX, 0, newArrX, 0, arrX.length);
