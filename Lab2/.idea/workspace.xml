@@ -31,7 +31,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.All in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.All in Labs_OOP_sem_3.executor": "Coverage",
     "JUnit.ArrayTabulatedFunctionTest.constructFunction.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test4.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test5.executor": "Debug",
@@ -148,7 +148,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InsertTest.insertRelocatingFinish" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionTest.interpolateTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -157,8 +157,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
-      <option name="METHOD_NAME" value="insertRelocatingFinish" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="interpolateTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -180,10 +180,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.interpolateTest2" />
         <item itemvalue="JUnit.ComplexCompositeFunctionTest.test8" />
         <item itemvalue="JUnit.ComplexCompositeFunctionTest.test7" />
         <item itemvalue="JUnit.ArrayTabulatedFunctionTest.constructFunction" />
-        <item itemvalue="JUnit.InsertTest.insertRelocatingFinish" />
       </list>
     </recent_temporary>
   </component>
@@ -218,5 +218,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1727884023827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
