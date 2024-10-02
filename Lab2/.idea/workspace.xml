@@ -36,6 +36,8 @@
     "JUnit.ComplexCompositeFunctionTest.test4.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test5.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test6.executor": "Run",
+    "JUnit.ComplexCompositeFunctionTest.test7.executor": "Run",
+    "JUnit.ComplexCompositeFunctionTest.test8.executor": "Run",
     "JUnit.CompositeFunctionTest.applyCompositeFunc.executor": "Run",
     "JUnit.CompositeFunctionTest.applyCompositeFuncComposite.executor": "Run",
     "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify1.executor": "Debug",
@@ -89,7 +91,7 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ArrayTabulatedFunctionTest.constructFunction">
+  <component name="RunManager" selected="JUnit.All in Labs_OOP_sem_3">
     <configuration name="All in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="PACKAGE_NAME" value="" />
@@ -114,7 +116,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompositeFunctionTest.applyCompositeFuncComposite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ComplexCompositeFunctionTest.test7" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -123,14 +125,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.CompositeFunctionTest" />
-      <option name="METHOD_NAME" value="applyCompositeFuncComposite" />
+      <option name="MAIN_CLASS_NAME" value="functions.ComplexCompositeFunctionTest" />
+      <option name="METHOD_NAME" value="test7" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InsertTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ComplexCompositeFunctionTest.test8" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -139,8 +141,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.InsertTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="functions.ComplexCompositeFunctionTest" />
+      <option name="METHOD_NAME" value="test8" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.constructFunction" />
         <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.ComplexCompositeFunctionTest.test8" />
+        <item itemvalue="JUnit.ComplexCompositeFunctionTest.test7" />
+        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.constructFunction" />
         <item itemvalue="JUnit.InsertTest.insertRelocatingFinish" />
-        <item itemvalue="JUnit.InsertTest" />
-        <item itemvalue="JUnit.CompositeFunctionTest.applyCompositeFuncComposite" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +208,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/functions/LinkedListTabulatedFunction.java</url>
-          <line>93</line>
+          <line>92</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

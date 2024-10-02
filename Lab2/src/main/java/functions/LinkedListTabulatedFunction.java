@@ -42,9 +42,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
             for (int i = 0; i < index; ++i)
                 cur = cur.next;
         } else {
-            for (int i = count - 1; i >= index; --i) // подумать
+            for (int i = count - 1; i >= index; --i)
                 cur = cur.prev;
-
         }
         return cur;
     }

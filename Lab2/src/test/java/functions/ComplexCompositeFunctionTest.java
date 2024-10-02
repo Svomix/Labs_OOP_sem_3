@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class ComplexCompositeFunctionTest {
     @Test
-    public void test() {
+    public void test1() {
         MathFunction func = new CompositeFunction(new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3}),
                 new LinkedListTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3}));
         Assertions.assertEquals(func.apply(-50), -50);
@@ -61,6 +61,20 @@ public class ComplexCompositeFunctionTest {
         double acc = Math.abs(func.apply(1.2) - 1.9) / 1.9;
         Assertions.assertTrue(acc <= 0.2);
     }
-
-
+    @Test
+    public void test7()
+    {
+        MathFunction func = new CompositeFunction(new LinkedListTabulatedFunction(new double[]{1,2,3,4}, new double[]{1,4,9,16}),new SqrFunction());
+        Assertions.assertEquals(81,func.apply(3));
+        Assertions.assertEquals(156.25,func.apply(3.5));
+        Assertions.assertEquals(3364,func.apply(10));
+    }
+    @Test
+    public void test8()
+    {
+        MathFunction func = new CompositeFunction(new ArrayTabulatedFunction(new double[]{1,2.5,5.2,7,11.2},new double[]{1,1.58,2.23,2.28,3.34}),new IdentityFunction());
+        Assertions.assertEquals(1.58,func.apply(2.5));
+        Assertions.assertEquals(1.3866666666666667,func.apply(2));
+        Assertions.assertEquals(3.541904761904762,func.apply(12));
+    }
 }
