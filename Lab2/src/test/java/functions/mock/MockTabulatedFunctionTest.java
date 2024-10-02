@@ -16,26 +16,26 @@ class MockTabulatedFunctionTest {
 
     @Test
     void extrapolateLeft() {
-        Assertions.assertEquals(func.apply(-1), -1 + (-5 - -1) / (2.5 - 1) * (-1 - 1));
+        Assertions.assertEquals(-1 + (-5 - -1) / (2.5 - 1) * (-1 - 1), func.apply(-1));
     }
 
     @Test
     void extrapolateRight() {
-        Assertions.assertEquals(func.apply(5), -1 + (-5 - -1) / (2.5 - 1) * (5 - 1));
+        Assertions.assertEquals(-1 + (-5 - -1) / (2.5 - 1) * (5 - 1), func.apply(5));
     }
 
     @Test
     void applyTest1() {
-        Assertions.assertEquals(func.apply(1), -1);
+        Assertions.assertEquals(-1, func.apply(1));
     }
 
     @Test
     void applyTest2() {
-        Assertions.assertEquals(func.apply(2.5), -5);
+        Assertions.assertEquals(-5, func.apply(2.5));
     }
 
     @Test
     void interpolateTest() {
-        Assertions.assertEquals(func.interpolate(2, -6.4, 2.2, 13.3, 0), 13.3 + (0 - 13.3) / (2.2 - -6.4) * (2 - -6.4));
+        Assertions.assertEquals( 13.3 + (0 - 13.3) / (2.2 - -6.4) * (2 - -6.4), func.interpolate(2, -6.4, 2.2, 13.3, 0));
     }
 }

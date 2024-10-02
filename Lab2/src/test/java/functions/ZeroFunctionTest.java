@@ -14,16 +14,16 @@ class ZeroFunctionTest {
 
     @Test
     void applyTest1() {
-        Assertions.assertEquals(func.apply(3.0), 0);
+        Assertions.assertEquals(0, func.apply(3.0));
     }
 
     @Test
     void applyTest2() {
-        Assertions.assertEquals(func.apply(-3), 0);
+        Assertions.assertEquals(0, func.apply(-3));
     }
 
     @Test
     void applyTest3() {
-        Assertions.assertEquals(func.apply(0), 0);
+        Assertions.assertEquals(0, func.apply(0));
     }
 }

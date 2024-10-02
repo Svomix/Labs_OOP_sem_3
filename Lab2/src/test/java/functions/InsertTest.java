@@ -57,24 +57,24 @@ public class InsertTest {
     @Test
     void insertCenterListTest() {
         list.insert(2.5, 3.2);
-        Assertions.assertEquals(list.getX(2), 2.5);
+        Assertions.assertEquals(2.5, list.getX(2));
     }
 
     @Test
     void insertLeftListTest() {
         list.insert(0, 3.6);
-        Assertions.assertEquals(list.getX(0), 0);
+        Assertions.assertEquals(0, list.getX(0));
     }
 
     @Test
     void insertRightListTest() {
         list.insert(8.9, 4.4);
-        Assertions.assertEquals(list.getX(6), 8.9);
+        Assertions.assertEquals(8.9, list.getX(6));
     }
 
     @Test
     void insertListTest() {
         list.insert(1, 2);
-        Assertions.assertEquals(list.getX(0), 1);
+        Assertions.assertEquals(1, list.getX(0));
     }
 }

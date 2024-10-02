@@ -15,12 +15,12 @@ class UnitFunctionTest {
 
     @Test
     void applyTest1() {
-        Assertions.assertEquals(func.apply(4), 1);
+        Assertions.assertEquals(1, func.apply(4));
     }
 
     @Test
     void applyTest2() {
-        Assertions.assertEquals(func.apply(7), 1);
+        Assertions.assertEquals(1, func.apply(7));
     }
 
     @Test

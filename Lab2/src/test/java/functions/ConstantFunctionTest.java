@@ -15,16 +15,16 @@ class ConstantFunctionTest {
 
     @Test
     void applyTest1() {
-        Assertions.assertEquals(func.apply(5), 3);
+        Assertions.assertEquals(3, func.apply(5));
     }
 
     @Test
     void applyTest2() {
-        Assertions.assertEquals(func.apply(3), 3);
+        Assertions.assertEquals(3, func.apply(3));
     }
 
     @Test
     void applyTest3() {
-        Assertions.assertEquals(func.apply(0), 3);
+        Assertions.assertEquals(3, func.apply(0));
     }
 }

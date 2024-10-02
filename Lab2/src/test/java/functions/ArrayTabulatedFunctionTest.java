@@ -91,7 +91,7 @@ class ArrayTabulatedFunctionTest {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
-        Assertions.assertEquals(func.apply(-1), arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]));
+        Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]),func.apply(-1) );
     }
 
     @Test
@@ -99,7 +99,17 @@ class ArrayTabulatedFunctionTest {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
-        Assertions.assertEquals(func.apply(6), arrY[func.getCount() - 2] + (arrY[func.getCount() - 1] - arrY[func.getCount() - 2]) / (arrX[func.getCount() - 1] - arrX[func.getCount() - 2]) * (6 - arrX[func.getCount() - 2]));
+        Assertions.assertEquals(arrY[func.getCount() - 2] + (arrY[func.getCount() - 1] - arrY[func.getCount() - 2]) / (arrX[func.getCount() - 1] - arrX[func.getCount() - 2]) * (6 - arrX[func.getCount() - 2]), func.apply(6));
+    }
+
+    @Test
+    void extrapolateAllTest() {
+        double[] arrX = {0.22};
+        double[] arrY = {22.23};
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
+        Assertions.assertEquals(arrY[0], func.apply(6));
+        Assertions.assertEquals(arrY[0], func.apply(0));
+        Assertions.assertEquals(arrY[0], func.apply(0.22));
     }
 
     @Test
@@ -108,7 +118,7 @@ class ArrayTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         int floorIndex = func.floorIndexOfX(4.5);
-        Assertions.assertEquals(func.apply(4.5), arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (4.5 - arrX[floorIndex]));
+        Assertions.assertEquals( arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (4.5 - arrX[floorIndex]), func.apply(4.5));
     }
 
     @Test
@@ -139,6 +149,17 @@ class ArrayTabulatedFunctionTest {
     @Test
     void constructFunction() {
         ArrayTabulatedFunction func = new ArrayTabulatedFunction(new SqrFunction(), 0, 5, 6);
+        boolean b = false;
+        for (int i = 0; i < func.getCount(); i++) {
+            if (func.getY(i) != i * i && func.getX(i) != i)
+                b = true;
+        }
+        Assertions.assertFalse(b);
+    }
+
+    @Test
+    void constructFunction2() {
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(new SqrFunction(), 5, 0, 6);
         boolean b = false;
         for (int i = 0; i < func.getCount(); i++) {
             if (func.getY(i) != i * i && func.getX(i) != i)
