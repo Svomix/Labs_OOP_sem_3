@@ -150,7 +150,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     protected double extrapolateRight(double x) {
         if (count == 1)
             return head.y;
-        return interpolate(x,getNode(count - 2).x,getNode(count - 1).x,getNode(count - 2).y,getNode(count - 1).y);
+        return interpolate(x, head.prev.prev.x, head.prev.x, head.prev.prev.y, head.prev.y);
     }
 
     @Override

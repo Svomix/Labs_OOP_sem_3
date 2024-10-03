@@ -31,7 +31,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.All in Labs_OOP_sem_3.executor": "Coverage",
+    "JUnit.All in Labs_OOP_sem_3.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.constructFunction.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test4.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test5.executor": "Debug",
@@ -59,6 +59,8 @@
     "JUnit.InsertTest.insertStartTest.executor": "Debug",
     "JUnit.InsertTest.insertrelocatingFinish.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.applyTest.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.applyTest1.executor": "Debug",
+    "JUnit.LinkedListTabulatedFunctionTest.applyTest2.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.extrapolateLeftTest.executor": "Run",
@@ -93,7 +95,7 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.LinkedListTabulatedFunctionTest.applyTest1">
+  <component name="RunManager" selected="JUnit.All in Labs_OOP_sem_3">
     <configuration name="All in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="PACKAGE_NAME" value="" />
@@ -181,9 +183,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest1" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest2" />
-        <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.interpolateTest2" />
       </list>
@@ -222,6 +224,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1727955449766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1727955586434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
