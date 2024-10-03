@@ -162,4 +162,16 @@ public class LinkedListTabulatedFunctionTest {
         double a = list.interpolate(4.2,4);
         Assertions.assertEquals(17.8,a);
     }
+    @Test
+    void applyTest1()
+    {
+        double a = list.apply(4.2);
+        Assertions.assertEquals(17.8,a);
+    }
+    @Test
+    void applyTest2()
+    {
+        double a = list.apply(6);
+        Assertions.assertEquals(36,a);
+    }
 }

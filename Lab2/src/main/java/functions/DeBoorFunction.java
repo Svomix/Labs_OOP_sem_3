@@ -22,7 +22,6 @@ public class DeBoorFunction implements MathFunction
             {
                 double alpha = (x - spline.getT()[j + indexSig - spline.getP()]) / (spline.getT()[j + 1 + indexSig - i] - spline.getT()[j + indexSig - spline.getP()]);
                 d[j] = (1 - alpha) * d[j - 1] + alpha * d[j];
-
             }
         }
         return d[spline.getP()];

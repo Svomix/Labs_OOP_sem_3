@@ -58,6 +58,7 @@
     "JUnit.InsertTest.insertStartFinish.executor": "Debug",
     "JUnit.InsertTest.insertStartTest.executor": "Debug",
     "JUnit.InsertTest.insertrelocatingFinish.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.applyTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.extrapolateLeftTest.executor": "Run",
@@ -72,6 +73,7 @@
     "JUnit.LinkedListTabulatedFunctionTest.indexOfYExistingTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.indexOfYNotExistingTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.interpolateTest.executor": "Debug",
+    "JUnit.LinkedListTabulatedFunctionTest.interpolateTest2.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.leftBoundTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.removeLeftBoundTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest.executor": "Run",
@@ -91,7 +93,7 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.All in Labs_OOP_sem_3">
+  <component name="RunManager" selected="JUnit.LinkedListTabulatedFunctionTest.applyTest1">
     <configuration name="All in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="PACKAGE_NAME" value="" />
@@ -100,7 +102,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArrayTabulatedFunctionTest.constructFunction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionTest.applyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -109,14 +111,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.ArrayTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="constructFunction" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="applyTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ComplexCompositeFunctionTest.test7" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionTest.applyTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -125,14 +127,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.ComplexCompositeFunctionTest" />
-      <option name="METHOD_NAME" value="test7" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="applyTest1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ComplexCompositeFunctionTest.test8" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionTest.applyTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -141,8 +143,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.ComplexCompositeFunctionTest" />
-      <option name="METHOD_NAME" value="test8" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="applyTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -179,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest1" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest2" />
         <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.interpolateTest2" />
-        <item itemvalue="JUnit.ComplexCompositeFunctionTest.test8" />
-        <item itemvalue="JUnit.ComplexCompositeFunctionTest.test7" />
-        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.constructFunction" />
       </list>
     </recent_temporary>
   </component>
@@ -220,6 +222,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1727884023827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1727955449766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
