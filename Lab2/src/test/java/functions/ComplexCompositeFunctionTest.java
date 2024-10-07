@@ -13,23 +13,23 @@ public class ComplexCompositeFunctionTest {
     @Test
     public void test2() {
         MathFunction func = new CompositeFunction(new ArrayTabulatedFunction(new double[]{1.7, 2.3, 3.8}, new double[]{-0.1, 2, 3.3}),
-                new LinkedListTabulatedFunction(new double[]{1.2, 2.1, 5.5}, new double[]{0.3, 2.5, 3,7}));
-        Assertions.assertEquals(2.6254901960784314, func.apply(3.4));
+                new LinkedListTabulatedFunction(new double[]{1.2, 2.1, 5.5}, new double[]{0.3, 2.5, 3.7}));
+        Assertions.assertEquals(2.8011764705882354, func.apply(3.4));
         Assertions.assertEquals(-8.866666666666667, func.apply(1));
         Assertions.assertEquals(-2.8777777777777778, func.apply(1.7));
         Assertions.assertEquals(-34.53333333333334, func.apply(-2));
-        Assertions.assertEquals(4.996078431372549, func.apply(22));
+        Assertions.assertEquals(8.490588235294117, func.apply(22));
     }
 
     @Test
     public void test3() {
         MathFunction func = new CompositeFunction(new ArrayTabulatedFunction(new double[]{1.7, 2.3, 3.8}, new double[]{-0.1, 2, 3.3}),
-                new ArrayTabulatedFunction(new double[]{1.2, 2.1, 5.5}, new double[]{0.3, 2.5, 3,7}));
-        Assertions.assertEquals(2.6254901960784314, func.apply(3.4));
+                new ArrayTabulatedFunction(new double[]{1.2, 2.1, 5.5}, new double[]{0.3, 2.5, 3.7}));
+        Assertions.assertEquals(2.8011764705882354, func.apply(3.4));
         Assertions.assertEquals(-8.866666666666667, func.apply(1));
         Assertions.assertEquals(-2.8777777777777778, func.apply(1.7));
         Assertions.assertEquals(-34.53333333333334, func.apply(-2));
-        Assertions.assertEquals(4.996078431372549, func.apply(22));
+        Assertions.assertEquals(8.490588235294117, func.apply(22));
     }
 
     @Test
@@ -46,12 +46,12 @@ public class ComplexCompositeFunctionTest {
     @Test
     public void test5() {
         MathFunction func = new CompositeFunction(new LinkedListTabulatedFunction(new double[]{1.7, 2.3, 3.8}, new double[]{-0.1, 2, 3.3}),
-                new LinkedListTabulatedFunction(new double[]{1.2, 2.1, 5.5}, new double[]{0.3, 2.5, 3,7}));
-        Assertions.assertEquals(2.6254901960784314, func.apply(3.4));
+                new LinkedListTabulatedFunction(new double[]{1.2, 2.1, 5.5}, new double[]{0.3, 2.5, 3.7}));
+        Assertions.assertEquals(2.8011764705882354, func.apply(3.4));
         Assertions.assertEquals(-8.866666666666667, func.apply(1));
         Assertions.assertEquals(-2.8777777777777778, func.apply(1.7));
         Assertions.assertEquals(-34.53333333333334, func.apply(-2));
-        Assertions.assertEquals(4.996078431372549, func.apply(22));
+        Assertions.assertEquals(8.490588235294117, func.apply(22));
     }
     @Test
     public void test6()

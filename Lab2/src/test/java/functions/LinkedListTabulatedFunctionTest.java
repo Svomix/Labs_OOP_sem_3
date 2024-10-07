@@ -1,5 +1,8 @@
 package functions;
 
+import exceptions.ArrayIsNotSortedException;
+import exceptions.DifferentLengthOfArraysException;
+import exceptions.InterpolationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -209,5 +212,20 @@ public class LinkedListTabulatedFunctionTest {
     {
         Assertions.assertThrows(IllegalArgumentException.class,()->list.setY(-1,10));
         Assertions.assertThrows(IllegalArgumentException.class,()->list.setY(100,10));
+    }
+
+    @Test
+    void createObject(){
+        Assertions.assertThrows(ArrayIsNotSortedException.class, () -> new LinkedListTabulatedFunction(new double[]{1, 3, 2}, new double[]{1, 2, 3}));
+        Assertions.assertThrows(DifferentLengthOfArraysException.class, () -> new LinkedListTabulatedFunction(new double[]{1, 3, 2}, new double[]{1, 2}));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(new double[]{1}, new double[]{1}));
+        Assertions.assertDoesNotThrow(() -> new LinkedListTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3}));
+    }
+
+    @Test
+    void interpolateFloorTest(){
+        LinkedListTabulatedFunction list = new LinkedListTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        Assertions.assertThrows(InterpolationException.class, () -> list.interpolate(1.5, 1));
+        Assertions.assertDoesNotThrow(() -> list.interpolate(1.5, 0));
     }
 }

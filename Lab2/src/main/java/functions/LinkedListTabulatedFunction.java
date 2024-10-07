@@ -1,5 +1,7 @@
 package functions;
 
+import exceptions.InterpolationException;
+
 import java.util.Iterator;
 
 public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
@@ -68,10 +70,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     }
 
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
-        if(xValues.length < 2)
-            throw new IllegalArgumentException("The count of the X points must be 2 at least");
-        if(xValues.length != yValues.length)
-            throw new IllegalArgumentException("The count of the Y points and X points must be the same");
+        checkLengthIsTheSame(xValues, yValues);
+        if(xValues.length < 2) throw new IllegalArgumentException("The count of the X points must be 2 at least");
+        checkSorted(xValues);
         for (int i = 0; i < xValues.length; ++i) {
             addNode(xValues[i], yValues[i]);
         }
@@ -180,6 +181,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     @Override
     protected double interpolate(double x, int floorIndex) {
         Node floorNode = getNode(floorIndex);
+        if (x < floorNode.x || x > floorNode.next.x) throw new InterpolationException("Failed interpolation with 2 parameters");
         return interpolate(x,floorNode.x,floorNode.next.x,floorNode.y,floorNode.next.y);
     }
 

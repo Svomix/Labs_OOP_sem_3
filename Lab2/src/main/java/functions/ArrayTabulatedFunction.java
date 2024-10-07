@@ -1,5 +1,7 @@
 package functions;
 
+import exceptions.InterpolationException;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -8,6 +10,9 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
     protected double[] arrY;
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
+        checkLengthIsTheSame(xValues, yValues);
+        if (xValues.length <= 1) throw new IllegalArgumentException("xValues length must be greater than 1");
+        checkSorted(xValues);
         count = xValues.length;
         arrX = Arrays.copyOf(xValues, xValues.length);
         arrY = Arrays.copyOf(yValues, yValues.length);
@@ -103,6 +108,7 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
 
     @Override
     protected double interpolate(double x, int floorIndex) {
+        if (x < arrX[floorIndex] || x > arrX[floorIndex + 1]) throw new InterpolationException("Failed interpolation with 2 parameters");
         return interpolate(x, arrX[floorIndex], arrX[floorIndex + 1], arrY[floorIndex], arrY[floorIndex + 1]);
     }
 
