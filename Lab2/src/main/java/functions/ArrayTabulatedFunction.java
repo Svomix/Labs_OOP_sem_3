@@ -87,19 +87,16 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
 
     @Override
     protected double extrapolateLeft(double x) {
-        if (count == 1) return arrY[0];
         return interpolate(x, arrX[0], arrX[1], arrY[0], arrY[1]);
     }
 
     @Override
     protected double extrapolateRight(double x) {
-        if (count == 1) return arrY[0];
         return interpolate(x, arrX[count - 2], arrX[count - 1], arrY[count - 2], arrY[count - 1]);
     }
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        if (count == 1) return arrY[0];
         return interpolate(x, arrX[floorIndex], arrX[floorIndex + 1], arrY[floorIndex], arrY[floorIndex + 1]);
     }
 

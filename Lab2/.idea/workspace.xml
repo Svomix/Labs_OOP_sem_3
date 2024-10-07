@@ -63,11 +63,13 @@
     "JUnit.LinkedListTabulatedFunctionTest.applyTest2.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.exceptionsTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.extrapolateLeftTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.extrapolateRightTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXBoundTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXMiddleTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.getCountTest.executor": "Debug",
+    "JUnit.LinkedListTabulatedFunctionTest.getTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.getXTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.getYTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.indexOfXExistingTest.executor": "Run",
@@ -104,22 +106,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.applyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="applyTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="LinkedListTabulatedFunctionTest.applyTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
@@ -152,7 +138,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.interpolateTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionTest.exceptionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -162,7 +148,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="functions" />
       <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="interpolateTest2" />
+      <option name="METHOD_NAME" value="exceptionsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedListTabulatedFunctionTest.getTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="getTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -184,10 +186,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.exceptionsTest" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.getTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest1" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest2" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.interpolateTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -212,7 +214,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/functions/LinkedListTabulatedFunction.java</url>
-          <line>92</line>
+          <line>103</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -224,6 +226,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1727955586434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1728309090379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

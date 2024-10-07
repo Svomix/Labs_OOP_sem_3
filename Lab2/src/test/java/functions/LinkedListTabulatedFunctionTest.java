@@ -174,4 +174,40 @@ public class LinkedListTabulatedFunctionTest {
         double a = list.apply(6);
         Assertions.assertEquals(36,a);
     }
+    @Test
+    void exceptionsRemoveTest()
+    {
+        Assertions.assertThrows(IllegalArgumentException.class,()->list.remove(-1));
+        Assertions.assertThrows(IllegalArgumentException.class,()->list.remove(100));
+    }
+    @Test
+    void exceptionsGetTest()
+    {
+        Assertions.assertThrows(IllegalArgumentException.class,()->list.getNode(-1));
+        Assertions.assertThrows(IllegalArgumentException.class,()->list.getNode(100));
+        Assertions.assertThrows(IllegalArgumentException.class, ()->list.getY(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, ()->list.getY(100));
+        Assertions.assertThrows(IllegalArgumentException.class, ()->list.getX(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, ()->list.getX(100));
+    }
+    @Test
+    void exceptionsFloorTest()
+    {
+        Assertions.assertThrows(IllegalArgumentException.class,()->list.floorNodeOfX(-1));
+        Assertions.assertThrows(IllegalArgumentException.class,()->list.floorIndexOfX(-1));
+    }
+    @Test
+    void exceptionsConstructorTest()
+    {
+        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new double[]{1},new double[]{1}));
+        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new double[]{},new double[]{}));
+        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new SqrFunction(),1,10,1));
+        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new SqrFunction(),1,10,0));
+    }
+    @Test
+    void exceptionsSetTest()
+    {
+        Assertions.assertThrows(IllegalArgumentException.class,()->list.setY(-1,10));
+        Assertions.assertThrows(IllegalArgumentException.class,()->list.setY(100,10));
+    }
 }
