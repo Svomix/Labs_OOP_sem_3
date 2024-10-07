@@ -4,6 +4,7 @@ import exceptions.InterpolationException;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
     protected double[] arrX;
@@ -43,8 +44,23 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
     }
 
     @Override
-    public Iterator<Point> iterator() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException();
+    public Iterator<Point> iterator() {
+        Iterator<Point> iter = new Iterator<Point>() {
+            int i = 0;
+            @Override
+            public boolean hasNext() {
+                return i < count;
+            }
+
+            @Override
+            public Point next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                Point point = new Point(arrX[i], arrY[i]);
+                i++;
+                return point;
+            }
+        };
+        return iter;
     }
 
     @Override

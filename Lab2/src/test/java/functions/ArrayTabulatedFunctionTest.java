@@ -6,6 +6,8 @@ import exceptions.InterpolationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 
 class ArrayTabulatedFunctionTest {
 
@@ -201,6 +203,28 @@ class ArrayTabulatedFunctionTest {
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         Assertions.assertThrows(InterpolationException.class, () -> arr.interpolate(1.5, 1));
         Assertions.assertDoesNotThrow(() -> arr.interpolate(1.5, 0));
+    }
+
+    @Test
+    void iteratorTest1(){
+        ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        Iterator<Point> iterator = arr.iterator();
+        int j = 0;
+        while(iterator.hasNext()){
+            Point point = iterator.next();
+            Assertions.assertEquals(point.x, arr.getX(j));
+            Assertions.assertEquals(point.y, arr.getY(j++));
+        }
+    }
+
+    @Test
+    void iteratorTest2(){
+        ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        int j = 0;
+        for (Point point : arr) {
+            Assertions.assertEquals(point.x, arr.getX(j));
+            Assertions.assertEquals(point.y, arr.getY(j++));
+        }
     }
 
 }
