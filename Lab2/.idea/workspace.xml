@@ -31,7 +31,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.All in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.All in Labs_OOP_sem_3.executor": "Coverage",
     "JUnit.ArrayTabulatedFunctionTest.constructFunction.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test4.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test5.executor": "Debug",
@@ -79,6 +79,7 @@
     "JUnit.LinkedListTabulatedFunctionTest.interpolateTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.interpolateTest2.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.iteratorForEachTest.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.iteratorWhileTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.leftBoundTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.removeLeftBoundTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest.executor": "Run",
@@ -88,6 +89,8 @@
     "JUnit.MockTabulatedFunctionTest.extrapolateLeft.executor": "Debug",
     "JUnit.RungeKuttaFunctionTest.test1.executor": "Run",
     "JUnit.RungeKuttaFunctionTest.test2.executor": "Run",
+    "JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest.executor": "Run",
+    "JUnit.StrictTabulatedFunctionTest.strictLinkedListTest.executor": "Run",
     "JUnit.ZeroFunctionTest.applyTest1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -98,43 +101,11 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.LinkedListTabulatedFunctionTest.iteratorWhileTest">
+  <component name="RunManager" selected="JUnit.StrictTabulatedFunctionTest.strictLinkedListTest">
     <configuration name="All in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.exceptionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="exceptionsTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.getTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="getTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,6 +142,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StrictTabulatedFunctionTest.strictArrayTabulatedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.StrictTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="strictArrayTabulatedTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StrictTabulatedFunctionTest.strictLinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.StrictTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="strictLinkedListTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Lab2" />
       <method v="2">
@@ -186,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StrictTabulatedFunctionTest.strictLinkedListTest" />
+        <item itemvalue="JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest" />
+        <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.iteratorWhileTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.iteratorForEachTest" />
-        <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.exceptionsTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.getTest" />
       </list>
     </recent_temporary>
   </component>
@@ -218,9 +221,22 @@
           <line>38</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
+          <line>234</line>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/functions/StrictTabulatedFunctionTest.java</url>
+          <line>22</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
-          <line>215</line>
+          <line>218</line>
           <properties class="functions.LinkedListTabulatedFunctionTest" method="iteratorForEachTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -231,6 +247,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1728309090379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1728325183766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
