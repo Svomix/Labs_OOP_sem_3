@@ -37,7 +37,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         ++count;
     }
 
-    protected Node getNode(int index) throws IllegalArgumentException {
+    protected Node getNode(int index)  {
         if(index < 0)
             throw new IllegalArgumentException("Index can't be less than zero");
         if(index > count)
@@ -53,7 +53,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         return cur;
     }
 
-    protected Node floorNodeOfX(double x) throws IllegalArgumentException {
+    protected Node floorNodeOfX(double x)  {
         if(x < head.x)
             throw new IllegalArgumentException("x less than left bound of the list");
         Node cur = head;
@@ -67,7 +67,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         return getNode(count);
     }
 
-    public LinkedListTabulatedFunction(double[] xValues, double[] yValues) throws IllegalArgumentException{
+    public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
         if(xValues.length < 2)
             throw new IllegalArgumentException("The count of the X points must be 2 at least");
         if(xValues.length != yValues.length)
@@ -77,7 +77,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
         }
     }
 
-    public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) throws IllegalArgumentException{
+    public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
         if(count < 2)
             throw new IllegalArgumentException("The count of the points must be 2 at least");
         if (xFrom > xTo) {
@@ -112,7 +112,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     }
 
     @Override
-    public double getX(int index) throws IllegalArgumentException
+    public double getX(int index) 
     {
         if(index < 0)
             throw new IllegalArgumentException("Index can't be less than zero");
@@ -122,7 +122,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     }
 
     @Override
-    public double getY(int index) throws IllegalArgumentException {
+    public double getY(int index)  {
         if(index < 0)
             throw new IllegalArgumentException("Index can't be less than zero");
         if(index > count)
@@ -131,7 +131,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     }
 
     @Override
-    public void setY(int index, double y) throws IllegalArgumentException {
+    public void setY(int index, double y)  {
         if(index < 0)
             throw new IllegalArgumentException("Index can't be less than zero");
         if(index > count)
@@ -153,7 +153,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     }
 
     @Override
-    protected int floorIndexOfX(double x) throws IllegalArgumentException {
+    protected int floorIndexOfX(double x)  {
         if(x < head.x)
             throw new IllegalArgumentException("x less than left bound of the list");
         Node cur = head;
@@ -263,7 +263,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     }
 
     @Override
-    public void remove(int index) throws IllegalArgumentException {
+    public void remove(int index)  {
         if(index < 0)
             throw new IllegalArgumentException("Index can't be less than zero");
         if(index > count)
