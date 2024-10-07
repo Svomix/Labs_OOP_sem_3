@@ -73,10 +73,6 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     }
 
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
-        if (xValues.length < 2)
-            throw new IllegalArgumentException("The count of the X points must be 2 at least");
-        if (xValues.length != yValues.length)
-            throw new IllegalArgumentException("The count of the Y points and X points must be the same");
         checkLengthIsTheSame(xValues, yValues);
         if (xValues.length < 2) throw new IllegalArgumentException("The count of the X points must be 2 at least");
         checkSorted(xValues);
