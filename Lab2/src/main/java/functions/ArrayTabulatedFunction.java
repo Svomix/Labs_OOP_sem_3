@@ -45,8 +45,9 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
 
     @Override
     public Iterator<Point> iterator() {
-        Iterator<Point> iter = new Iterator<Point>() {
+        return new Iterator<>() {
             int i = 0;
+
             @Override
             public boolean hasNext() {
                 return i < count;
@@ -60,7 +61,6 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
                 return point;
             }
         };
-        return iter;
     }
 
     @Override
