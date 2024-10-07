@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 public class LinkedListTabulatedFunctionTest {
     private LinkedListTabulatedFunction list;
     private double[] a = {0, 1, 2, 3, 4, 5, 6, 7};
@@ -209,5 +211,37 @@ public class LinkedListTabulatedFunctionTest {
     {
         Assertions.assertThrows(IllegalArgumentException.class,()->list.setY(-1,10));
         Assertions.assertThrows(IllegalArgumentException.class,()->list.setY(100,10));
+    }
+    @Test
+    void iteratorForEachTest()
+    {
+        double[] arrx = new double[8];
+        double[] arry = new double[8];
+        int i = 0;
+        for (Point point : list)
+        {
+            arrx[i] = point.x;
+            arry[i] = point.y;
+            ++i;
+        }
+        Assertions.assertArrayEquals(a,arrx);
+        Assertions.assertArrayEquals(b,arry);
+    }
+    @Test
+    void iteratorWhileTest() {
+        Iterator<Point> iterator = list.iterator();
+        Point point;
+        double[] arrx = new double[8];
+        double[] arry = new double[8];
+        int i = 0;
+        while (iterator.hasNext())
+        {
+            point = iterator.next();
+            arrx[i] = point.x;
+            arry[i] = point.y;
+            ++i;
+        }
+        Assertions.assertArrayEquals(a,arrx);
+        Assertions.assertArrayEquals(b,arry);
     }
 }

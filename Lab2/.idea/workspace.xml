@@ -78,6 +78,7 @@
     "JUnit.LinkedListTabulatedFunctionTest.indexOfYNotExistingTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.interpolateTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.interpolateTest2.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.iteratorForEachTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.leftBoundTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.removeLeftBoundTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest.executor": "Run",
@@ -97,43 +98,11 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.All in Labs_OOP_sem_3">
+  <component name="RunManager" selected="JUnit.LinkedListTabulatedFunctionTest.iteratorWhileTest">
     <configuration name="All in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.applyTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="applyTest1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.applyTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="applyTest2" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,6 +139,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LinkedListTabulatedFunctionTest.iteratorForEachTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="iteratorForEachTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedListTabulatedFunctionTest.iteratorWhileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="iteratorWhileTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Lab2" />
       <method v="2">
@@ -185,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.iteratorWhileTest" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.iteratorForEachTest" />
         <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.exceptionsTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.getTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest1" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.applyTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -213,14 +214,18 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/functions/LinkedListTabulatedFunction.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/functions/ComplexCompositeFunctionTest.java</url>
           <line>38</line>
           <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
+          <line>215</line>
+          <properties class="functions.LinkedListTabulatedFunctionTest" method="iteratorForEachTest">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="85" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
