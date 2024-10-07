@@ -1,5 +1,7 @@
 package functions;
 
+import java.util.Iterator;
+
 public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
     static class Node {
         public Node next;
@@ -179,6 +181,11 @@ public class LinkedListTabulatedFunction extends AbstractTabulateFunction implem
     protected double interpolate(double x, int floorIndex) {
         Node floorNode = getNode(floorIndex);
         return interpolate(x,floorNode.x,floorNode.next.x,floorNode.y,floorNode.next.y);
+    }
+
+    @Override
+    public Iterator<Point> iterator() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
     }
 
     @Override

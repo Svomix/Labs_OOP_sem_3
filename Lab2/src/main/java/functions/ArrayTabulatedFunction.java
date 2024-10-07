@@ -1,6 +1,7 @@
 package functions;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class ArrayTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
     protected double[] arrX;
@@ -34,6 +35,11 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
     @Override
     public double getY(int index) {
         return arrY[index];
+    }
+
+    @Override
+    public Iterator<Point> iterator() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
     }
 
     @Override
