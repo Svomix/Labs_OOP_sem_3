@@ -13,6 +13,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -29,99 +30,84 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.All in Labs_OOP_sem_3.executor": "Coverage",
-    "JUnit.ArrayTabulatedFunctionTest.constructFunction.executor": "Debug",
-    "JUnit.ComplexCompositeFunctionTest.test4.executor": "Debug",
-    "JUnit.ComplexCompositeFunctionTest.test5.executor": "Debug",
-    "JUnit.ComplexCompositeFunctionTest.test6.executor": "Run",
-    "JUnit.ComplexCompositeFunctionTest.test7.executor": "Run",
-    "JUnit.ComplexCompositeFunctionTest.test8.executor": "Run",
-    "JUnit.CompositeFunctionTest.applyCompositeFunc.executor": "Run",
-    "JUnit.CompositeFunctionTest.applyCompositeFuncComposite.executor": "Run",
-    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify1.executor": "Debug",
-    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2.executor": "Run",
-    "JUnit.ConstantFunctionTest.applyTest1.executor": "Run",
-    "JUnit.ConstantFunctionTest.applyTest2.executor": "Run",
-    "JUnit.DeBoorFunctionTest.DeBoorFunction.executor": "Run",
-    "JUnit.DeBoorFunctionTest.DeBoorFunction1.executor": "Run",
-    "JUnit.DeBoorFunctionTest.DeBoorFunction2.executor": "Run",
-    "JUnit.DeBoorFunctionTest.DeBoorFunction3.executor": "Debug",
-    "JUnit.DeBoorFunctionTest.DeBoorFunctionTest3.executor": "Run",
-    "JUnit.IdentityFunctionTest.applyTestDouble.executor": "Run",
-    "JUnit.InsertTest.executor": "Run",
-    "JUnit.InsertTest.insertCenterTest.executor": "Debug",
-    "JUnit.InsertTest.insertLeftListTest.executor": "Run",
-    "JUnit.InsertTest.insertRelocatingFinish.executor": "Debug",
-    "JUnit.InsertTest.insertRightListTest.executor": "Debug",
-    "JUnit.InsertTest.insertStartFinish.executor": "Debug",
-    "JUnit.InsertTest.insertStartTest.executor": "Debug",
-    "JUnit.InsertTest.insertrelocatingFinish.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.applyTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.applyTest1.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.applyTest2.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.exceptionsTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.extrapolateLeftTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.extrapolateRightTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXBoundTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXMiddleTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.getCountTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.getTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.getXTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.getYTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.indexOfXExistingTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.indexOfXNotExistingTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.indexOfYExistingTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.indexOfYNotExistingTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.interpolateTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.interpolateTest2.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.iteratorForEachTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.iteratorWhileTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.leftBoundTest.executor": "Debug",
-    "JUnit.LinkedListTabulatedFunctionTest.removeLeftBoundTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.removeRightBoundTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.rightBoundTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.setYTest.executor": "Run",
-    "JUnit.MockTabulatedFunctionTest.extrapolateLeft.executor": "Debug",
-    "JUnit.RungeKuttaFunctionTest.test1.executor": "Run",
-    "JUnit.RungeKuttaFunctionTest.test2.executor": "Run",
-    "JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest.executor": "Run",
-    "JUnit.StrictTabulatedFunctionTest.strictLinkedListTest.executor": "Run",
-    "JUnit.ZeroFunctionTest.applyTest1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Projects/Labs_OOP_sem_3/Lab2",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.All in Labs_OOP_sem_3.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ArrayTabulatedFunctionTest.constructFunction.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.ComplexCompositeFunctionTest.test4.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.ComplexCompositeFunctionTest.test5.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.ComplexCompositeFunctionTest.test6.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ComplexCompositeFunctionTest.test7.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ComplexCompositeFunctionTest.test8.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CompositeFunctionTest.applyCompositeFunc.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CompositeFunctionTest.applyCompositeFuncComposite.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CompositeFunctionTest.applyCompositeFuncIdentify1.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConstantFunctionTest.applyTest1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConstantFunctionTest.applyTest2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DeBoorFunctionTest.DeBoorFunction.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DeBoorFunctionTest.DeBoorFunction1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DeBoorFunctionTest.DeBoorFunction2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DeBoorFunctionTest.DeBoorFunction3.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.DeBoorFunctionTest.DeBoorFunctionTest3.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IdentityFunctionTest.applyTestDouble.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsertTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsertTest.insertCenterTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertTest.insertLeftListTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsertTest.insertRelocatingFinish.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertTest.insertRightListTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertTest.insertStartFinish.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertTest.insertStartTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InsertTest.insertrelocatingFinish.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.applyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.applyTest1.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.applyTest2.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.exceptionsTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.extrapolateLeftTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.extrapolateRightTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXBoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.floorIndexOfXMiddleTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.getCountTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.getTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.getXTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.getYTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.indexOfXExistingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.indexOfXNotExistingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.indexOfYExistingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.indexOfYNotExistingTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.interpolateTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.interpolateTest2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.iteratorForEachTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.iteratorWhileTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.leftBoundTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.removeLeftBoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.removeMiddleTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.removeRightBoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.rightBoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.setYTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MockTabulatedFunctionTest.extrapolateLeft.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.RungeKuttaFunctionTest.test1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RungeKuttaFunctionTest.test2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StrictAndUnmodTest.StrictWithUnmodTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.StrictTabulatedFunctionTest.strictLinkedListTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.ZeroFunctionTest.applyTest1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Projects/Labs_OOP_sem_3/Lab2&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.StrictTabulatedFunctionTest.strictLinkedListTest">
+}</component>
+  <component name="RunManager" selected="JUnit.StrictAndUnmodTest.StrictWithUnmodTest">
     <configuration name="All in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.iteratorForEachTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="iteratorForEachTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,6 +123,22 @@
       <option name="PACKAGE_NAME" value="functions" />
       <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
       <option name="METHOD_NAME" value="iteratorWhileTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StrictAndUnmodTest.StrictWithUnmodTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.StrictAndUnmodTest" />
+      <option name="METHOD_NAME" value="StrictWithUnmodTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -189,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StrictAndUnmodTest.StrictWithUnmodTest" />
         <item itemvalue="JUnit.StrictTabulatedFunctionTest.strictLinkedListTest" />
         <item itemvalue="JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest" />
         <item itemvalue="JUnit.All in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.iteratorWhileTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.iteratorForEachTest" />
       </list>
     </recent_temporary>
   </component>
@@ -225,14 +227,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
           <line>234</line>
           <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/functions/StrictTabulatedFunctionTest.java</url>
-          <line>22</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
