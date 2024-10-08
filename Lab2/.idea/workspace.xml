@@ -61,6 +61,7 @@
     "JUnit.InsertTest.insertStartFinish.executor": "Debug",
     "JUnit.InsertTest.insertStartTest.executor": "Debug",
     "JUnit.InsertTest.insertrelocatingFinish.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionFactoryTest.createListTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.applyTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.applyTest1.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.applyTest2.executor": "Debug",
@@ -95,8 +96,13 @@
     "JUnit.StrictAndUnmodTest.StrictWithUnmodTest.executor": "Run",
     "JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest.executor": "Debug",
     "JUnit.StrictTabulatedFunctionTest.strictLinkedListTest.executor": "Debug",
+    "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedArrayFabricTest.executor": "Run",
+    "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedArrayTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedListFabricTest.executor": "Run",
+    "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedListTest.executor": "Run",
+    "JUnit.TabulatedFunctionFactoryTest.createStrictTest.executor": "Run",
     "JUnit.ZeroFunctionTest.applyTest1.executor": "Run",
+    "JUnit.java in Labs_OOP_sem_3.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -128,38 +134,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TabulatedDifferentialOperatorTest.deriveLinkedArrayFabricTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="operations.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="operations" />
-      <option name="MAIN_CLASS_NAME" value="operations.TabulatedDifferentialOperatorTest" />
-      <option name="METHOD_NAME" value="deriveLinkedArrayFabricTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TabulatedDifferentialOperatorTest.deriveLinkedArrayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="operations.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="operations" />
-      <option name="MAIN_CLASS_NAME" value="operations.TabulatedDifferentialOperatorTest" />
-      <option name="METHOD_NAME" value="deriveLinkedArrayTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TabulatedDifferentialOperatorTest.deriveLinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
@@ -171,6 +145,38 @@
       <option name="PACKAGE_NAME" value="operations" />
       <option name="MAIN_CLASS_NAME" value="operations.TabulatedDifferentialOperatorTest" />
       <option name="METHOD_NAME" value="deriveLinkedListTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedFunctionFactoryTest.createStrictTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.factory.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions.factory" />
+      <option name="MAIN_CLASS_NAME" value="functions.factory.TabulatedFunctionFactoryTest" />
+      <option name="METHOD_NAME" value="createStrictTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedFunctionFactoryTest.createStrictUnmodifiableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.factory.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions.factory" />
+      <option name="MAIN_CLASS_NAME" value="functions.factory.TabulatedFunctionFactoryTest" />
+      <option name="METHOD_NAME" value="createStrictUnmodifiableTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -200,10 +206,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.TabulatedFunctionFactoryTest.createStrictUnmodifiableTest" />
+        <item itemvalue="JUnit.TabulatedFunctionFactoryTest.createStrictTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionFactoryTest.createListTest" />
         <item itemvalue="JUnit.TabulatedDifferentialOperatorTest.deriveLinkedListTest" />
-        <item itemvalue="JUnit.TabulatedDifferentialOperatorTest.deriveLinkedArrayFabricTest" />
-        <item itemvalue="JUnit.TabulatedDifferentialOperatorTest.deriveLinkedArrayTest" />
       </list>
     </recent_temporary>
   </component>
