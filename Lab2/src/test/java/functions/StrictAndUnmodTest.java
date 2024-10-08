@@ -20,4 +20,19 @@ public class StrictAndUnmodTest
         Assertions.assertEquals(7,strictfunc.rightBound());
         Assertions.assertEquals(0,strictfunc.leftBound());
     }
+
+    @Test
+    void UnmodWithStrictTest(){
+        TabulatedFunction func = new ArrayTabulatedFunction(new double[]{1, 2, 3, 4, 5}, new double[]{1, 2, 3, 4, 5});
+        StrictTabulatedFunction wrapper1 = new StrictTabulatedFunction(func);
+        UnmodifiableTabulatedFunction wrapper2 = new UnmodifiableTabulatedFunction(wrapper1);
+        Assertions.assertThrows(UnsupportedOperationException.class,()->wrapper2.setY(5,10));
+        Assertions.assertThrows(UnsupportedOperationException.class,()->wrapper2.apply(6.5));
+        Assertions.assertThrows(UnsupportedOperationException.class,()->wrapper2.apply(10));
+        Assertions.assertThrows(UnsupportedOperationException.class,()->wrapper2.apply(-10));
+        Assertions.assertEquals(5,wrapper2.getX(4));
+        Assertions.assertEquals(5,wrapper2.rightBound());
+        Assertions.assertEquals(1,wrapper2.leftBound());
+
+    }
 }
