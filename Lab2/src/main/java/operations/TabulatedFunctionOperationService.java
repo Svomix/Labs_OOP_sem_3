@@ -58,6 +58,14 @@ public class TabulatedFunctionOperationService {
         return doOperation(a, b, (x, y) -> x - y);
     }
 
+    public TabulatedFunction division(TabulatedFunction a, TabulatedFunction b) {
+        return doOperation(a,b,(x,y)->x/y);
+    }
+
+    public TabulatedFunction multiplication (TabulatedFunction a, TabulatedFunction b) {
+        return doOperation(a,b,(x,y)->x*y);
+    }
+
     private interface BiOperation {
         double apply(double x, double y);
     }

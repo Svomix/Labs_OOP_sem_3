@@ -101,6 +101,10 @@
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedListFabricTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedListTest.executor": "Run",
     "JUnit.TabulatedFunctionFactoryTest.createStrictTest.executor": "Run",
+    "JUnit.TabulatedFunctionFactoryTest.createStrictUnmodifiableTest.executor": "Run",
+    "JUnit.TabulatedFunctionOperationServiceTest.test12.executor": "Run",
+    "JUnit.TabulatedFunctionOperationServiceTest.test13.executor": "Run",
+    "JUnit.TabulatedFunctionOperationServiceTest.test14.executor": "Run",
     "JUnit.ZeroFunctionTest.applyTest1.executor": "Run",
     "JUnit.java in Labs_OOP_sem_3.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -118,54 +122,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.java in Labs_OOP_sem_3">
-    <configuration name="LinkedListTabulatedFunctionFactoryTest.createListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.factory.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions.factory" />
-      <option name="MAIN_CLASS_NAME" value="functions.factory.LinkedListTabulatedFunctionFactoryTest" />
-      <option name="METHOD_NAME" value="createListTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TabulatedDifferentialOperatorTest.deriveLinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="operations.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="operations" />
-      <option name="MAIN_CLASS_NAME" value="operations.TabulatedDifferentialOperatorTest" />
-      <option name="METHOD_NAME" value="deriveLinkedListTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TabulatedFunctionFactoryTest.createStrictTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="functions.factory.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions.factory" />
-      <option name="MAIN_CLASS_NAME" value="functions.factory.TabulatedFunctionFactoryTest" />
-      <option name="METHOD_NAME" value="createStrictTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TabulatedFunctionFactoryTest.createStrictUnmodifiableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
@@ -177,6 +133,54 @@
       <option name="PACKAGE_NAME" value="functions.factory" />
       <option name="MAIN_CLASS_NAME" value="functions.factory.TabulatedFunctionFactoryTest" />
       <option name="METHOD_NAME" value="createStrictUnmodifiableTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedFunctionOperationServiceTest.test12" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="operations.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="operations" />
+      <option name="MAIN_CLASS_NAME" value="operations.TabulatedFunctionOperationServiceTest" />
+      <option name="METHOD_NAME" value="test12" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedFunctionOperationServiceTest.test13" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="operations.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="operations" />
+      <option name="MAIN_CLASS_NAME" value="operations.TabulatedFunctionOperationServiceTest" />
+      <option name="METHOD_NAME" value="test13" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedFunctionOperationServiceTest.test14" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="operations.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="operations" />
+      <option name="MAIN_CLASS_NAME" value="operations.TabulatedFunctionOperationServiceTest" />
+      <option name="METHOD_NAME" value="test14" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -206,10 +210,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.test14" />
+        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.test13" />
+        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.test12" />
         <item itemvalue="JUnit.TabulatedFunctionFactoryTest.createStrictUnmodifiableTest" />
-        <item itemvalue="JUnit.TabulatedFunctionFactoryTest.createStrictTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionFactoryTest.createListTest" />
-        <item itemvalue="JUnit.TabulatedDifferentialOperatorTest.deriveLinkedListTest" />
       </list>
     </recent_temporary>
   </component>
@@ -246,6 +250,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/operations/TabulatedDifferentialOperator.java</url>
           <line>33</line>
           <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/operations/TabulatedFunctionOperationServiceTest.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
