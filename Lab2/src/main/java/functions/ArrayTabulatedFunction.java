@@ -2,13 +2,20 @@ package functions;
 
 import exceptions.InterpolationException;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable {
+public class ArrayTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable, Serializable {
+    @Serial
+    private static final long serialVersionUID = 7358795881611307781L;
+
     protected double[] arrX;
     protected double[] arrY;
+
+
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         checkLengthIsTheSame(xValues, yValues);

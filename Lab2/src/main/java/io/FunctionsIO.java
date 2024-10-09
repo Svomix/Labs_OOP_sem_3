@@ -1,13 +1,11 @@
 package io;
 
+import functions.ArrayTabulatedFunction;
 import functions.Point;
 import functions.TabulatedFunction;
 import functions.factory.TabulatedFunctionFactory;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
@@ -42,5 +40,15 @@ public final class FunctionsIO {
             }
         }
         return factory.create(xValues, yValues);
+    }
+
+    static void serializable(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+        ObjectOutputStream out = new ObjectOutputStream(stream);
+        out.writeObject(function);
+        out.flush();
+    }
+
+    static TabulatedFunction deserializable(BufferedInputStream stream) throws IOException, ClassNotFoundException {
+        return new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3}); // signature
     }
 }
