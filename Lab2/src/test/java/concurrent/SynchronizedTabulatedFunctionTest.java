@@ -154,10 +154,33 @@ class SynchronizedTabulatedFunctionTest {
     @Test
     void iteratorTest2(){
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(arr);
         int j = 0;
-        for (Point point : arr) {
-            Assertions.assertEquals(point.x, arr.getX(j));
-            Assertions.assertEquals(point.y, arr.getY(j++));
+        for (Point point : wrapper) {
+            Assertions.assertEquals(point.x, wrapper.getX(j));
+            Assertions.assertEquals(point.y, wrapper.getY(j++));
         }
     }
+
+    @Test
+    void sychronized(){
+        ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(arr);
+        Assertions.assertEquals(3.0, (double) wrapper.doSynchronously(SynchronizedTabulatedFunction::getCount));
+        wrapper.doSynchronously(func -> {
+            func.setY(1, 3);
+            return null;
+        });
+        Assertions.assertEquals(1, wrapper.getX(0));
+        Assertions.assertEquals(3, wrapper.getY(1));
+        Assertions.assertEquals(1, wrapper.doSynchronously(SynchronizedTabulatedFunction::leftBound));
+        wrapper.doSynchronously(func -> {
+            func.setY(2, 0);
+            return null;
+        });
+        Assertions.assertEquals(3, wrapper.doSynchronously(SynchronizedTabulatedFunction::rightBound));
+        Assertions.assertEquals(0, wrapper.getY(wrapper.getCount() - 1));
+    }
+
+
 }
