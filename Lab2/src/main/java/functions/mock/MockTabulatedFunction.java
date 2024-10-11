@@ -1,6 +1,9 @@
 package functions.mock;
 
 import functions.AbstractTabulateFunction;
+import functions.Point;
+
+import java.util.Iterator;
 
 public class MockTabulatedFunction extends AbstractTabulateFunction {
 
@@ -23,15 +26,35 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
     }
 
     @Override
+    public void setY(int index, double value) {
+
+    }
+
+    @Override
     public double getX(int index) {
         return arrX[index];
     }
 
     @Override
-    protected int indexOfX(double x) {
+    public int indexOfX(double x) {
         if (arrX[0] == x) return 0;
         if (arrX[1] == x) return 1;
         return -1;
+    }
+
+    @Override
+    public int indexOfY(double y) {
+        return 0;
+    }
+
+    @Override
+    public double leftBound() {
+        return 0;
+    }
+
+    @Override
+    public double rightBound() {
+        return 0;
     }
 
     @Override
@@ -58,5 +81,10 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
 
     public double interpolate(double x, double leftX, double rightX, double leftY, double rightY) {
         return super.interpolate(x, leftX, rightX, leftY, rightY);
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        return null;
     }
 }
