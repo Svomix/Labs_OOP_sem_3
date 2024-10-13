@@ -1,5 +1,7 @@
 package operations;
 
+import concurrent.SynchronizedTabulatedFunction;
+import functions.ArrayTabulatedFunction;
 import functions.LinkedListTabulatedFunction;
 import functions.TabulatedFunction;
 import functions.factory.ArrayTabulatedFunctionFactory;
@@ -45,5 +47,40 @@ public class TabulatedDifferentialOperatorTest
         TabulatedFunction listdiff = diffarrop.derive(arr);
         Assertions.assertEquals(7,listdiff.getY(2));
         Assertions.assertEquals(5,listdiff.getY(1));
+    }
+
+    @Test
+    void deriveSync(){
+        TabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1,2,3,4},new double[]{1,4,9,16});
+        TabulatedDifferentialOperator diff = new TabulatedDifferentialOperator();
+        TabulatedFunction list = diff.derive(arr);
+        Assertions.assertEquals(7,list.getY(2));
+        Assertions.assertEquals(5,list.getY(1));
+    }
+
+    @Test
+    void deriveSync2(){
+        SynchronizedTabulatedFunction arr = new SynchronizedTabulatedFunction(new ArrayTabulatedFunction(new double[]{1,2,3,4},new double[]{1,4,9,16}));
+        TabulatedDifferentialOperator diff = new TabulatedDifferentialOperator();
+        TabulatedFunction list = diff.derive(arr);
+        Assertions.assertEquals(7,list.getY(2));
+        Assertions.assertEquals(5,list.getY(1));
+    }
+    @Test
+    void deriveSync3(){
+        SynchronizedTabulatedFunction arr = new SynchronizedTabulatedFunction(new LinkedListTabulatedFunction(new double[]{1,2,3,4},new double[]{1,4,9,16}));
+        TabulatedDifferentialOperator diff = new TabulatedDifferentialOperator();
+        TabulatedFunction list = diff.derive(arr);
+        Assertions.assertEquals(7,list.getY(2));
+        Assertions.assertEquals(5,list.getY(1));
+    }
+
+    @Test
+    void deriveSync4(){
+        TabulatedFunction arr = new SynchronizedTabulatedFunction(new LinkedListTabulatedFunction(new double[]{1,2,3,4},new double[]{1,4,9,16}));
+        TabulatedDifferentialOperator diff = new TabulatedDifferentialOperator();
+        TabulatedFunction list = diff.derive(arr);
+        Assertions.assertEquals(7,list.getY(2));
+        Assertions.assertEquals(5,list.getY(1));
     }
 }

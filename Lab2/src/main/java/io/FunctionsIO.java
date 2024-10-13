@@ -1,5 +1,6 @@
 package io;
 
+import com.thoughtworks.xstream.XStream;
 import functions.ArrayTabulatedFunction;
 import functions.Point;
 import functions.TabulatedFunction;
@@ -61,4 +62,12 @@ public final class FunctionsIO {
         }
         outp.flush();
    }
+    static void serializeXml(BufferedWriter writer, ArrayTabulatedFunction function){
+        XStream xStream = new XStream();
+        xStream.toXML(function, writer);
+    }
+    static ArrayTabulatedFunction deserializeXml(BufferedReader reader){
+        XStream xStream = new XStream();
+        return (ArrayTabulatedFunction) xStream.fromXML(reader);
+    }
 }

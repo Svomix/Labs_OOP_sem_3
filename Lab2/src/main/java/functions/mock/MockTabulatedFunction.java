@@ -2,7 +2,6 @@ package functions.mock;
 
 import functions.AbstractTabulateFunction;
 import functions.Point;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -27,6 +26,11 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
     }
 
     @Override
+    public void setY(int index, double value) {
+
+    }
+
+    @Override
     public double getX(int index) {
         return arrX[index];
     }
@@ -36,6 +40,21 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
         if (arrX[0] == x) return 0;
         if (arrX[1] == x) return 1;
         return -1;
+    }
+
+    @Override
+    public int indexOfY(double y) {
+        return 0;
+    }
+
+    @Override
+    public double leftBound() {
+        return 0;
+    }
+
+    @Override
+    public double rightBound() {
+        return 0;
     }
 
     @Override
@@ -62,25 +81,6 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
 
     public double interpolate(double x, double leftX, double rightX, double leftY, double rightY) {
         return super.interpolate(x, leftX, rightX, leftY, rightY);
-    }
-
-    @Override
-    public double rightBound() {
-        return getX(count - 1);
-    }
-        @Override
-    public double leftBound() {
-        return getX(0);
-    }
-    @Override
-    public void setY(int index, double value) {
-        arrY[index] = value;
-    }
-    @Override
-    public int indexOfY(double y) {
-        for (int i = 0; i < count; i++)
-            if (y == arrY[i]) return i;
-        return -1;
     }
      @Override
     public Iterator<Point> iterator() {

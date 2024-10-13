@@ -1,5 +1,6 @@
 package operations;
 
+import concurrent.SynchronizedTabulatedFunction;
 import functions.ArrayTabulatedFunction;
 import functions.Point;
 import functions.TabulatedFunction;
@@ -44,5 +45,12 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
     public double apply(double x)
     {
         return -1;
+    }
+
+    public synchronized TabulatedFunction deriveSynchronously(TabulatedFunction func){
+        if (! (func instanceof SynchronizedTabulatedFunction)) {
+            func = new SynchronizedTabulatedFunction(func);
+        }
+        return ((SynchronizedTabulatedFunction)func).doSynchronously(this::derive);
     }
 }
