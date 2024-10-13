@@ -13,9 +13,9 @@ public class ArrayTabulatedFunctionSerialization {
             ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3, 4}, new double[] {1, 2, 3, 4});
             TabulatedFunction first = new TabulatedDifferentialOperator(new ArrayTabulatedFunctionFactory()).derive(arr);
             TabulatedFunction second = new TabulatedDifferentialOperator(new ArrayTabulatedFunctionFactory()).derive(first);
-            FunctionsIO.serializable(bos, arr);
-            FunctionsIO.serializable(bos, first);
-            FunctionsIO.serializable(bos, second);
+            FunctionsIO.serialize(bos, arr);
+            FunctionsIO.serialize(bos, first);
+            FunctionsIO.serialize(bos, second);
         }catch (IOException e) {
             e.printStackTrace();
         }

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="944a8c38-f06f-479f-8ec5-f7da68d30585" name="Changes" comment="" />
+    <list default="true" id="944a8c38-f06f-479f-8ec5-f7da68d30585" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +34,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.TabulatedFunctionFileOutputStream.executor": "Debug",
+    "Application.ArrayTabulatedFunctionJson.executor": "Debug",
+    "Application.LinkedListTabulatedFunctionSerialization.executor": "Debug",
+    "Application.TabulatedFunctionFileInputStream.executor": "Debug",
+    "Application.TabulatedFunctionFileOutputStream.executor": "Run",
     "JUnit.All in Labs_OOP_sem_3.executor": "Coverage",
     "JUnit.ArrayTabulatedFunctionFactoryTest.createArrayTest.executor": "Run",
     "JUnit.ArrayTabulatedFunctionFactoryTest.createListTest.executor": "Run",
@@ -54,6 +59,7 @@
     "JUnit.DeBoorFunctionTest.DeBoorFunction2.executor": "Run",
     "JUnit.DeBoorFunctionTest.DeBoorFunction3.executor": "Debug",
     "JUnit.DeBoorFunctionTest.DeBoorFunctionTest3.executor": "Run",
+    "JUnit.FunctionsIOTest.readTabulatedFunctionTest2.executor": "Run",
     "JUnit.IdentityFunctionTest.applyTestDouble.executor": "Run",
     "JUnit.InsertTest.executor": "Run",
     "JUnit.InsertTest.insertCenterTest.executor": "Debug",
@@ -124,9 +130,9 @@
       <recent name="functions.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TabulatedFunctionFileOutputStream">
-    <configuration name="TabulatedFunctionFileOutputStream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.TabulatedFunctionFileOutputStream" />
+  <component name="RunManager" selected="JUnit.FunctionsIOTest.readTabulatedFunctionTest2">
+    <configuration name="ArrayTabulatedFunctionJson" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.ArrayTabulatedFunctionJson" />
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -138,49 +144,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArrayTabulatedFunctionTest.stringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionSerialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.LinkedListTabulatedFunctionSerialization" />
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="functions.*" />
+          <option name="PATTERN" value="io.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.ArrayTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="stringTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.stringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TabulatedFunctionFileInputStream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.TabulatedFunctionFileInputStream" />
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="functions.*" />
+          <option name="PATTERN" value="io.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="stringTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TabulatedFunctionOperationServiceTest.test14" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FunctionsIOTest.readTabulatedFunctionTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="operations.*" />
+          <option name="PATTERN" value="io.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="operations" />
-      <option name="MAIN_CLASS_NAME" value="operations.TabulatedFunctionOperationServiceTest" />
-      <option name="METHOD_NAME" value="test14" />
+      <option name="PACKAGE_NAME" value="io" />
+      <option name="MAIN_CLASS_NAME" value="io.FunctionsIOTest" />
+      <option name="METHOD_NAME" value="readTabulatedFunctionTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -209,11 +209,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TabulatedFunctionFileOutputStream" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.stringTest" />
-        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.stringTest" />
+        <item itemvalue="JUnit.FunctionsIOTest.readTabulatedFunctionTest2" />
+        <item itemvalue="Application.TabulatedFunctionFileInputStream" />
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
-        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.test14" />
+        <item itemvalue="Application.ArrayTabulatedFunctionJson" />
+        <item itemvalue="Application.LinkedListTabulatedFunctionSerialization" />
       </list>
     </recent_temporary>
   </component>
@@ -247,14 +247,19 @@
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/operations/TabulatedDifferentialOperator.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/io/TabulatedFunctionFileOutputStream.java</url>
           <line>16</line>
-          <option name="timeStamp" value="92" />
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/ArrayTabulatedFunctionJson.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/io/TabulatedFunctionFileInputStream.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="119" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>

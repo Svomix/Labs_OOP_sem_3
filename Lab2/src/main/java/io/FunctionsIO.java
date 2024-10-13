@@ -1,5 +1,6 @@
 package io;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.xstream.XStream;
 import functions.ArrayTabulatedFunction;
 import functions.Point;
@@ -43,7 +44,22 @@ public final class FunctionsIO {
         return factory.create(xValues, yValues);
     }
 
-    static void serializable(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+   static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) throws IOException
+    {
+        var binput = new DataInputStream(inputStream);
+        int size = binput.readInt();
+        double[] xValues = new double[size];
+        double[] yValues = new double[size];
+        for (int i = 0; i < size; ++i)
+        {
+            xValues[i] = binput.readDouble();
+            yValues[i] = binput.readDouble();
+        }
+        return factory.create(xValues,yValues);
+    }
+
+
+    static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
         ObjectOutputStream out = new ObjectOutputStream(stream);
         out.writeObject(function);
         out.flush();
@@ -70,4 +86,19 @@ public final class FunctionsIO {
         XStream xStream = new XStream();
         return (ArrayTabulatedFunction) xStream.fromXML(reader);
     }
+    static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException,ClassNotFoundException
+    {
+        var inp = new ObjectInputStream(stream);
+        return  (TabulatedFunction) inp.readObject();
+    }
+    static void serializeJson(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
+        var objmap = new ObjectMapper().writeValueAsString(function);
+        writer.write(objmap);
+        writer.flush();
+    }
+    static ArrayTabulatedFunction deserializeJson(BufferedReader reader) throws IOException {
+        var objmap = new ObjectMapper();
+        return (ArrayTabulatedFunction) objmap.readerFor(ArrayTabulatedFunction.class).readValue(reader);
+    }
+
 }
