@@ -260,4 +260,10 @@ public class LinkedListTabulatedFunctionTest {
         Assertions.assertThrows(InterpolationException.class, () -> list.interpolate(1.5, 1));
         Assertions.assertDoesNotThrow(() -> list.interpolate(1.5, 0));
     }
+    @Test
+    void stringTest()
+    {
+        LinkedListTabulatedFunction list = new LinkedListTabulatedFunction(new double[]{1, 2, 3,4}, new double[]{1, 2, 3,4});
+        Assertions.assertEquals("LinkedListTabulatedFunction size = 4\n[1.0; 1.0]\n[2.0; 2.0]\n[3.0; 3.0]\n[4.0; 4.0]\n",list.toString());
+    }
 }

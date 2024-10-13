@@ -226,5 +226,10 @@ class ArrayTabulatedFunctionTest {
             Assertions.assertEquals(point.y, arr.getY(j++));
         }
     }
-
+    @Test
+    void stringTest()
+    {
+        ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        Assertions.assertEquals("ArrayTabulatedFunction size = 3\n[1.0; 1.0]\n[2.0; 2.0]\n[3.0; 3.0]\n",arr.toString());
+    }
 }

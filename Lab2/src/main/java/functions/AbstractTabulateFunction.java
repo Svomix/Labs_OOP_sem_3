@@ -2,8 +2,9 @@ package functions;
 
 import exceptions.ArrayIsNotSortedException;
 import exceptions.DifferentLengthOfArraysException;
+import operations.TabulatedFunctionOperationService;
 
-public abstract class AbstractTabulateFunction implements MathFunction {
+public abstract class AbstractTabulateFunction implements MathFunction,TabulatedFunction {
     protected int count;
 
     public int getCount() {
@@ -14,7 +15,7 @@ public abstract class AbstractTabulateFunction implements MathFunction {
 
     abstract public double getX(int index);
 
-    abstract protected int indexOfX(double x);
+    abstract public int indexOfX(double x);
 
     abstract protected int floorIndexOfX(double x);
 
@@ -26,6 +27,17 @@ public abstract class AbstractTabulateFunction implements MathFunction {
 
     protected double interpolate(double x, double leftX, double rightX, double leftY, double rightY) {
         return leftY + (rightY - leftY) / (rightX - leftX) * (x - leftX);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(getClass().getSimpleName() + " size = " + count + '\n');
+        for (Point p: this)
+        {
+            str.append("[" + p.x  + "; " + p.y + "]"+'\n');
+        }
+        return str.toString();
     }
 
     public double apply(double x) {

@@ -32,10 +32,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.TabulatedFunctionFileOutputStream.executor": "Debug",
     "JUnit.All in Labs_OOP_sem_3.executor": "Coverage",
     "JUnit.ArrayTabulatedFunctionFactoryTest.createArrayTest.executor": "Run",
     "JUnit.ArrayTabulatedFunctionFactoryTest.createListTest.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.constructFunction.executor": "Debug",
+    "JUnit.ArrayTabulatedFunctionTest.stringTest.executor": "Run",
     "JUnit.ComplexCompositeFunctionTest.test4.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test5.executor": "Debug",
     "JUnit.ComplexCompositeFunctionTest.test6.executor": "Run",
@@ -90,6 +92,7 @@
     "JUnit.LinkedListTabulatedFunctionTest.removeRightBoundTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.rightBoundTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.setYTest.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.stringTest.executor": "Run",
     "JUnit.MockTabulatedFunctionTest.extrapolateLeft.executor": "Debug",
     "JUnit.RungeKuttaFunctionTest.test1.executor": "Run",
     "JUnit.RungeKuttaFunctionTest.test2.executor": "Run",
@@ -121,50 +124,47 @@
       <recent name="functions.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.java in Labs_OOP_sem_3">
-    <configuration name="TabulatedFunctionFactoryTest.createStrictUnmodifiableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.TabulatedFunctionFileOutputStream">
+    <configuration name="TabulatedFunctionFileOutputStream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.TabulatedFunctionFileOutputStream" />
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="functions.factory.*" />
+          <option name="PATTERN" value="io.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="functions.factory" />
-      <option name="MAIN_CLASS_NAME" value="functions.factory.TabulatedFunctionFactoryTest" />
-      <option name="METHOD_NAME" value="createStrictUnmodifiableTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArrayTabulatedFunctionTest.stringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.ArrayTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="stringTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TabulatedFunctionOperationServiceTest.test12" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTabulatedFunctionTest.stringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="operations.*" />
+          <option name="PATTERN" value="functions.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="operations" />
-      <option name="MAIN_CLASS_NAME" value="operations.TabulatedFunctionOperationServiceTest" />
-      <option name="METHOD_NAME" value="test12" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TabulatedFunctionOperationServiceTest.test13" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="operations.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="operations" />
-      <option name="MAIN_CLASS_NAME" value="operations.TabulatedFunctionOperationServiceTest" />
-      <option name="METHOD_NAME" value="test13" />
+      <option name="PACKAGE_NAME" value="functions" />
+      <option name="MAIN_CLASS_NAME" value="functions.LinkedListTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="stringTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -209,11 +209,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TabulatedFunctionFileOutputStream" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.stringTest" />
+        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.stringTest" />
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.test14" />
-        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.test13" />
-        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.test12" />
-        <item itemvalue="JUnit.TabulatedFunctionFactoryTest.createStrictUnmodifiableTest" />
       </list>
     </recent_temporary>
   </component>
@@ -252,9 +252,9 @@
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/operations/TabulatedFunctionOperationServiceTest.java</url>
-          <line>133</line>
-          <option name="timeStamp" value="100" />
+          <url>file://$PROJECT_DIR$/src/main/java/io/TabulatedFunctionFileOutputStream.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
