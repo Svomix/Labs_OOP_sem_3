@@ -19,7 +19,7 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
     @JsonFormat(shape = JsonFormat.Shape.ARRAY)
     protected double[] arrY;
      @JsonCreator
-    public ArrayTabulatedFunction(@JsonProperty(value = "xValues") double[] xValues, @JsonProperty(value = "yValues")double[] yValues) {
+    public ArrayTabulatedFunction(@JsonProperty(value = "arrX") double[] xValues, @JsonProperty(value = "arrY")double[] yValues) {
         checkLengthIsTheSame(xValues, yValues);
         if (xValues.length <= 1) throw new IllegalArgumentException("xValues length must be greater than 1");
         checkSorted(xValues);

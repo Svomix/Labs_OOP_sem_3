@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="944a8c38-f06f-479f-8ec5-f7da68d30585" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="944a8c38-f06f-479f-8ec5-f7da68d30585" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +32,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.ArrayTabulatedFunctionJson.executor": "Debug",
+    "Application.ArrayTabulatedFunctionJson.executor": "Run",
     "Application.LinkedListTabulatedFunctionSerialization.executor": "Debug",
     "Application.TabulatedFunctionFileInputStream.executor": "Debug",
     "Application.TabulatedFunctionFileOutputStream.executor": "Run",
@@ -130,7 +128,7 @@
       <recent name="functions.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FunctionsIOTest.readTabulatedFunctionTest2">
+  <component name="RunManager" selected="Application.ArrayTabulatedFunctionJson">
     <configuration name="ArrayTabulatedFunctionJson" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.ArrayTabulatedFunctionJson" />
       <module name="Labs_OOP_sem_3" />
@@ -209,10 +207,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ArrayTabulatedFunctionJson" />
         <item itemvalue="JUnit.FunctionsIOTest.readTabulatedFunctionTest2" />
         <item itemvalue="Application.TabulatedFunctionFileInputStream" />
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
-        <item itemvalue="Application.ArrayTabulatedFunctionJson" />
         <item itemvalue="Application.LinkedListTabulatedFunctionSerialization" />
       </list>
     </recent_temporary>
@@ -250,11 +248,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/io/TabulatedFunctionFileOutputStream.java</url>
           <line>16</line>
           <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/io/ArrayTabulatedFunctionJson.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/io/TabulatedFunctionFileInputStream.java</url>
