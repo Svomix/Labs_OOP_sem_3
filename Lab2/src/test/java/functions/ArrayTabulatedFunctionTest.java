@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 
 class ArrayTabulatedFunctionTest {
@@ -212,6 +213,7 @@ class ArrayTabulatedFunctionTest {
         int j = 0;
         while(iterator.hasNext()){
             Point point = iterator.next();
+            Assertions.assertEquals(Objects.hash(point.x, point.y), point.hashCode());
             Assertions.assertEquals(point.x, arr.getX(j));
             Assertions.assertEquals(point.y, arr.getY(j++));
         }

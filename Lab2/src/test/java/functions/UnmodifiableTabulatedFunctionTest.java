@@ -4,6 +4,8 @@ package functions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 class UnmodifiableTabulatedFunctionTest {
     @Test
     void test1() {
@@ -19,7 +21,7 @@ class UnmodifiableTabulatedFunctionTest {
         Assertions.assertEquals(5, wrapper.getCount());
         Assertions.assertEquals(3, wrapper.getX(2));
         Assertions.assertEquals(3, wrapper.getY(2));
-        Assertions.assertEquals(func.getY(0) + (func.getY(1) - func.getY(0)) / (func.getX(1) - func.getX(0)) * (-1 - func.getX(0)),wrapper.apply(-1));
+        Assertions.assertEquals(func.getY(0) + (func.getY(1) - func.getY(0)) / (func.getX(1) - func.getX(0)) * (-1 - func.getX(0)), wrapper.apply(-1));
     }
 
     @Test
@@ -36,8 +38,26 @@ class UnmodifiableTabulatedFunctionTest {
         Assertions.assertEquals(5, wrapper.getCount());
         Assertions.assertEquals(3, wrapper.getX(2));
         Assertions.assertEquals(3, wrapper.getY(2));
-        Assertions.assertEquals(func.getY(0) + (func.getY(1) - func.getY(0)) / (func.getX(1) - func.getX(0)) * (-1 - func.getX(0)),wrapper.apply(-1));
+        Assertions.assertEquals(func.getY(0) + (func.getY(1) - func.getY(0)) / (func.getX(1) - func.getX(0)) * (-1 - func.getX(0)), wrapper.apply(-1));
 
+    }
+
+    @Test
+    void test3() {
+
+    }
+
+    @Test
+    void iteratorTest() {
+        ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        UnmodifiableTabulatedFunction wrapper = new UnmodifiableTabulatedFunction(arr);
+        Iterator<Point> iterator = wrapper.iterator();
+        int j = 0;
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            Assertions.assertEquals(point.x, wrapper.getX(j));
+            Assertions.assertEquals(point.y, wrapper.getY(j++));
+        }
     }
 
 }

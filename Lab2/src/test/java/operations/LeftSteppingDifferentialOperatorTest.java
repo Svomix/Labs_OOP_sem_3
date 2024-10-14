@@ -12,6 +12,11 @@ class LeftSteppingDifferentialOperatorTest {
         MathFunction function = new SqrFunction();
         LeftSteppingDifferentialOperator left = new LeftSteppingDifferentialOperator(0.5);
         Assertions.assertEquals(0, Double.compare(7.5, left.derive(function).apply(4)));
+        Assertions.assertEquals(0, left.apply(1));
+        Assertions.assertEquals(0.5, left.getStep());
+        left.setStep(0.2);
+        Assertions.assertEquals(0.2, left.getStep());
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LeftSteppingDifferentialOperator(Double.NaN));
     }
     //(f(x)-f(x-h))/h
 

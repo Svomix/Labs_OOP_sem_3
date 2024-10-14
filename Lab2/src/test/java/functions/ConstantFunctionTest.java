@@ -27,4 +27,8 @@ class ConstantFunctionTest {
     void applyTest3() {
         Assertions.assertEquals(3, func.apply(0));
     }
+    @Test
+    void applyTest4() {
+        Assertions.assertEquals(3, func.getConstant());
+    }
 }
