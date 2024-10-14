@@ -4,7 +4,13 @@ import exceptions.ArrayIsNotSortedException;
 import exceptions.DifferentLengthOfArraysException;
 import operations.TabulatedFunctionOperationService;
 
-public abstract class AbstractTabulateFunction implements MathFunction,TabulatedFunction {
+import java.io.Serial;
+import java.io.Serializable;
+
+public abstract class AbstractTabulateFunction implements MathFunction,TabulatedFunction, Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -4747119071181052342L;
     protected int count;
 
     public int getCount() {

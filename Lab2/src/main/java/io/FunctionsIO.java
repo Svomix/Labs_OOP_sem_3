@@ -2,6 +2,7 @@ package io;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.security.NoTypePermission;
 import functions.ArrayTabulatedFunction;
 import functions.Point;
 import functions.TabulatedFunction;
@@ -75,12 +76,14 @@ public final class FunctionsIO {
         }
         outp.flush();
    }
-    static void serializeXml(BufferedWriter writer, ArrayTabulatedFunction function){
+    static void serializeXml(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
         XStream xStream = new XStream();
-        xStream.toXML(function, writer);
+        writer.write(xStream.toXML(function));
+        writer.flush();
     }
     static ArrayTabulatedFunction deserializeXml(BufferedReader reader){
         XStream xStream = new XStream();
+        xStream.allowTypeHierarchy(ArrayTabulatedFunction.class);
         return (ArrayTabulatedFunction) xStream.fromXML(reader);
     }
     static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException,ClassNotFoundException

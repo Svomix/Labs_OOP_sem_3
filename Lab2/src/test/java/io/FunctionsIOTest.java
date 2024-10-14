@@ -67,14 +67,6 @@ class FunctionsIOTest {
     }
 
     @Test
-    void serializeXml() {
-    }
-
-    @Test
-    void deserializeXml() {
-    }
-
-    @Test
     void deserialize() {
     }
 
