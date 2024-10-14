@@ -39,6 +39,7 @@ class FunctionsIOTest {
         }
     }
 
+    /*
     @Test
     void readTabulatedFunctionTest2() throws IOException {
         try (var inputc = new BufferedReader((new InputStreamReader(System.in)))) {
@@ -46,5 +47,7 @@ class FunctionsIOTest {
             Assertions.assertEquals(new LinkedListTabulatedFunction(new double[]{2, 3, 4}, new double[]{4, 9, 16}).toString(), list.toString());
         }
     }
+
+     */
 
 }

@@ -44,12 +44,12 @@ public class Integrate {
         t1.start();
         t2.start();
         t3.start();
-        synchronized (func) {
-            integral *= h / 3;
-        }
 
         while(t1.isAlive() || t2.isAlive() || t3.isAlive());
 
+        synchronized (func) {
+            integral *= h / 3;
+        }
         return integral;
     }
 }
