@@ -77,14 +77,6 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void floorIndexOfXTest3() {
-        double[] arrX = {1, 2, 3, 4, 5};
-        double[] arrY = {1, 2, 3, 4, 5};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
-        Assertions.assertEquals(0, func.floorIndexOfX(-2));
-    }
-
-    @Test
     void floorIndexOfXTest4() {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};

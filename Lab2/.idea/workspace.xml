@@ -33,6 +33,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ArrayTabulatedFunctionJson.executor": "Run",
+    "Application.ArrayTabulatedFunctionSerialization.executor": "Run",
     "Application.LinkedListTabulatedFunctionSerialization.executor": "Run",
     "Application.TabulatedFunctionFileInputStream.executor": "Debug",
     "Application.TabulatedFunctionFileOutputStream.executor": "Run",
@@ -57,7 +58,12 @@
     "JUnit.DeBoorFunctionTest.DeBoorFunction2.executor": "Run",
     "JUnit.DeBoorFunctionTest.DeBoorFunction3.executor": "Debug",
     "JUnit.DeBoorFunctionTest.DeBoorFunctionTest3.executor": "Run",
-    "JUnit.FunctionsIOTest.readTabulatedFunctionTest2.executor": "Run",
+    "JUnit.DeBoorFunctionTest.executor": "Run",
+    "JUnit.DeBoorFunctionTest.setAndGetControlTest.executor": "Run",
+    "JUnit.DeBoorFunctionTest.setAndGetTTest.executor": "Run",
+    "JUnit.FunctionsIOTest.readTabulatedFunctionTest2.executor": "Debug",
+    "JUnit.FunctionsIOTest.serializeJson.executor": "Run",
+    "JUnit.FunctionsIOTest.writeTabulatedFunction.executor": "Debug",
     "JUnit.IdentityFunctionTest.applyTestDouble.executor": "Run",
     "JUnit.InsertTest.executor": "Run",
     "JUnit.InsertTest.insertCenterTest.executor": "Debug",
@@ -73,6 +79,7 @@
     "JUnit.LinkedListTabulatedFunctionTest.applyTest2.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTest.executor": "Debug",
     "JUnit.LinkedListTabulatedFunctionTest.createList4argumentsTestInts.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.createNode.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.exceptionsTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.extrapolateLeftTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.extrapolateRightTest.executor": "Run",
@@ -101,12 +108,14 @@
     "JUnit.RungeKuttaFunctionTest.test1.executor": "Run",
     "JUnit.RungeKuttaFunctionTest.test2.executor": "Run",
     "JUnit.StrictAndUnmodTest.StrictWithUnmodTest.executor": "Run",
-    "JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest.executor": "Debug",
+    "JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest.executor": "Run",
     "JUnit.StrictTabulatedFunctionTest.strictLinkedListTest.executor": "Debug",
+    "JUnit.TabulatedDifferentialOperatorTest.applyTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedArrayFabricTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedArrayTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedListFabricTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedListTest.executor": "Run",
+    "JUnit.TabulatedDifferentialOperatorTest.setest.executor": "Run",
     "JUnit.TabulatedFunctionFactoryTest.createStrictTest.executor": "Run",
     "JUnit.TabulatedFunctionFactoryTest.createStrictUnmodifiableTest.executor": "Run",
     "JUnit.TabulatedFunctionFactoryTest.executor": "Run",
@@ -114,8 +123,10 @@
     "JUnit.TabulatedFunctionOperationServiceTest.test13.executor": "Run",
     "JUnit.TabulatedFunctionOperationServiceTest.test14.executor": "Run",
     "JUnit.ZeroFunctionTest.applyTest1.executor": "Run",
-    "JUnit.java in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.java in Labs_OOP_sem_3.executor": "Coverage",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/Projects/Labs_OOP_sem_3/Lab2",
@@ -125,13 +136,18 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="functions.factory" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="io" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.ArrayTabulatedFunctionJson">
-    <configuration name="ArrayTabulatedFunctionJson" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.ArrayTabulatedFunctionJson" />
+  <component name="RunManager" selected="JUnit.FunctionsIOTest.deserializeJson">
+    <configuration name="FunctionsIOTest.deserializeJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -139,12 +155,15 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="io" />
+      <option name="MAIN_CLASS_NAME" value="io.FunctionsIOTest" />
+      <option name="METHOD_NAME" value="deserializeJson" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArrayTabulatedFunctionSerialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.ArrayTabulatedFunctionSerialization" />
+    <configuration name="FunctionsIOTest.readTabulatedFunctionTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -152,12 +171,15 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="io" />
+      <option name="MAIN_CLASS_NAME" value="io.FunctionsIOTest" />
+      <option name="METHOD_NAME" value="readTabulatedFunctionTest2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTabulatedFunctionSerialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.LinkedListTabulatedFunctionSerialization" />
+    <configuration name="FunctionsIOTest.serializeJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -165,21 +187,26 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="io" />
+      <option name="MAIN_CLASS_NAME" value="io.FunctionsIOTest" />
+      <option name="METHOD_NAME" value="serializeJson" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TabulatedFunctionFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FunctionsIOTest.writeTabulatedFunction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="functions.factory.*" />
+          <option name="PATTERN" value="io.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="functions.factory" />
-      <option name="MAIN_CLASS_NAME" value="functions.factory.TabulatedFunctionFactoryTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="io" />
+      <option name="MAIN_CLASS_NAME" value="io.FunctionsIOTest" />
+      <option name="METHOD_NAME" value="writeTabulatedFunction" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -207,10 +234,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ArrayTabulatedFunctionJson" />
-        <item itemvalue="Application.ArrayTabulatedFunctionSerialization" />
-        <item itemvalue="Application.LinkedListTabulatedFunctionSerialization" />
-        <item itemvalue="JUnit.TabulatedFunctionFactoryTest" />
+        <item itemvalue="JUnit.FunctionsIOTest.deserializeJson" />
+        <item itemvalue="JUnit.FunctionsIOTest.serializeJson" />
+        <item itemvalue="JUnit.FunctionsIOTest.writeTabulatedFunction" />
+        <item itemvalue="JUnit.FunctionsIOTest.readTabulatedFunctionTest2" />
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
       </list>
     </recent_temporary>
@@ -241,12 +268,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
-          <line>234</line>
+          <line>241</line>
           <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/io/FunctionsIOTest.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/functions/LinkedListTabulatedFunctionTest.java</url>
-          <line>218</line>
+          <line>225</line>
           <properties class="functions.LinkedListTabulatedFunctionTest" method="iteratorForEachTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -257,6 +289,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Main_java$java_in_Labs_OOP_sem_3.ic" NAME="java in Labs_OOP_sem_3 Coverage Results" MODIFIED="1728918288472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1728325183766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

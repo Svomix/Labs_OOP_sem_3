@@ -56,6 +56,13 @@ public class LinkedListTabulatedFunctionTest {
     }
 
     @Test
+    void createNode()
+    {
+        var n = new LinkedListTabulatedFunction.Node(1,2);
+        Assertions.assertEquals(1,n.x);
+        Assertions.assertEquals(2,n.y);
+    }
+    @Test
     void getXTest() {
         double res = list.getX(4);
         Assertions.assertEquals(4, res);

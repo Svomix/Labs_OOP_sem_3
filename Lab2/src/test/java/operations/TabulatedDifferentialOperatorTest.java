@@ -43,14 +43,28 @@ public class TabulatedDifferentialOperatorTest
     @Test
     void deriveLinkedArrayTest()
     {
-        TabulatedFunction arr = new LinkedListTabulatedFunctionFactory().create(new double[]{1,2,3,4},new double[]{1,4,9,16});
-        var diffarrop = new TabulatedDifferentialOperator();
+        var fac = new LinkedListTabulatedFunctionFactory();
+        TabulatedFunction arr = fac.create(new double[]{1,2,3,4},new double[]{1,4,9,16});
+        var diffarrop = new TabulatedDifferentialOperator(fac);
         TabulatedFunction listdiff = diffarrop.derive(arr);
         Assertions.assertInstanceOf(LinkedListTabulatedFunction.class, listdiff);
         Assertions.assertEquals(7,listdiff.getY(2));
         Assertions.assertEquals(5,listdiff.getY(1));
     }
-
+    @Test
+    void applyTest()
+    {
+        var diff = new TabulatedDifferentialOperator();
+        Assertions.assertThrows(UnsupportedOperationException.class,()->diff.apply(2));
+    }
+    @Test
+    void setest()
+    {
+        var diff = new TabulatedDifferentialOperator();
+        var fac = new LinkedListTabulatedFunctionFactory();
+        diff.setFactory(fac);
+        Assertions.assertEquals(fac,diff.getFactory());
+    }
     @Test
     void deriveSync(){
         TabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1,2,3,4},new double[]{1,4,9,16});

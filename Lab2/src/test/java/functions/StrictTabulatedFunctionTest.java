@@ -32,6 +32,14 @@ public class StrictTabulatedFunctionTest
         double[] b = {0, 1, 4, 9, 16, 25, 36, 49};
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(a, b);
         var strictarr= new StrictTabulatedFunction(arr);
+        double[] x = new double[a.length];
+        int i = 0;
+        for(Point p : strictarr)
+        {
+            x[i] = p.x;
+            ++i;
+        }
+        Assertions.assertArrayEquals(a,x);
         Assertions.assertEquals(3,strictarr.getX(3));
         arr.insert(8,64);
         Assertions.assertEquals(64,strictarr.getY(8));
