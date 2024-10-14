@@ -57,7 +57,7 @@ public class StrictTabulatedFunction implements TabulatedFunction
     public double apply(double x)
     {
         int ind = indexOfX(x);
-        if(ind == - 1)
+        if(ind == -1)
             throw new UnsupportedOperationException();
         return getY(ind);
     }

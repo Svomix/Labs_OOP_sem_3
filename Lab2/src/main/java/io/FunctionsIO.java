@@ -65,9 +65,6 @@ public final class FunctionsIO {
         out.flush();
     }
 
-    static TabulatedFunction deserializable(BufferedInputStream stream) throws IOException, ClassNotFoundException {
-        return new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3}); // signature
-    }
    static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
         var outp = new DataOutputStream(outputStream);
         outp.writeInt(function.getCount());

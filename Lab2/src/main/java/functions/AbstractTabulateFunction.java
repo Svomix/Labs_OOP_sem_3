@@ -32,10 +32,10 @@ public abstract class AbstractTabulateFunction implements MathFunction,Tabulated
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
-        str.append(getClass().getSimpleName() + " size = " + count + '\n');
+        str.append(getClass().getSimpleName()).append(" size = ").append(count).append('\n');
         for (Point p: this)
         {
-            str.append("[" + p.x  + "; " + p.y + "]"+'\n');
+            str.append('[').append(p.x).append("; ").append(p.y).append(']').append('\n');
         }
         return str.toString();
     }

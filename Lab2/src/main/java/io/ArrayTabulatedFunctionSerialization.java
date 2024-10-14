@@ -20,9 +20,9 @@ public class ArrayTabulatedFunctionSerialization {
             e.printStackTrace();
         }
         try(BufferedInputStream bos = new BufferedInputStream(new FileInputStream("output/serialized array functions.bin"))) {
-            System.out.println(FunctionsIO.deserializable(bos));
-            System.out.println(FunctionsIO.deserializable(bos));
-            System.out.println(FunctionsIO.deserializable(bos));
+            System.out.println(FunctionsIO.deserialize(bos));
+            System.out.println(FunctionsIO.deserialize(bos));
+            System.out.println(FunctionsIO.deserialize(bos));
         }
         catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

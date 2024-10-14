@@ -38,13 +38,13 @@ class FunctionsIOTest {
             Assertions.assertEquals(new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{4, 5, 6}).toString(), function.toString());
         }
     }
-
-    @Test
-    void readTabulatedFunctionTest2() throws IOException {
-        try (var inputc = new BufferedReader((new InputStreamReader(System.in)))) {
-            TabulatedFunction list = FunctionsIO.readTabulatedFunction(inputc, new LinkedListTabulatedFunctionFactory());
-            Assertions.assertEquals(new LinkedListTabulatedFunction(new double[]{2, 3, 4}, new double[]{4, 9, 16}).toString(), list.toString());
-        }
-    }
-
 }
+
+//    @Test
+//    void readTabulatedFunctionTest2() throws IOException {
+//        try (var inputc = new BufferedReader((new InputStreamReader(System.in)))) {
+//            TabulatedFunction list = FunctionsIO.readTabulatedFunction(inputc, new LinkedListTabulatedFunctionFactory());
+//            Assertions.assertEquals(new LinkedListTabulatedFunction(new double[]{2, 3, 4}, new double[]{4, 9, 16}).toString(), list.toString());
+//        }
+//    }
+//}

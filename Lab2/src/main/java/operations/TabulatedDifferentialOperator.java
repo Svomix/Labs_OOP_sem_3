@@ -44,7 +44,7 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
     @Override
     public double apply(double x)
     {
-        return -1;
+        throw new UnsupportedOperationException("Use derive");
     }
 
     public synchronized TabulatedFunction deriveSynchronously(TabulatedFunction func){

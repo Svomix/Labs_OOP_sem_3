@@ -10,8 +10,7 @@ import java.io.*;
 public class LinkedListTabulatedFunctionSerialization
 {
     public static void main(String[] args) throws IOException{
-        try{
-            var out = new BufferedOutputStream(new FileOutputStream("output/serialized linked list functions.bin"));
+        try(var out = new BufferedOutputStream(new FileOutputStream("output/serialized linked list functions.bin"));) {
             LinkedListTabulatedFunction list = new LinkedListTabulatedFunction(new double[]{2,3,4,5},new double[]{8,27,64,125});
             TabulatedDifferentialOperator op1 = new TabulatedDifferentialOperator(new LinkedListTabulatedFunctionFactory());
             TabulatedFunction listdif1 = op1.derive(list);
@@ -25,11 +24,10 @@ public class LinkedListTabulatedFunctionSerialization
         {
             excep.printStackTrace();
         }
-        try {
-            var out = new BufferedInputStream(new FileInputStream("output/serialized linked list functions.bin"));
-            TabulatedFunction func1 = FunctionsIO.deserializable(out);
-            TabulatedFunction func2 = FunctionsIO.deserializable(out);
-            TabulatedFunction func3 = FunctionsIO.deserializable(out);
+        try(var out = new BufferedInputStream(new FileInputStream("output/serialized linked list functions.bin"));) {
+            TabulatedFunction func1 = FunctionsIO.deserialize(out);
+            TabulatedFunction func2 = FunctionsIO.deserialize(out);
+            TabulatedFunction func3 = FunctionsIO.deserialize(out);
             System.out.println(func1);
             System.out.println(func2);
             System.out.println(func3);

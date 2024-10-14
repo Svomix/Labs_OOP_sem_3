@@ -35,9 +35,10 @@ public class TabulatedDifferentialOperatorTest
     {
         var arrfac = new ArrayTabulatedFunctionFactory();
         var diffarrop = new TabulatedDifferentialOperator(arrfac);
-        TabulatedFunction listdiff = diffarrop.derive(diffarrop.getFactory().create(new double[]{1,2,3,4},new double[]{1,4,9,16}));
-        Assertions.assertEquals(7,listdiff.getY(2));
-        Assertions.assertEquals(5,listdiff.getY(1));
+        TabulatedFunction arrdiff = diffarrop.derive(diffarrop.getFactory().create(new double[]{1,2,3,4},new double[]{1,4,9,16}));
+        Assertions.assertInstanceOf(ArrayTabulatedFunction.class, arrdiff);
+        Assertions.assertEquals(7,arrdiff.getY(2));
+        Assertions.assertEquals(5,arrdiff.getY(1));
     }
     @Test
     void deriveLinkedArrayTest()
@@ -45,6 +46,7 @@ public class TabulatedDifferentialOperatorTest
         TabulatedFunction arr = new LinkedListTabulatedFunctionFactory().create(new double[]{1,2,3,4},new double[]{1,4,9,16});
         var diffarrop = new TabulatedDifferentialOperator();
         TabulatedFunction listdiff = diffarrop.derive(arr);
+        Assertions.assertInstanceOf(LinkedListTabulatedFunction.class, listdiff);
         Assertions.assertEquals(7,listdiff.getY(2));
         Assertions.assertEquals(5,listdiff.getY(1));
     }

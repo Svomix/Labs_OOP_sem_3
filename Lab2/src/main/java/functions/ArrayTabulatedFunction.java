@@ -29,7 +29,9 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
     }
 
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
-        if (xFrom > xTo) {
+        if(count < 2)
+            throw new IllegalArgumentException("The count of the X points must be 2 at least");
+         if (xFrom > xTo) {
             double temp = xFrom;
             xFrom = xTo;
             xTo = temp;
@@ -108,7 +110,7 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
 
     @Override
     protected int floorIndexOfX(double x) {
-        if (x < arrX[0]) return 0;
+        if (x < arrX[0]) throw new IllegalArgumentException("x less than left bound of array");
         if (x > arrX[count - 1]) return count;
         if (indexOfX(x) != -1) return indexOfX(x);
         int index = 0;
