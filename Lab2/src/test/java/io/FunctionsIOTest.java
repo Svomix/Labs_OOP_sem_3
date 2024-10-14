@@ -9,8 +9,12 @@ import functions.factory.ArrayTabulatedFunctionFactory;
 import functions.factory.LinkedListTabulatedFunctionFactory;
 import operations.TabulatedDifferentialOperator;
 import operations.TabulatedFunctionOperationService;
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.io.*;
@@ -18,11 +22,23 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-class FunctionsIOTest {
-    @BeforeClass
-    void delete() throws IOException {
-        Path path = Paths.get("temp/test1");
-        Files.delete(path);
+class FunctionsIOTest{
+    @AfterAll
+    public static void delete() throws IOException {
+
+        //File f = new File("temp/test1");
+        //File f2 = new File("temp/test2");
+        //f.delete();
+        //f2.delete();
+        FileUtils.cleanDirectory(new File("E:/Programs/JetBrains/IdeaProjects/Labs_OOP_sem_3/Lab2/temp/"));
+    }
+
+    @BeforeAll
+    public static void setUp() throws IOException {
+        File f = new File("temp/test1");
+        File f2 = new File("temp/test2");
+        f.createNewFile();
+        f2.createNewFile();
     }
 
     @Test
@@ -42,6 +58,16 @@ class FunctionsIOTest {
     }
 
     @Test
+    void writeTabulatedFunction() throws IOException {
+        try (var bwrite = new BufferedWriter(new FileWriter("temp/test2"))) {
+            var list = new LinkedListTabulatedFunction(new double[]{4, 5, 6}, new double[]{7, 8, 9});
+            FunctionsIO.writeTabulatedFunction(bwrite, list);
+        } catch (IOException excep) {
+            excep.printStackTrace();
+        }
+    }
+
+    @Test
     void readTabulatedFunctionTest2() throws IOException {
         try (var breader = new BufferedReader(new FileReader("temp/test2"))) {
             var list = FunctionsIO.readTabulatedFunction(breader, new LinkedListTabulatedFunctionFactory());
@@ -53,22 +79,26 @@ class FunctionsIOTest {
 
     @Test
     void serialize() {
-
-    }
-
-    @Test
-    void writeTabulatedFunction() throws IOException {
-        try (var bwrite = new BufferedWriter(new FileWriter("temp/test2"))) {
-            var list = new LinkedListTabulatedFunction(new double[]{4, 5, 6}, new double[]{7, 8, 9});
-            FunctionsIO.writeTabulatedFunction(bwrite, list);
-        } catch (IOException excep) {
-            excep.printStackTrace();
+        try(BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("output/serialized array functions.bin"))) {
+            ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3, 4}, new double[] {1, 2, 3, 4});
+            TabulatedFunction first = new TabulatedDifferentialOperator(new ArrayTabulatedFunctionFactory()).derive(arr);
+            TabulatedFunction second = new TabulatedDifferentialOperator(new ArrayTabulatedFunctionFactory()).derive(first);
+            FunctionsIO.serialize(bos, arr);
+            FunctionsIO.serialize(bos, first);
+            FunctionsIO.serialize(bos, second);
+            try(BufferedInputStream bi = new BufferedInputStream(new FileInputStream("output/serialized array functions.bin"))) {
+                Assertions.assertEquals(FunctionsIO.deserialize(bi).toString(), arr.toString());
+                Assertions.assertEquals(FunctionsIO.deserialize(bi).toString(), first.toString());
+                Assertions.assertEquals(FunctionsIO.deserialize(bi).toString(), second.toString());
+            }
+            catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    @Test
-    void deserialize() {
-    }
 
     @Test
     void serializeJson() throws IOException {
