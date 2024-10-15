@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public final class FunctionsIO {
     private FunctionsIO() {
-        throw new UnsupportedOperationException("Fuctions cannot be instantiated");
+        throw new UnsupportedOperationException("Functions cannot be instantiated");
     }
 
     static void writeTabulatedFunction(BufferedWriter writer, TabulatedFunction function) {
