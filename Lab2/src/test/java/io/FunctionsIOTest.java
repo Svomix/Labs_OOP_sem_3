@@ -30,7 +30,8 @@ class FunctionsIOTest{
         //File f2 = new File("temp/test2");
         //f.delete();
         //f2.delete();
-        FileUtils.cleanDirectory(new File("E:/Programs/JetBrains/IdeaProjects/Labs_OOP_sem_3/Lab2/temp/"));
+        //FileUtils.cleanDirectory(new File("E:/Programs/JetBrains/IdeaProjects/Labs_OOP_sem_3/Lab2/temp/"));
+        FileUtils.cleanDirectory(new File("temp/"));
     }
 
     @BeforeAll
