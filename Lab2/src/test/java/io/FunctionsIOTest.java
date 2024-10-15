@@ -58,10 +58,10 @@ class FunctionsIOTest{
     }
 
     @Test
-    void writeTabulatedFunction() throws IOException {
-        try (var bwrite = new BufferedWriter(new FileWriter("temp/test2"))) {
+    void writeTabulatedFunctionTest2() throws IOException {
+        try (var outputf = new BufferedOutputStream(new FileOutputStream("temp/test2"))) {
             var list = new LinkedListTabulatedFunction(new double[]{4, 5, 6}, new double[]{7, 8, 9});
-            FunctionsIO.writeTabulatedFunction(bwrite, list);
+            FunctionsIO.writeTabulatedFunction(outputf, list);
         } catch (IOException excep) {
             excep.printStackTrace();
         }
@@ -69,7 +69,7 @@ class FunctionsIOTest{
 
     @Test
     void readTabulatedFunctionTest2() throws IOException {
-        try (var breader = new BufferedReader(new FileReader("temp/test2"))) {
+        try (var breader = new BufferedInputStream(new FileInputStream("temp/test2"))) {
             var list = FunctionsIO.readTabulatedFunction(breader, new LinkedListTabulatedFunctionFactory());
             Assertions.assertArrayEquals(new Point[]{new Point(4, 7), new Point(5, 8), new Point(6, 9)}, TabulatedFunctionOperationService.asPoint(list));
         } catch (IOException excep) {

@@ -56,11 +56,22 @@ public class LinkedListTabulatedFunctionTest {
     }
 
     @Test
-    void createNode()
+    void createNode1()
     {
         var n = new LinkedListTabulatedFunction.Node(1,2);
         Assertions.assertEquals(1,n.x);
         Assertions.assertEquals(2,n.y);
+    }
+    @Test
+    void createNode2()
+    {
+        var n1 = new LinkedListTabulatedFunction.Node(1,2);
+        var n2 = new LinkedListTabulatedFunction.Node(3,4,n1,n1);
+        Assertions.assertEquals(1,n1.x);
+        Assertions.assertEquals(2,n1.y);
+        Assertions.assertEquals(3,n2.x);
+        Assertions.assertEquals(4,n2.y);
+        Assertions.assertEquals(n1,n2.next);
     }
     @Test
     void getXTest() {

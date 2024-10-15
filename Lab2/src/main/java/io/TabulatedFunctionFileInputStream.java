@@ -10,7 +10,7 @@ import java.io.*;
 
 public class TabulatedFunctionFileInputStream {
     public static void main(String[] args) throws FileNotFoundException {
-        try (var inputf = new BufferedInputStream(new FileInputStream("input/binary function.bin"));) {
+        try (var inputf = new BufferedInputStream(new FileInputStream("input/binary function.bin"))) {
             TabulatedFunction arr = FunctionsIO.readTabulatedFunction(inputf, new ArrayTabulatedFunctionFactory());
             System.out.println(arr);
         } catch (IOException excep) {
