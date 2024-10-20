@@ -2,7 +2,6 @@ package io;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.security.NoTypePermission;
 import functions.ArrayTabulatedFunction;
 import functions.Point;
 import functions.TabulatedFunction;
@@ -45,18 +44,16 @@ public final class FunctionsIO {
         return factory.create(xValues, yValues);
     }
 
-   static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) throws IOException
-    {
+    static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) throws IOException {
         var binput = new DataInputStream(inputStream);
         int size = binput.readInt();
         double[] xValues = new double[size];
         double[] yValues = new double[size];
-        for (int i = 0; i < size; ++i)
-        {
+        for (int i = 0; i < size; ++i) {
             xValues[i] = binput.readDouble();
             yValues[i] = binput.readDouble();
         }
-        return factory.create(xValues,yValues);
+        return factory.create(xValues, yValues);
     }
 
 
@@ -66,36 +63,39 @@ public final class FunctionsIO {
         out.flush();
     }
 
-   static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
+    static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
         var outp = new DataOutputStream(outputStream);
         outp.writeInt(function.getCount());
-        for (Point p: function)
-        {
+        for (Point p : function) {
             outp.writeDouble(p.x);
             outp.writeDouble(p.y);
         }
         outp.flush();
-   }
+    }
+
     static void serializeXml(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
         XStream xStream = new XStream();
         writer.write(xStream.toXML(function));
         writer.flush();
     }
-    static ArrayTabulatedFunction deserializeXml(BufferedReader reader){
+
+    static ArrayTabulatedFunction deserializeXml(BufferedReader reader) {
         XStream xStream = new XStream();
         xStream.allowTypeHierarchy(ArrayTabulatedFunction.class);
         return (ArrayTabulatedFunction) xStream.fromXML(reader);
     }
-    static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException,ClassNotFoundException
-    {
+
+    static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException, ClassNotFoundException {
         var inp = new ObjectInputStream(stream);
-        return  (TabulatedFunction) inp.readObject();
+        return (TabulatedFunction) inp.readObject();
     }
+
     static void serializeJson(BufferedWriter writer, ArrayTabulatedFunction function) throws IOException {
         var objmap = new ObjectMapper().writeValueAsString(function);
         writer.write(objmap);
         writer.flush();
     }
+
     static ArrayTabulatedFunction deserializeJson(BufferedReader reader) throws IOException {
         var objmap = new ObjectMapper();
         return (ArrayTabulatedFunction) objmap.readerFor(ArrayTabulatedFunction.class).readValue(reader);

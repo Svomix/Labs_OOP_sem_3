@@ -2,7 +2,7 @@ package operations;
 
 import functions.MathFunction;
 
-public class MiddleSteppingDifferentialOperator extends SteppingDifferentialOperator{
+public class MiddleSteppingDifferentialOperator extends SteppingDifferentialOperator {
     public MiddleSteppingDifferentialOperator(double step) {
         super(step);
     }

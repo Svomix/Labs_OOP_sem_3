@@ -2,12 +2,11 @@ package functions;
 
 import exceptions.ArrayIsNotSortedException;
 import exceptions.DifferentLengthOfArraysException;
-import operations.TabulatedFunctionOperationService;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-public abstract class AbstractTabulateFunction implements MathFunction,TabulatedFunction, Serializable {
+public abstract class AbstractTabulateFunction implements MathFunction, TabulatedFunction, Serializable {
 
     @Serial
     private static final long serialVersionUID = -4747119071181052342L;
@@ -39,8 +38,7 @@ public abstract class AbstractTabulateFunction implements MathFunction,Tabulated
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append(getClass().getSimpleName()).append(" size = ").append(count).append('\n');
-        for (Point p: this)
-        {
+        for (Point p : this) {
             str.append('[').append(p.x).append("; ").append(p.y).append(']').append('\n');
         }
         return str.toString();
@@ -58,11 +56,11 @@ public abstract class AbstractTabulateFunction implements MathFunction,Tabulated
     }
 
     static void checkLengthIsTheSame(double[] xValues, double[] yValues) {
-        if (xValues.length != yValues.length)  throw new DifferentLengthOfArraysException("Different length arrays");
+        if (xValues.length != yValues.length) throw new DifferentLengthOfArraysException("Different length arrays");
     }
 
-    static void checkSorted(double[] xValues){
+    static void checkSorted(double[] xValues) {
         for (int i = 1; i < xValues.length; i++)
-            if (xValues[i] <= xValues[i-1]) throw new ArrayIsNotSortedException("Array is not sorted");
+            if (xValues[i] <= xValues[i - 1]) throw new ArrayIsNotSortedException("Array is not sorted");
     }
 }

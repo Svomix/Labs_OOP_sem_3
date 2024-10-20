@@ -35,8 +35,9 @@ public class TabulatedFunctionOperationService {
         return points;
     }
 
-    private TabulatedFunction doOperation(TabulatedFunction a, TabulatedFunction b, BiOperation operation){
-        if (a.getCount() != b.getCount()) throw new InconsistentFunctionsException("Different size of TabulatedFunctions");
+    private TabulatedFunction doOperation(TabulatedFunction a, TabulatedFunction b, BiOperation operation) {
+        if (a.getCount() != b.getCount())
+            throw new InconsistentFunctionsException("Different size of TabulatedFunctions");
         Point[] pointsA = asPoint(a);
         Point[] pointsB = asPoint(b);
         double[] xValues = new double[pointsA.length];
@@ -59,11 +60,11 @@ public class TabulatedFunctionOperationService {
     }
 
     public TabulatedFunction division(TabulatedFunction a, TabulatedFunction b) {
-        return doOperation(a,b,(x,y)->x/y);
+        return doOperation(a, b, (x, y) -> x / y);
     }
 
-    public TabulatedFunction multiplication (TabulatedFunction a, TabulatedFunction b) {
-        return doOperation(a,b,(x,y)->x*y);
+    public TabulatedFunction multiplication(TabulatedFunction a, TabulatedFunction b) {
+        return doOperation(a, b, (x, y) -> x * y);
     }
 
     private interface BiOperation {

@@ -18,8 +18,9 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
     protected double[] arrX;
     @JsonFormat(shape = JsonFormat.Shape.ARRAY)
     protected double[] arrY;
-     @JsonCreator
-    public ArrayTabulatedFunction(@JsonProperty(value = "arrX") double[] xValues, @JsonProperty(value = "arrY")double[] yValues) {
+
+    @JsonCreator
+    public ArrayTabulatedFunction(@JsonProperty(value = "arrX") double[] xValues, @JsonProperty(value = "arrY") double[] yValues) {
         checkLengthIsTheSame(xValues, yValues);
         if (xValues.length <= 1) throw new IllegalArgumentException("xValues length must be greater than 1");
         checkSorted(xValues);
@@ -29,9 +30,9 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
     }
 
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
-        if(count < 2)
+        if (count < 2)
             throw new IllegalArgumentException("The count of the X points must be 2 at least");
-         if (xFrom > xTo) {
+        if (xFrom > xTo) {
             double temp = xFrom;
             xFrom = xTo;
             xTo = temp;
@@ -135,7 +136,8 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        if (x < arrX[floorIndex] || x > arrX[floorIndex + 1]) throw new InterpolationException("Failed interpolation with 2 parameters");
+        if (x < arrX[floorIndex] || x > arrX[floorIndex + 1])
+            throw new InterpolationException("Failed interpolation with 2 parameters");
         return interpolate(x, arrX[floorIndex], arrX[floorIndex + 1], arrY[floorIndex], arrY[floorIndex + 1]);
     }
 
@@ -149,8 +151,7 @@ public class ArrayTabulatedFunction extends AbstractTabulateFunction implements 
         if (index < arrX.length && arrX[index] == x) {
             arrY[index] = y;
             return;
-        }
-        else if (oldBound + 1 >= arrX.length) {
+        } else if (oldBound + 1 >= arrX.length) {
             double[] newArrX = new double[arrX.length * 2];
             double[] newArrY = new double[arrX.length * 2];
             System.arraycopy(arrX, 0, newArrX, 0, arrX.length);

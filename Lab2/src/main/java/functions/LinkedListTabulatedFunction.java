@@ -5,7 +5,6 @@ import exceptions.InterpolationException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Iterator;
-
 import java.util.NoSuchElementException;
 
 public class LinkedListTabulatedFunction extends AbstractTabulateFunction implements TabulatedFunction, Insertable, Removable, Serializable {

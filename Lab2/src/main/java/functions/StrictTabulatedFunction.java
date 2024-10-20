@@ -2,13 +2,13 @@ package functions;
 
 import java.util.Iterator;
 
-public class StrictTabulatedFunction implements TabulatedFunction
-{
+public class StrictTabulatedFunction implements TabulatedFunction {
     private TabulatedFunction function;
-    public StrictTabulatedFunction(TabulatedFunction otherfunc)
-    {
+
+    public StrictTabulatedFunction(TabulatedFunction otherfunc) {
         function = otherfunc;
     }
+
     @Override
     public Iterator<Point> iterator() {
         return function.iterator();
@@ -53,11 +53,11 @@ public class StrictTabulatedFunction implements TabulatedFunction
     public double rightBound() {
         return function.rightBound();
     }
+
     @Override
-    public double apply(double x)
-    {
+    public double apply(double x) {
         int ind = indexOfX(x);
-        if(ind == -1)
+        if (ind == -1)
             throw new UnsupportedOperationException();
         return getY(ind);
     }

@@ -2,7 +2,7 @@ package concurrent;
 
 import functions.TabulatedFunction;
 
-public class MultiplyingTask implements Runnable{
+public class MultiplyingTask implements Runnable {
     private final TabulatedFunction func;
     private static final Object lock = new Object();
 
@@ -17,7 +17,7 @@ public class MultiplyingTask implements Runnable{
                 func.setY(i, func.getY(i) * 2);
             }
 
-        System.out.println("Поток " + Thread.currentThread().getName() +" закончил выполнение задачи");
+        System.out.println("Поток " + Thread.currentThread().getName() + " закончил выполнение задачи");
     }
 
     public TabulatedFunction getFunc() {

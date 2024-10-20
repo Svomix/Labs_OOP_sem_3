@@ -2,6 +2,7 @@ package functions.mock;
 
 import functions.AbstractTabulateFunction;
 import functions.Point;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -82,7 +83,8 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
     public double interpolate(double x, double leftX, double rightX, double leftY, double rightY) {
         return super.interpolate(x, leftX, rightX, leftY, rightY);
     }
-     @Override
+
+    @Override
     public Iterator<Point> iterator() {
         return new Iterator<>() {
             int i = 0;

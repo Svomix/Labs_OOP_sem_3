@@ -11,7 +11,7 @@ public class Integrate {
         integral = 0;
     }
 
-    double SimpsonMethod(){
+    double SimpsonMethod() {
         double h = (func.rightBound() - func.leftBound()) / func.getCount();
         Runnable task1 = () -> {
             for (int i = 1; i < func.getCount() - 1; i += 2) {
@@ -45,7 +45,7 @@ public class Integrate {
         t2.start();
         t3.start();
 
-        while(t1.isAlive() || t2.isAlive() || t3.isAlive());
+        while (t1.isAlive() || t2.isAlive() || t3.isAlive()) ;
 
         synchronized (func) {
             integral *= h / 3;
