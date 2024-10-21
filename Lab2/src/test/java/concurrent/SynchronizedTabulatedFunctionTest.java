@@ -5,6 +5,7 @@ import exceptions.ArrayIsNotSortedException;
 import exceptions.DifferentLengthOfArraysException;
 import exceptions.InterpolationException;
 import functions.ArrayTabulatedFunction;
+import functions.LinkedListTabulatedFunction;
 import functions.Point;
 import functions.SqrFunction;
 import org.junit.jupiter.api.Assertions;
@@ -181,6 +182,31 @@ class SynchronizedTabulatedFunctionTest {
         Assertions.assertEquals(3, wrapper.doSynchronously(SynchronizedTabulatedFunction::rightBound));
         Assertions.assertEquals(0, wrapper.getY(wrapper.getCount() - 1));
     }
-
+    @Test
+    void iteratorSyncArr()
+    {
+        SynchronizedTabulatedFunction arr = new SynchronizedTabulatedFunction(new ArrayTabulatedFunction(new double[]{1,2,3},new double[]{4,5,6}));
+        Point[] points = new Point[3];
+        int i =0;
+        for(Point p: arr)
+        {
+            points[i] = p;
+            ++i;
+        }
+        Assertions.assertArrayEquals(points,new Point[]{new Point(1,4),new Point(2,5),new Point(3,6),});
+    }
+    @Test
+    void iteratorSyncLinkedList()
+    {
+        SynchronizedTabulatedFunction list = new SynchronizedTabulatedFunction(new LinkedListTabulatedFunction(new double[]{1,2,3},new double[]{4,5,6}));
+        Point[] points = new Point[3];
+        int i =0;
+        for(Point p: list)
+        {
+            points[i] = p;
+            ++i;
+        }
+        Assertions.assertArrayEquals(points,new Point[]{new Point(1,4),new Point(2,5),new Point(3,6),});
+    }
 
 }

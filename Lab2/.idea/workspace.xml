@@ -116,6 +116,8 @@
     "JUnit.StrictAndUnmodTest.StrictWithUnmodTest.executor": "Run",
     "JUnit.StrictTabulatedFunctionTest.strictArrayTabulatedTest.executor": "Run",
     "JUnit.StrictTabulatedFunctionTest.strictLinkedListTest.executor": "Debug",
+    "JUnit.SynchronizedTabulatedFunctionTest.iteratorSync.executor": "Run",
+    "JUnit.SynchronizedTabulatedFunctionTest.iteratorSyncLinkedList.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.applyTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedArrayFabricTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.deriveLinkedArrayTest.executor": "Run",
@@ -154,7 +156,7 @@
       <recent name="io" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ReadWriteTaskExecutor">
+  <component name="RunManager" selected="JUnit.java in Labs_OOP_sem_3">
     <configuration name="ReadWriteTaskExecutor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="concurrent.ReadWriteTaskExecutor" />
       <module name="Labs_OOP_sem_3" />
@@ -184,33 +186,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FunctionsIOTest.readTabulatedFunctionTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SynchronizedTabulatedFunctionTest.iteratorSync" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.*" />
+          <option name="PATTERN" value="concurrent.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="io" />
-      <option name="MAIN_CLASS_NAME" value="io.FunctionsIOTest" />
-      <option name="METHOD_NAME" value="readTabulatedFunctionTest2" />
+      <option name="PACKAGE_NAME" value="concurrent" />
+      <option name="MAIN_CLASS_NAME" value="concurrent.SynchronizedTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="iteratorSync" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FunctionsIOTest.writeTabulatedFunctionTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SynchronizedTabulatedFunctionTest.iteratorSyncLinkedList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.*" />
+          <option name="PATTERN" value="concurrent.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="io" />
-      <option name="MAIN_CLASS_NAME" value="io.FunctionsIOTest" />
-      <option name="METHOD_NAME" value="writeTabulatedFunctionTest2" />
+      <option name="PACKAGE_NAME" value="concurrent" />
+      <option name="MAIN_CLASS_NAME" value="concurrent.SynchronizedTabulatedFunctionTest" />
+      <option name="METHOD_NAME" value="iteratorSyncLinkedList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -239,11 +241,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ReadWriteTaskExecutor" />
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.SynchronizedTabulatedFunctionTest.iteratorSyncLinkedList" />
+        <item itemvalue="JUnit.SynchronizedTabulatedFunctionTest.iteratorSync" />
+        <item itemvalue="Application.ReadWriteTaskExecutor" />
         <item itemvalue="JUnit.FunctionsIOTest.createTest" />
-        <item itemvalue="JUnit.FunctionsIOTest.writeTabulatedFunctionTest2" />
-        <item itemvalue="JUnit.FunctionsIOTest.readTabulatedFunctionTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -305,7 +307,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Main_java$_default_.ic" NAME="&lt;default&gt; Coverage Results" MODIFIED="1728999250738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/Main_java$java_in_Labs_OOP_sem_3.ic" NAME="java in Labs_OOP_sem_3 Coverage Results" MODIFIED="1729005637038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Main_java$java_in_Labs_OOP_sem_3.ic" NAME="java in Labs_OOP_sem_3 Coverage Results" MODIFIED="1729512792973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/Main_java$All_in_Labs_OOP_sem_3.ic" NAME="All in Labs_OOP_sem_3 Coverage Results" MODIFIED="1728325183766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
