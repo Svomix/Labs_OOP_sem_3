@@ -80,7 +80,7 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
     @Override
     public Iterator<Point> iterator() {
         synchronized (func) {
-           Point[] points =  TabulatedFunctionOperationService.asPoint(func);
+           Point[] points = TabulatedFunctionOperationService.asPoint(func);
            return new Iterator<Point>() {
                private int i = 0;
                @Override
@@ -92,7 +92,7 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
                public Point next() {
                    if (!hasNext())
                        throw new NoSuchElementException();
-                   Point p = new Point(func.getX(i),func.getY(i));
+                   Point p = points[i];
                    ++i;
                    return p;
                }
