@@ -41,37 +41,42 @@ class MockTabulatedFunctionTest {
 
     @Test
     void getY() {
+        Assertions.assertEquals(-1, func.getY(0));
     }
 
     @Test
     void setY() {
+        func.setY(1, 2.0);
     }
 
     @Test
     void getX() {
+        Assertions.assertEquals(1, func.getX(0));
     }
 
     @Test
     void indexOfX() {
+        Assertions.assertEquals(0, func.indexOfX(1));
     }
 
     @Test
     void indexOfY() {
+        Assertions.assertEquals(0, func.indexOfY(-1));
     }
 
     @Test
     void leftBound() {
+        Assertions.assertEquals(1, func.leftBound());
     }
 
     @Test
     void rightBound() {
+        Assertions.assertEquals(2.5, func.rightBound());
     }
 
     @Test
     void floorIndexOfX() {
+        Assertions.assertEquals(func.getCount(), func.floorIndexOfX(3));
     }
 
-    @Test
-    void iterator() {
-    }
 }

@@ -28,7 +28,7 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
 
     @Override
     public void setY(int index, double value) {
-
+        arrY[index] = value;
     }
 
     @Override
@@ -45,17 +45,19 @@ public class MockTabulatedFunction extends AbstractTabulateFunction {
 
     @Override
     public int indexOfY(double y) {
-        return 0;
+        if (arrY[0] == y) return 0;
+        if (arrY[1] == y) return 1;
+        return -1;
     }
 
     @Override
     public double leftBound() {
-        return 0;
+        return arrX[0];
     }
 
     @Override
     public double rightBound() {
-        return 0;
+        return arrX[1];
     }
 
     @Override
