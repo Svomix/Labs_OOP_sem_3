@@ -38,4 +38,40 @@ class MockTabulatedFunctionTest {
     void interpolateTest() {
         Assertions.assertEquals( 13.3 + (0 - 13.3) / (2.2 - -6.4) * (2 - -6.4), func.interpolate(2, -6.4, 2.2, 13.3, 0));
     }
+
+    @Test
+    void getY() {
+    }
+
+    @Test
+    void setY() {
+    }
+
+    @Test
+    void getX() {
+    }
+
+    @Test
+    void indexOfX() {
+    }
+
+    @Test
+    void indexOfY() {
+    }
+
+    @Test
+    void leftBound() {
+    }
+
+    @Test
+    void rightBound() {
+    }
+
+    @Test
+    void floorIndexOfX() {
+    }
+
+    @Test
+    void iterator() {
+    }
 }

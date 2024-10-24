@@ -1,6 +1,11 @@
 package concurrent;
 
+import functions.ArrayTabulatedFunction;
 import functions.TabulatedFunction;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class Integrate {
     private final TabulatedFunction func;
@@ -11,7 +16,7 @@ public class Integrate {
         integral = 0;
     }
 
-    double SimpsonMethod() {
+    double SimpsonMethod() throws InterruptedException {
         double h = (func.rightBound() - func.leftBound()) / func.getCount();
         Runnable task1 = () -> {
             for (int i = 1; i < func.getCount() - 1; i += 2) {
@@ -23,8 +28,7 @@ public class Integrate {
         Runnable task2 = () -> {
             for (int i = 1; i < func.getCount() - 1; i += 2) {
                 synchronized (func) {
-                    integral += func.getY(i);
-                    integral *= 4;
+                    integral += func.getY(i) * 4;
                 }
             }
         };
@@ -45,11 +49,17 @@ public class Integrate {
         t2.start();
         t3.start();
 
-        while (t1.isAlive() || t2.isAlive() || t3.isAlive()) ;
-
+        try {
+            t1.join();
+            t2.join();
+            t3.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         synchronized (func) {
-            integral *= h / 3;
+            integral = integral * h / 3;
         }
         return integral;
+
     }
 }
