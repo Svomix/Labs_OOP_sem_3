@@ -1,5 +1,6 @@
 package functions.mock;
 
+import functions.ArrayTabulatedFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -77,6 +78,11 @@ class MockTabulatedFunctionTest {
     @Test
     void floorIndexOfX() {
         Assertions.assertEquals(func.getCount(), func.floorIndexOfX(3));
+    }
+    @Test
+    void floorIndexOfXTest() {
+        MockTabulatedFunction func = new MockTabulatedFunction();
+        Assertions.assertEquals(func.getCount(), func.floorIndexOfX(6));
     }
 
 }

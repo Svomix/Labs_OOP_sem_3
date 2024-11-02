@@ -1,11 +1,6 @@
 package concurrent;
 
-import functions.ArrayTabulatedFunction;
 import functions.TabulatedFunction;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
 
 public class Integrate {
     private final TabulatedFunction func;

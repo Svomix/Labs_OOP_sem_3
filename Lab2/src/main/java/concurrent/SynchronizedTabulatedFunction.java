@@ -80,23 +80,24 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
     @Override
     public Iterator<Point> iterator() {
         synchronized (func) {
-           Point[] points = TabulatedFunctionOperationService.asPoint(func);
-           return new Iterator<Point>() {
-               private int i = 0;
-               @Override
-               public boolean hasNext()
-               {
-                   return i < func.getCount();
-               }
-               @Override
-               public Point next() {
-                   if (!hasNext())
-                       throw new NoSuchElementException();
-                   Point p = points[i];
-                   ++i;
-                   return p;
-               }
-           };
+            Point[] points = TabulatedFunctionOperationService.asPoint(func);
+            return new Iterator<Point>() {
+                private int i = 0;
+
+                @Override
+                public boolean hasNext() {
+                    return i < func.getCount();
+                }
+
+                @Override
+                public Point next() {
+                    if (!hasNext())
+                        throw new NoSuchElementException();
+                    Point p = points[i];
+                    ++i;
+                    return p;
+                }
+            };
         }
     }
 
