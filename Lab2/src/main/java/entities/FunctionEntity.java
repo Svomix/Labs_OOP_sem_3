@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "functions")
-public class Function
+public class FunctionEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
