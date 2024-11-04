@@ -1,19 +1,24 @@
 package service;
 
 import dao.FunctionDAO;
+import dao.FunctionDaoImpl;
 import entities.FunctionEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+
 public class FunctionServiceImpl implements FunctionService {
     private FunctionDAO functionDAO;
 
-    @Autowired
+    FunctionServiceImpl(){
+        functionDAO = new FunctionDaoImpl();
+    }
+
+    /*
     public void setFunctionDAO(FunctionDAO functionDAO) {
         this.functionDAO = functionDAO;
     }
+
+     */
 
     @Override
     @Transactional
