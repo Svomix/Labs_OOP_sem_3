@@ -56,23 +56,23 @@ public class LinkedListTabulatedFunctionTest {
     }
 
     @Test
-    void createNode1()
-    {
-        var n = new LinkedListTabulatedFunction.Node(1,2);
-        Assertions.assertEquals(1,n.x);
-        Assertions.assertEquals(2,n.y);
+    void createNode1() {
+        var n = new LinkedListTabulatedFunction.Node(1, 2);
+        Assertions.assertEquals(1, n.x);
+        Assertions.assertEquals(2, n.y);
     }
+
     @Test
-    void createNode2()
-    {
-        var n1 = new LinkedListTabulatedFunction.Node(1,2);
-        var n2 = new LinkedListTabulatedFunction.Node(3,4,n1,n1);
-        Assertions.assertEquals(1,n1.x);
-        Assertions.assertEquals(2,n1.y);
-        Assertions.assertEquals(3,n2.x);
-        Assertions.assertEquals(4,n2.y);
-        Assertions.assertEquals(n1,n2.next);
+    void createNode2() {
+        var n1 = new LinkedListTabulatedFunction.Node(1, 2);
+        var n2 = new LinkedListTabulatedFunction.Node(3, 4, n1, n1);
+        Assertions.assertEquals(1, n1.x);
+        Assertions.assertEquals(2, n1.y);
+        Assertions.assertEquals(3, n2.x);
+        Assertions.assertEquals(4, n2.y);
+        Assertions.assertEquals(n1, n2.next);
     }
+
     @Test
     void getXTest() {
         double res = list.getX(4);
@@ -165,89 +165,93 @@ public class LinkedListTabulatedFunctionTest {
         list.remove(list.getCount() - 1);
         Assertions.assertEquals(6, list.getX(list.getCount() - 1));
     }
+
     @Test
     void extrapolateRightTest() {
         double a = list.apply(9);
-        Assertions.assertEquals(75,a);
+        Assertions.assertEquals(75, a);
     }
+
     @Test
     void extrapolateLeftTest() {
         double a = list.apply(-2);
-        Assertions.assertEquals(-2,a);
+        Assertions.assertEquals(-2, a);
     }
+
     @Test
     void interpolateTest1() {
         double a = list.apply(2.5);
-        Assertions.assertEquals(6.5,a);
+        Assertions.assertEquals(6.5, a);
     }
+
     @Test
     void interpolateTest2() {
-        double a = list.interpolate(4.2,4);
-        Assertions.assertEquals(17.8,a);
+        double a = list.interpolate(4.2, 4);
+        Assertions.assertEquals(17.8, a);
     }
+
     @Test
-    void applyTest1()
-    {
+    void applyTest1() {
         double a = list.apply(4.2);
-        Assertions.assertEquals(17.8,a);
+        Assertions.assertEquals(17.8, a);
     }
+
     @Test
-    void applyTest2()
-    {
+    void applyTest2() {
         double a = list.apply(6);
-        Assertions.assertEquals(36,a);
+        Assertions.assertEquals(36, a);
     }
+
     @Test
-    void exceptionsRemoveTest()
-    {
-        Assertions.assertThrows(IllegalArgumentException.class,()->list.remove(-1));
-        Assertions.assertThrows(IllegalArgumentException.class,()->list.remove(100));
+    void exceptionsRemoveTest() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.remove(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.remove(100));
     }
+
     @Test
-    void exceptionsGetTest()
-    {
-        Assertions.assertThrows(IllegalArgumentException.class,()->list.getNode(-1));
-        Assertions.assertThrows(IllegalArgumentException.class,()->list.getNode(100));
-        Assertions.assertThrows(IllegalArgumentException.class, ()->list.getY(-1));
-        Assertions.assertThrows(IllegalArgumentException.class, ()->list.getY(100));
-        Assertions.assertThrows(IllegalArgumentException.class, ()->list.getX(-1));
-        Assertions.assertThrows(IllegalArgumentException.class, ()->list.getX(100));
+    void exceptionsGetTest() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.getNode(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.getNode(100));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.getY(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.getY(100));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.getX(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.getX(100));
     }
+
     @Test
-    void exceptionsFloorTest()
-    {
-        Assertions.assertThrows(IllegalArgumentException.class,()->list.floorNodeOfX(-1));
-        Assertions.assertThrows(IllegalArgumentException.class,()->list.floorIndexOfX(-1));
+    void exceptionsFloorTest() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.floorNodeOfX(-1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.floorIndexOfX(-1));
     }
+
     @Test
-    void exceptionsConstructorTest()
-    {
-        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new double[]{1},new double[]{1}));
-        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new double[]{},new double[]{}));
-        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new SqrFunction(),1,10,1));
-        Assertions.assertThrows(IllegalArgumentException.class,()->new LinkedListTabulatedFunction(new SqrFunction(),1,10,0));
+    void exceptionsConstructorTest() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(new double[]{1}, new double[]{1}));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(new double[]{}, new double[]{}));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(new SqrFunction(), 1, 10, 1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(new SqrFunction(), 1, 10, 0));
     }
+
     @Test
-    void exceptionsSetTest()
-    {
-        Assertions.assertThrows(IllegalArgumentException.class,()->list.setY(-1,10));
-        Assertions.assertThrows(IllegalArgumentException.class,()->list.setY(100,10));
+    void exceptionsSetTest() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.setY(-1, 10));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> list.setY(100, 10));
     }
+
     @Test
-    void iteratorForEachTest()
-    {
+    void iteratorForEachTest() {
         double[] arrx = new double[8];
         double[] arry = new double[8];
         int i = 0;
-        for (Point point : list)
-        {
+        for (Point point : list) {
             arrx[i] = point.x;
             arry[i] = point.y;
             ++i;
         }
-        Assertions.assertArrayEquals(a,arrx);
-        Assertions.assertArrayEquals(b,arry);
+        Assertions.assertArrayEquals(a, arrx);
+        Assertions.assertArrayEquals(b, arry);
     }
+
     @Test
     void iteratorWhileTest() {
         Iterator<Point> iterator = list.iterator();
@@ -264,8 +268,9 @@ public class LinkedListTabulatedFunctionTest {
         Assertions.assertArrayEquals(a, arrx);
         Assertions.assertArrayEquals(b, arry);
     }
+
     @Test
-    void createObject(){
+    void createObject() {
         Assertions.assertThrows(ArrayIsNotSortedException.class, () -> new LinkedListTabulatedFunction(new double[]{1, 3, 2}, new double[]{1, 2, 3}));
         Assertions.assertThrows(DifferentLengthOfArraysException.class, () -> new LinkedListTabulatedFunction(new double[]{1, 3, 2}, new double[]{1, 2}));
         Assertions.assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(new double[]{1}, new double[]{1}));
@@ -273,15 +278,15 @@ public class LinkedListTabulatedFunctionTest {
     }
 
     @Test
-    void interpolateFloorTest(){
+    void interpolateFloorTest() {
         LinkedListTabulatedFunction list = new LinkedListTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         Assertions.assertThrows(InterpolationException.class, () -> list.interpolate(1.5, 1));
         Assertions.assertDoesNotThrow(() -> list.interpolate(1.5, 0));
     }
+
     @Test
-    void stringTest()
-    {
-        LinkedListTabulatedFunction list = new LinkedListTabulatedFunction(new double[]{1, 2, 3,4}, new double[]{1, 2, 3,4});
-        Assertions.assertEquals("LinkedListTabulatedFunction size = 4\n[1.0; 1.0]\n[2.0; 2.0]\n[3.0; 3.0]\n[4.0; 4.0]\n",list.toString());
+    void stringTest() {
+        LinkedListTabulatedFunction list = new LinkedListTabulatedFunction(new double[]{1, 2, 3, 4}, new double[]{1, 2, 3, 4});
+        Assertions.assertEquals("LinkedListTabulatedFunction size = 4\n[1.0; 1.0]\n[2.0; 2.0]\n[3.0; 3.0]\n[4.0; 4.0]\n", list.toString());
     }
 }

@@ -89,7 +89,7 @@ class ArrayTabulatedFunctionTest {
         double[] arrX = {1, 2, 3, 4, 5};
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
-        Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]),func.apply(-1) );
+        Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]), func.apply(-1));
     }
 
     @Test
@@ -106,7 +106,7 @@ class ArrayTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         int floorIndex = func.floorIndexOfX(4.5);
-        Assertions.assertEquals( arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (4.5 - arrX[floorIndex]), func.apply(4.5));
+        Assertions.assertEquals(arrY[floorIndex] + (arrY[floorIndex + 1] - arrY[floorIndex]) / (arrX[floorIndex + 1] - arrX[floorIndex]) * (4.5 - arrX[floorIndex]), func.apply(4.5));
     }
 
     @Test
@@ -184,7 +184,7 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void createObject(){
+    void createObject() {
         Assertions.assertThrows(ArrayIsNotSortedException.class, () -> new ArrayTabulatedFunction(new double[]{1, 3, 2}, new double[]{1, 2, 3}));
         Assertions.assertThrows(DifferentLengthOfArraysException.class, () -> new ArrayTabulatedFunction(new double[]{1, 3, 2}, new double[]{1, 2}));
         Assertions.assertThrows(IllegalArgumentException.class, () -> new ArrayTabulatedFunction(new double[]{1}, new double[]{1}));
@@ -192,18 +192,18 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void interpolateFloorTest(){
+    void interpolateFloorTest() {
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         Assertions.assertThrows(InterpolationException.class, () -> arr.interpolate(1.5, 1));
         Assertions.assertDoesNotThrow(() -> arr.interpolate(1.5, 0));
     }
 
     @Test
-    void iteratorTest1(){
+    void iteratorTest1() {
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         Iterator<Point> iterator = arr.iterator();
         int j = 0;
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Point point = iterator.next();
             Assertions.assertEquals(Objects.hash(point.x, point.y), point.hashCode());
             Assertions.assertEquals(point.x, arr.getX(j));
@@ -212,7 +212,7 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void iteratorTest2(){
+    void iteratorTest2() {
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         int j = 0;
         for (Point point : arr) {
@@ -220,10 +220,10 @@ class ArrayTabulatedFunctionTest {
             Assertions.assertEquals(point.y, arr.getY(j++));
         }
     }
+
     @Test
-    void stringTest()
-    {
+    void stringTest() {
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
-        Assertions.assertEquals("ArrayTabulatedFunction size = 3\n[1.0; 1.0]\n[2.0; 2.0]\n[3.0; 3.0]\n",arr.toString());
+        Assertions.assertEquals("ArrayTabulatedFunction size = 3\n[1.0; 1.0]\n[2.0; 2.0]\n[3.0; 3.0]\n", arr.toString());
     }
 }

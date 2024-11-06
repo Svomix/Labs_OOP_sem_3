@@ -1,10 +1,6 @@
 package functions;
 
-import functions.CompositeFunction;
-import functions.IdentityFunction;
-import functions.MathFunction;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CompositeFunctionTest {

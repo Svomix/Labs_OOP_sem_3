@@ -14,15 +14,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
-class FunctionsIOTest{
+class FunctionsIOTest {
     @AfterAll
     public static void delete() throws IOException {
 
@@ -80,22 +75,21 @@ class FunctionsIOTest{
 
     @Test
     void serialize() {
-        try(BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("output/serialized array functions.bin"))) {
-            ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3, 4}, new double[] {1, 2, 3, 4});
+        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("output/serialized array functions.bin"))) {
+            ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3, 4}, new double[]{1, 2, 3, 4});
             TabulatedFunction first = new TabulatedDifferentialOperator(new ArrayTabulatedFunctionFactory()).derive(arr);
             TabulatedFunction second = new TabulatedDifferentialOperator(new ArrayTabulatedFunctionFactory()).derive(first);
             FunctionsIO.serialize(bos, arr);
             FunctionsIO.serialize(bos, first);
             FunctionsIO.serialize(bos, second);
-            try(BufferedInputStream bi = new BufferedInputStream(new FileInputStream("output/serialized array functions.bin"))) {
+            try (BufferedInputStream bi = new BufferedInputStream(new FileInputStream("output/serialized array functions.bin"))) {
                 Assertions.assertEquals(FunctionsIO.deserialize(bi).toString(), arr.toString());
                 Assertions.assertEquals(FunctionsIO.deserialize(bi).toString(), first.toString());
                 Assertions.assertEquals(FunctionsIO.deserialize(bi).toString(), second.toString());
-            }
-            catch (IOException | ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

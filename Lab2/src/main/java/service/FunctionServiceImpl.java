@@ -7,11 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 public class FunctionServiceImpl implements FunctionService {
-    private FunctionDAO functionDAO;
-
-    FunctionServiceImpl(){
-        functionDAO = new FunctionDaoImpl();
-    }
+    private static final FunctionDAO functionDAO = new FunctionDaoImpl();
 
     /*
     public void setFunctionDAO(FunctionDAO functionDAO) {

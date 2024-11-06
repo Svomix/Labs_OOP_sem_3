@@ -24,7 +24,7 @@ class AbstractTabulateFunctionTest {
     }
 
     @Test
-    void checkSorted(){
+    void checkSorted() {
         Assertions.assertDoesNotThrow(() -> AbstractTabulateFunction.checkSorted(new double[]{1, 2, 3}));
         Assertions.assertThrows(ArrayIsNotSortedException.class, () -> AbstractTabulateFunction.checkSorted(new double[]{5, 4, 6}));
     }

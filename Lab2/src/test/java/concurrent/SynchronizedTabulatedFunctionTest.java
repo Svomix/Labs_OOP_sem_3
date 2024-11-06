@@ -1,9 +1,6 @@
 package concurrent;
 
 
-import exceptions.ArrayIsNotSortedException;
-import exceptions.DifferentLengthOfArraysException;
-import exceptions.InterpolationException;
 import functions.ArrayTabulatedFunction;
 import functions.LinkedListTabulatedFunction;
 import functions.Point;
@@ -74,7 +71,7 @@ class SynchronizedTabulatedFunctionTest {
         double[] arrY = {1, 2, 3, 4, 5};
         ArrayTabulatedFunction func = new ArrayTabulatedFunction(arrX, arrY);
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(func);
-        Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]),wrapper.apply(-1) );
+        Assertions.assertEquals(arrY[0] + (arrY[1] - arrY[0]) / (arrX[1] - arrX[0]) * (-1 - arrX[0]), wrapper.apply(-1));
     }
 
     @Test
@@ -140,12 +137,12 @@ class SynchronizedTabulatedFunctionTest {
     }
 
     @Test
-    void iteratorTest1(){
+    void iteratorTest1() {
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(arr);
         Iterator<Point> iterator = wrapper.iterator();
         int j = 0;
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Point point = iterator.next();
             Assertions.assertEquals(point.x, wrapper.getX(j));
             Assertions.assertEquals(point.y, wrapper.getY(j++));
@@ -153,7 +150,7 @@ class SynchronizedTabulatedFunctionTest {
     }
 
     @Test
-    void iteratorTest2(){
+    void iteratorTest2() {
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(arr);
         int j = 0;
@@ -164,7 +161,7 @@ class SynchronizedTabulatedFunctionTest {
     }
 
     @Test
-    void sychronized(){
+    void sychronized() {
         ArrayTabulatedFunction arr = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
         SynchronizedTabulatedFunction wrapper = new SynchronizedTabulatedFunction(arr);
         Assertions.assertEquals(3.0, (double) wrapper.doSynchronously(SynchronizedTabulatedFunction::getCount));
@@ -182,31 +179,29 @@ class SynchronizedTabulatedFunctionTest {
         Assertions.assertEquals(3, wrapper.doSynchronously(SynchronizedTabulatedFunction::rightBound));
         Assertions.assertEquals(0, wrapper.getY(wrapper.getCount() - 1));
     }
+
     @Test
-    void iteratorSyncArr()
-    {
-        SynchronizedTabulatedFunction arr = new SynchronizedTabulatedFunction(new ArrayTabulatedFunction(new double[]{1,2,3},new double[]{4,5,6}));
+    void iteratorSyncArr() {
+        SynchronizedTabulatedFunction arr = new SynchronizedTabulatedFunction(new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{4, 5, 6}));
         Point[] points = new Point[3];
-        int i =0;
-        for(Point p: arr)
-        {
+        int i = 0;
+        for (Point p : arr) {
             points[i] = p;
             ++i;
         }
-        Assertions.assertArrayEquals(points,new Point[]{new Point(1,4),new Point(2,5),new Point(3,6),});
+        Assertions.assertArrayEquals(points, new Point[]{new Point(1, 4), new Point(2, 5), new Point(3, 6),});
     }
+
     @Test
-    void iteratorSyncLinkedList()
-    {
-        SynchronizedTabulatedFunction list = new SynchronizedTabulatedFunction(new LinkedListTabulatedFunction(new double[]{1,2,3},new double[]{4,5,6}));
+    void iteratorSyncLinkedList() {
+        SynchronizedTabulatedFunction list = new SynchronizedTabulatedFunction(new LinkedListTabulatedFunction(new double[]{1, 2, 3}, new double[]{4, 5, 6}));
         Point[] points = new Point[3];
-        int i =0;
-        for(Point p: list)
-        {
+        int i = 0;
+        for (Point p : list) {
             points[i] = p;
             ++i;
         }
-        Assertions.assertArrayEquals(points,new Point[]{new Point(1,4),new Point(2,5),new Point(3,6),});
+        Assertions.assertArrayEquals(points, new Point[]{new Point(1, 4), new Point(2, 5), new Point(3, 6),});
     }
 
 }
