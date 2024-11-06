@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ public final class FunctionEntity {
     private Modification_type mod;
     private String hash; // remake
     @Column(name = "arr_x", nullable = false)
-    private Double[] xArr;
+    private ArrayList<Double> xArr;
     @Column(name = "arr_y", nullable = false)
     private Double[] yArr;
 
@@ -38,6 +39,6 @@ public final class FunctionEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, mod, hash, Arrays.hashCode(xArr), Arrays.hashCode(yArr));
+
     }
 }
