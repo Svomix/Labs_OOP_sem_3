@@ -18,12 +18,8 @@ import java.util.Objects;
 @Table(name = "functions")
 public final class FunctionEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column(name = "modification", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Modification_type mod;
-    private String hash; // remake
+    @Column(name = "id")
+    private Integer hash;
     @Column(name = "arr_x", nullable = false)
     private ArrayList<Double> xArr;
     @Column(name = "arr_y", nullable = false)
@@ -34,11 +30,6 @@ public final class FunctionEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FunctionEntity that = (FunctionEntity) o;
-        return mod == that.mod && Objects.equals(hash, that.hash) && Objects.deepEquals(xArr, that.xArr) && Objects.deepEquals(yArr, that.yArr);
-    }
-
-    @Override
-    public int hashCode() {
-
+        return Objects.equals(hash, that.hash) && Objects.deepEquals(xArr, that.xArr) && Objects.deepEquals(yArr, that.yArr);
     }
 }
