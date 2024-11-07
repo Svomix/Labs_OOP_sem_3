@@ -8,50 +8,105 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 class MainDaoTest {
     private static final FunctionDaoImpl functionDaoImpl = new FunctionDaoImpl();
+    private static final PointDao pointDao = new PointDao();
 
     @BeforeAll
     static void tearDown() {
-        PointEntity pointEntity = PointEntity.builder()
-                .build();
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("linear")
                 .points(new ArrayList<>(){})
                 .build();
         functionDaoImpl.create(functionEntity);
+        PointEntity pointEntity = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(1.0)
+                .yValue(1.0)
+                .build();
+        pointDao.create(pointEntity);
+        PointEntity pointEntity1 = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(2.0)
+                .yValue(2.0)
+                .build();
+        pointDao.create(pointEntity1);
+        PointEntity pointEntity3 = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(3.0)
+                .yValue(3.0)
+                .build();
+        pointDao.create(pointEntity3);
+        PointEntity pointEntity4 = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(4.0)
+                .yValue(4.0)
+                .build();
+        pointDao.create(pointEntity4);
+        PointEntity pointEntity5 = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(5.0)
+                .yValue(5.0)
+                .build();
+        pointDao.create(pointEntity5);
+        List<PointEntity> pointEntities = new ArrayList<>();
+        pointEntities.add(pointEntity);
+        pointEntities.add(pointEntity1);
+        pointEntities.add(pointEntity3);
+        pointEntities.add(pointEntity4);
+        pointEntities.add(pointEntity5);
+        functionEntity.setPoints(pointEntities);
+        functionDaoImpl.update(functionEntity);
     }
 
     @Test
     void createTest() {
         FunctionEntity functionEntity = FunctionEntity.builder()
-                .hash(5451)
-                .xArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 6.0})
-                .yArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 7.0})
+                .functionType("tip")
+                .points(new ArrayList<>(){})
                 .build();
-        Assertions.assertEquals(functionEntity, functionDaoImpl.create(functionEntity));
-        FunctionEntity functionEntityReal = FunctionEntity.builder()
-                .hash("545521")
-                .xArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 6.0})
-                .yArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 7.0})
+        functionDaoImpl.create(functionEntity);
+        PointEntity pointEntity = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(1.0)
+                .yValue(1.0)
                 .build();
-        FunctionEntity functionEntity2 = functionDaoImpl.read("""
-                select * from labs.public.functions
-                where hash = '545521'
-                """);
-        Assertions.assertEquals(functionEntityReal, functionEntity2);
-        FunctionEntity functionEntity3 = functionDaoImpl.read("""
-                select * from labs.public.functions
-                where hash = '545521'
-                """);
-        functionEntity3.setMod(Modification_type.strictunmodifiable);
-        functionDaoImpl.update(functionEntity3);
-        Assertions.assertEquals(functionEntity3, functionDaoImpl.read("""
-                select * from labs.public.functions
-                where hash = '545521'
-                """));
+        pointDao.create(pointEntity);
+        PointEntity pointEntity1 = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(2.0)
+                .yValue(2.0)
+                .build();
+        pointDao.create(pointEntity1);
+        PointEntity pointEntity3 = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(3.0)
+                .yValue(3.0)
+                .build();
+        pointDao.create(pointEntity3);
+        PointEntity pointEntity4 = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(4.0)
+                .yValue(4.0)
+                .build();
+        pointDao.create(pointEntity4);
+        PointEntity pointEntity5 = PointEntity.builder()
+                .functionEntity(functionEntity)
+                .xValue(5.0)
+                .yValue(5.0)
+                .build();
+        pointDao.create(pointEntity5);
+        List<PointEntity> pointEntities = new ArrayList<>();
+        pointEntities.add(pointEntity);
+        pointEntities.add(pointEntity1);
+        pointEntities.add(pointEntity3);
+        pointEntities.add(pointEntity4);
+        pointEntities.add(pointEntity5);
+        functionEntity.setPoints(pointEntities);
+        functionDaoImpl.update(functionEntity);
     }
 
 
@@ -59,15 +114,10 @@ class MainDaoTest {
     static void tearDown2() {
         FunctionEntity functionEntity = functionDaoImpl.read("""
                 select * from labs.public.functions
-                where hash = '5451'
-                """);
-        FunctionEntity functionEntity2 = functionDaoImpl.read("""
-                select * from labs.public.functions
-                where hash = '545521'
+                where function_type = 'linear'
                 """);
 
         functionDaoImpl.delete(functionEntity);
-        functionDaoImpl.delete(functionEntity2);
     }
 
 }

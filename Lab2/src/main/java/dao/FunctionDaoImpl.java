@@ -12,9 +12,6 @@ public class FunctionDaoImpl implements DAO<FunctionEntity> {
         try (var session = sessionFactory.openSession()) {
             session.beginTransaction();
             session.save(ent);
-            for (var point : ent.getPoints()) {
-                session.save(point);
-            }
             session.getTransaction().commit();
         }
         return ent;
@@ -33,9 +30,6 @@ public class FunctionDaoImpl implements DAO<FunctionEntity> {
         try (var session = sessionFactory.openSession()) {
             session.beginTransaction();
             session.update(ent);
-            for (var point : ent.getPoints()) {
-                session.save(point);
-            }
             session.getTransaction().commit();
         }
         return ent;
