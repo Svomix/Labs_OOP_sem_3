@@ -1,11 +1,13 @@
 package dao;
 
 import entities.FunctionEntity;
-import entities.Modification_type;
+import entities.PointEntity;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 
 class MainDaoTest {
@@ -13,11 +15,11 @@ class MainDaoTest {
 
     @BeforeAll
     static void tearDown() {
-        FunctionEntity functionEntity = FunctionEntity.builder().id(2)
-                .mod(Modification_type.usual)
-                .hash("545521")
-                .xArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 6.0})
-                .yArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 7.0})
+        PointEntity pointEntity = PointEntity.builder()
+                .build();
+        FunctionEntity functionEntity = FunctionEntity.builder()
+                .functionType("linear")
+                .points(new ArrayList<>(){})
                 .build();
         functionDaoImpl.create(functionEntity);
     }
@@ -25,14 +27,12 @@ class MainDaoTest {
     @Test
     void createTest() {
         FunctionEntity functionEntity = FunctionEntity.builder()
-                .mod(Modification_type.strict)
-                .hash("5451")
+                .hash(5451)
                 .xArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 6.0})
                 .yArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 7.0})
                 .build();
         Assertions.assertEquals(functionEntity, functionDaoImpl.create(functionEntity));
         FunctionEntity functionEntityReal = FunctionEntity.builder()
-                .mod(Modification_type.usual)
                 .hash("545521")
                 .xArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 6.0})
                 .yArr(new Double[]{1.0, 2.0, 3.0, 4.0, 5.0, 7.0})

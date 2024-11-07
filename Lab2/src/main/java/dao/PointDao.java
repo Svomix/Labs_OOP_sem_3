@@ -1,50 +1,48 @@
 package dao;
 
-import entities.FunctionEntity;
+import entities.PointEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
 
-public class FunctionDaoImpl implements DAO<FunctionEntity> {
+public class PointDao implements DAO<PointEntity> {
     private static final SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
 
-    public FunctionEntity create(FunctionEntity ent) {
+    @Override
+    public PointEntity create(PointEntity entity) {
         try (var session = sessionFactory.openSession()) {
             session.beginTransaction();
-            session.save(ent);
-            for (var point : ent.getPoints()) {
-                session.save(point);
-            }
+            session.save(entity);
             session.getTransaction().commit();
         }
-        return ent;
+        return entity;
     }
 
-    public FunctionEntity read(String query) {
+    @Override
+    public PointEntity read(String query) {
         try (var session = sessionFactory.openSession()) {
             session.beginTransaction();
-            Query<FunctionEntity> query1 = session.createNativeQuery(query, FunctionEntity.class);
+            Query<PointEntity> query1 = session.createNativeQuery(query, PointEntity.class);
             session.getTransaction().commit();
             return query1.uniqueResult();
         }
     }
 
-    public FunctionEntity update(FunctionEntity ent) {
+    @Override
+    public PointEntity update(PointEntity entity) {
         try (var session = sessionFactory.openSession()) {
             session.beginTransaction();
-            session.update(ent);
-            for (var point : ent.getPoints()) {
-                session.save(point);
-            }
+            session.update(entity);
             session.getTransaction().commit();
         }
-        return ent;
+        return entity;
     }
 
-    public void delete(FunctionEntity ent) {
+    @Override
+    public void delete(PointEntity entity) {
         try (var session = sessionFactory.openSession()) {
             session.beginTransaction();
-            session.delete(ent);
+            session.delete(entity);
             session.getTransaction().commit();
         }
     }

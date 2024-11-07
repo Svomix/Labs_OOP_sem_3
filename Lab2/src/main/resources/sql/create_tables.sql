@@ -5,7 +5,7 @@ CREATE TABLE functions (
 
 create table points(
     id serial primary key,
-    function_id integer references functions(id) not null,
+    function_id integer references functions(id) ON DELETE CASCADE not null,
     y double precision,
     x double precision
 );
