@@ -6,7 +6,7 @@ import entities.FunctionEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 
-public class FunctionServiceImpl implements FunctionService {
+public class FunctionServiceImpl implements Service<FunctionEntity> {
     private static final DAO<FunctionEntity> functionDAO = new FunctionDaoImpl();
 
     /*
