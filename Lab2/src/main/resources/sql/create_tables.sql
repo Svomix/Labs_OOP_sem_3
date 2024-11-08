@@ -5,7 +5,15 @@ CREATE TABLE functions (
 
 create table points(
     id serial primary key,
-    function_id integer references functions(id) ON DELETE CASCADE not null,
+    function_id integer,
     y double precision,
-    x double precision
+    x double precision,
+    FOREIGN KEY (function_id) references functions(id) ON DELETE CASCADE
+);
+
+CREATE TABLE log
+(
+    id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMP NOT NULL,
+    message VARCHAR(255) NOT NULL
 );
