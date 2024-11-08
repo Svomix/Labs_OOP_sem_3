@@ -21,14 +21,6 @@ public final class FunctionEntity {
     private Integer id;
     @Column(name = "function_type", nullable = false)
     private String functionType;
-    @OneToMany(mappedBy = "functionEntity")
+    @OneToMany(mappedBy = "functionEntity",cascade = CascadeType.ALL)
     private List<PointEntity> points;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FunctionEntity that = (FunctionEntity) o;
-        return Objects.equals(functionType, that.functionType) && points.equals(that.points);
-    }
 }
