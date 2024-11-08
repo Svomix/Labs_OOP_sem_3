@@ -3,7 +3,6 @@ package dao;
 import entities.FunctionEntity;
 import entities.PointEntity;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +18,8 @@ class MainDaoTest {
     static void tearDown() {
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("linear")
-                .points(new ArrayList<>(){})
+                .points(new ArrayList<>() {
+                })
                 .build();
         functionDaoImpl.create(functionEntity);
         PointEntity pointEntity = PointEntity.builder()
@@ -68,7 +68,8 @@ class MainDaoTest {
     void createTest() {
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("tip")
-                .points(new ArrayList<>(){})
+                .points(new ArrayList<>() {
+                })
                 .build();
         functionDaoImpl.create(functionEntity);
         PointEntity pointEntity = PointEntity.builder()

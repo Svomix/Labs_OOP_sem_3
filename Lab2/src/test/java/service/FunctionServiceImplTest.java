@@ -3,7 +3,6 @@ package service;
 import entities.FunctionEntity;
 import entities.PointEntity;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +12,13 @@ import java.util.List;
 class FunctionServiceImplTest {
     private static final Service<FunctionEntity> functionService = new FunctionServiceImpl();
     private static final Service<PointEntity> pointService = new PointService();
+
     @BeforeAll
     static void tearDown() {
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("linea")
-                .points(new ArrayList<>(){})
+                .points(new ArrayList<>() {
+                })
                 .build();
         functionService.create(functionEntity);
         PointEntity pointEntity = PointEntity.builder()
@@ -64,7 +65,8 @@ class FunctionServiceImplTest {
     void create() {
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("tips")
-                .points(new ArrayList<>(){})
+                .points(new ArrayList<>() {
+                })
                 .build();
         functionService.create(functionEntity);
         PointEntity pointEntity = PointEntity.builder()
