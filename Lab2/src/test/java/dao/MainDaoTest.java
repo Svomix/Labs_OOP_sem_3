@@ -46,6 +46,8 @@ class MainDaoTest {
                 .yValue(4.0)
                 .build();
         pointDao.create(pointEntity4);
+        pointEntity4.setYValue(6.0);
+        pointDao.update(pointEntity4);
         PointEntity pointEntity5 = PointEntity.builder()
                 .functionEntity(functionEntity)
                 .xValue(5.0)
@@ -75,6 +77,12 @@ class MainDaoTest {
                 .yValue(1.0)
                 .build();
         pointDao.create(pointEntity);
+        PointEntity pointRead = pointDao.read("""
+                select * from labs.public.points
+                where function_type = 'tip' and yValue = 1.0
+                """);
+        pointRead.setYValue(50.0);
+        pointDao.update(pointRead);
         PointEntity pointEntity1 = PointEntity.builder()
                 .functionEntity(functionEntity)
                 .xValue(2.0)
@@ -112,11 +120,20 @@ class MainDaoTest {
 
     @AfterAll
     static void tearDown2() {
+        PointEntity pointRead = pointDao.read("""
+                select * from labs.public.points
+                where function_type = 'tip' and yValue = 50.0
+                """);
+        pointDao.delete(pointRead);
         FunctionEntity functionEntity = functionDaoImpl.read("""
                 select * from labs.public.functions
                 where function_type = 'linear'
                 """);
-
+        FunctionEntity functionEntity2 = functionDaoImpl.read("""
+                select * from labs.public.functions
+                where function_type = 'tip'
+                """);
+        functionDaoImpl.delete(functionEntity2);
         functionDaoImpl.delete(functionEntity);
     }
 
