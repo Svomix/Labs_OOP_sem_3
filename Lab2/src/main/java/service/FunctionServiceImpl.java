@@ -1,13 +1,13 @@
 package service;
 
 import dao.DAO;
-import dao.FunctionDaoImpl;
+import dao.FunctionDao;
 import entities.FunctionEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 
 public class FunctionServiceImpl implements Service<FunctionEntity> {
-    private static final DAO<FunctionEntity> functionDAO = new FunctionDaoImpl();
+    private static final DAO<FunctionEntity> functionDAO = new FunctionDao();
 
     /*
     public void setFunctionDAO(FunctionDAO functionDAO) {

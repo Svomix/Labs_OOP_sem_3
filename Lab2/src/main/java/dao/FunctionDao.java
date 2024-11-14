@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
 
-public class FunctionDaoImpl implements DAO<FunctionEntity> {
+public class FunctionDao implements DAO<FunctionEntity> {
     private static final SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
 
     public FunctionEntity create(FunctionEntity ent) {

@@ -17,3 +17,10 @@ CREATE TABLE log
     timestamp TIMESTAMP NOT NULL,
     message VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE users
+(
+    id SERIAL PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL
+    password varchar NOT NULL
+)

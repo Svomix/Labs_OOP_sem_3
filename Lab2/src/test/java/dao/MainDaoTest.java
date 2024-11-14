@@ -3,7 +3,6 @@ package dao;
 import entities.FunctionEntity;
 import entities.PointEntity;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ import java.util.List;
 
 
 class MainDaoTest {
-    private static final FunctionDaoImpl functionDaoImpl = new FunctionDaoImpl();
+    private static final FunctionDao functionDaoImpl = new FunctionDao();
     private static final PointDao pointDao = new PointDao();
 
     @BeforeAll

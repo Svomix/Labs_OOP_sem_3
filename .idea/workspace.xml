@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="queries and fix entity">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/Integrate.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/Integrate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/SynchronizedTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/SynchronizedTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/mock/MockTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/functions/mock/MockTabulatedFunctionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/dao/FunctionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/dao/FunctionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/service/FunctionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/service/FunctionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/resources/sql/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/resources/sql/create_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/dao/MainDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/dao/MainDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,43 +53,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.CompositeFunctionTest.applyCompositeFuncIdentify.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompositeFunctionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ConstantFunctionTest.applyTest1.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.IdentityFunctionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.java in Labs_OOP_sem_3.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Projects/Labs_OOP_sem_3/Lab2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Projects/_NAME_-_PROJECT_/src/main/java/elephant-lab2/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Debug",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify.executor": "Run",
+    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2.executor": "Run",
+    "JUnit.CompositeFunctionTest.executor": "Run",
+    "JUnit.ConstantFunctionTest.applyTest1.executor": "Run",
+    "JUnit.IdentityFunctionTest.executor": "Run",
+    "JUnit.MainDaoTest.createTest.executor": "Run",
+    "JUnit.java in Labs_OOP_sem_3.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Projects/Labs_OOP_sem_3/Lab2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "E:/Projects/_NAME_-_PROJECT_/src/main/java/elephant-lab2/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Projects\_NAME_-_PROJECT_\src\main\java\elephant_lab2\functions" />
@@ -101,7 +101,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.java in Labs_OOP_sem_3">
+  <component name="RunManager" selected="JUnit.MainDaoTest.createTest">
     <configuration name="CompositeFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
@@ -113,22 +113,6 @@
       <option name="PACKAGE_NAME" value="functions" />
       <option name="MAIN_CLASS_NAME" value="functions.CompositeFunctionTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CompositeFunctionTest.applyCompositeFuncIdentify2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="elephant_lab2.functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="functions" />
-      <option name="MAIN_CLASS_NAME" value="functions.CompositeFunctionTest" />
-      <option name="METHOD_NAME" value="applyCompositeFuncIdentify2" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -164,6 +148,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainDaoTest.createTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.MainDaoTest" />
+      <option name="METHOD_NAME" value="createTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="java in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="TEST_OBJECT" value="directory" />
@@ -187,11 +187,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MainDaoTest.createTest" />
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.ConstantFunctionTest.applyTest1" />
         <item itemvalue="JUnit.IdentityFunctionTest" />
         <item itemvalue="JUnit.CompositeFunctionTest" />
-        <item itemvalue="JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2" />
       </list>
     </recent_temporary>
   </component>
@@ -216,10 +216,43 @@
       <workItem from="1730115956315" duration="11000" />
       <workItem from="1730115981058" duration="60000" />
       <workItem from="1730555353289" duration="4630000" />
+      <workItem from="1731072920312" duration="3791000" />
+      <workItem from="1731602773114" duration="3024000" />
     </task>
+    <task id="LOCAL-00001" summary="Entites">
+      <option name="closed" value="true" />
+      <created>1730997849430</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730997849430</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Log">
+      <option name="closed" value="true" />
+      <created>1731074110727</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731074110727</updated>
+    </task>
+    <task id="LOCAL-00003" summary="queries and fix entity">
+      <option name="closed" value="true" />
+      <created>1731075063210</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731075063210</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Entites" />
+    <MESSAGE value="Log" />
+    <MESSAGE value="queries and fix entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="queries and fix entity" />
   </component>
 </project>
