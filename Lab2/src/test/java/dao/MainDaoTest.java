@@ -18,7 +18,8 @@ class MainDaoTest {
     static void tearDown() {
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("linear")
-                .points(new ArrayList<>(){})
+                .points(new ArrayList<>() {
+                })
                 .build();
         functionDaoImpl.create(functionEntity);
         PointEntity pointEntity = PointEntity.builder()
@@ -67,7 +68,8 @@ class MainDaoTest {
     void createTest() {
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("tip")
-                .points(new ArrayList<>(){})
+                .points(new ArrayList<>() {
+                })
                 .build();
         functionDaoImpl.create(functionEntity);
         PointEntity pointEntity = PointEntity.builder()
@@ -78,7 +80,7 @@ class MainDaoTest {
         pointDao.create(pointEntity);
         PointEntity pointRead = pointDao.read("""
                 select p.id, p.function_id, p.y, p.x from labs.public.points p,labs.public.functions f
-                where p.function_id = (select t.id from labs.public.functions t where t.function_type = 'tip') and p.y = 1.0
+                where p.function_id = (select t.id from labs.public.functions t where t.function_type = 'linear') and p.y = 1.0
                 """);
         pointRead.setYValue(50.0);
         pointDao.update(pointRead);
@@ -121,7 +123,7 @@ class MainDaoTest {
     static void tearDown2() {
         PointEntity pointRead = pointDao.read("""
                 select p.id, p.function_id, p.y, p.x from labs.public.points p,labs.public.functions f
-                where p.function_id = (select t.id from labs.public.functions t where t.function_type = 'tip') and p.y = 50.0
+                where p.function_id = (select t.id from labs.public.functions t where t.function_type = 'linear') and p.y = 50.0
                 """);
         pointDao.delete(pointRead);
         FunctionEntity functionEntity = functionDaoImpl.read("""

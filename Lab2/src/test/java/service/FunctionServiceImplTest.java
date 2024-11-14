@@ -3,7 +3,6 @@ package service;
 import entities.FunctionEntity;
 import entities.PointEntity;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -13,11 +12,13 @@ import java.util.List;
 class FunctionServiceImplTest {
     private static final Service<FunctionEntity> functionService = new FunctionServiceImpl();
     private static final Service<PointEntity> pointService = new PointService();
+
     @BeforeAll
     static void tearDown() {
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("linea")
-                .points(new ArrayList<>(){})
+                .points(new ArrayList<>() {
+                })
                 .build();
         functionService.create(functionEntity);
         PointEntity pointEntity = PointEntity.builder()
@@ -64,7 +65,8 @@ class FunctionServiceImplTest {
     void create() {
         FunctionEntity functionEntity = FunctionEntity.builder()
                 .functionType("tips")
-                .points(new ArrayList<>(){})
+                .points(new ArrayList<>() {
+                })
                 .build();
         functionService.create(functionEntity);
         PointEntity pointEntity = PointEntity.builder()
@@ -75,7 +77,7 @@ class FunctionServiceImplTest {
         pointService.create(pointEntity);
         PointEntity pointRead = pointService.read("""
                 select p.id, p.function_id, p.y, p.x from labs.public.points p,labs.public.functions f
-                where p.function_id = (select t.id from labs.public.functions t where t.function_type = 'tips') and p.y = 1.0
+                where p.function_id = (select t.id from labs.public.functions t where t.function_type = 'linea') and p.y = 1.0
                 """);
         pointRead.setYValue(50.0);
         pointService.update(pointRead);
@@ -118,7 +120,7 @@ class FunctionServiceImplTest {
     static void tearDown2() {
         PointEntity pointRead = pointService.read("""
                 select p.id, p.function_id, p.y, p.x from labs.public.points p,labs.public.functions f
-                where p.function_id = (select t.id from labs.public.functions t where t.function_type = 'tips') and p.y = 50.0
+                where p.function_id = (select t.id from labs.public.functions t where t.function_type = 'linea') and p.y = 50.0
                 """);
         pointService.delete(pointRead);
         FunctionEntity functionEntity = functionService.read("""

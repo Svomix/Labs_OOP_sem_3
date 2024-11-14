@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +20,6 @@ public final class FunctionEntity {
     private Integer id;
     @Column(name = "function_type", nullable = false)
     private String functionType;
-    @OneToMany(mappedBy = "functionEntity",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "functionEntity", cascade = CascadeType.ALL)
     private List<PointEntity> points;
 }
