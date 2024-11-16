@@ -5,8 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
 
-public class UserDao implements DAO<User>
-{
+public class UserDao implements DAO<User> {
     private static final SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
 
     @Override
