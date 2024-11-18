@@ -4,109 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="queries and fix entity">
-      <change afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/FunctionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/PointRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/entities/FunctionEntityTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/FunctionRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/PointRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/Integrate.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/Integrate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/MultiplyingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/MultiplyingTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/MultiplyingTaskExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/MultiplyingTaskExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/ReadTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/ReadTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/ReadWriteTaskExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/ReadWriteTaskExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/SynchronizedTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/SynchronizedTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/concurrent/WriteTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/WriteTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dao/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/dao/FunctionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dao/FunctionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/dao/PointDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dao/PointDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/entities/FunctionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/FunctionEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/entities/PointEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/PointEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/entities/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/exceptions/ArrayIsNotSortedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/exceptions/ArrayIsNotSortedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/exceptions/DifferentLengthOfArraysException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/exceptions/DifferentLengthOfArraysException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/exceptions/InconsistentFunctionsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/exceptions/InconsistentFunctionsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/exceptions/InterpolationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/exceptions/InterpolationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/AbstractTabulateFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/AbstractTabulateFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/ArrayTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/ArrayTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/BSpline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/BSpline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/CompositeFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/CompositeFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/ConstantFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/ConstantFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/DeBoorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/DeBoorFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/DifferentialEquations.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/DifferentialEquations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/IdentityFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/IdentityFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/Insertable.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/Insertable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/LinkedListTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/MathFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/MathFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/Removable.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/Removable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/RungeKuttaFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/RungeKuttaFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/SqrFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/SqrFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/StrictTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/StrictTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/TabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/TabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/UnitFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/UnitFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/UnmodifiableTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/UnmodifiableTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/ZeroFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/ZeroFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/factory/ArrayTabulatedFunctionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/factory/ArrayTabulatedFunctionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/factory/LinkedListTabulatedFunctionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/factory/LinkedListTabulatedFunctionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/factory/TabulatedFunctionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/factory/TabulatedFunctionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/functions/mock/MockTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/mock/MockTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/ArrayTabulatedFunctionJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/ArrayTabulatedFunctionJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/ArrayTabulatedFunctionSerialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/ArrayTabulatedFunctionSerialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/ArrayTabulatedFunctionXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/ArrayTabulatedFunctionXML.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/FunctionsIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/FunctionsIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/LinkedListTabulatedFunctionSerialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/LinkedListTabulatedFunctionSerialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/TabulatedFunctionFileInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/TabulatedFunctionFileInputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/TabulatedFunctionFileOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/TabulatedFunctionFileOutputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/TabulatedFunctionFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/TabulatedFunctionFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/io/TabulatedFunctionFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/io/TabulatedFunctionFileWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/operations/DifferentialOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/operations/DifferentialOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/operations/LeftSteppingDifferentialOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/operations/LeftSteppingDifferentialOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/operations/MiddleSteppingDifferentialOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/operations/MiddleSteppingDifferentialOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/operations/RightSteppingDifferentialOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/operations/RightSteppingDifferentialOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/operations/SteppingDifferentialOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/operations/SteppingDifferentialOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/operations/TabulatedDifferentialOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/operations/TabulatedDifferentialOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/operations/TabulatedFunctionOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/operations/TabulatedFunctionOperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/service/FunctionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/FunctionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/service/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/PointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/util/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/util/HibernateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/concurrent/IntegrateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/concurrent/IntegrateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/concurrent/SynchronizedTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/concurrent/SynchronizedTabulatedFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/dao/MainDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/dao/MainDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/entities/FunctionEntityTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/AbstractTabulateFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/AbstractTabulateFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/ArrayTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/ArrayTabulatedFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/ComplexCompositeFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/ComplexCompositeFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/CompositeFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/CompositeFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/ConstantFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/ConstantFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/DeBoorFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/DeBoorFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/IdentityFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/IdentityFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/InsertTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/InsertTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/LinkedListTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/LinkedListTabulatedFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/MathFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/MathFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/RungeKuttaFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/RungeKuttaFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/SqrFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/SqrFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/StrictAndUnmodTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/StrictAndUnmodTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/StrictTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/StrictTabulatedFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/UnitFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/UnitFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/UnmodifiableTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/UnmodifiableTabulatedFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/ZeroFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/ZeroFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/factory/ArrayTabulatedFunctionFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/factory/ArrayTabulatedFunctionFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/factory/LinkedListTabulatedFunctionFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/factory/LinkedListTabulatedFunctionFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/factory/TabulatedFunctionFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/factory/TabulatedFunctionFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/functions/mock/MockTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/functions/mock/MockTabulatedFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/io/FunctionsIOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/io/FunctionsIOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/io/SerializedXMLTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/io/SerializedXMLTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/operations/LeftSteppingDifferentialOperatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/operations/LeftSteppingDifferentialOperatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/operations/MiddleSteppingDifferentialOperatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/operations/MiddleSteppingDifferentialOperatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/operations/RightSteppingDifferentialOperatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/operations/RightSteppingDifferentialOperatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/operations/TabulatedDifferentialOperatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/operations/TabulatedDifferentialOperatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/operations/TabulatedFunctionOperationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/operations/TabulatedFunctionOperationServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/service/FunctionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/FunctionServiceImplTest.java" afterDir="false" />
+    <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="Refactoring and repos">
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/repositories/UserRepository.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +59,7 @@
     "JUnit.FunctionRepositoryTest.createTest.executor": "Run",
     "JUnit.IdentityFunctionTest.executor": "Run",
     "JUnit.MainDaoTest.createTest.executor": "Run",
-    "JUnit.PointRepositoryTest.createTest.executor": "Debug",
+    "JUnit.PointRepositoryTest.createTest.executor": "Run",
     "JUnit.UserRepositoryTest (1).executor": "Run",
     "JUnit.UserRepositoryTest.createTest.executor": "Run",
     "JUnit.UserRepositoryTest.executor": "Run",
@@ -385,7 +284,7 @@
       <workItem from="1731928311165" duration="33000" />
       <workItem from="1731928355501" duration="60000" />
       <workItem from="1731928436703" duration="5360000" />
-      <workItem from="1731953973645" duration="3576000" />
+      <workItem from="1731953973645" duration="3888000" />
     </task>
     <task id="LOCAL-00001" summary="Entites">
       <option name="closed" value="true" />
@@ -411,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731075063210</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactoring and repos">
+      <option name="closed" value="true" />
+      <created>1731957760866</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731957760866</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,7 +339,8 @@
     <MESSAGE value="Entites" />
     <MESSAGE value="Log" />
     <MESSAGE value="queries and fix entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="queries and fix entity" />
+    <MESSAGE value="Refactoring and repos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring and repos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -445,11 +353,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/PointRepositoryTest.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
