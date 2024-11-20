@@ -20,4 +20,12 @@ public class FunctionRepositoryTest
         functionRepository.save(function);
         Assertions.assertNotNull(functionRepository.findById(function.getId()));
     }
+    @Test
+    public void FindByNameTest()
+    {
+        FunctionEntity function = new FunctionEntity(1,"asd",new ArrayList<>());
+        functionRepository.save(function);
+        var f = functionRepository.findByName(function.getName());
+        Assertions.assertEquals(function.getName(),f.getName());
+    }
 }

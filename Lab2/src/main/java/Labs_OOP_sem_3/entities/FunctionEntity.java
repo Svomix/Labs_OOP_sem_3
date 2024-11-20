@@ -20,6 +20,6 @@ public final class FunctionEntity {
     private Integer id;
     @Column(name = "function_type", nullable = false)
     private String name;
-    @OneToMany(mappedBy = "functionEntity", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "function", cascade = CascadeType.ALL)
     private List<PointEntity> points;
 }

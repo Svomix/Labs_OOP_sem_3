@@ -18,4 +18,12 @@ public class UserRepositoryTest
         userRepository.save(user);
         Assertions.assertNotNull(userRepository.findById(user.getId()));
     }
+    @Test
+    public void findByUsername()
+    {
+        UserEntity user = new UserEntity(1,"2","3");
+        userRepository.save(user);
+        var u = userRepository.findByUsername(user.getUsername());
+        Assertions.assertEquals(user.getId(),u.get().getId());
+    }
 }

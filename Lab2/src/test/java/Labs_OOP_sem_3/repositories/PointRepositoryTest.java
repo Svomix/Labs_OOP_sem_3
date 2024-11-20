@@ -9,21 +9,35 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 @SpringBootTest(classes = Application.class)
-public class PointRepositoryTest
-{
+public class PointRepositoryTest {
     @Autowired
     private PointRepository pointRepository;
     @Autowired
     private FunctionRepository functionRepository;
+
     @Test
-    public void createTest()
-    {
-        var func = new FunctionEntity(1,"12",new ArrayList<>());
-        var pointEntity = new PointEntity(1,func,3.0,4.0);
+    public void createTest() {
+        var func = new FunctionEntity(1, "12", new ArrayList<>());
+        var pointEntity = new PointEntity(1, func, 3.0, 4.0);
         func.setPoints(Arrays.asList(pointEntity));
         pointRepository.save(pointEntity);
         Assertions.assertNotNull(pointRepository.findById(1));
+    }
+
+    @Test
+    public void findByFunctionTest() {
+
+
+        ArrayList<PointEntity> list = new ArrayList<>();
+        var func = new FunctionEntity(1, "12", list);
+        list.add(new PointEntity(1, func, 3.0, 4.0));
+        list.add(new PointEntity(2, func, 4.0, 5.0));
+        list.add(new PointEntity(3, func, 5.0, 6.0));
+        functionRepository.save(func);
+
+        Assertions.assertEquals(3, pointRepository.findByFunction(func.getId()).size());
     }
 }

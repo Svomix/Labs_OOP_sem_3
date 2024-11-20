@@ -19,7 +19,7 @@ public class PointEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "function_id", nullable = false)
-    private FunctionEntity functionEntity;
+    private FunctionEntity function;
 
     @Column(name = "x", nullable = false)
     private Double xValue;
