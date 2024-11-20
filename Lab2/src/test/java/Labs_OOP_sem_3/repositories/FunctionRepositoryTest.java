@@ -1,6 +1,5 @@
 package Labs_OOP_sem_3.repositories;
 import Labs_OOP_sem_3.entities.FunctionEntity;
-import Labs_OOP_sem_3.entities.User;
 import Labs_OOP_sem_3.App.Application;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;

@@ -1,10 +1,23 @@
 package Labs_OOP_sem_3.repositories;
 
-import Labs_OOP_sem_3.entities.User;
+import Labs_OOP_sem_3.entities.UserEntity;
+import Labs_OOP_sem_3.service.UserService;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>
+@Transactional
+public interface UserRepository extends JpaRepository<UserEntity, Integer>
 {
+    Optional<UserEntity> findByUsername(String name);
+    void deleteByUsername(@Param("username") String username);
+    void updateByUsername(@Param("username") String username, @Param("password") String password);
+    void createUser(@Param("username") String username, @Param("password") String password);
+
 }

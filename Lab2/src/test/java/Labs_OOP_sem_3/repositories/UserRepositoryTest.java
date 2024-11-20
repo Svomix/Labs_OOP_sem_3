@@ -1,5 +1,5 @@
 package Labs_OOP_sem_3.repositories;
-import Labs_OOP_sem_3.entities.User;
+import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.App.Application;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -14,7 +14,7 @@ public class UserRepositoryTest
     @Test
     public void createTest()
     {
-        User user = new User(1,"2","3");
+        UserEntity user = new UserEntity(1,"2","3");
         userRepository.save(user);
         Assertions.assertNotNull(userRepository.findById(user.getId()));
     }
