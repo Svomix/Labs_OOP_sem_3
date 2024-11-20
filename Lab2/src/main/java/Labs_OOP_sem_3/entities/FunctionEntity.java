@@ -19,7 +19,7 @@ public final class FunctionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "function_type", nullable = false)
-    private String functionType;
+    private String name;
     @OneToMany(mappedBy = "functionEntity", cascade = CascadeType.ALL)
     private List<PointEntity> points;
 }

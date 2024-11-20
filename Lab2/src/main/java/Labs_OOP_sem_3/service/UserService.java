@@ -21,16 +21,20 @@ public class UserService implements UserDetailsManager
 
     @Override
     public void createUser(UserDetails user) {
-        userRepository.createUser(user.getUsername(), user.getPassword());
+        userRepository.save((UserEntity) user);
     }
 
     @Override
     public void updateUser(UserDetails user) {
-        userRepository.updateByUsername(user.getUsername(), user.getPassword());
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(user.getUsername());
+        userEntity.setPassword(user.getPassword());
+        userRepository.save(userEntity);
     }
+
     @Override
     public void deleteUser(String username) {
-        userRepository.deleteByUsername(username);
+        userRepository.delete(userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username)));
     }
 
     @Override

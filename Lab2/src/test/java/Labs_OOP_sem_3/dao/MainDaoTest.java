@@ -19,7 +19,7 @@ class MainDaoTest {
     @BeforeAll
     static void tearDown() {
         FunctionEntity functionEntity = FunctionEntity.builder()
-                .functionType("linear")
+                .name("linear")
                 .points(new ArrayList<>() {
                 })
                 .build();
@@ -69,7 +69,7 @@ class MainDaoTest {
     @Test
     void createTest() {
         FunctionEntity functionEntity = FunctionEntity.builder()
-                .functionType("tip")
+                .name("tip")
                 .points(new ArrayList<>() {
                 })
                 .build();

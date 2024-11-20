@@ -19,7 +19,7 @@ class FunctionServiceImplTest {
     @BeforeAll
     static void tearDown() {
         FunctionEntity functionEntity = FunctionEntity.builder()
-                .functionType("linea")
+                .name("linea")
                 .points(new ArrayList<>() {
                 })
                 .build();
@@ -67,7 +67,7 @@ class FunctionServiceImplTest {
     @Test
     void create() {
         FunctionEntity functionEntity = FunctionEntity.builder()
-                .functionType("tips")
+                .name("tips")
                 .points(new ArrayList<>() {
                 })
                 .build();

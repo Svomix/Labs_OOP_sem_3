@@ -18,24 +18,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UserController {
     private final UserRepository userRepository;
-    private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
                         Model model,
                         HttpServletRequest request) {
-        try {
-            // Создаем объект аутентификации
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(username, password)
-            );
             return "redirect:/home";
-        } catch (Exception e) {
-            // Если аутентификация не удалась, показываем ошибку
-            model.addAttribute("error", "Неверное имя пользователя или пароль");
-            return "login";
-        }
     }
         @PostMapping("/register")
         public ResponseEntity<String> registerUser (@RequestBody UserDto userDto){
@@ -44,7 +33,7 @@ public class UserController {
             }
 
             UserEntity newUser = new UserEntity();
-            newUser.setUserName(userDto.getName());
+            newUser.setUsername(userDto.getName());
             userRepository.save(newUser);
             return ResponseEntity.ok("Пользователь зарегистрирован");
         }

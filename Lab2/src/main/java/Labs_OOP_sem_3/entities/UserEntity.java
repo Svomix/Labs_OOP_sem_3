@@ -11,7 +11,6 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Builder
 @Entity
 @Table(name = "users")
@@ -20,7 +19,7 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "user_name", nullable = false)
-    private String userName;
+    private String username;
     @Column(nullable = false)
     private String password;
 
@@ -31,7 +30,7 @@ public class UserEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override

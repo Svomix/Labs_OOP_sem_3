@@ -15,9 +15,5 @@ import java.util.Optional;
 @Transactional
 public interface UserRepository extends JpaRepository<UserEntity, Integer>
 {
-    Optional<UserEntity> findByUsername(String name);
-    void deleteByUsername(@Param("username") String username);
-    void updateByUsername(@Param("username") String username, @Param("password") String password);
-    void createUser(@Param("username") String username, @Param("password") String password);
-
+    Optional<UserEntity> findByUsername(String username);
 }
