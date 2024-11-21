@@ -1,7 +1,6 @@
 package Labs_OOP_sem_3.concurrent;
 
 
-import Labs_OOP_sem_3.concurrent.SynchronizedTabulatedFunction;
 import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
 import Labs_OOP_sem_3.functions.LinkedListTabulatedFunction;
 import Labs_OOP_sem_3.functions.Point;

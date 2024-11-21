@@ -2,26 +2,34 @@ package Labs_OOP_sem_3.service;
 
 import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.repositories.UserRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @Service
-public class UserService implements UserDetailsManager
-{
+public class UserService implements UserDetailsManager {
+
     private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
-        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 
     @Override
     public void createUser(UserDetails user) {
-        userRepository.save((UserEntity) user);
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(user.getUsername());
+        userEntity.setPassword(user.getPassword());
+        userRepository.save(userEntity);
     }
 
     @Override
@@ -41,8 +49,9 @@ public class UserService implements UserDetailsManager
     public void changePassword(String oldPassword, String newPassword) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
     @Override
     public boolean userExists(String username) {
-        return userRepository.findByUsername(username) != null;
+        return userRepository.findByUsername(username).isPresent();
     }
 }

@@ -3,9 +3,6 @@ package Labs_OOP_sem_3.functions;
 import Labs_OOP_sem_3.exceptions.ArrayIsNotSortedException;
 import Labs_OOP_sem_3.exceptions.DifferentLengthOfArraysException;
 import Labs_OOP_sem_3.exceptions.InterpolationException;
-import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
-import Labs_OOP_sem_3.functions.Point;
-import Labs_OOP_sem_3.functions.SqrFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

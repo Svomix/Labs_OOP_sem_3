@@ -1,31 +1,31 @@
 package Labs_OOP_sem_3.repositories;
-import Labs_OOP_sem_3.entities.FunctionEntity;
+
 import Labs_OOP_sem_3.App.Application;
-import org.junit.jupiter.api.Test;
+import Labs_OOP_sem_3.entities.FunctionEntity;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 
 @SpringBootTest(classes = Application.class)
-public class FunctionRepositoryTest
-{
+public class FunctionRepositoryTest {
     @Autowired
     private FunctionRepository functionRepository;
+
     @Test
-    public void createTest()
-    {
-        FunctionEntity function = new FunctionEntity(1,"asd",new ArrayList<>());
+    public void createTest() {
+        FunctionEntity function = new FunctionEntity(1, "asd", new ArrayList<>());
         functionRepository.save(function);
         Assertions.assertNotNull(functionRepository.findById(function.getId()));
     }
+
     @Test
-    public void FindByNameTest()
-    {
-        FunctionEntity function = new FunctionEntity(1,"asd",new ArrayList<>());
+    public void FindByNameTest() {
+        FunctionEntity function = new FunctionEntity(1, "asd", new ArrayList<>());
         functionRepository.save(function);
         var f = functionRepository.findByName(function.getName());
-        Assertions.assertEquals(function.getName(),f.getName());
+        Assertions.assertEquals(function.getName(), f.getName());
     }
 }

@@ -1,8 +1,6 @@
 package Labs_OOP_sem_3.functions;
 
 
-import Labs_OOP_sem_3.functions.DifferentialEquations;
-import Labs_OOP_sem_3.functions.RungeKuttaFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -3,7 +3,6 @@ package Labs_OOP_sem_3.operations;
 
 import Labs_OOP_sem_3.functions.MathFunction;
 import Labs_OOP_sem_3.functions.SqrFunction;
-import Labs_OOP_sem_3.operations.RightSteppingDifferentialOperator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

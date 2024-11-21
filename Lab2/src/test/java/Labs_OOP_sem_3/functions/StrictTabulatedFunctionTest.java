@@ -1,9 +1,5 @@
 package Labs_OOP_sem_3.functions;
 
-import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
-import Labs_OOP_sem_3.functions.LinkedListTabulatedFunction;
-import Labs_OOP_sem_3.functions.Point;
-import Labs_OOP_sem_3.functions.StrictTabulatedFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

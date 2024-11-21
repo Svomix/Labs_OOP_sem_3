@@ -1,6 +1,5 @@
 package Labs_OOP_sem_3.functions.mock;
 
-import Labs_OOP_sem_3.functions.mock.MockTabulatedFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

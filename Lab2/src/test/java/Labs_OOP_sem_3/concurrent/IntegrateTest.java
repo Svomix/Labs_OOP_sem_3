@@ -1,7 +1,6 @@
 package Labs_OOP_sem_3.concurrent;
 
 
-import Labs_OOP_sem_3.concurrent.Integrate;
 import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
 import org.junit.jupiter.api.Test;
 
