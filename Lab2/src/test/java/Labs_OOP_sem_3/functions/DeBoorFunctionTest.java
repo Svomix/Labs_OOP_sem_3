@@ -1,7 +1,5 @@
 package Labs_OOP_sem_3.functions;
 
-import Labs_OOP_sem_3.functions.BSpline;
-import Labs_OOP_sem_3.functions.DeBoorFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

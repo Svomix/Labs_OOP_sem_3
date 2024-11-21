@@ -1,9 +1,9 @@
 package Labs_OOP_sem_3.functions;
 
+import Labs_OOP_sem_3.exceptions.InterpolationException;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import Labs_OOP_sem_3.exceptions.InterpolationException;
 
 import java.io.Serial;
 import java.io.Serializable;

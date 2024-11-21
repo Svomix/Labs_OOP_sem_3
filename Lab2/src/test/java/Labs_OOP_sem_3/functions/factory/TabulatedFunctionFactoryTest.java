@@ -1,8 +1,6 @@
 package Labs_OOP_sem_3.functions.factory;
 
 import Labs_OOP_sem_3.functions.TabulatedFunction;
-import Labs_OOP_sem_3.functions.factory.ArrayTabulatedFunctionFactory;
-import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

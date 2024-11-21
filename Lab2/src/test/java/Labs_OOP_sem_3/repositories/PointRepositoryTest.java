@@ -1,4 +1,5 @@
 package Labs_OOP_sem_3.repositories;
+
 import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
@@ -9,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 @SpringBootTest(classes = Application.class)
 public class PointRepositoryTest {
@@ -32,7 +32,7 @@ public class PointRepositoryTest {
 
 
         ArrayList<PointEntity> list = new ArrayList<>();
-        var func = new FunctionEntity(1, "12", list);
+        var func = new FunctionEntity(140, "12", list);
         list.add(new PointEntity(1, func, 3.0, 4.0));
         list.add(new PointEntity(2, func, 4.0, 5.0));
         list.add(new PointEntity(3, func, 5.0, 6.0));

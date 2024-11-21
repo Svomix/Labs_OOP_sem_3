@@ -8,7 +8,6 @@ import Labs_OOP_sem_3.functions.Point;
 import Labs_OOP_sem_3.functions.TabulatedFunction;
 import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
 import Labs_OOP_sem_3.functions.factory.TabulatedFunctionFactory;
-import Labs_OOP_sem_3.operations.TabulatedFunctionOperationService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

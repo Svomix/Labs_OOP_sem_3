@@ -1,7 +1,6 @@
 package Labs_OOP_sem_3.io;
 
 import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
-import Labs_OOP_sem_3.io.FunctionsIO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
