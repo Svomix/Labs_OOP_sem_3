@@ -26,6 +26,9 @@ public class FunctionService {
     public FunctionEntity read(Integer id) {
         return functionRepository.findById(id).orElse(null);
     }
+    public FunctionEntity readByName(String name) {
+        return functionRepository.findByName(name);
+    }
     public FunctionEntity convert(FunctionDto functionDto) {
         FunctionEntity functionEntity = new FunctionEntity();
         functionEntity.setId(functionDto.getId());

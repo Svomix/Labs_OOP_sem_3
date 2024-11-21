@@ -3,6 +3,7 @@ package Labs_OOP_sem_3.service;
 import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -44,5 +45,11 @@ public class UserService implements UserDetailsManager
     @Override
     public boolean userExists(String username) {
         return userRepository.findByUsername(username) != null;
+    }
+    public UserEntity findUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+    }
+    public UserEntity findUserById(int id) {
+        return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User not found: " + id));
     }
 }

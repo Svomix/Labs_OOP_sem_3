@@ -26,6 +26,12 @@ public class FunctionController
         FunctionEntity functionEntity = functionService.read(id);
         return functionEntity != null ? ResponseEntity.ok(functionEntity) : ResponseEntity.notFound().build();
     }
+    @GetMapping("/{userName}")
+    public ResponseEntity<FunctionEntity> getByUserName(@PathVariable String userName)
+    {
+        FunctionEntity functionEntity = functionService.readByName(userName);
+        return functionEntity != null ? ResponseEntity.ok(functionEntity) : ResponseEntity.notFound().build();
+    }
     @PutMapping
     public ResponseEntity<FunctionEntity> update(@RequestBody FunctionDto functionDto)
     {
