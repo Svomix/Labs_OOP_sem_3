@@ -17,12 +17,11 @@ public class UserService implements UserDetailsManager {
     private final UserRepository userRepository;
 
     @Override
-        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username).map(user -> new User(user.getUsername(),
                 user.getPassword(),
                 new ArrayList<>())).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
-
 
 
     @Override

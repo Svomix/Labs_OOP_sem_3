@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,6 +27,8 @@ public class SecurityConfig {
     private CustomUserDetailsService customUserDetailsService;
     @Autowired
     private JwtUtil jwtUtil;
+    @Autowired
+    private CustomAuthencationProvider customAuthencationProvider;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -33,8 +36,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+    AuthenticationManager authenticationManager() throws Exception {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setUserDetailsService(customUserDetailsService);
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        return new ProviderManager(daoAuthenticationProvider);
     }
 
     @Bean
@@ -44,11 +50,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests((auth) ->
                         auth.requestMatchers("/users/login", "/users/register").permitAll().anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(customAuthencationProvider)
                 .addFilterBefore(jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
-    public JwtRequestFilter jwtRequestFilter(){
+    public JwtRequestFilter jwtRequestFilter() {
         return new JwtRequestFilter(customUserDetailsService, jwtUtil);
     }
 /*
