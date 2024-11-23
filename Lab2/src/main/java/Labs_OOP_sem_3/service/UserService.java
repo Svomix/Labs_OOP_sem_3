@@ -3,24 +3,27 @@ package Labs_OOP_sem_3.service;
 import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @AllArgsConstructor
 @Service
 public class UserService implements UserDetailsManager {
     private final UserRepository userRepository;
-    /*
+
     @Override
         public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username).map(user -> new User(user.getUsername(),
                 user.getPassword(),
-                user.getAuthorities())).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+                new ArrayList<>())).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 
-     */
+
 
     @Override
     public void createUser(UserDetails user) {
@@ -56,10 +59,5 @@ public class UserService implements UserDetailsManager {
 
     public UserEntity findUserById(int id) {
         return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User not found: " + id));
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
     }
 }

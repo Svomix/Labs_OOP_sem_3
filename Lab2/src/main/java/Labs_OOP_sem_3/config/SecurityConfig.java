@@ -1,6 +1,7 @@
 package Labs_OOP_sem_3.config;
 
 import Labs_OOP_sem_3.service.CustomUserDetailsService;
+import Labs_OOP_sem_3.service.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,11 +15,17 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -36,9 +43,13 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((auth) ->
                         auth.requestMatchers("/users/login", "/users/register").permitAll().anyRequest().authenticated())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        //.addFilterBefore(UsernamePasswordAuthenticationFilter.class);
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
+    }
+
+    public JwtRequestFilter jwtRequestFilter(){
+        return new JwtRequestFilter(customUserDetailsService, jwtUtil);
     }
 /*
     @Bean

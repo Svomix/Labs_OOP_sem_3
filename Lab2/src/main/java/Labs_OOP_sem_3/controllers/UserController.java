@@ -5,12 +5,14 @@ import Labs_OOP_sem_3.dto.AuthenticationRequest;
 import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.repositories.UserRepository;
 import Labs_OOP_sem_3.service.CustomUserDetailsService;
+import Labs_OOP_sem_3.service.JwtUtil;
 import Labs_OOP_sem_3.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +30,8 @@ public class UserController {
     private CustomUserDetailsService customUserDetailsService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @GetMapping("/{username}")
     public ResponseEntity<UserEntity> getUserByName(@PathVariable("username") String username) {
@@ -57,6 +61,8 @@ public class UserController {
     @PostMapping("/login")
     public String loginUser(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
-        return customUserDetailsService.loadUserByUsername(authenticationRequest.getUsername()).getUsername();
+        final UserDetails userDetails = customUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        final String jwt = jwtUtil.generateToken(userDetails);
+        return jwt;
     }
 }
