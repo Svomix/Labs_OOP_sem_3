@@ -4,8 +4,12 @@ import Labs_OOP_sem_3.dto.FunctionDto;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.repositories.FunctionRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 
 @Service
 @AllArgsConstructor
@@ -32,12 +36,8 @@ public class FunctionService {
     public FunctionEntity readByName(String name) {
         return functionRepository.findByName(name);
     }
-
-    public FunctionEntity convert(FunctionDto functionDto) {
-        FunctionEntity functionEntity = new FunctionEntity();
-        functionEntity.setId(functionDto.getId());
-        functionEntity.setName(functionDto.getName());
-        functionEntity.setPoints(functionDto.getPoints());
-        return functionEntity;
+    public void updateSequence()
+    {
+        functionRepository.restartSeq();
     }
 }

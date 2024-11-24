@@ -8,11 +8,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
+import java.util.Optional;
+
 @AllArgsConstructor
 @Service
+@Transactional
 public class UserService implements UserDetailsManager {
     private final UserRepository userRepository;
 
@@ -31,7 +35,7 @@ public class UserService implements UserDetailsManager {
 
     @Override
     public void updateUser(UserDetails user) {
-        UserEntity userEntity = new UserEntity();
+        UserEntity userEntity = userRepository.findByUsername(user.getUsername()).get();
         userEntity.setUsername(user.getUsername());
         userEntity.setPassword(user.getPassword());
         userRepository.save(userEntity);
@@ -58,5 +62,9 @@ public class UserService implements UserDetailsManager {
 
     public UserEntity findUserById(int id) {
         return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User not found: " + id));
+    }
+    public void updateSequence()
+    {
+       userRepository.restartSeq();
     }
 }

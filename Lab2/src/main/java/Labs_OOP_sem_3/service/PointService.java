@@ -14,7 +14,7 @@ import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
 @AllArgsConstructor
 @Transactional
 public class PointService {
-    private PointRepository repository;
+    private final PointRepository repository;
 
     public PointEntity create(PointDto pointDto) {
         return repository.save(convertToEntity(pointDto));
@@ -25,12 +25,7 @@ public class PointService {
     }
 
     public PointEntity update(PointDto pointDto) {
-        PointEntity updated = new PointEntity();
-        updated.setId(pointDto.getId());
-        updated.setFunction(pointDto.getFunction());
-        updated.setYValue(pointDto.getY());
-        updated.setXValue(pointDto.getX());
-        return repository.save(updated);
+        return repository.save(convertToEntity(pointDto));
     }
 
     public void delete(PointDto pointDto) {
@@ -39,5 +34,9 @@ public class PointService {
 
     public ArrayList<PointEntity> findByFunc(int funcId) {
         return repository.findByFunction(funcId);
+    }
+    public void updateSequence()
+    {
+       repository.restartSeq();
     }
 }

@@ -4,15 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="Fixes">
+    <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="Point">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/FunctionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/FunctionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/App/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/App/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/FunctionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/FunctionDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/PointDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/PointDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/FunctionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/FunctionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/PointEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/PointEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/FunctionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/FunctionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/PointRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/PointRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/FunctionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/FunctionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/PointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/Service.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/FunctionRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/FunctionRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/PointRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/PointRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/UserRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/FunctionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/FunctionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/PointServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/PointServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,17 +78,37 @@
     "JUnit.ConstantFunctionTest.applyTest1.executor": "Run",
     "JUnit.FunctionRepositoryTest.FindByNameTest.executor": "Run",
     "JUnit.FunctionRepositoryTest.createTest.executor": "Run",
+    "JUnit.FunctionRepositoryTest.executor": "Run",
+    "JUnit.FunctionServiceTest.create.executor": "Run",
+    "JUnit.FunctionServiceTest.createFunction.executor": "Run",
+    "JUnit.FunctionServiceTest.createFunctionTest.executor": "Run",
+    "JUnit.FunctionServiceTest.delete.executor": "Run",
+    "JUnit.FunctionServiceTest.executor": "Run",
+    "JUnit.FunctionServiceTest.read.executor": "Run",
+    "JUnit.FunctionServiceTest.readByName.executor": "Run",
+    "JUnit.FunctionServiceTest.update.executor": "Run",
     "JUnit.IdentityFunctionTest.executor": "Run",
     "JUnit.MainDaoTest.createTest.executor": "Run",
     "JUnit.PointRepositoryTest.createTest.executor": "Run",
+    "JUnit.PointRepositoryTest.executor": "Run",
     "JUnit.PointRepositoryTest.findByFunctionTest.executor": "Run",
+    "JUnit.PointServiceTest.create.executor": "Run",
+    "JUnit.PointServiceTest.delete.executor": "Run",
+    "JUnit.PointServiceTest.destroy.executor": "Run",
+    "JUnit.PointServiceTest.read.executor": "Run",
+    "JUnit.PointServiceTest.update.executor": "Run",
     "JUnit.UserRepositoryTest (1).executor": "Run",
     "JUnit.UserRepositoryTest.createTest.executor": "Run",
     "JUnit.UserRepositoryTest.executor": "Run",
     "JUnit.UserRepositoryTest.findByUsername (1).executor": "Run",
     "JUnit.UserRepositoryTest.findByUsername.executor": "Run",
+    "JUnit.UserRepositoryTest.noFindByUsername.executor": "Run",
+    "JUnit.UserServiceTest.LoadAndCreateTest.executor": "Run",
     "JUnit.UserServiceTest.LoadTest.executor": "Run",
+    "JUnit.UserServiceTest.loadUserByUsername.executor": "Run",
+    "JUnit.UserServiceTest.updateTest.executor": "Run",
     "JUnit.java in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.repositories in Labs_OOP_sem_3.executor": "Run",
     "JUnit.test in Labs_OOP_sem_3.executor": "Run",
     "Maven.Labs_OOP_sem_3 [clean].executor": "Run",
     "Repository.Attach.Annotations": "false",
@@ -90,9 +122,13 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.Application (1).executor": "Run",
     "Spring Boot.Application.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_directory_selection": "E:/Projects/Labs_OOP_sem_3/Lab2/src/test/java/Labs_OOP_sem_3/service",
     "last_opened_file_path": "E:/Projects/Labs_OOP_sem_3/Lab2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -117,6 +153,9 @@
       <recent name="E:\Projects\_NAME_-_PROJECT_\src\main\java\elephant_lab2\functions" />
       <recent name="E:\Projects\_NAME_-_PROJECT_\src\test\java" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Labs_OOP_sem_3" />
       <recent name="" />
@@ -124,9 +163,58 @@
       <recent name="Labs_OOP_sem_3.entities" />
       <recent name="service" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Labs_OOP_sem_3.service" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserRepositoryTest.findByUsername (1)">
-    <configuration name="UserRepositoryTest.findByUsername (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.repositories in Labs_OOP_sem_3">
+    <configuration name="FunctionRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Labs_OOP_sem_3.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Labs_OOP_sem_3.repositories" />
+      <option name="MAIN_CLASS_NAME" value="Labs_OOP_sem_3.repositories.FunctionRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PointRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Labs_OOP_sem_3.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Labs_OOP_sem_3.repositories" />
+      <option name="MAIN_CLASS_NAME" value="Labs_OOP_sem_3.repositories.PointRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PointRepositoryTest.findByFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Labs_OOP_sem_3.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Labs_OOP_sem_3.repositories" />
+      <option name="MAIN_CLASS_NAME" value="Labs_OOP_sem_3.repositories.PointRepositoryTest" />
+      <option name="METHOD_NAME" value="findByFunctionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
         <pattern>
@@ -136,40 +224,15 @@
       </extension>
       <option name="PACKAGE_NAME" value="Labs_OOP_sem_3.repositories" />
       <option name="MAIN_CLASS_NAME" value="Labs_OOP_sem_3.repositories.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="findByUsername" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.LoadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Labs_OOP_sem_3.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Labs_OOP_sem_3.service" />
-      <option name="MAIN_CLASS_NAME" value="Labs_OOP_sem_3.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="LoadTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="java in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="repositories in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/Lab2/src/test/java" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/Lab2/src/test" />
+      <dir value="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -187,39 +250,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="Labs_OOP_sem_3.App.Application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Labs_OOP_sem_3.App.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="Labs_OOP_sem_3.App.Application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Labs_OOP_sem_3.App.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserRepositoryTest.findByUsername (1)" />
-        <item itemvalue="JUnit.UserServiceTest.LoadTest" />
-        <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
-        <item itemvalue="JUnit.test in Labs_OOP_sem_3" />
-        <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="JUnit.repositories in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.UserRepositoryTest" />
+        <item itemvalue="JUnit.PointRepositoryTest" />
+        <item itemvalue="JUnit.FunctionRepositoryTest" />
+        <item itemvalue="JUnit.PointRepositoryTest.findByFunctionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +307,10 @@
       <workItem from="1731928436703" duration="5360000" />
       <workItem from="1731953973645" duration="3888000" />
       <workItem from="1732109662903" duration="21721000" />
-      <workItem from="1732191854647" duration="5370000" />
+      <workItem from="1732191854647" duration="8670000" />
+      <workItem from="1732203069191" duration="613000" />
+      <workItem from="1732369806780" duration="15898000" />
+      <workItem from="1732426784401" duration="16048000" />
     </task>
     <task id="LOCAL-00001" summary="Entites">
       <option name="closed" value="true" />
@@ -328,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732133054684</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Point">
+      <option name="closed" value="true" />
+      <created>1732199774974</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732199774974</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +401,8 @@
     <MESSAGE value="User:Rep, sev, dto, controller" />
     <MESSAGE value="Function:Rep, sev, dto, controller" />
     <MESSAGE value="Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+    <MESSAGE value="Point" />
+    <option name="LAST_COMMIT_MESSAGE" value="Point" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
