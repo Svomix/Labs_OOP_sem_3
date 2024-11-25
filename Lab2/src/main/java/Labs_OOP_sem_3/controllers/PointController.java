@@ -15,7 +15,7 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/point")
 @AllArgsConstructor
-public class PointController {
+public class        PointController {
     private final PointService pointService;
     private final FunctionService functionService;
 

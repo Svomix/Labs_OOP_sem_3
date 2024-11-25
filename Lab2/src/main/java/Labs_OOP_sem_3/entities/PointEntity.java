@@ -1,5 +1,6 @@
 package Labs_OOP_sem_3.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +19,8 @@ public class PointEntity {
     private Integer id;
 
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
-    @JoinColumn(name = "function_id", nullable = false)
+    //@JoinColumn(name = "function_id", nullable = false)
+    @JsonBackReference
     private FunctionEntity function;
 
     @Column(name = "x", nullable = false)

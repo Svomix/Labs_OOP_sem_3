@@ -1,5 +1,6 @@
 package Labs_OOP_sem_3.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +21,7 @@ public final class FunctionEntity {
     private Integer id;
     @Column(name = "function_type", nullable = false)
     private String name;
-//    @OneToMany(mappedBy = "function", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-//    private List<PointEntity> points;
+    @OneToMany(mappedBy = "function", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @JsonManagedReference
+    private List<PointEntity> points;
 }
