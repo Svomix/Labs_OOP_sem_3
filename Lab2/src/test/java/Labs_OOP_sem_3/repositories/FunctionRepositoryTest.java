@@ -15,7 +15,7 @@ public class FunctionRepositoryTest {
     private FunctionEntity function;
     @BeforeEach
     public void createFunction() {
-        function = FunctionEntity.builder().name("asd").points(new ArrayList<>()).build();
+        function = FunctionEntity.builder().name("asd").build();
         functionRepository.save(function);
     }
     @Test

@@ -1,3 +1,4 @@
+
 package Labs_OOP_sem_3.service;
 
 import Labs_OOP_sem_3.App.Application;
@@ -23,7 +24,8 @@ public class FunctionServiceTest {
     private FunctionDto function;
     @BeforeEach
     public void createFunction() {
-        function = FunctionDto.builder().id(1).name("asd").points(new ArrayList<>()).build();
+        functionService.updateSequence();
+        function = FunctionDto.builder().id(1).name("asd").build();
         functionService.create(function);
     }
 
@@ -34,14 +36,14 @@ public class FunctionServiceTest {
 
     @Test
     void update() {
-        var updFunc = FunctionDto.builder().id(1).name("123").points(new ArrayList<>()).build();
+        var updFunc = FunctionDto.builder().id(1).name("123").build();
         functionService.update(updFunc);
         Assertions.assertEquals(updFunc.getName(), functionService.read(function.getId()).getName());
     }
     @Test
     void delete()
     {
-        var updFunc = FunctionDto.builder().id(1).name("123").points(new ArrayList<>()).build();
+        var updFunc = FunctionDto.builder().id(1).name("123").build();
         functionService.create(updFunc);
         functionService.delete(updFunc);
         Assertions.assertNull(functionService.read(updFunc.getId()));
@@ -49,7 +51,7 @@ public class FunctionServiceTest {
 
     @Test
     void read() {
-        var updFunc = FunctionDto.builder().id(1).name("123").points(new ArrayList<>()).build();
+        var updFunc = FunctionDto.builder().id(1).name("123").build();
         functionService.create(updFunc);
         Assertions.assertEquals(functionService.read(updFunc.getId()).getName(),updFunc.getName());
 
@@ -61,7 +63,6 @@ public class FunctionServiceTest {
     @AfterEach
     @Transactional
     public void destroy() {
-        functionService.updateSequence();
         functionService.delete(function);
     }
 }

@@ -12,5 +12,5 @@ import java.util.List;
 public class FunctionDto {
     Integer id;
     String name;
-    private List<PointEntity> points;
+//    private List<PointEntity> points;
 }

@@ -17,8 +17,9 @@ import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 public class FunctionService {
     private final FunctionRepository functionRepository;
 
-    public void create(FunctionDto funcDto) {
-        functionRepository.save(convert(funcDto));
+    public FunctionEntity create(FunctionDto funcDto) {
+       FunctionEntity a = functionRepository.save(convert(funcDto));
+       return a;
     }
 
     public void update(FunctionDto funcDto) {

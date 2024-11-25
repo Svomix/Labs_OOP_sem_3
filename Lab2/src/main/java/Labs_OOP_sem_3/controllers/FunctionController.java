@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/functions")
@@ -15,11 +17,10 @@ public class FunctionController {
     private final FunctionService functionService;
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody FunctionDto functionDto) {
-        functionService.create(functionDto);
-        return ResponseEntity.ok("success");
+    public ResponseEntity<FunctionEntity> create(@RequestBody FunctionDto functionDto) {
+        var funcEnt = functionService.create(functionDto);
+        return ResponseEntity.ok(funcEnt);
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<FunctionEntity> get(@PathVariable Integer id) {
         FunctionEntity functionEntity = functionService.read(id);

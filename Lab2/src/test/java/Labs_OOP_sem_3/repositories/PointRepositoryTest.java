@@ -27,7 +27,8 @@ public class PointRepositoryTest {
     @BeforeEach
     public void createfunc()
     {
-        func = FunctionEntity.builder().name("12").points(new ArrayList<>()).build();
+        func = FunctionEntity.builder().name("12").build();
+        functionRepository.save(func);
     }
     @Test
     public void createTest() {
@@ -38,10 +39,12 @@ public class PointRepositoryTest {
     }
     @Test
     public void findByFunctionTest() {
-        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
-        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
-        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
-        functionRepository.save(func);
+//        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
+//        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
+//        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
+        pointRepository.save(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
+        pointRepository.save(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
+        pointRepository.save(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
         Assertions.assertEquals(3, pointRepository.findByFunction(func.getId()).size());
     }
     @AfterEach

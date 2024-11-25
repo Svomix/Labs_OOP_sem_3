@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 @Repository
 public interface PointRepository extends JpaRepository<PointEntity, Integer> {
-    @Query("SELECT p FROM PointEntity p WHERE p.function.id = :functionId")
+    @Query(value = "SELECT * from points where function_id = :functionId;",nativeQuery = true)
     ArrayList<PointEntity> findByFunction(@Param("functionId") Integer functionId);
     @Modifying
-    @Query(value = "TRUNCATE TABLE points restart identity CASCADE;;",nativeQuery = true)
+    @Query(value = "ALTER SEQUENCE points_id_seq RESTART WITH 1;",nativeQuery = true)
     void restartSeq();
 }
