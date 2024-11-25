@@ -54,11 +54,13 @@ public class FunctionServiceTest {
         var updFunc = FunctionDto.builder().id(1).name("123").build();
         functionService.create(updFunc);
         Assertions.assertEquals(functionService.read(updFunc.getId()).getName(),updFunc.getName());
+        Assertions.assertNull(functionService.read(updFunc.getId() + 1));
 
     }
     @Test
     void readByName() {
         Assertions.assertEquals(functionService.readByName(function.getName()).getId(),function.getId());
+        Assertions.assertNull(functionService.readByName(function.getName() + 1));
     }
     @AfterEach
     @Transactional

@@ -20,9 +20,9 @@ public class PointController {
     private final FunctionService functionService;
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody PointDto pointDto) {
-        pointService.create(pointDto);
-        return ResponseEntity.ok("Point created");
+    public ResponseEntity<PointEntity> create(@RequestBody PointDto pointDto) {
+       var point =  pointService.create(pointDto);
+        return ResponseEntity.ok(point);
     }
 
     @GetMapping("/{id}")
@@ -32,10 +32,10 @@ public class PointController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody PointDto pointDto) {
+    public ResponseEntity<PointEntity> update(@PathVariable int id, @RequestBody PointDto pointDto) {
         pointDto.setId(id);
-        pointService.update(pointDto);
-        return ResponseEntity.ok("Point updated");
+        var point = pointService.update(pointDto);
+        return ResponseEntity.ok(point);
     }
 
     @DeleteMapping("/{id}")

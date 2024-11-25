@@ -27,9 +27,9 @@ public class FunctionController {
         return functionEntity != null ? ResponseEntity.ok(functionEntity) : ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/{userName}")
-    public ResponseEntity<FunctionEntity> getByUserName(@PathVariable String userName) {
-        FunctionEntity functionEntity = functionService.readByName(userName);
+    @GetMapping("/{name}")
+    public ResponseEntity<FunctionEntity> getByName(@PathVariable String name) {
+        FunctionEntity functionEntity = functionService.readByName(name);
         return functionEntity != null ? ResponseEntity.ok(functionEntity) : ResponseEntity.notFound().build();
     }
 

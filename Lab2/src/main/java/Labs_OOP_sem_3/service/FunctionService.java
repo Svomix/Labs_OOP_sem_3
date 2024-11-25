@@ -18,8 +18,7 @@ public class FunctionService {
     private final FunctionRepository functionRepository;
 
     public FunctionEntity create(FunctionDto funcDto) {
-       FunctionEntity a = functionRepository.save(convert(funcDto));
-       return a;
+       return(functionRepository.save(convert(funcDto)));
     }
 
     public void update(FunctionDto funcDto) {

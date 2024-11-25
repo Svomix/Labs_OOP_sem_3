@@ -39,9 +39,6 @@ public class PointRepositoryTest {
     }
     @Test
     public void findByFunctionTest() {
-//        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
-//        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
-//        func.getPoints().add(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
         pointRepository.save(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
         pointRepository.save(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());
         pointRepository.save(PointEntity.builder().xValue(3.0).yValue(4.0).function(func).build());

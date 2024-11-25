@@ -21,7 +21,7 @@ public class PointService {
     }
 
     public PointEntity read(int id) {
-        return repository.getById(id);
+        return repository.findById(id).orElse(null);
     }
 
     public PointEntity update(PointDto pointDto) {
@@ -33,10 +33,14 @@ public class PointService {
     }
 
     public ArrayList<PointEntity> findByFunc(int funcId) {
-        return repository.findByFunction(funcId);
+
+        var arrPoint = repository.findByFunction(funcId);
+        if (arrPoint.isEmpty())
+            return null;
+        return arrPoint;
     }
-    public void updateSequence()
-    {
-       repository.restartSeq();
+
+    public void updateSequence() {
+        repository.restartSeq();
     }
 }

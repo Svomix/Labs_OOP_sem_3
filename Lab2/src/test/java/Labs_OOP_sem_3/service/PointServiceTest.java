@@ -4,10 +4,12 @@ import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.dto.FunctionDto;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.FunctionEntity;
+import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
@@ -49,6 +51,7 @@ public class PointServiceTest {
     void read() {
         Assertions.assertEquals(2, pointService.read(point.getId()).getXValue());
         Assertions.assertEquals(3, pointService.read(point.getId()).getYValue());
+        Assertions.assertNull(pointService.read(point.getId() + 1));
     }
 
     @Test
@@ -65,7 +68,7 @@ public class PointServiceTest {
         var updPoint = PointDto.builder().id(2).function(FunctionEntity.builder().name("456").build()).build();
         pointService.create(updPoint);
         pointService.delete(updPoint);
-        Assertions.assertThrows(JpaObjectRetrievalFailureException.class, () -> pointService.read(updPoint.getId()));
+        Assertions.assertNull(pointService.read(updPoint.getId()));
     }
 
     @Test
@@ -83,6 +86,7 @@ public class PointServiceTest {
         arr.add(point3);
         System.out.println(pointService.findByFunc(function.getId()));
         Assertions.assertEquals(arr.size(), pointService.findByFunc(function.getId()).size());
+        Assertions.assertNull(pointService.findByFunc(function.getId() + 1));
         pointService.delete(point1);
         pointService.delete(point2);
         pointService.delete(point3);
