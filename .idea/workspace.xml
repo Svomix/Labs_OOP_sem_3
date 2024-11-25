@@ -8,11 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/FunctionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/FunctionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/PointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/PointController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/FunctionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/FunctionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/FunctionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/FunctionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/PointEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/PointEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/FunctionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/FunctionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/PointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/PointRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/repositories/PointRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/FunctionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/FunctionServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/PointServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service/PointServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +157,7 @@
       <recent name="Labs_OOP_sem_3.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.service in Labs_OOP_sem_3">
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="FunctionServiceTest.readByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <extension name="coverage">
@@ -186,22 +185,6 @@
       <option name="PACKAGE_NAME" value="Labs_OOP_sem_3.service" />
       <option name="MAIN_CLASS_NAME" value="Labs_OOP_sem_3.service.PointServiceTest" />
       <option name="METHOD_NAME" value="delete" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PointServiceTest.findByFunc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Labs_OOP_sem_3.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Labs_OOP_sem_3.service" />
-      <option name="MAIN_CLASS_NAME" value="Labs_OOP_sem_3.service.PointServiceTest" />
-      <option name="METHOD_NAME" value="findByFunc" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -236,13 +219,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Labs_OOP_sem_3.App.Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Labs_OOP_sem_3.App.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Application" />
         <item itemvalue="JUnit.service in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.repositories in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.PointServiceTest.delete" />
         <item itemvalue="JUnit.FunctionServiceTest.readByName" />
-        <item itemvalue="JUnit.PointServiceTest.findByFunc" />
       </list>
     </recent_temporary>
   </component>
@@ -298,7 +294,7 @@
       <workItem from="1732369806780" duration="15898000" />
       <workItem from="1732426784401" duration="23835000" />
       <workItem from="1732461722809" duration="371000" />
-      <workItem from="1732549332582" duration="2745000" />
+      <workItem from="1732549332582" duration="8247000" />
     </task>
     <task id="LOCAL-00001" summary="Entites">
       <option name="closed" value="true" />
@@ -380,7 +376,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732549591116</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Tests and Fixs">
+      <option name="closed" value="true" />
+      <created>1732552220510</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1732552220510</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

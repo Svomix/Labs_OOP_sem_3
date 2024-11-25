@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 
 @Service
@@ -32,7 +34,6 @@ public class FunctionService {
     public FunctionEntity read(Integer id) {
         return functionRepository.findById(id).orElse(null);
     }
-
     public FunctionEntity readByName(String name) {
         return functionRepository.findByName(name);
     }

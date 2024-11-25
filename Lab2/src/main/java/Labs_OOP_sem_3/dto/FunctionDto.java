@@ -3,6 +3,7 @@ package Labs_OOP_sem_3.dto;
 import Labs_OOP_sem_3.entities.PointEntity;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -12,5 +13,5 @@ import java.util.List;
 public class FunctionDto {
     Integer id;
     String name;
-//    private List<PointEntity> points;
+    private ArrayList<PointEntity> points;
 }

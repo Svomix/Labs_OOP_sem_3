@@ -20,7 +20,6 @@ public class PointEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     //@JoinColumn(name = "function_id", nullable = false)
-    @JsonBackReference
     private FunctionEntity function;
 
     @Column(name = "x", nullable = false)

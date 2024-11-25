@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/point")
+@RequestMapping("/points")
 @AllArgsConstructor
 public class        PointController {
     private final PointService pointService;
