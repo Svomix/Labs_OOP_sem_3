@@ -3,9 +3,11 @@ package Labs_OOP_sem_3.service;
 
 import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.dto.FunctionDto;
+import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.repositories.FunctionRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,12 +18,15 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 
 @SpringBootTest(classes = Application.class)
 public class FunctionServiceTest {
     @Autowired
     private FunctionService functionService;
     private FunctionDto function;
+    @Autowired
+    private PointService pointService;
     @BeforeEach
     public void createFunction() {
         functionService.updateSequence();
@@ -36,9 +41,15 @@ public class FunctionServiceTest {
 
     @Test
     void update() {
-        var updFunc = FunctionDto.builder().id(1).name("123").build();
+        var arrP = new ArrayList<PointEntity>();
+        var updFunc = FunctionDto.builder().id(1).name("123").points(arrP).build();
+        arrP.add(PointEntity.builder().function(convert(updFunc)).xValue(1).yValue(2).build());
+        arrP.add(PointEntity.builder().function(convert(updFunc)).xValue(3).yValue(4).build());
         functionService.update(updFunc);
+        System.out.println(functionService.read(function.getId()));
         Assertions.assertEquals(updFunc.getName(), functionService.read(function.getId()).getName());
+        Assertions.assertEquals(arrP,pointService.findByFunc(function.getId()));
+
     }
     @Test
     void delete()

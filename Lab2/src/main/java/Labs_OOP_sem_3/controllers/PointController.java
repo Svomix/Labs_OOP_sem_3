@@ -15,13 +15,13 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/points")
 @AllArgsConstructor
-public class        PointController {
+public class PointController {
     private final PointService pointService;
     private final FunctionService functionService;
 
     @PostMapping
     public ResponseEntity<PointEntity> create(@RequestBody PointDto pointDto) {
-       var point =  pointService.create(pointDto);
+        var point = pointService.create(pointDto);
         return ResponseEntity.ok(point);
     }
 
@@ -32,7 +32,7 @@ public class        PointController {
     }
 
     @PutMapping("update")
-    public ResponseEntity<PointEntity> update(/*@PathVariable int id,*/ @RequestParam PointDto pointDto) {
+    public ResponseEntity<PointEntity> update( @RequestParam PointDto pointDto) {
         var point = pointService.update(pointDto);
         return ResponseEntity.ok(point);
     }

@@ -23,8 +23,8 @@ public class PointEntity {
     private FunctionEntity function;
 
     @Column(name = "x", nullable = false)
-    private Double xValue;
+    private double xValue;
 
     @Column(name = "y", nullable = false)
-    private Double yValue;
+    private double yValue;
 }

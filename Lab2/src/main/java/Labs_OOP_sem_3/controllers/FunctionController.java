@@ -28,7 +28,7 @@ public class FunctionController {
         return ResponseEntity.ok(funcEnt);
     }
     @GetMapping("/id")
-    public ResponseEntity<FunctionEntity> get(@PathVariable Integer id) {
+    public ResponseEntity<FunctionEntity> get(@RequestParam int id) {
         FunctionEntity functionEntity = functionService.read(id);
         return functionEntity != null ? ResponseEntity.ok(functionEntity) : ResponseEntity.notFound().build();
     }

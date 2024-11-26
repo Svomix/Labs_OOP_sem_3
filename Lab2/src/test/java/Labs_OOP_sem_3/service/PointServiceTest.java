@@ -56,7 +56,7 @@ public class PointServiceTest {
 
     @Test
     void update() {
-        var updPoint = PointDto.builder().id(1).function(FunctionEntity.builder().name("456").build()).x(5).y(6).build();
+        var updPoint = PointDto.builder().id(1).function(FunctionEntity.builder().name("456").build()).x(5.0).y(6.0).build();
         pointService.update(updPoint);
         Assertions.assertEquals(5, pointService.read(point.getId()).getXValue());
         Assertions.assertEquals(6, pointService.read(point.getId()).getYValue());
@@ -84,7 +84,6 @@ public class PointServiceTest {
         arr.add(point1);
         arr.add(point2);
         arr.add(point3);
-        System.out.println(pointService.findByFunc(function.getId()));
         Assertions.assertEquals(arr.size(), pointService.findByFunc(function.getId()).size());
         Assertions.assertNull(pointService.findByFunc(function.getId() + 1));
         pointService.delete(point1);
