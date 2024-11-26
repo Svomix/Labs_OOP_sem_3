@@ -43,9 +43,10 @@ public class FunctionController {
     }
     @GetMapping("/funcId")
     public ResponseEntity<FunctionDto> getById(@RequestParam int funcId) {
-        if (functionService.read(funcId) != null) {
-            var func = FunctionDto.builder().id(funcId).name(functionService.read(funcId).getName()).points(pointService.findByFunc(funcId)).build();
-            return ResponseEntity.ok(func);
+        var func = functionService.read(funcId);
+        if (func != null) {
+            var getFunc = FunctionDto.builder().id(funcId).name(func.getName()).points(pointService.findByFunc(funcId)).build();
+            return ResponseEntity.ok(getFunc);
         }
         return ResponseEntity.notFound().build();
     }

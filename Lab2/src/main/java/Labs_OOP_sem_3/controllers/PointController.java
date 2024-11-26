@@ -25,21 +25,20 @@ public class        PointController {
         return ResponseEntity.ok(point);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PointEntity> read(@PathVariable int id) {
+    @GetMapping("/id")
+    public ResponseEntity<PointEntity> read(@RequestParam int id) {
         PointEntity pointEntity = pointService.read(id);
         return ResponseEntity.ok(pointEntity);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PointEntity> update(@PathVariable int id, @RequestBody PointDto pointDto) {
-        pointDto.setId(id);
+    @PutMapping("update")
+    public ResponseEntity<PointEntity> update(/*@PathVariable int id,*/ @RequestParam PointDto pointDto) {
         var point = pointService.update(pointDto);
         return ResponseEntity.ok(point);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
+    @DeleteMapping("/id")
+    public ResponseEntity<String> delete(@RequestParam int id) {
         if (pointService.read(id) != null) {
             pointService.delete(ConvertorToPointDto.convertToDto(pointService.read(id)));
             return ResponseEntity.ok("Point deleted");
