@@ -37,6 +37,7 @@ public class FunctionControllerTest {
     FunctionRepository funcRepository;
     @Autowired
     PointRepository pointRepository;
+
     @BeforeEach
     void setUp() {
         funcRepository.restartSeq();

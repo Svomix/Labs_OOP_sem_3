@@ -37,6 +37,7 @@ public class PointControllerTest {
     private FunctionRepository functionRepository;
     @Autowired
     private PointRepository pointRepository;
+
     @BeforeEach
     void setUp() {
         functionRepository.restartSeq();
@@ -67,10 +68,10 @@ public class PointControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p))).andExpect(MockMvcResultMatchers.status().isOk());
         mockMvc.perform(MockMvcRequestBuilders.put("/points/update").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p2))).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(p3)));
     }
+
     @Test
     @WithMockUser
-    void findByFunc() throws Exception
-    {
+    void findByFunc() throws Exception {
         var arrP = new ArrayList<PointEntity>();
         var p2 = PointDto.builder().id(2).x(4.0).y(5.0).function(func).build();
         arrP.add(p1);
@@ -79,6 +80,7 @@ public class PointControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p2))).andExpect(MockMvcResultMatchers.status().isOk());
         mockMvc.perform(MockMvcRequestBuilders.get("/points/find?funcId=1").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(arrP)));
     }
+
     @AfterEach
     void tearDown() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p))).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(p1)));
