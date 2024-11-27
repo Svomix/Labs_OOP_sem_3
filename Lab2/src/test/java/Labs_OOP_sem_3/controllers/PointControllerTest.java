@@ -46,20 +46,25 @@ public class PointControllerTest {
     }
 
     @Test
+    @WithMockUser
     void update() throws Exception {
         var p2 = PointDto.builder().id(1).x(4.0).y(5.0).function(func).build();
         var p3 = PointEntity.builder().id(1).xValue(4.0).yValue(5.0).function(func).build();
-        mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p)));
+        mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p))).andExpect(MockMvcResultMatchers.status().isOk());
         mockMvc.perform(MockMvcRequestBuilders.put("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p2))).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(p3)));
     }
 
     @Test
+    @WithMockUser
     void delete() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p)));
         mockMvc.perform(MockMvcRequestBuilders.delete("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p))).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(p1)));
     }
 
     @Test
-    void findByFunc() {
+    @WithMockUser
+    void findByFunc()
+    {
+
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
+
 @RestController
 @RequestMapping("/points")
 @AllArgsConstructor
@@ -38,10 +40,11 @@ public class PointController {
     }
 
     @DeleteMapping("/id")
-    public ResponseEntity<String> delete(@RequestParam int id) {
+    public ResponseEntity<PointEntity> delete(@RequestParam PointDto pointDto) {
+        var id = pointDto.getId();
         if (pointService.read(id) != null) {
             pointService.delete(ConvertorToPointDto.convertToDto(pointService.read(id)));
-            return ResponseEntity.ok("Point deleted");
+            return ResponseEntity.ok(convertToEntity(pointDto));
         }
         return ResponseEntity.notFound().build();
     }
