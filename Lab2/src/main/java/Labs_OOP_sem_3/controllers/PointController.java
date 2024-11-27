@@ -39,8 +39,8 @@ public class PointController {
         return ResponseEntity.ok(point);
     }
 
-    @DeleteMapping("/id")
-    public ResponseEntity<PointEntity> delete(@RequestParam PointDto pointDto) {
+    @DeleteMapping
+    public ResponseEntity<PointEntity> delete(@RequestBody PointDto pointDto) {
         var id = pointDto.getId();
         if (pointService.read(id) != null) {
             pointService.delete(ConvertorToPointDto.convertToDto(pointService.read(id)));

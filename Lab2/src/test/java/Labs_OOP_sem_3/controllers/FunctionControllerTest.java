@@ -4,6 +4,8 @@ import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.dto.FunctionDto;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.FunctionEntity;
+import Labs_OOP_sem_3.repositories.FunctionRepository;
+import Labs_OOP_sem_3.repositories.PointRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +18,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
@@ -24,14 +27,20 @@ import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
 
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
+@Transactional
 public class FunctionControllerTest {
     @Autowired
     private MockMvc mockMvc;
     FunctionDto func;
     FunctionEntity entFunc;
-
+    @Autowired
+    FunctionRepository funcRepository;
+    @Autowired
+    PointRepository pointRepository;
     @BeforeEach
     void setUp() {
+        funcRepository.restartSeq();
+        pointRepository.restartSeq();
         func = FunctionDto.builder().id(1).points(new ArrayList<>()).name("Test").build();
         entFunc = FunctionEntity.builder().id(1).name("Test").build();
     }
@@ -73,6 +82,7 @@ public class FunctionControllerTest {
         func1.getPoints().add(convertToEntity(p1));
         func1.getPoints().add(convertToEntity(p2));
         mockMvc.perform(MockMvcRequestBuilders.get("/functions/funcId?funcId=1").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(func1)));
+
     }
 
     @Test
@@ -94,7 +104,7 @@ public class FunctionControllerTest {
                 writeValueAsString(func)));
         mockMvc.perform(MockMvcRequestBuilders.put("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(updFunc)));
-        mockMvc.perform(MockMvcRequestBuilders.get("/functions/name?name=Test").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(updFuncEnt)));
+        mockMvc.perform(MockMvcRequestBuilders.get("/functions/name?name=Test2").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(updFuncEnt)));
 
 
     }

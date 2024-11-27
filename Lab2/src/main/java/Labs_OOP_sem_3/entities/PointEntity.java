@@ -18,7 +18,7 @@ public class PointEntity {
     private Integer id;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    //@JoinColumn(name = "function_id", nullable = false)
+    @JoinColumn(name = "function_id", nullable = false)
     private FunctionEntity function;
 
     @Column(name = "x", nullable = false)

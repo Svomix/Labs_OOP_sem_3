@@ -32,6 +32,7 @@ public class FunctionService {
     }
 
     public void update(FunctionDto funcDto) {
+        pointRepository.deleteAll(funcDto.getPoints());
         var func = functionRepository.save(convert(funcDto));
         var arrP = new ArrayList<PointEntity>();
         for (var p : funcDto.getPoints()) {
