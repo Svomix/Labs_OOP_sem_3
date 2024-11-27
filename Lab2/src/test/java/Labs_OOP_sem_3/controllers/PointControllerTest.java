@@ -24,11 +24,13 @@ public class PointControllerTest {
     FunctionEntity func = FunctionEntity.builder().id(1).name("asd").build();
     PointDto p;
     PointEntity p1;
+
     @BeforeEach
     void setUp() {
         p = PointDto.builder().id(1).x(1.0).y(2.0).function(func).build();
         p1 = PointEntity.builder().id(1).xValue(1.0).yValue(2.0).function(func).build();
     }
+
     @Test
     @WithMockUser
     void postPoint() throws Exception {
@@ -38,13 +40,13 @@ public class PointControllerTest {
 
     @Test
     @WithMockUser
-    void read() throws Exception{
+    void read() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p))).andExpect(MockMvcResultMatchers.status().isOk());
         mockMvc.perform(MockMvcRequestBuilders.get("/points/id?id=1").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(p1)));
     }
 
     @Test
-    void update() throws Exception{
+    void update() throws Exception {
         var p2 = PointDto.builder().id(1).x(4.0).y(5.0).function(func).build();
         var p3 = PointEntity.builder().id(1).xValue(4.0).yValue(5.0).function(func).build();
         mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p)));

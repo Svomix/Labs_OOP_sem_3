@@ -4,8 +4,6 @@ import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.dto.FunctionDto;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.FunctionEntity;
-import Labs_OOP_sem_3.entities.PointEntity;
-import Labs_OOP_sem_3.service.FunctionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,14 +14,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.ArrayList;
+
 import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
-
-import java.util.ArrayList;
 
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
@@ -32,11 +29,13 @@ public class FunctionControllerTest {
     private MockMvc mockMvc;
     FunctionDto func;
     FunctionEntity entFunc;
+
     @BeforeEach
     void setUp() {
         func = FunctionDto.builder().id(1).points(new ArrayList<>()).name("Test").build();
         entFunc = FunctionEntity.builder().id(1).name("Test").build();
     }
+
     @Test
     @WithMockUser
     void postTest() throws Exception {
@@ -44,6 +43,7 @@ public class FunctionControllerTest {
                 writeValueAsString(func))).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(entFunc)));
 
     }
+
     @Test
     @WithMockUser
     void getTest() throws Exception {
@@ -51,14 +51,15 @@ public class FunctionControllerTest {
                 writeValueAsString(func)));
         mockMvc.perform(MockMvcRequestBuilders.get("/functions/id?id=1").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(entFunc)));
     }
+
     @Test
     @WithMockUser
-    void getTestByNameTest() throws Exception
-    {
+    void getTestByNameTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(func)));
         mockMvc.perform(MockMvcRequestBuilders.get("/functions/name?name=Test").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(entFunc)));
     }
+
     @Test
     @WithMockUser
     void getTestByIdTest() throws Exception {
@@ -73,6 +74,7 @@ public class FunctionControllerTest {
         func1.getPoints().add(convertToEntity(p2));
         mockMvc.perform(MockMvcRequestBuilders.get("/functions/funcId?funcId=1").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(func1)));
     }
+
     @Test
     @WithMockUser
     void deleteTest() throws Exception {
@@ -82,6 +84,7 @@ public class FunctionControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.delete("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(func))).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(entFunc)));
     }
+
     @Test
     @WithMockUser
     void updateTest() throws Exception {
@@ -95,11 +98,11 @@ public class FunctionControllerTest {
 
 
     }
+
     @AfterEach
     @WithMockUser
-    void delete() throws Exception
-    {
-         mockMvc.perform(MockMvcRequestBuilders.delete("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
+    void delete() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(func)));
     }
 }

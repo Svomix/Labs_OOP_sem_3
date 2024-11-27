@@ -1,23 +1,18 @@
-
 package Labs_OOP_sem_3.service;
 
 import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.dto.FunctionDto;
 import Labs_OOP_sem_3.entities.PointEntity;
-import Labs_OOP_sem_3.repositories.FunctionRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+
 import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 
 @SpringBootTest(classes = Application.class)
@@ -27,6 +22,7 @@ public class FunctionServiceTest {
     private FunctionDto function;
     @Autowired
     private PointService pointService;
+
     @BeforeEach
     public void createFunction() {
         functionService.updateSequence();
@@ -36,7 +32,7 @@ public class FunctionServiceTest {
 
     @Test
     void create() {
-       Assertions.assertEquals(functionService.read(function.getId()).getName(), function.getName());
+        Assertions.assertEquals(functionService.read(function.getId()).getName(), function.getName());
     }
 
     @Test
@@ -48,12 +44,12 @@ public class FunctionServiceTest {
         functionService.update(updFunc);
         System.out.println(functionService.read(function.getId()));
         Assertions.assertEquals(updFunc.getName(), functionService.read(function.getId()).getName());
-        Assertions.assertEquals(arrP,pointService.findByFunc(function.getId()));
+        Assertions.assertEquals(arrP, pointService.findByFunc(function.getId()));
 
     }
+
     @Test
-    void delete()
-    {
+    void delete() {
         var updFunc = FunctionDto.builder().id(1).name("123").build();
         functionService.create(updFunc);
         functionService.delete(updFunc);
@@ -64,15 +60,17 @@ public class FunctionServiceTest {
     void read() {
         var updFunc = FunctionDto.builder().id(1).name("123").build();
         functionService.create(updFunc);
-        Assertions.assertEquals(functionService.read(updFunc.getId()).getName(),updFunc.getName());
+        Assertions.assertEquals(functionService.read(updFunc.getId()).getName(), updFunc.getName());
         Assertions.assertNull(functionService.read(updFunc.getId() + 1));
 
     }
+
     @Test
     void readByName() {
-        Assertions.assertEquals(functionService.readByName(function.getName()).getId(),function.getId());
+        Assertions.assertEquals(functionService.readByName(function.getName()).getId(), function.getId());
         Assertions.assertNull(functionService.readByName(function.getName() + 1));
     }
+
     @AfterEach
     @Transactional
     public void destroy() {

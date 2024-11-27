@@ -14,26 +14,30 @@ public class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
     private UserEntity user;
+
     @BeforeEach
     public void createUser() {
         user = UserEntity.builder().password("3").username("2").build();
         userRepository.save(user);
     }
+
     @Test
     public void createTest() {
         Assertions.assertNotNull(userRepository.findById(user.getId()));
     }
+
     @Test
     public void findByUsername() {
         var u = userRepository.findByUsername(user.getUsername());
         Assertions.assertEquals(user.getId(), u.get().getId());
     }
+
     @Test
-    public void noFindByUsername()
-    {
+    public void noFindByUsername() {
         var u = userRepository.findByUsername("100");
         Assertions.assertTrue(u.isEmpty());
     }
+
     @AfterEach
     public void deleteUser() {
         userRepository.deleteById(user.getId());

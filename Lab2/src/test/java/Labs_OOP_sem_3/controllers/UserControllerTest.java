@@ -1,6 +1,5 @@
 package Labs_OOP_sem_3.controllers;
 
-import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.dto.AuthenticationRequest;
 import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.repositories.UserRepository;
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -51,7 +49,7 @@ class UserControllerTest {
     }
 
     @Test
-    void GetUserByNameSuccess(){
+    void GetUserByNameSuccess() {
         when(userService.findUserByUsername("testuser")).thenReturn(user);
 
         ResponseEntity<UserEntity> response = userController.getUserByName("testuser");
@@ -115,7 +113,8 @@ class UserControllerTest {
         String token = "jwtToken";
 
         when(authenticationManager.authenticate(any())).thenReturn(null);
-        when(customUserDetailsService.loadUserByUsername("testuser")).thenReturn(userDetails); when(jwtUtil.generateToken(userDetails)).thenReturn(token);
+        when(customUserDetailsService.loadUserByUsername("testuser")).thenReturn(userDetails);
+        when(jwtUtil.generateToken(userDetails)).thenReturn(token);
 
         String response = userController.loginUser(authenticationRequest);
 
@@ -124,8 +123,9 @@ class UserControllerTest {
         verify(customUserDetailsService).loadUserByUsername("testuser");
         verify(jwtUtil).generateToken(userDetails);
     }
+
     @AfterEach
-    void delete(){
+    void delete() {
         userRepository.deleteById(1);
     }
 }

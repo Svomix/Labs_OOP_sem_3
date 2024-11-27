@@ -12,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
-import java.util.Optional;
-
 @AllArgsConstructor
 @Service
 @Transactional
@@ -63,8 +61,8 @@ public class UserService implements UserDetailsManager {
     public UserEntity findUserById(int id) {
         return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User not found: " + id));
     }
-    public void updateSequence()
-    {
-       userRepository.restartSeq();
+
+    public void updateSequence() {
+        userRepository.restartSeq();
     }
 }

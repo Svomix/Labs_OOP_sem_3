@@ -13,7 +13,8 @@ import java.util.Optional;
 @Transactional
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     Optional<UserEntity> findByUsername(String username);
+
     @Modifying
-    @Query(value = "ALTER SEQUENCE users_id_seq RESTART WITH 1;",nativeQuery = true)
+    @Query(value = "ALTER SEQUENCE users_id_seq RESTART WITH 1;", nativeQuery = true)
     void restartSeq();
 }

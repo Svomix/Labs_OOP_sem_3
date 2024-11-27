@@ -2,18 +2,12 @@ package Labs_OOP_sem_3.controllers;
 
 
 import Labs_OOP_sem_3.dto.FunctionDto;
-import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.FunctionEntity;
-import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.service.FunctionService;
 import Labs_OOP_sem_3.service.PointService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-
-import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 
 @RestController
 @AllArgsConstructor
@@ -27,11 +21,13 @@ public class FunctionController {
         var funcEnt = functionService.create(functionDto);
         return ResponseEntity.ok(funcEnt);
     }
+
     @GetMapping("/id")
     public ResponseEntity<FunctionEntity> get(@RequestParam int id) {
         FunctionEntity functionEntity = functionService.read(id);
         return functionEntity != null ? ResponseEntity.ok(functionEntity) : ResponseEntity.notFound().build();
     }
+
     @GetMapping("/name")
     public ResponseEntity<FunctionDto> getByName(@RequestParam String name) {
         var func = functionService.readByName(name);
@@ -41,6 +37,7 @@ public class FunctionController {
         }
         return ResponseEntity.notFound().build();
     }
+
     @GetMapping("/funcId")
     public ResponseEntity<FunctionDto> getById(@RequestParam int funcId) {
         var func = functionService.read(funcId);
@@ -50,6 +47,7 @@ public class FunctionController {
         }
         return ResponseEntity.notFound().build();
     }
+
     @PutMapping
     public ResponseEntity<FunctionEntity> update(@RequestBody FunctionDto functionDto) {
         FunctionEntity functionEntity = functionService.read(functionDto.getId());
@@ -59,6 +57,7 @@ public class FunctionController {
         }
         return ResponseEntity.notFound().build();
     }
+
     @DeleteMapping
     public ResponseEntity<FunctionEntity> delete(@RequestBody FunctionDto functionDto) {
         FunctionEntity functionEntity = functionService.read(functionDto.getId());

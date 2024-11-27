@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface FunctionRepository extends JpaRepository<FunctionEntity, Integer> {
     FunctionEntity findByName(String functionType);
+
     @Modifying
-    @Query(value = "ALTER SEQUENCE functions_id_seq RESTART WITH 1;",nativeQuery = true)
+    @Query(value = "ALTER SEQUENCE functions_id_seq RESTART WITH 1;", nativeQuery = true)
     void restartSeq();
 }
