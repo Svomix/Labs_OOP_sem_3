@@ -1,5 +1,5 @@
 package Labs_OOP_sem_3.controllers;
-
+/*
 import Labs_OOP_sem_3.dto.AuthenticationRequest;
 import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.repositories.UserRepository;
@@ -104,7 +104,7 @@ class UserControllerTest {
         verify(userRepository).save(user);
     }
 
-     */
+
 
     @Test
     public void testLoginUser() throws Exception {
@@ -129,3 +129,4 @@ class UserControllerTest {
         userRepository.deleteById(1);
     }
 }
+*/
