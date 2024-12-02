@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="Start front">
+    <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="packages">
+      <change afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/repositories/UserRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,113 +52,114 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.CompositeFunctionTest.applyCompositeFuncIdentify.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompositeFunctionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ConstantFunctionTest.applyTest1.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionControllerTest.deleteTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionControllerTest.getTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionControllerTest.getTestByIdTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.FunctionControllerTest.getTestByNameTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionControllerTest.postTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionControllerTest.test1.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionControllerTest.updateTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionRepositoryTest.FindByNameTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionRepositoryTest.createTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionServiceTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionServiceTest.createFunction.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionServiceTest.createFunctionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionServiceTest.delete.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionServiceTest.read.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionServiceTest.readByName.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FunctionServiceTest.update.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.IdentityFunctionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Labs_OOP_sem_3.repositories in Labs_OOP_sem_3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MainDaoTest.createTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointControllerTest.delete.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointControllerTest.findByFunc.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointControllerTest.postPoint.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointControllerTest.read.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointControllerTest.update.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointRepositoryTest.createTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.PointRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointRepositoryTest.findByFunctionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointServiceTest.create.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointServiceTest.delete.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointServiceTest.destroy.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointServiceTest.findByFunc.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointServiceTest.read.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PointServiceTest.update.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.createTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.findByUsername (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.findByUsername.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.noFindByUsername.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.LoadAndCreateTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.LoadTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.create.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.UserServiceTest.loadUserByUsername.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.updateTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.controllers in Labs_OOP_sem_3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.java in Labs_OOP_sem_3.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.repositories in Labs_OOP_sem_3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.service in Labs_OOP_sem_3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.test in Labs_OOP_sem_3.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Labs_OOP_sem_3 [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.App.js.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Application (1).executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;E:/Projects/Labs_OOP_sem_3/Lab2/src/test/java/Labs_OOP_sem_3/controllers&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Node.js/node.exe&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Projects/_NAME_-_PROJECT_/src/main/java/elephant-lab2/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Debug",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify.executor": "Run",
+    "JUnit.CompositeFunctionTest.applyCompositeFuncIdentify2.executor": "Run",
+    "JUnit.CompositeFunctionTest.executor": "Run",
+    "JUnit.ConstantFunctionTest.applyTest1.executor": "Run",
+    "JUnit.FunctionControllerTest.deleteTest.executor": "Run",
+    "JUnit.FunctionControllerTest.executor": "Run",
+    "JUnit.FunctionControllerTest.getTest.executor": "Run",
+    "JUnit.FunctionControllerTest.getTestByIdTest.executor": "Debug",
+    "JUnit.FunctionControllerTest.getTestByNameTest.executor": "Run",
+    "JUnit.FunctionControllerTest.postTest.executor": "Run",
+    "JUnit.FunctionControllerTest.test1.executor": "Run",
+    "JUnit.FunctionControllerTest.updateTest.executor": "Run",
+    "JUnit.FunctionRepositoryTest.FindByNameTest.executor": "Run",
+    "JUnit.FunctionRepositoryTest.createTest.executor": "Run",
+    "JUnit.FunctionRepositoryTest.executor": "Run",
+    "JUnit.FunctionServiceTest.create.executor": "Run",
+    "JUnit.FunctionServiceTest.createFunction.executor": "Run",
+    "JUnit.FunctionServiceTest.createFunctionTest.executor": "Run",
+    "JUnit.FunctionServiceTest.delete.executor": "Run",
+    "JUnit.FunctionServiceTest.executor": "Run",
+    "JUnit.FunctionServiceTest.read.executor": "Run",
+    "JUnit.FunctionServiceTest.readByName.executor": "Run",
+    "JUnit.FunctionServiceTest.update.executor": "Run",
+    "JUnit.IdentityFunctionTest.executor": "Run",
+    "JUnit.Labs_OOP_sem_3.repositories in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.MainDaoTest.createTest.executor": "Run",
+    "JUnit.PointControllerTest.delete.executor": "Run",
+    "JUnit.PointControllerTest.executor": "Run",
+    "JUnit.PointControllerTest.findByFunc.executor": "Run",
+    "JUnit.PointControllerTest.postPoint.executor": "Run",
+    "JUnit.PointControllerTest.read.executor": "Run",
+    "JUnit.PointControllerTest.update.executor": "Run",
+    "JUnit.PointRepositoryTest.createTest.executor": "Debug",
+    "JUnit.PointRepositoryTest.executor": "Run",
+    "JUnit.PointRepositoryTest.findByFunctionTest.executor": "Run",
+    "JUnit.PointServiceTest.create.executor": "Run",
+    "JUnit.PointServiceTest.delete.executor": "Run",
+    "JUnit.PointServiceTest.destroy.executor": "Run",
+    "JUnit.PointServiceTest.executor": "Run",
+    "JUnit.PointServiceTest.findByFunc.executor": "Run",
+    "JUnit.PointServiceTest.read.executor": "Run",
+    "JUnit.PointServiceTest.update.executor": "Run",
+    "JUnit.UserRepositoryTest (1).executor": "Run",
+    "JUnit.UserRepositoryTest.createTest.executor": "Run",
+    "JUnit.UserRepositoryTest.executor": "Run",
+    "JUnit.UserRepositoryTest.findByUsername (1).executor": "Run",
+    "JUnit.UserRepositoryTest.findByUsername.executor": "Run",
+    "JUnit.UserRepositoryTest.noFindByUsername.executor": "Run",
+    "JUnit.UserServiceTest.LoadAndCreateTest.executor": "Run",
+    "JUnit.UserServiceTest.LoadTest.executor": "Run",
+    "JUnit.UserServiceTest.create.executor": "Debug",
+    "JUnit.UserServiceTest.loadUserByUsername.executor": "Run",
+    "JUnit.UserServiceTest.updateTest.executor": "Run",
+    "JUnit.controllers in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.java in Labs_OOP_sem_3.executor": "Coverage",
+    "JUnit.repositories in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.service in Labs_OOP_sem_3.executor": "Run",
+    "JUnit.test in Labs_OOP_sem_3.executor": "Run",
+    "Maven.Labs_OOP_sem_3 [clean].executor": "Run",
+    "Node.js.App.js.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.Application (1).executor": "Run",
+    "Spring Boot.Application.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "E:/Projects/Labs_OOP_sem_3/Lab2/src/test/java/Labs_OOP_sem_3/controllers",
+    "last_opened_file_path": "E:/Projects/Labs_OOP_sem_3/Lab2/src/main/java/Labs_OOP_sem_3/ui",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "E:/Projects/_NAME_-_PROJECT_/src/main/java/elephant-lab2/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\Labs_OOP_sem_3\Lab2\src\main\java\Labs_OOP_sem_3\ui\styles" />
+      <recent name="E:\Projects\Labs_OOP_sem_3\Lab2\src\main\java\Labs_OOP_sem_3\ui\pages" />
       <recent name="E:\Projects\Labs_OOP_sem_3\Lab2\src\main\java\Labs_OOP_sem_3\ui" />
       <recent name="E:\Projects\Labs_OOP_sem_3\Lab2\src\main\java\Labs_OOP_sem_3\ui\components" />
       <recent name="E:\Projects\_NAME_-_PROJECT_\src\main\java\elephant_lab2\functions" />
-      <recent name="E:\Projects\_NAME_-_PROJECT_\src\test\java" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -172,19 +176,11 @@
       <recent name="Labs_OOP_sem_3.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.App.js">
+  <component name="RunManager" selected="JUnit.test in Labs_OOP_sem_3">
     <configuration name="controllers in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Labs_OOP_sem_3" />
       <option name="TEST_OBJECT" value="directory" />
       <dir value="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/controllers" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="java in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Labs_OOP_sem_3" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/Lab2/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -201,6 +197,14 @@
       <module name="Labs_OOP_sem_3" />
       <option name="TEST_OBJECT" value="directory" />
       <dir value="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in Labs_OOP_sem_3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Labs_OOP_sem_3" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/Lab2/src/test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -225,8 +229,8 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="JUnit.test in Labs_OOP_sem_3" />
       <item itemvalue="JUnit.controllers in Labs_OOP_sem_3" />
-      <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
       <item itemvalue="JUnit.repositories in Labs_OOP_sem_3" />
       <item itemvalue="JUnit.service in Labs_OOP_sem_3" />
       <item itemvalue="Node.js.Unnamed" />
@@ -234,11 +238,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.test in Labs_OOP_sem_3" />
+        <item itemvalue="JUnit.repositories in Labs_OOP_sem_3" />
         <item itemvalue="Node.js.App.js" />
         <item itemvalue="JUnit.service in Labs_OOP_sem_3" />
-        <item itemvalue="JUnit.repositories in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.controllers in Labs_OOP_sem_3" />
-        <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
       </list>
     </recent_temporary>
   </component>
@@ -300,6 +304,8 @@
       <workItem from="1733047373316" duration="3591000" />
       <workItem from="1733053796692" duration="4913000" />
       <workItem from="1733065422918" duration="917000" />
+      <workItem from="1733149046147" duration="261000" />
+      <workItem from="1733157912797" duration="341000" />
     </task>
     <task id="LOCAL-00001" summary="Entites">
       <option name="closed" value="true" />
@@ -445,7 +451,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733065558362</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Home page">
+      <option name="closed" value="true" />
+      <created>1733149255346</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1733149255346</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +489,9 @@
     <MESSAGE value="Controllers" />
     <MESSAGE value="Controllers' tests" />
     <MESSAGE value="Start front" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start front" />
+    <MESSAGE value="Home page" />
+    <MESSAGE value="packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="packages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
