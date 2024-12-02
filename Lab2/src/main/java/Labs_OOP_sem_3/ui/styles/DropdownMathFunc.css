@@ -1,0 +1,8 @@
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-option:hover {
+    background-color: rgba(255, 68, 20, 0.81); /* Цвет фона при наведении */
+}
