@@ -14,6 +14,11 @@ public interface PointRepository extends JpaRepository<PointEntity, Integer> {
     @Query(value = "SELECT * from points where function_id = :functionId;", nativeQuery = true)
     ArrayList<PointEntity> findByFunction(@Param("functionId") Integer functionId);
 
+
+    @Query(value = "SELECT * from points where function_id = :functionId and x= :x and y = :y;", nativeQuery = true)
+    PointEntity findByFunctionIdAndPoint(@Param("functionId") Integer functionId,
+                                         @Param("x") Double x, @Param("y") Double y);
+
     @Modifying
     @Query(value = "ALTER SEQUENCE points_id_seq RESTART WITH 1;", nativeQuery = true)
     void restartSeq();

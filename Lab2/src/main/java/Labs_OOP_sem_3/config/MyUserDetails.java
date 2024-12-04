@@ -9,9 +9,11 @@ import java.util.List;
 
 public class MyUserDetails implements UserDetails {
     private UserEntity user;
+
     public MyUserDetails(UserEntity user) {
         this.user = user;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();

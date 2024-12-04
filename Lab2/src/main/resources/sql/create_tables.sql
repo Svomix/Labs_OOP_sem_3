@@ -22,7 +22,7 @@ CREATE TABLE log
 
 CREATE TABLE users
 (
-    id        SERIAL PRIMARY KEY,
+    id       SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL unique,
-    password  varchar(256) NOT NULL
+    password varchar(256) NOT NULL
 )

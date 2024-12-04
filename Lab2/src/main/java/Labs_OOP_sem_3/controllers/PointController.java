@@ -1,7 +1,7 @@
 package Labs_OOP_sem_3.controllers;
 
 
-import Labs_OOP_sem_3.convertos.ConvertorToPointDto;
+import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.service.FunctionService;
@@ -11,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-
-import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
 
 @RestController
 @RequestMapping("/points")
@@ -27,11 +25,14 @@ public class PointController {
         return ResponseEntity.ok(point);
     }
 
+    /*
     @GetMapping("/id")
     public ResponseEntity<PointEntity> read(@RequestParam int id) {
         PointEntity pointEntity = pointService.read(id);
         return ResponseEntity.ok(pointEntity);
     }
+
+     */
 
     @PutMapping("/update")
     public ResponseEntity<PointEntity> update(@RequestBody PointDto pointDto) {
@@ -41,18 +42,15 @@ public class PointController {
 
     @DeleteMapping
     public ResponseEntity<PointEntity> delete(@RequestBody PointDto pointDto) {
-        var id = pointDto.getId();
-        if (pointService.read(id) != null) {
-            pointService.delete(ConvertorToPointDto.convertToDto(pointService.read(id)));
-            return ResponseEntity.ok(convertToEntity(pointDto));
-        }
-        return ResponseEntity.notFound().build();
+        pointService.delete(pointDto);
+        return ResponseEntity.ok(ConvertorToPointEntity.convertToEntity(pointDto));
     }
 
     @GetMapping("/find")
-    public ResponseEntity<ArrayList<PointEntity>> findByFunc(@RequestParam int funcId) {
-        if (functionService.read(funcId) != null) {
-            ArrayList<PointEntity> res = pointService.findByFunc(funcId);
+    public ResponseEntity<ArrayList<PointEntity>> findByFunc(@RequestParam String name) {
+        var func = functionService.readByName(name);
+        if (func != null) {
+            ArrayList<PointEntity> res = pointService.findByFunc(func.getId());
             return ResponseEntity.ok(res);
         }
         return ResponseEntity.notFound().build();

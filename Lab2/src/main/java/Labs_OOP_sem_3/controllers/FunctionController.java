@@ -22,11 +22,14 @@ public class FunctionController {
         return ResponseEntity.ok(funcEnt);
     }
 
+    /*
     @GetMapping("/id")
     public ResponseEntity<FunctionEntity> get(@RequestParam int id) {
         FunctionEntity functionEntity = functionService.read(id);
         return functionEntity != null ? ResponseEntity.ok(functionEntity) : ResponseEntity.notFound().build();
     }
+
+     */
 
     @GetMapping("/name")
     public ResponseEntity<FunctionDto> getByName(@RequestParam String name) {
@@ -38,6 +41,7 @@ public class FunctionController {
         return ResponseEntity.notFound().build();
     }
 
+    /*
     @GetMapping("/funcId")
     public ResponseEntity<FunctionDto> getById(@RequestParam int funcId) {
         var func = functionService.read(funcId);
@@ -48,9 +52,11 @@ public class FunctionController {
         return ResponseEntity.notFound().build();
     }
 
+
+     */
     @PutMapping
     public ResponseEntity<FunctionEntity> update(@RequestBody FunctionDto functionDto) {
-        FunctionEntity functionEntity = functionService.read(functionDto.getId());
+        FunctionEntity functionEntity = functionService.readByName(functionDto.getName());
         if (functionEntity != null) {
             functionService.update(functionDto);
             return ResponseEntity.ok(functionEntity);
@@ -60,7 +66,7 @@ public class FunctionController {
 
     @DeleteMapping
     public ResponseEntity<FunctionEntity> delete(@RequestBody FunctionDto functionDto) {
-        FunctionEntity functionEntity = functionService.read(functionDto.getId());
+        FunctionEntity functionEntity = functionService.readByName(functionDto.getName());
         if (functionEntity != null) {
             functionService.delete(functionDto);
             return ResponseEntity.ok(functionEntity);

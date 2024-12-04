@@ -26,4 +26,5 @@ public class PointEntity {
 
     @Column(name = "y", nullable = false)
     private double yValue;
+
 }
