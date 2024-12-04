@@ -20,7 +20,13 @@ public class PointService {
     private final FunctionService functionService;
 
     public PointEntity create(PointDto pointDto) {
-        return add(pointDto);
+        FunctionEntity func = functionService.readByName(pointDto.getFunction().getName());
+        pointDto.getFunction().setId(func.getId());
+        PointEntity point = repository.save(convertToEntity(pointDto));
+        FunctionDto functionDto = ConvertToFuncDto.convert(func);
+        functionDto.setPoints(repository.findByFunction(func.getId()));
+        functionService.update(functionDto);
+        return point;
     }
 
     public PointEntity read(int id) {
@@ -28,22 +34,21 @@ public class PointService {
     }
 
     public PointEntity update(PointDto pointDto) {
-        return add(pointDto);
-    }
-
-    private PointEntity add(PointDto pointDto) {
-        PointEntity point = repository.save(convertToEntity(pointDto));
         FunctionEntity func = functionService.readByName(pointDto.getFunction().getName());
+        PointEntity point = repository.findByFunctionIdAndPoint(func.getId(), pointDto.getX());
+        point.setYValue(pointDto.getY());
+        repository.save(point);
         FunctionDto functionDto = ConvertToFuncDto.convert(func);
-        functionDto.getPoints().add(convertToEntity(pointDto));
-        func.setName("" + HashUtil.hash(functionDto.getPoints()));
+        functionDto.setPoints(repository.findByFunction(functionDto.getId()));
         functionService.update(functionDto);
         return point;
     }
 
+
+
     public void delete(PointDto pointDto) {
         FunctionEntity func = functionService.readByName(pointDto.getFunction().getName());
-        PointEntity point = repository.findByFunctionIdAndPoint(func.getId(), pointDto.getX(), pointDto.getY());
+        PointEntity point = repository.findByFunctionIdAndPoint(func.getId(), pointDto.getX());
         repository.deleteById(point.getId());
         FunctionDto functionDto = ConvertToFuncDto.convert(func);
         functionDto.setPoints(repository.findByFunction(functionDto.getId()));

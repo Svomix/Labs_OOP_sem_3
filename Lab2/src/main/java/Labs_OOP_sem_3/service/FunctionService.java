@@ -52,12 +52,12 @@ public class FunctionService {
         functionRepository.delete(function);
     }
 
-    /*
+
     public FunctionEntity read(Integer id) {
         return functionRepository.findById(id).orElse(null);
     }
 
-     */
+
 
 
     public FunctionEntity readByName(String name) {
