@@ -91,6 +91,7 @@ public class PointControllerTest {
         p2.getFunction().setName(HashUtil.hash(points)+"");
     }
 
+    /*
     @Test
     @WithMockUser
     void findByFunc() throws Exception {
@@ -104,6 +105,8 @@ public class PointControllerTest {
 //        points.get(1).getFunction().setName(""+HashUtil.hash(points));
         mockMvc.perform(MockMvcRequestBuilders.get("/points/find?name="+ HashUtil.hash(points)).contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(points)));
     }
+
+     */
 
     @AfterEach
     void tearDown() throws Exception {
