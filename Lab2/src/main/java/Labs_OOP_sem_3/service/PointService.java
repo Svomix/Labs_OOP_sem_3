@@ -6,9 +6,9 @@ import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.repositories.PointRepository;
-import Labs_OOP_sem_3.utlis.HashUtil;
 import lombok.AllArgsConstructor;
 
+import java.beans.Transient;
 import java.util.ArrayList;
 
 import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
@@ -29,8 +29,8 @@ public class PointService {
         return point;
     }
 
-    public PointEntity read(int id) {
-        return repository.findById(id).orElse(null);
+    public PointEntity readByFuncIdAndPoint(Integer id, Double x) {
+        return repository.findByFunctionIdAndPoint(id, x);
     }
 
     public PointEntity update(PointDto pointDto) {
@@ -45,7 +45,6 @@ public class PointService {
         }
         return point;
     }
-
 
 
     public void delete(PointDto pointDto) {

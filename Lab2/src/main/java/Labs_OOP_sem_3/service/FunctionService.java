@@ -24,10 +24,12 @@ public class FunctionService {
         if (funcEntity == null) {
             funcDto.setName("" + HashUtil.hash(funcDto.getPoints()));
             var func = functionRepository.save(convert(funcDto));
-            var arrP = new ArrayList<PointEntity>();
-            for (var p : funcDto.getPoints()) {
-                p.setFunction(func);
-                arrP.add(pointRepository.save(p));
+            var arrP = funcDto.getPoints();
+            if (arrP != null) {
+                for (var p : funcDto.getPoints()) {
+                    p.setFunction(func);
+                    pointRepository.save(p);
+                }
             }
             return func;
         }
@@ -63,8 +65,6 @@ public class FunctionService {
     public FunctionEntity read(Integer id) {
         return functionRepository.findById(id).orElse(null);
     }
-
-
 
 
     public FunctionEntity readByName(String name) {

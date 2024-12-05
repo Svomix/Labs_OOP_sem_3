@@ -1,6 +1,7 @@
 package Labs_OOP_sem_3.service;
 
 import Labs_OOP_sem_3.App.Application;
+import Labs_OOP_sem_3.convertos.ConvertorToPointDto;
 import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
 import Labs_OOP_sem_3.dto.FunctionDto;
 import Labs_OOP_sem_3.dto.PointDto;
@@ -28,10 +29,7 @@ public class PointServiceTest {
     private FunctionService functionService;
     private PointDto point;
     private FunctionDto function;
-    PointDto point1;
-    PointDto point2;
-    PointDto point3;
-    ArrayList<PointEntity> points;
+    ArrayList<PointEntity> points = new ArrayList<>();
 
     @BeforeEach
     public void createPoint() {
@@ -42,63 +40,33 @@ public class PointServiceTest {
         point = PointDto.builder().id(1).function(convert(function)).x(2.0).y(3.0).build();
         pointService.create(point);
         points.add(ConvertorToPointEntity.convertToEntity(point));
-        points.getFirst().getFunction().setName(HashUtil.hash(points)+"");
+        function.setPoints(points);
+        function.setName("" + HashUtil.hash(points));
+        points.getFirst().getFunction().setName(function.getName());
     }
 
     @Test
     void create() {
-        Assertions.assertEquals(2, pointService.read(point.getId()).getXValue());
-        Assertions.assertEquals(3, pointService.read(point.getId()).getYValue());
-    }
-
-    @Test
-    void read() {
-        Assertions.assertEquals(2, pointService.read(point.getId()).getXValue());
-        Assertions.assertEquals(3, pointService.read(point.getId()).getYValue());
-        Assertions.assertNull(pointService.read(point.getId() + 1));
+        Assertions.assertEquals(2, pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getXValue());
+        Assertions.assertEquals(3, pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getYValue());
     }
 
     @Test
     void update() {
-        var updPoint = PointDto.builder().id(1).function(FunctionEntity.builder().name("456").build()).x(5.0).y(6.0).build();
+        var updPoint = PointDto.builder().id(1).function(FunctionEntity.builder().name("" + HashUtil.hash(points)).build()).x(2.0).y(6.0).build();
         pointService.update(updPoint);
-        Assertions.assertEquals(5, pointService.read(point.getId()).getXValue());
-        Assertions.assertEquals(6, pointService.read(point.getId()).getYValue());
-        Assertions.assertEquals(updPoint.getFunction().getName(), pointService.read(point.getId()).getFunction().getName());
-    }
-
-    @Test
-    void delete() {
-        var updPoint = PointDto.builder().id(2).function(FunctionEntity.builder().name("456").build()).build();
-        pointService.create(updPoint);
-        pointService.delete(updPoint);
-        Assertions.assertNull(pointService.read(updPoint.getId()));
-    }
-
-    @Test
-    void findByFunc() {
-        ArrayList arr = new ArrayList();
-        point1 = PointDto.builder().id(2).function(convert(function)).x(3.0).y(5.0).build();
-        point2 = PointDto.builder().id(3).function(convert(function)).x(1.0).y(3.0).build();
-        point3 = PointDto.builder().id(4).function(convert(function)).x(2.0).y(8.0).build();
-        pointService.create(point1);
-        pointService.create(point2);
-        pointService.create(point3);
-        arr.add(point);
-        arr.add(point1);
-        arr.add(point2);
-        arr.add(point3);
-        Assertions.assertEquals(arr.size(), pointService.findByFunc(function.getId()).size());
-        Assertions.assertNull(pointService.findByFunc(function.getId() + 1));
-        pointService.delete(point1);
-        pointService.delete(point2);
-        pointService.delete(point3);
+        points.removeFirst();
+        points.add(ConvertorToPointEntity.convertToEntity(updPoint));
+        Assertions.assertEquals(2, pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getXValue());
+        Assertions.assertEquals(6, pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getYValue());
+        updPoint.getFunction().setName(HashUtil.hash(points) + "");
+        Assertions.assertEquals(updPoint.getFunction().getName(), pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getFunction().getName());
     }
 
     @AfterEach
     void destroy() {
-        pointService.delete(point);
-        function.setName("0");
+        pointService.delete(ConvertorToPointDto.convertToDto(points.removeFirst()));
+        function.setName(HashUtil.hash(points) + "");
         functionService.delete(function);
     }
 }

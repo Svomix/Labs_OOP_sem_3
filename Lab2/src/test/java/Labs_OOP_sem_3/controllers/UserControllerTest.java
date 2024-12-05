@@ -1,10 +1,8 @@
 package Labs_OOP_sem_3.controllers;
 
 import Labs_OOP_sem_3.App.Application;
-import Labs_OOP_sem_3.dto.FunctionDto;
 import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.repositories.UserRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,8 +16,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.util.ArrayList;
 
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
@@ -51,7 +47,6 @@ class UserControllerTest {
 
     @Test
     void loginUser() throws Exception {
-        //UserEntity userEntity = UserEntity.builder().username("Danil").password(encoder.encode("12345")).build();
         mockMvc.perform(MockMvcRequestBuilders.post("/users/login").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(user))).andExpect(MockMvcResultMatchers.status().isOk());
 
