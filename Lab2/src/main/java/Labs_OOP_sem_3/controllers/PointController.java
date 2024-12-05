@@ -34,6 +34,8 @@ public class PointController {
 
      */
 
+
+
     @PutMapping("/update")
     public ResponseEntity<PointEntity> update(@RequestBody PointDto pointDto) {
         var point = pointService.update(pointDto);

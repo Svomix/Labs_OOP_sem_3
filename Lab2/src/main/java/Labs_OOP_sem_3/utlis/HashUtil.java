@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class HashUtil {
     public static int hash(ArrayList<PointEntity> points) {
+        if (points.isEmpty()) return 0;
         StringBuilder pointsString = new StringBuilder();
         for (PointEntity point : points) {
             pointsString.append("{").append(point.getXValue()).append(", ").append(point.getYValue()).append("}").append(", ");

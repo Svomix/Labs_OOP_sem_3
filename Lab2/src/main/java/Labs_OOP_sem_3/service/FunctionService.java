@@ -36,20 +36,27 @@ public class FunctionService {
 
     public void update(FunctionDto funcDto) {
         FunctionEntity function = functionRepository.findByName(funcDto.getName());
-        pointRepository.deleteAll(pointRepository.findByFunction(function.getId()));
+        ArrayList<PointEntity> arrP = pointRepository.findByFunction(function.getId());
+        if (arrP != null) {
+            pointRepository.deleteAll(arrP);
+        }
         funcDto.setId(function.getId());
         funcDto.setName("" + HashUtil.hash(funcDto.getPoints()));
         var func = functionRepository.save(convert(funcDto));
-        var arrP = new ArrayList<PointEntity>();
+        ArrayList<PointEntity> pointEntities = new ArrayList<>();
         for (var p : funcDto.getPoints()) {
-            p.setFunction(func);
-            arrP.add(pointRepository.save(p));
+            PointEntity point = PointEntity.builder().id(p.getId()).function(func).xValue(p.getXValue()).yValue(p.getYValue()).build();
+            pointRepository.save(point);
+            pointEntities.add(point);
         }
+        funcDto.setPoints(pointEntities);
     }
 
     public void delete(FunctionDto funcDto) {
         FunctionEntity function = functionRepository.findByName(funcDto.getName());
-        functionRepository.delete(function);
+        if (function != null) {
+            functionRepository.delete(function);
+        }
     }
 
 
