@@ -6,31 +6,35 @@ export default function FirstPage() {
     const [pointsCount, setPointsCount] = useState(0);
     const [hasError, setHasError] = useState(true)
     const [tableData, setTableData] = useState([])
+    const [updateTrigger, setUpdateTrigger] = useState(0)
 
-    function changePointsCount(event){
+    function changePointsCount(event) {
         setPointsCount(event.target.value)
         setHasError(event.target.value < 2)
     }
 
-    function createTable() {
+    function createTable(event) {
+        event.preventDefault()
         const data = []
         for (let i = 1; i <= pointsCount; i++) {
-            data.push({id : i, x: null, y: null})
+            data.push({id: i, x: null, y: null})
         }
         setTableData(data)
     }
+
     function handleInputChange(id, field, newValue) {
         setTableData(prevData =>
-        prevData.map(item =>
-        item.id === id ? {... item, [field]:newValue}:item))
-    }
-    function areAllCellsFilled() {
-        return tableData.every(item => item.x !== '' && item.y !== '');
+            prevData.map(item =>
+                item.id === id ? {...item, [field]: newValue} : item))
     }
 
-    function handleSecondButtonClick(event) {
-        event.preventDefault();
+    function areAllCellsFilled() {
+        return tableData.every(item => item.x !== null && item.y !== null && item.x !== '' && item.y !== '');
+    }
+
+    async function handleSecondButtonClick() {
         alert('Все ячейки заполнены!');
+        setUpdateTrigger(prev => prev + 1)
     }
 
     return (
