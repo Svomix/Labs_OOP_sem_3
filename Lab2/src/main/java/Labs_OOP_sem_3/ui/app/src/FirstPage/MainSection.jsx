@@ -1,7 +1,7 @@
 import Button from "./components/Button/Button.jsx";
 import {useState} from "react";
 
-export default function MainSection() {
+export default function MainSection({onDataChange}) {
     const [pointsCount, setPointsCount] = useState(0);
     const [hasError, setHasError] = useState(true)
     const [tableData, setTableData] = useState([])
@@ -40,7 +40,8 @@ export default function MainSection() {
 
     async function handleSecondButtonClick() {
         alert('Все ячейки заполнены!');
-        window.location.reload()
+        onDataChange(tableData)
+        //        window.location.reload()
     }
     return (
         <section>

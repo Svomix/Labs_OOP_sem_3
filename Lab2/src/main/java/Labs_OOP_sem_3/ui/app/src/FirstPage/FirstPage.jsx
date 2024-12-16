@@ -5,7 +5,7 @@ import TabsSection from "./TabsSection.jsx";
 import MainSection from "./MainSection.jsx";
 import FeedbackSection from "./FeedbackSection.jsx";
 
-export default function FirstPage() {
+export default function FirstPage({onDataChange}) {
     const [tab, setTab] = useState('main')
 
     return (
@@ -15,12 +15,12 @@ export default function FirstPage() {
                 <TabsSection active={tab} onChange={(current) => setTab(current)}/>
                 {tab === 'main' && (
                     <>
-                        <MainSection/>
+                        <MainSection onDataChange={onDataChange}/>
                     </>
                 )}
                 {tab === 'feedback' && (
                     <>
-                        <FeedbackSection></FeedbackSection>
+                        <FeedbackSection onDataChange={onDataChange}></FeedbackSection>
                     </>
                 )}
             </main>
