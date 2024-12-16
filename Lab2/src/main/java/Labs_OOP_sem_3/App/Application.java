@@ -13,7 +13,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = {"Labs_OOP_sem_3.repositories", "Labs_OOP_sem_3.service", "Labs_OOP_sem_3.controllers"})
 @EnableTransactionManagement
 public class Application {
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+
     }
 }

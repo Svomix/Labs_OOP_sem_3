@@ -23,7 +23,6 @@ export default function FeedbackSection() {
         try {
             alert("TabulatedFunction создана успешно");
             window.location.reload()
-            // Обрабатывайте созданную табулированную функцию
         } catch (error) {
             setErrorMessage(error.message);
         }
