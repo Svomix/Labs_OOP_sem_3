@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export default function FeedbackSection({onDataChange}) {
+export default function FeedbackSection({onDataChange, closeModal}) {
     const [selectedFunction, setSelectedFunction] = useState("");
     const [points, setPoints] = useState("");
     const [intervalStart, setIntervalStart] = useState("");
@@ -22,6 +22,7 @@ export default function FeedbackSection({onDataChange}) {
         const chosenFunction = selectedFunction;
         try {
             alert("TabulatedFunction создана успешно")
+            closeModal(true)
             onDataChange(table)
             window.location.reload()
         } catch (error) {

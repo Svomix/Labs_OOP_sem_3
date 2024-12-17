@@ -1,21 +1,36 @@
 import {useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
-
+import Modal from 'react-modal'
 export default function SecondPage() {
     const [table1, setTable1] = useState([])
     const [table2, setTable2] = useState([])
     const [tableResult, setTableResult] = useState([])
     const [operation, setOperation] = useState('add')
-    const [showFirst,setShowFirst] = useState(true)
-    const [showSecond,setShowSecond] = useState(true)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const openModal = () => {
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+
+    function modalContent1() {
+        return (
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
+        )
+    }
+    function modalContent2() {
+        return (
+            <FirstPage onDataChange={handleDataChange2} closeModal={closeModal}/>
+        )
+    }
 
     const handleDataChange = (newData) => {
-        setShowFirst(cur => !cur)
         setTable1(newData);
     };
     const handleDataChange2 = (newData) => {
-        setShowSecond(cur => !cur)
         setTable2(newData);
     };
 
@@ -34,7 +49,8 @@ export default function SecondPage() {
 
     return (
         <>
-        {showFirst && <FirstPage onDataChange={handleDataChange}/>}
+        <Button onClick={openModal}>Создать функцию</Button>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>{modalContent1} </Modal>
             {table1.length > 0 &&
                 <>
                     <table id="dataTable1">
@@ -47,24 +63,10 @@ export default function SecondPage() {
                         <tbody>
                         {table1.map((row, index) => (
                             <tr key={index}>
-                                <td contentEditable
-                                    suppressContentEditableWarning
-                                    onKeyDown={(e) => {
-                                        if (!/[\d]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
-                                            e.preventDefault();
-                                        }
-                                    }}
-                                    onBlur={(e) => handleInputChange(index, 'x', e.currentTarget.textContent)}>
+                                <td>
                                     {row.x}
                                 </td>
-                                <td contentEditable
-                                    suppressContentEditableWarning
-                                    onKeyDown={(e) => {
-                                        if (!/[\d]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
-                                            e.preventDefault();
-                                        }
-                                    }}
-                                    onBlur={(e) => handleInputChange(index, 'y', e.currentTarget.textContent)}>
+                                <td>
                                     {row.y}
                                 </td>
                             </tr>
@@ -73,7 +75,8 @@ export default function SecondPage() {
                     </table>
                 </>
             }
-        {showSecond && <FirstPage onDataChange={handleDataChange2}/>}
+            <Button onClick={openModal}>Создать функцию</Button>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>{modalContent2}</Modal>
             {table2.length > 0 &&
                 <>
                     <table id="dataTable2">
@@ -86,24 +89,8 @@ export default function SecondPage() {
                         <tbody>
                         {table2.map((row, index) => (
                             <tr key={index}>
-                                <td contentEditable
-                                    suppressContentEditableWarning
-                                    onKeyDown={(e) => {
-                                        if (!/[\d]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
-                                            e.preventDefault();
-                                        }
-                                    }}
-                                    onBlur={(e) => handleInputChange(index, 'x', e.currentTarget.textContent)}>
-                                    {row.x}
-                                </td>
-                                <td contentEditable
-                                    suppressContentEditableWarning
-                                    onKeyDown={(e) => {
-                                        if (!/[\d]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
-                                            e.preventDefault();
-                                        }
-                                    }}
-                                    onBlur={(e) => handleInputChange(index, 'y', e.currentTarget.textContent)}>
+                                <td>{row.x}</td>
+                                <td>
                                     {row.y}
                                 </td>
                             </tr>
