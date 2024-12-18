@@ -6,14 +6,18 @@ export default function SecondPage() {
     const [table1, setTable1] = useState([])
     const [table2, setTable2] = useState([])
     const [tableResult, setTableResult] = useState([])
-    const [operation, setOperation] = useState('add')
+    const [operation, setOperation] = useState('+')
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    const openModal = () => {
+    const [activeModal, setActiveModal] = useState(null)
+
+    const openModal = (modalType) => {
         setModalIsOpen(true);
+        setActiveModal(modalType)
     };
 
     const closeModal = () => {
         setModalIsOpen(false);
+        setActiveModal(null)
     };
 
     function modalContent1() {
@@ -34,14 +38,31 @@ export default function SecondPage() {
         setTable2(newData);
     };
 
-    const performOperation = () => {
+    const performOperation = (e) => {
+        e.preventDefault()
         if (table1 && table2) {
             let result = []
             switch (operation) {
-                case 'add' :
+                case '+' :
                     for (let i = 0; i < table1.length; i++) {
                         result.push([table1[i].x, parseFloat(table1[i].y) + parseFloat(table2[i].y)])
                     }
+                    break
+                case '-' :
+                    for (let i = 0; i < table1.length; i++) {
+                        result.push([table1[i].x, parseFloat(table1[i].y) - parseFloat(table2[i].y)])
+                    }
+                    break
+                case '*':
+                    for (let i = 0; i < table1.length; i++) {
+                        result.push([table1[i].x, parseFloat(table1[i].y) * parseFloat(table2[i].y)])
+                    }
+                    break
+                case '/':
+                    for (let i = 0; i < table1.length; i++) {
+                        result.push([table1[i].x, parseFloat(table1[i].y) / parseFloat(table2[i].y)])
+                    }
+                    break
             }
             setTableResult(result)
         }
@@ -49,8 +70,11 @@ export default function SecondPage() {
 
     return (
         <>
-        <Button onClick={openModal}>Создать функцию</Button>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>{modalContent1} </Modal>
+            <Button onClick={() => openModal('modal1')}>Создать функцию для таблицы 1</Button>
+            <Button onClick={() => openModal('modal2')}>Создать функцию для таблицы 2</Button>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+                {activeModal === 'modal1' ? modalContent1() : modalContent2()}
+            </Modal>
             {table1.length > 0 &&
                 <>
                     <table id="dataTable1">
@@ -75,8 +99,6 @@ export default function SecondPage() {
                     </table>
                 </>
             }
-            <Button onClick={openModal}>Создать функцию</Button>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>{modalContent2}</Modal>
             {table2.length > 0 &&
                 <>
                     <table id="dataTable2">
@@ -99,7 +121,17 @@ export default function SecondPage() {
                     </table>
                 </>
             }
-            <Button onClick={performOperation}>Вычислить</Button>
+            <form>
+                <label htmlFor="operationSelect">Выберите функцию:</label>
+                <select id="operationSelect" onChange={(e) => setOperation(e.target.value)}
+                        value={operation}>
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+                <Button onClick={performOperation}>Вычислить</Button>
+            </form>
             {tableResult.length > 0 &&
                 <>
                     <table id="dataTable3">
@@ -112,16 +144,17 @@ export default function SecondPage() {
                         <tbody>
                         {tableResult.map((row) => {
                             console.log(row)
-                            return(
-                            <tr key={row[0]}>
-                                <td>
-                                    {row[0]}
-                                </td>
-                                <td>
-                                    {row[1]}
-                                </td>
-                            </tr>
-                        )})}
+                            return (
+                                <tr key={row[0]}>
+                                    <td>
+                                        {row[0]}
+                                    </td>
+                                    <td>
+                                        {row[1]}
+                                    </td>
+                                </tr>
+                            )
+                        })}
                         </tbody>
                     </table>
                 </>
