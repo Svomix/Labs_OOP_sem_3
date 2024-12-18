@@ -5,7 +5,6 @@ export default function SelectFactory() {
 
     function handleSubmit(event) {
         alert("Фабрика изменена успешно");
-        window.location.reload()
     }
 
 
