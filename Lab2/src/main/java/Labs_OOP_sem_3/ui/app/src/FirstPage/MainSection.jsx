@@ -5,6 +5,7 @@ export default function MainSection({onDataChange, closeModal}) {
     const [pointsCount, setPointsCount] = useState(0);
     const [hasError, setHasError] = useState(true)
     const [tableData, setTableData] = useState([])
+
     function changePointsCount(event) {
         setPointsCount(event.target.value)
         setHasError(event.target.value < 2)
@@ -12,7 +13,7 @@ export default function MainSection({onDataChange, closeModal}) {
 
     function createTable(event) {
         event.preventDefault();
-        const newTableData = Array.from({ length: pointsCount }, (_, index) => {
+        const newTableData = Array.from({length: pointsCount}, (_, index) => {
             return {
                 x: tableData[index] ? tableData[index].x : '',
                 y: tableData[index] ? tableData[index].y : ''
@@ -31,7 +32,7 @@ export default function MainSection({onDataChange, closeModal}) {
     function handleInputChange(index, field, value) {
         setTableData(prevData =>
             prevData.map(((item, idx) =>
-                idx === index ? {... item, [field]:value}:item)))
+                idx === index ? {...item, [field]: value} : item)))
     }
 
     function areAllCellsFilled() {
@@ -40,10 +41,37 @@ export default function MainSection({onDataChange, closeModal}) {
 
     async function handleSecondButtonClick() {
         alert('Все ячейки заполнены!');
-        closeModal(true)
-        onDataChange(tableData)
-        //        window.location.reload()
+        closeModal(true);
+        onDataChange(tableData);
+        const postTabArr = {
+            arrX: tableData.map(item => item.x),
+            arrY: tableData.map(item => item.y)
+        };
+        const credentials =  ('igor:12345')
+        const auth = { "Authorization" : 'Basic KGlnb3I6MTIzNCk=' }
+        fetch('http://localhost:8080/points', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': auth,
+            },
+            mode:'no-cors',
+            body: JSON.stringify(postTabArr)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
+
     return (
         <section>
             <p3>Создание табулированной функции</p3>

@@ -17,7 +17,7 @@ public class FunctionRepositoryTest {
 
     @BeforeEach
     public void createFunction() {
-        function = FunctionEntity.builder().name("asd").build();
+        function = FunctionEntity.builder().hash("asd").build();
         functionRepository.save(function);
     }
 
@@ -29,8 +29,8 @@ public class FunctionRepositoryTest {
     @Test
     public void FindByNameTest() {
         ;
-        var f = functionRepository.findByName(function.getName());
-        Assertions.assertEquals(function.getName(), f.getName());
+        var f = functionRepository.findByHash(function.getHash());
+        Assertions.assertEquals(function.getHash(), f.getHash());
     }
 
     @AfterEach

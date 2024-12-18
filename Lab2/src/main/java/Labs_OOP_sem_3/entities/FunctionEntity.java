@@ -16,6 +16,8 @@ public class FunctionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "function_hash", nullable = false)
+    private String hash;
     @Column(name = "function_type", nullable = false)
-    private String name;
+    private String type;
 }

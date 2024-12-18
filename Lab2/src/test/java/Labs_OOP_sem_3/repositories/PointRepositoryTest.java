@@ -24,7 +24,7 @@ public class PointRepositoryTest {
 
     @BeforeEach
     public void createfunc() {
-        func = FunctionEntity.builder().name("12").build();
+        func = FunctionEntity.builder().hash("12").build();
         functionRepository.save(func);
     }
 

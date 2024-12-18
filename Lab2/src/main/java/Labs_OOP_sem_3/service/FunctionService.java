@@ -18,11 +18,10 @@ import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 public class FunctionService {
     private final FunctionRepository functionRepository;
     private final PointRepository pointRepository;
-
-    public FunctionEntity create(FunctionDto funcDto) {
-        FunctionEntity funcEntity = functionRepository.findByName(funcDto.getName());
+        public FunctionEntity create(FunctionDto funcDto) {
+        FunctionEntity funcEntity = functionRepository.findByHash(funcDto.getHash());
         if (funcEntity == null) {
-            funcDto.setName("" + HashUtil.hash(funcDto.getPoints()));
+            funcDto.setHash("" + HashUtil.hash(funcDto.getPoints()));
             var func = functionRepository.save(convert(funcDto));
             var arrP = funcDto.getPoints();
             if (arrP != null) {
@@ -35,15 +34,14 @@ public class FunctionService {
         }
         return funcEntity;
     }
-
     public void update(FunctionDto funcDto) {
-        FunctionEntity function = functionRepository.findByName(funcDto.getName());
+        FunctionEntity function = functionRepository.findByHash(funcDto.getHash());
         ArrayList<PointEntity> arrP = pointRepository.findByFunction(function.getId());
         if (arrP != null) {
             pointRepository.deleteAll(arrP);
         }
         funcDto.setId(function.getId());
-        funcDto.setName("" + HashUtil.hash(funcDto.getPoints()));
+        funcDto.setHash("" + HashUtil.hash(funcDto.getPoints()));
         var func = functionRepository.save(convert(funcDto));
         ArrayList<PointEntity> pointEntities = new ArrayList<>();
         for (var p : funcDto.getPoints()) {
@@ -55,7 +53,7 @@ public class FunctionService {
     }
 
     public void delete(FunctionDto funcDto) {
-        FunctionEntity function = functionRepository.findByName(funcDto.getName());
+        FunctionEntity function = functionRepository.findByHash(funcDto.getHash());
         if (function != null) {
             functionRepository.delete(function);
         }
@@ -68,7 +66,7 @@ public class FunctionService {
 
 
     public FunctionEntity readByName(String name) {
-        return functionRepository.findByName(name);
+        return functionRepository.findByHash(name);
     }
 
     public void updateSequence() {

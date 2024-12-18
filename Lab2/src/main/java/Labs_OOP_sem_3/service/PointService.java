@@ -20,7 +20,7 @@ public class PointService {
     private final FunctionService functionService;
 
     public PointEntity create(PointDto pointDto) {
-        FunctionEntity func = functionService.readByName(pointDto.getFunction().getName());
+        FunctionEntity func = functionService.readByName(pointDto.getFunction().getHash());
         pointDto.getFunction().setId(func.getId());
         PointEntity point = repository.save(convertToEntity(pointDto));
         FunctionDto functionDto = ConvertToFuncDto.convert(func);
@@ -34,7 +34,7 @@ public class PointService {
     }
 
     public PointEntity update(PointDto pointDto) {
-        FunctionEntity func = functionService.readByName(pointDto.getFunction().getName());
+        FunctionEntity func = functionService.readByName(pointDto.getFunction().getHash());
         PointEntity point = repository.findByFunctionIdAndPoint(func.getId(), pointDto.getX());
         if (point != null) {
             point.setYValue(pointDto.getY());
@@ -48,7 +48,7 @@ public class PointService {
 
 
     public void delete(PointDto pointDto) {
-        FunctionEntity func = functionService.readByName(pointDto.getFunction().getName());
+        FunctionEntity func = functionService.readByName(pointDto.getFunction().getHash());
         PointEntity point = repository.findByFunctionIdAndPoint(func.getId(), pointDto.getX());
         if (point.getId() != null) {
             repository.deleteById(point.getId());

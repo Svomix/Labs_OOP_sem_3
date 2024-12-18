@@ -26,18 +26,6 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    /*
-    @GetMapping("/id/{id}")
-    public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long id) {
-        UserEntity user = userRepository.findById(id).orElse(null);
-        if (user != null) {
-            return ResponseEntity.ok(user);
-        }
-        return ResponseEntity.notFound().build();
-    }
-
-     */
-
     @PostMapping("/login")
     public String loginUser(@RequestBody UserEntity user) throws Exception {
         Authentication authentication = authenticationProvider.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));

@@ -22,41 +22,19 @@ public class FunctionController {
         return ResponseEntity.ok(funcEnt);
     }
 
-    /*
-    @GetMapping("/id")
-    public ResponseEntity<FunctionEntity> get(@RequestParam int id) {
-        FunctionEntity functionEntity = functionService.read(id);
-        return functionEntity != null ? ResponseEntity.ok(functionEntity) : ResponseEntity.notFound().build();
-    }
-
-     */
-
     @GetMapping("/name")
     public ResponseEntity<FunctionDto> getByName(@RequestParam String name) {
         var func = functionService.readByName(name);
         if (func != null) {
-            var funcDto = FunctionDto.builder().id(func.getId()).name(func.getName()).points(pointService.findByFunc(func.getId())).build();
+            var funcDto = FunctionDto.builder().id(func.getId()).hash(func.getHash()).points(pointService.findByFunc(func.getId())).build();
             return ResponseEntity.ok(funcDto);
         }
         return ResponseEntity.notFound().build();
     }
 
-    /*
-    @GetMapping("/funcId")
-    public ResponseEntity<FunctionDto> getById(@RequestParam int funcId) {
-        var func = functionService.read(funcId);
-        if (func != null) {
-            var getFunc = FunctionDto.builder().id(funcId).name(func.getName()).points(pointService.findByFunc(funcId)).build();
-            return ResponseEntity.ok(getFunc);
-        }
-        return ResponseEntity.notFound().build();
-    }
-
-
-     */
     @PutMapping
     public ResponseEntity<FunctionEntity> update(@RequestBody FunctionDto functionDto) {
-        FunctionEntity functionEntity = functionService.readByName(functionDto.getName());
+        FunctionEntity functionEntity = functionService.readByName(functionDto.getHash());
         if (functionEntity != null) {
             functionService.update(functionDto);
             return ResponseEntity.ok(functionEntity);
@@ -66,7 +44,7 @@ public class FunctionController {
 
     @DeleteMapping
     public ResponseEntity<FunctionEntity> delete(@RequestBody FunctionDto functionDto) {
-        FunctionEntity functionEntity = functionService.readByName(functionDto.getName());
+        FunctionEntity functionEntity = functionService.readByName(functionDto.getHash());
         if (functionEntity != null) {
             functionService.delete(functionDto);
             return ResponseEntity.ok(functionEntity);

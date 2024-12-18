@@ -24,29 +24,29 @@ public class FunctionServiceTest {
     @BeforeEach
     public void createFunction() {
         functionService.updateSequence();
-        function = FunctionDto.builder().id(1).name("asd").points(new ArrayList<>()).build();
+        function = FunctionDto.builder().id(1).hash("asd").points(new ArrayList<>()).build();
         functionService.create(function);
     }
 
     @Test
     void create() {
-        Assertions.assertEquals(functionService.read(function.getId()).getName(), function.getName());
+        Assertions.assertEquals(functionService.read(function.getId()).getHash(), function.getHash());
     }
 
     @Test
     void update() {
         var arrP = new ArrayList<PointEntity>();
-        var updFunc = FunctionDto.builder().id(1).name("0").points(arrP).build();
+        var updFunc = FunctionDto.builder().id(1).hash("0").points(arrP).build();
         arrP.add(PointEntity.builder().function(convert(updFunc)).xValue(1).yValue(2).build());
         arrP.add(PointEntity.builder().function(convert(updFunc)).xValue(3).yValue(4).build());
         functionService.update(updFunc);
-        Assertions.assertEquals(updFunc.getName(), functionService.read(function.getId()).getName());
+        Assertions.assertEquals(updFunc.getHash(), functionService.read(function.getId()).getHash());
 
     }
 
     @Test
     void delete() {
-        var updFunc = FunctionDto.builder().id(1).name("123").points(new ArrayList<>()).build();
+        var updFunc = FunctionDto.builder().id(1).hash("123").points(new ArrayList<>()).build();
         functionService.create(updFunc);
         functionService.delete(updFunc);
         Assertions.assertNull(functionService.read(updFunc.getId()));
@@ -54,17 +54,17 @@ public class FunctionServiceTest {
 
     @Test
     void read() {
-        var updFunc = FunctionDto.builder().id(1).points(new ArrayList<>()).name("123").build();
+        var updFunc = FunctionDto.builder().id(1).points(new ArrayList<>()).hash("123").build();
         functionService.create(updFunc);
-        Assertions.assertEquals(functionService.read(updFunc.getId()).getName(), updFunc.getName());
+        Assertions.assertEquals(functionService.read(updFunc.getId()).getHash(), updFunc.getHash());
         Assertions.assertNull(functionService.read(updFunc.getId() + 1));
 
     }
 
     @Test
     void readByName() {
-        Assertions.assertEquals(functionService.readByName(function.getName()).getId(), function.getId());
-        Assertions.assertNull(functionService.readByName(function.getName() + 1));
+        Assertions.assertEquals(functionService.readByName(function.getHash()).getId(), function.getId());
+        Assertions.assertNull(functionService.readByName(function.getHash() + 1));
     }
 
     @AfterEach

@@ -7,7 +7,7 @@ public class ConvertorToFuncEntity {
     public static FunctionEntity convert(FunctionDto functionDto) {
         FunctionEntity functionEntity = FunctionEntity.builder().
                 id(functionDto.getId()).
-                name(functionDto.getName()).build();
+                hash(functionDto.getHash()).build();
         return functionEntity;
     }
 }

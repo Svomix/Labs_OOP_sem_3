@@ -24,6 +24,7 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             alert("TabulatedFunction создана успешно")
             closeModal(true)
             onDataChange(table)
+            ///////////////////////
             window.location.reload()
         } catch (error) {
             setErrorMessage(error.message);

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 @Builder
 public class FunctionDto {
     Integer id;
-    String name;
+    String type;
+    String hash;
     private ArrayList<PointEntity> points;
 }

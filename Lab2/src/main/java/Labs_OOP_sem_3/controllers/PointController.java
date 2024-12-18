@@ -1,7 +1,12 @@
 package Labs_OOP_sem_3.controllers;
 
 
+import Labs_OOP_sem_3.convertos.ConvertToFuncDto;
+import Labs_OOP_sem_3.convertos.ConvertorToFuncEntity;
+import Labs_OOP_sem_3.convertos.ConvertorToPointDto;
 import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
+import Labs_OOP_sem_3.dto.FunctionDto;
+import Labs_OOP_sem_3.dto.DataDto;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.service.FunctionService;
@@ -20,20 +25,18 @@ public class PointController {
     private final FunctionService functionService;
 
     @PostMapping
-    public ResponseEntity<PointEntity> create(@RequestBody PointDto pointDto) {
-        var point = pointService.create(pointDto);
-        return ResponseEntity.ok(point);
+    public ResponseEntity<FunctionDto> create(@RequestBody DataDto data) {
+        FunctionDto func = FunctionDto.builder().build();
+        for (int i = 0; i < data.getArrX().size(); ++i) {
+             func.getPoints().add(ConvertorToPointEntity.convertToEntity(PointDto.builder().x(data.getArrX().get(i)).y(data.getArrY().get(i)).function(ConvertorToFuncEntity.convert(func)).build()));
+        }
+        if (data.getType() == null)
+            func.setType("Tabulated");
+        else
+            func.setType(data.getType());
+        var f = functionService.create(func);
+        return ResponseEntity.ok(ConvertToFuncDto.convert(f));
     }
-
-    /*
-    @GetMapping("/id")
-    public ResponseEntity<PointEntity> read(@RequestParam int id) {
-        PointEntity pointEntity = pointService.read(id);
-        return ResponseEntity.ok(pointEntity);
-    }
-
-     */
-
 
     @PutMapping("/update")
     public ResponseEntity<PointEntity> update(@RequestBody PointDto pointDto) {

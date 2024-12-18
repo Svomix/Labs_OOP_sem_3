@@ -35,14 +35,14 @@ public class PointServiceTest {
     public void createPoint() {
         functionService.updateSequence();
         pointService.updateSequence();
-        function = FunctionDto.builder().id(1).name("0").build();
+        function = FunctionDto.builder().id(1).hash("0").build();
         functionService.create(function);
         point = PointDto.builder().id(1).function(convert(function)).x(2.0).y(3.0).build();
         pointService.create(point);
         points.add(ConvertorToPointEntity.convertToEntity(point));
         function.setPoints(points);
-        function.setName("" + HashUtil.hash(points));
-        points.getFirst().getFunction().setName(function.getName());
+        function.setHash("" + HashUtil.hash(points));
+        points.getFirst().getFunction().setHash(function.getHash());
     }
 
     @Test
@@ -53,20 +53,20 @@ public class PointServiceTest {
 
     @Test
     void update() {
-        var updPoint = PointDto.builder().id(1).function(FunctionEntity.builder().name("" + HashUtil.hash(points)).build()).x(2.0).y(6.0).build();
+        var updPoint = PointDto.builder().id(1).function(FunctionEntity.builder().hash("" + HashUtil.hash(points)).build()).x(2.0).y(6.0).build();
         pointService.update(updPoint);
         points.removeFirst();
         points.add(ConvertorToPointEntity.convertToEntity(updPoint));
         Assertions.assertEquals(2, pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getXValue());
         Assertions.assertEquals(6, pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getYValue());
-        updPoint.getFunction().setName(HashUtil.hash(points) + "");
-        Assertions.assertEquals(updPoint.getFunction().getName(), pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getFunction().getName());
+        updPoint.getFunction().setHash(HashUtil.hash(points) + "");
+        Assertions.assertEquals(updPoint.getFunction().getHash(), pointService.readByFuncIdAndPoint(point.getId(), point.getX()).getFunction().getHash());
     }
 
     @AfterEach
     void destroy() {
         pointService.delete(ConvertorToPointDto.convertToDto(points.removeFirst()));
-        function.setName(HashUtil.hash(points) + "");
+        function.setHash(HashUtil.hash(points) + "");
         functionService.delete(function);
     }
 }
