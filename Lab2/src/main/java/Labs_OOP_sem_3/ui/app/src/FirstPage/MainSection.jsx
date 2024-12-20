@@ -47,15 +47,15 @@ export default function MainSection({onDataChange, closeModal}) {
             arrX: tableData.map(item => item.x),
             arrY: tableData.map(item => item.y)
         };
-        const credentials =  ('igor:12345')
-        const auth = { "Authorization" : 'Basic KGlnb3I6MTIzNCk=' }
+        const username = 'igor'
+        const password = '12345'
+        const authHeader = `Basic ${btoa(`${username}:${password}`)}`
         fetch('http://localhost:8080/points', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': auth,
+                'Authorization': authHeader,
             },
-            mode:'no-cors',
             body: JSON.stringify(postTabArr)
         })
             .then(response => {
