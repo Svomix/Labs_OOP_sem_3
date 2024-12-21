@@ -1,5 +1,5 @@
 import {useState} from "react";
-import './FirstPage.css'
+//import './FirstPage.css'
 import IntroSection from "./IntroSection.jsx";
 import TabsSection from "./TabsSection.jsx";
 import MainSection from "./MainSection.jsx";
