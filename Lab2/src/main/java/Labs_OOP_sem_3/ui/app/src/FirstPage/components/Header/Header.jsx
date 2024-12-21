@@ -13,6 +13,7 @@ export default function Header() {
             <header>
                 <CustomLink to="/">Операции с функциями</CustomLink>
                 <CustomLink to="/selectFactory">Настройки</CustomLink>
+                <CustomLink to="/diff">Дифференцирование</CustomLink>
                 <span>Время сейчас: {now.toLocaleTimeString()}</span>
             </header>
 
