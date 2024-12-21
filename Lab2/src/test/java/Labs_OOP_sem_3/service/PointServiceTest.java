@@ -3,7 +3,7 @@ package Labs_OOP_sem_3.service;
 import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.convertos.ConvertorToPointDto;
 import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
-import Labs_OOP_sem_3.dto.FunctionDto;
+import Labs_OOP_sem_3.dto.FunctionDtoList;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
@@ -28,14 +28,14 @@ public class PointServiceTest {
     @Autowired
     private FunctionService functionService;
     private PointDto point;
-    private FunctionDto function;
+    private FunctionDtoList function;
     ArrayList<PointEntity> points = new ArrayList<>();
 
     @BeforeEach
     public void createPoint() {
         functionService.updateSequence();
         pointService.updateSequence();
-        function = FunctionDto.builder().id(1).hash("0").build();
+        function = FunctionDtoList.builder().id(1).hash("0").build();
         functionService.create(function);
         point = PointDto.builder().id(1).function(convert(function)).x(2.0).y(3.0).build();
         pointService.create(point);

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import {useContext, useState} from "react";
+import {FactoryContext} from "../FactoryContext.jsx";
 
-export default function FeedbackSection({ onDataChange, closeModal }) {
-    const [selectedFunction, setSelectedFunction] = useState("");
+export default function FeedbackSection({onDataChange, closeModal}) {
+    const [selectedFunction, setSelectedFunction] = useState("UnitFunction");
     const [points, setPoints] = useState("");
     const [intervalStart, setIntervalStart] = useState("");
     const [intervalEnd, setIntervalEnd] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const {factory} = useContext(FactoryContext)
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         setErrorMessage("");
 
@@ -19,14 +21,41 @@ export default function FeedbackSection({ onDataChange, closeModal }) {
             setErrorMessage("Неверное количество точек разбиения. Число должно быть >=2");
             return;
         }
-
         const chosenFunction = selectedFunction;
         try {
             alert("TabulatedFunction создана успешно");
             closeModal(true);
-            onDataChange(table);
-            ///////////////////////
-            window.location.reload();
+            //onDataChange(table);
+            const postIntervalArr = {
+                start: start,
+                end: end,
+                numberOfPoints: numPoints,
+                typeFunc: selectedFunction,
+                typeFabric: factory,
+            };
+            const username = 'igor';
+            const password = '12345';
+            const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+            fetch('http://localhost:8080/points/interval', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': authHeader,
+                },
+                body: JSON.stringify(postIntervalArr)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         } catch (error) {
             setErrorMessage(error.message);
         }

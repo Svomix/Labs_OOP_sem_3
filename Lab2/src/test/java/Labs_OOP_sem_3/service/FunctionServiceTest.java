@@ -1,7 +1,7 @@
 package Labs_OOP_sem_3.service;
 
 import Labs_OOP_sem_3.App.Application;
-import Labs_OOP_sem_3.dto.FunctionDto;
+import Labs_OOP_sem_3.dto.FunctionDtoList;
 import Labs_OOP_sem_3.entities.PointEntity;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -19,12 +19,12 @@ import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 public class FunctionServiceTest {
     @Autowired
     private FunctionService functionService;
-    private FunctionDto function;
+    private FunctionDtoList function;
 
     @BeforeEach
     public void createFunction() {
         functionService.updateSequence();
-        function = FunctionDto.builder().id(1).hash("asd").points(new ArrayList<>()).build();
+        function = FunctionDtoList.builder().id(1).hash("asd").points(new ArrayList<>()).build();
         functionService.create(function);
     }
 
@@ -36,7 +36,7 @@ public class FunctionServiceTest {
     @Test
     void update() {
         var arrP = new ArrayList<PointEntity>();
-        var updFunc = FunctionDto.builder().id(1).hash("0").points(arrP).build();
+        var updFunc = FunctionDtoList.builder().id(1).hash("0").points(arrP).build();
         arrP.add(PointEntity.builder().function(convert(updFunc)).xValue(1).yValue(2).build());
         arrP.add(PointEntity.builder().function(convert(updFunc)).xValue(3).yValue(4).build());
         functionService.update(updFunc);
@@ -46,7 +46,7 @@ public class FunctionServiceTest {
 
     @Test
     void delete() {
-        var updFunc = FunctionDto.builder().id(1).hash("123").points(new ArrayList<>()).build();
+        var updFunc = FunctionDtoList.builder().id(1).hash("123").points(new ArrayList<>()).build();
         functionService.create(updFunc);
         functionService.delete(updFunc);
         Assertions.assertNull(functionService.read(updFunc.getId()));
@@ -54,7 +54,7 @@ public class FunctionServiceTest {
 
     @Test
     void read() {
-        var updFunc = FunctionDto.builder().id(1).points(new ArrayList<>()).hash("123").build();
+        var updFunc = FunctionDtoList.builder().id(1).points(new ArrayList<>()).hash("123").build();
         functionService.create(updFunc);
         Assertions.assertEquals(functionService.read(updFunc.getId()).getHash(), updFunc.getHash());
         Assertions.assertNull(functionService.read(updFunc.getId() + 1));

@@ -3,7 +3,7 @@ package Labs_OOP_sem_3.controllers;
 import Labs_OOP_sem_3.App.Application;
 import Labs_OOP_sem_3.convertos.ConvertorToFuncEntity;
 import Labs_OOP_sem_3.convertos.ConvertorToPointDto;
-import Labs_OOP_sem_3.dto.FunctionDto;
+import Labs_OOP_sem_3.dto.FunctionDtoList;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
@@ -34,8 +34,8 @@ import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
 public class PointControllerTest {
     @Autowired
     private MockMvc mockMvc;
-    FunctionDto functionDto;
-    FunctionEntity func = FunctionEntity.builder().id(1).name("-1310701078").build();
+    FunctionDtoList functionDtoList;
+    FunctionEntity func = FunctionEntity.builder().id(1).hash("-1310701078").build();
     PointDto p;
     PointEntity p1;
     @Autowired
@@ -48,21 +48,21 @@ public class PointControllerTest {
     void setUp() throws Exception {
         functionRepository.restartSeq();
         pointRepository.restartSeq();
-        functionDto = FunctionDto.builder().id(1).points(new ArrayList<>()).name("0").build();
-        p = PointDto.builder().id(1).x(1.0).y(1.0).function(ConvertorToFuncEntity.convert(functionDto)).build();
+        functionDtoList = FunctionDtoList.builder().id(1).points(new ArrayList<>()).hash("0").build();
+        p = PointDto.builder().id(1).x(1.0).y(1.0).function(ConvertorToFuncEntity.convert(functionDtoList)).build();
         p1 = PointEntity.builder().id(1).xValue(1.0).yValue(1.0).function(func).build();
         mockMvc.perform(MockMvcRequestBuilders.post("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
-                writeValueAsString(functionDto)));
+                writeValueAsString(functionDtoList)));
     }
 
     @Test
     @WithMockUser
     void postPoint() throws Exception {
         points.add(convertToEntity(p));
-        p1.getFunction().setName(HashUtil.hash(points) + "");
+        p1.getFunction().setHash(HashUtil.hash(points) + "");
         mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p))).andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(p1)));
-        points.getFirst().getFunction().setName(HashUtil.hash(points) + "");
+        points.getFirst().getFunction().setHash(HashUtil.hash(points) + "");
     }
 
     /*
@@ -80,14 +80,14 @@ public class PointControllerTest {
     void update() throws Exception {
         points.add(convertToEntity(p));
         var p2 = PointDto.builder().id(1).x(1.0).y(5.0).function(func).build();
-        p2.getFunction().setName(HashUtil.hash(points) + "");
-        var p3 = PointEntity.builder().id(2).xValue(1.0).yValue(5.0).function(FunctionEntity.builder().id(1).name(HashUtil.hash(points) + "").build()).build();
+        p2.getFunction().setHash(HashUtil.hash(points) + "");
+        var p3 = PointEntity.builder().id(2).xValue(1.0).yValue(5.0).function(FunctionEntity.builder().id(1).hash(HashUtil.hash(points) + "").build()).build();
         mockMvc.perform(MockMvcRequestBuilders.post("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p))).andExpect(MockMvcResultMatchers.status().isOk());
         points.removeFirst();
         points.add(convertToEntity(p2));
-        p3.getFunction().setName(HashUtil.hash(points) + "");
+        p3.getFunction().setHash(HashUtil.hash(points) + "");
         mockMvc.perform(MockMvcRequestBuilders.put("/points/update").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(p2))).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(p3)));
-        p2.getFunction().setName(HashUtil.hash(points) + "");
+        p2.getFunction().setHash(HashUtil.hash(points) + "");
     }
 
     /*
@@ -110,7 +110,7 @@ public class PointControllerTest {
     @AfterEach
     void tearDown() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/points").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(ConvertorToPointDto.convertToDto(points.removeFirst()))));
-        func = FunctionEntity.builder().id(1).name(HashUtil.hash(points) + "").build();
+        func = FunctionEntity.builder().id(1).hash(HashUtil.hash(points) + "").build();
         mockMvc.perform(MockMvcRequestBuilders.delete("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(func)));
     }

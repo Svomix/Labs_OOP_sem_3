@@ -1,6 +1,6 @@
 package Labs_OOP_sem_3.service;
 
-import Labs_OOP_sem_3.dto.FunctionDto;
+import Labs_OOP_sem_3.dto.FunctionDtoList;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.repositories.FunctionRepository;
@@ -18,7 +18,7 @@ import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 public class FunctionService {
     private final FunctionRepository functionRepository;
     private final PointRepository pointRepository;
-        public FunctionEntity create(FunctionDto funcDto) {
+        public FunctionEntity create(FunctionDtoList funcDto) {
         FunctionEntity funcEntity = functionRepository.findByHash(funcDto.getHash());
         if (funcEntity == null) {
             funcDto.setHash("" + HashUtil.hash(funcDto.getPoints()));
@@ -34,7 +34,7 @@ public class FunctionService {
         }
         return funcEntity;
     }
-    public void update(FunctionDto funcDto) {
+    public void update(FunctionDtoList funcDto) {
         FunctionEntity function = functionRepository.findByHash(funcDto.getHash());
         ArrayList<PointEntity> arrP = pointRepository.findByFunction(function.getId());
         if (arrP != null) {
@@ -52,7 +52,7 @@ public class FunctionService {
         funcDto.setPoints(pointEntities);
     }
 
-    public void delete(FunctionDto funcDto) {
+    public void delete(FunctionDtoList funcDto) {
         FunctionEntity function = functionRepository.findByHash(funcDto.getHash());
         if (function != null) {
             functionRepository.delete(function);

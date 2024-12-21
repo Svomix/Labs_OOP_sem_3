@@ -1,7 +1,7 @@
 package Labs_OOP_sem_3.controllers;
 
 
-import Labs_OOP_sem_3.dto.FunctionDto;
+import Labs_OOP_sem_3.dto.FunctionDtoList;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.service.FunctionService;
 import Labs_OOP_sem_3.service.PointService;
@@ -17,36 +17,36 @@ public class FunctionController {
     private final PointService pointService;
 
     @PostMapping
-    public ResponseEntity<FunctionEntity> create(@RequestBody FunctionDto functionDto) {
-        var funcEnt = functionService.create(functionDto);
+    public ResponseEntity<FunctionEntity> create(@RequestBody FunctionDtoList functionDtoList) {
+        var funcEnt = functionService.create(functionDtoList);
         return ResponseEntity.ok(funcEnt);
     }
 
     @GetMapping("/name")
-    public ResponseEntity<FunctionDto> getByName(@RequestParam String name) {
+    public ResponseEntity<FunctionDtoList> getByName(@RequestParam String name) {
         var func = functionService.readByName(name);
         if (func != null) {
-            var funcDto = FunctionDto.builder().id(func.getId()).hash(func.getHash()).points(pointService.findByFunc(func.getId())).build();
+            var funcDto = FunctionDtoList.builder().id(func.getId()).hash(func.getHash()).points(pointService.findByFunc(func.getId())).build();
             return ResponseEntity.ok(funcDto);
         }
         return ResponseEntity.notFound().build();
     }
 
     @PutMapping
-    public ResponseEntity<FunctionEntity> update(@RequestBody FunctionDto functionDto) {
-        FunctionEntity functionEntity = functionService.readByName(functionDto.getHash());
+    public ResponseEntity<FunctionEntity> update(@RequestBody FunctionDtoList functionDtoList) {
+        FunctionEntity functionEntity = functionService.readByName(functionDtoList.getHash());
         if (functionEntity != null) {
-            functionService.update(functionDto);
+            functionService.update(functionDtoList);
             return ResponseEntity.ok(functionEntity);
         }
         return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping
-    public ResponseEntity<FunctionEntity> delete(@RequestBody FunctionDto functionDto) {
-        FunctionEntity functionEntity = functionService.readByName(functionDto.getHash());
+    public ResponseEntity<FunctionEntity> delete(@RequestBody FunctionDtoList functionDtoList) {
+        FunctionEntity functionEntity = functionService.readByName(functionDtoList.getHash());
         if (functionEntity != null) {
-            functionService.delete(functionDto);
+            functionService.delete(functionDtoList);
             return ResponseEntity.ok(functionEntity);
         }
         return ResponseEntity.notFound().build();

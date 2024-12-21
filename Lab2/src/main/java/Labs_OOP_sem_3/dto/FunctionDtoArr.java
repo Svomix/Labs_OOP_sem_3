@@ -12,9 +12,10 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FunctionDto {
+public class FunctionDtoArr {
     Integer id;
     String type;
     String hash;
-    private ArrayList<PointEntity> points;
+    private double[] x;
+    private double[] y;
 }

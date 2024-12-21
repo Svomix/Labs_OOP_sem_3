@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DataDto
+public class DataDtoTable
 {
     private ArrayList<Double> arrX;
     private ArrayList<Double> arrY;

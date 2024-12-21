@@ -1,8 +1,7 @@
 package Labs_OOP_sem_3.controllers;
 
 import Labs_OOP_sem_3.App.Application;
-import Labs_OOP_sem_3.dto.FunctionDto;
-import Labs_OOP_sem_3.dto.PointDto;
+import Labs_OOP_sem_3.dto.FunctionDtoList;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.repositories.FunctionRepository;
@@ -25,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 
 import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
-import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
 
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
@@ -33,7 +31,7 @@ import static Labs_OOP_sem_3.convertos.ConvertorToPointEntity.convertToEntity;
 public class FunctionControllerTest {
     @Autowired
     private MockMvc mockMvc;
-    FunctionDto func;
+    FunctionDtoList func;
     FunctionEntity entFunc;
     @Autowired
     FunctionRepository funcRepository;
@@ -44,13 +42,13 @@ public class FunctionControllerTest {
     void setUp() {
         funcRepository.restartSeq();
         pointRepository.restartSeq();
-        func = FunctionDto.builder().id(1).points(new ArrayList<>()).name("0").build();
+        func = FunctionDtoList.builder().id(1).points(new ArrayList<>()).hash("0").build();
     }
 
     @Test
     @WithMockUser
     void postTest() throws Exception {
-        entFunc = FunctionEntity.builder().id(1).name("0").build();
+        entFunc = FunctionEntity.builder().id(1).hash("0").build();
         mockMvc.perform(MockMvcRequestBuilders.post("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(func))).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(entFunc)));
 
@@ -59,7 +57,7 @@ public class FunctionControllerTest {
     @Test
     @WithMockUser
     void getTestByNameTest() throws Exception {
-        entFunc = FunctionEntity.builder().id(1).name("0").build();
+        entFunc = FunctionEntity.builder().id(1).hash("0").build();
         mockMvc.perform(MockMvcRequestBuilders.post("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(func)));
         mockMvc.perform(MockMvcRequestBuilders.get("/functions/name?name=0").contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().json(new ObjectMapper().writeValueAsString(entFunc)));
@@ -68,10 +66,10 @@ public class FunctionControllerTest {
     @Test
     @WithMockUser
     void updateTest() throws Exception {
-        var updFunc = FunctionDto.builder().id(1).points(new ArrayList<>()).name("0").build();
+        var updFunc = FunctionDtoList.builder().id(1).points(new ArrayList<>()).hash("0").build();
         PointEntity point = PointEntity.builder().xValue(1).yValue(1).function(convert(func)).build();
         updFunc.getPoints().add(point);
-        var updFuncEnt = FunctionEntity.builder().id(1).name("-1310701078").build();
+        var updFuncEnt = FunctionEntity.builder().id(1).hash("-1310701078").build();
         mockMvc.perform(MockMvcRequestBuilders.post("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().
                 writeValueAsString(func)));
         mockMvc.perform(MockMvcRequestBuilders.put("/functions").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().

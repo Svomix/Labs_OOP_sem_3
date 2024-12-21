@@ -1,11 +1,12 @@
 import Button from "./components/Button/Button.jsx";
-import { useState } from "react";
+import {useContext, useState} from "react";
+import {FactoryContext} from "../FactoryContext.jsx";
 
-export default function MainSection({ onDataChange, closeModal }) {
+export default function MainSection({ onDataChange, closeModal}) {
     const [pointsCount, setPointsCount] = useState(0);
     const [hasError, setHasError] = useState(true);
     const [tableData, setTableData] = useState([]);
-
+    const {factory} = useContext(FactoryContext)
     function changePointsCount(event) {
         setPointsCount(event.target.value);
         setHasError(event.target.value < 2);
@@ -47,12 +48,13 @@ export default function MainSection({ onDataChange, closeModal }) {
         onDataChange(tableData);
         const postTabArr = {
             arrX: tableData.map(item => item.x),
-            arrY: tableData.map(item => item.y)
+            arrY: tableData.map(item => item.y),
+            type:factory
         };
         const username = 'igor';
         const password = '12345';
         const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
-        fetch('http://localhost:8080/points', {
+        fetch('http://localhost:8080/points/table', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
