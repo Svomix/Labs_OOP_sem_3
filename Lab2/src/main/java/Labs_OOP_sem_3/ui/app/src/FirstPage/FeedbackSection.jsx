@@ -21,11 +21,13 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             setErrorMessage("Неверное количество точек разбиения. Число должно быть >=2");
             return;
         }
+
         const chosenFunction = selectedFunction;
+
         try {
             alert("TabulatedFunction создана успешно");
             closeModal(true);
-            //onDataChange(table);
+
             const postIntervalArr = {
                 start: start,
                 end: end,
@@ -33,29 +35,45 @@ export default function FeedbackSection({onDataChange, closeModal}) {
                 typeFunc: selectedFunction,
                 typeFabric: factory,
             };
+
             const username = 'igor';
             const password = '12345';
             const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
-            fetch('http://localhost:8080/points/interval', {
+
+            const response = await fetch('http://localhost:8080/points/interval', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': authHeader,
                 },
                 body: JSON.stringify(postIntervalArr)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Success:', data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            const hash = data.hash;
+
+            const url = new URL('http://localhost:8080/points');
+            url.searchParams.append('hash', hash);
+
+            const getResponse = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': authHeader,
+                },
+            });
+
+            if (!getResponse.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const getData = await getResponse.json();
+            console.log('Success:', getData);
+
         } catch (error) {
             setErrorMessage(error.message);
         }

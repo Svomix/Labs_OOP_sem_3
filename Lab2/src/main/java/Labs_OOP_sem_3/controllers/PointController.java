@@ -83,9 +83,9 @@ public class PointController {
         return ResponseEntity.ok(ConvertorToPointEntity.convertToEntity(pointDto));
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<ArrayList<PointEntity>> findByFunc(@RequestParam String name) {
-        var func = functionService.readByName(name);
+    @GetMapping
+    public ResponseEntity<ArrayList<PointEntity>> findByFunc(@RequestParam String hash) {
+        var func = functionService.readByName(hash);
         if (func != null) {
             ArrayList<PointEntity> res = pointService.findByFunc(func.getId());
             return ResponseEntity.ok(res);
