@@ -22,7 +22,6 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             return;
         }
 
-        const chosenFunction = selectedFunction;
 
         try {
             alert("TabulatedFunction создана успешно");
@@ -72,6 +71,7 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             }
 
             const getData = await getResponse.json();
+            debugger
             console.log('Success:', getData);
 
         } catch (error) {

@@ -5,6 +5,7 @@ import SecondPage from "./SecondPage/SecondPage.jsx";
 import {Route, Routes} from "react-router";
 import { FactoryProvider } from "./FactoryContext";
 import DifferentiationPage from "./DiffPage/DifferentiationPage.jsx";
+import FunctionEditorPage from "./FunctionEditorPage/FunctionEditorPage.jsx";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
             <Route index element={<SecondPage/>}/>
             <Route path='selectFactory' element={<SelectFactory/>}/>
             <Route path='diff' element={<DifferentiationPage/>}/>
+            <Route path='graphic' element={<FunctionEditorPage/>}/>
         </Route>
       </Routes>
     </FactoryProvider>
