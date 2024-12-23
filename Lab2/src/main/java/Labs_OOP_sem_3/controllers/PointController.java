@@ -1,6 +1,7 @@
 package Labs_OOP_sem_3.controllers;
 
 
+import Labs_OOP_sem_3.concurrent.Integrate;
 import Labs_OOP_sem_3.convertos.ConvertToFuncDto;
 import Labs_OOP_sem_3.convertos.ConvertorToFuncEntity;
 import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
@@ -10,6 +11,8 @@ import Labs_OOP_sem_3.dto.FunctionDtoList;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.functions.*;
+import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
+import Labs_OOP_sem_3.operations.TabulatedDifferentialOperator;
 import Labs_OOP_sem_3.service.FunctionService;
 import Labs_OOP_sem_3.service.PointService;
 import lombok.AllArgsConstructor;
@@ -17,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import static Labs_OOP_sem_3.convertos.ConvertorPointToPointEntity.convert;
 import static Labs_OOP_sem_3.operations.TabulatedFunctionOperationService.asPoint;
@@ -69,6 +73,73 @@ public class PointController {
             default:
                 return ResponseEntity.status(500).build();
         }
+    }
+
+    @PostMapping("/diff")
+    public ResponseEntity<FunctionDtoList> performDiff(@RequestBody DataDtoTable data) {
+        if (data != null) {
+            var a = new TabulatedDifferentialOperator(new LinkedListTabulatedFunctionFactory());
+            double[] x = new double[data.getArrX().size()];
+            double[] y = new double[data.getArrY().size()];
+            for (int i = 0; i < data.getArrX().size(); ++i) {
+                x[i] = data.getArrX().get(i);
+                y[i] = data.getArrY().get(i);
+            }
+            var res = a.deriveSynchronously(new LinkedListTabulatedFunction(x, y));
+            var f = FunctionDtoList.builder().points(new ArrayList<>()).build();
+            for (var p : asPoint(res)) {
+                f.getPoints().add(convert(p));
+            }
+            return ResponseEntity.ok(f);
+        }
+        return ResponseEntity.status(500).build();
+    }
+
+//    @PostMapping("/file")
+//    public ResponseEntity<FunctionDtoList> saveFile(@RequestBody DataDtoTable data, @RequestParam String filename) {
+//
+//    }
+
+    @PostMapping("integr")
+    public ResponseEntity<Double> performIntegr(@RequestBody DataDtoTable data, @RequestParam int th) throws ExecutionException, InterruptedException {
+        if (data != null) {
+            double[] x = new double[data.getArrX().size()];
+            double[] y = new double[data.getArrY().size()];
+            for (int i = 0; i < data.getArrX().size(); ++i) {
+                x[i] = data.getArrX().get(i);
+                y[i] = data.getArrY().get(i);
+            }
+            TabulatedFunction func;
+            if (data.getType().equals("ArrayTabulatedFunctionFactory")) {
+                func = new ArrayTabulatedFunction(x, y);
+            } else {
+                func = new LinkedListTabulatedFunction(x, y);
+            }
+            Integrate operator = new Integrate(th);
+            return ResponseEntity.ok(operator.integrate(func, 30));
+        }
+        return ResponseEntity.status(500).build();
+    }
+
+    @PostMapping("apply")
+    public ResponseEntity<Double> apply(@RequestBody DataDtoTable data, @RequestParam double xVal) {
+        if (data != null) {
+            double[] x = new double[data.getArrX().size()];
+            double[] y = new double[data.getArrY().size()];
+            for (int i = 0; i < data.getArrX().size(); ++i) {
+                x[i] = data.getArrX().get(i);
+                y[i] = data.getArrY().get(i);
+            }
+            MathFunction func;
+            if (data.getType().equals("ArrayTabulatedFunctionFactory")) {
+                func = new ArrayTabulatedFunction(x, y);
+            } else {
+                func = new LinkedListTabulatedFunction(x, y);
+            }
+            var res = func.apply(xVal);
+            return ResponseEntity.ok(res);
+        }
+        return ResponseEntity.status(500).build();
     }
 
     @PutMapping("/update")

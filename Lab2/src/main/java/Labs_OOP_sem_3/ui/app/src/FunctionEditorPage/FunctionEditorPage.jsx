@@ -15,6 +15,7 @@ export default function FunctionEditorPage() {
     const [calculatedY, setCalculatedY] = useState(null);
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
+    const {factory} = useContext(FactoryContext);
     const [insertable, setInsertable] = useState(false)
     const [removable, setRemovable] = useState(false)
 
@@ -72,9 +73,7 @@ export default function FunctionEditorPage() {
         setModalIsOpen(false);
     };
 
-    const handleDataChange = (newData, ins, rem) => {
-        setInsertable(ins)
-        setRemovable(rem)
+    const handleDataChange = (newData) => {
         setFunctionData(newData);
     };
 
@@ -139,14 +138,6 @@ export default function FunctionEditorPage() {
             alert('Значение X находится вне диапазона функции.');
         }
     };
-    function handleInsert(setTable) {
-        const newPoint = { x: table1.length + 1, y: 0 }; // Пример новой точки
-        setTable(prev => [...prev, newPoint]);
-    }
-
-    function handleRemove(setTable) {
-        setTable(prev => prev.slice(0, -1))
-    }
 
     return (
         <div className="function-editor-container">
@@ -178,10 +169,6 @@ export default function FunctionEditorPage() {
                     ))}
                     </tbody>
                 </table>
-                {insertable && <Button onClick={() => handleInsert(setFunctionData)}>Вставить</Button>}
-                {removable && (
-                    <Button onClick={() => handleRemove(setFunctionData)}>Удалить</Button>
-                )}
             </div>
 
             <div className="apply-container">

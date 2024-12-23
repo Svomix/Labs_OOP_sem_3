@@ -2,11 +2,12 @@ import Button from "./components/Button/Button.jsx";
 import {useContext, useState} from "react";
 import {FactoryContext} from "../FactoryContext.jsx";
 
-export default function MainSection({ onDataChange, closeModal}) {
+export default function MainSection({onDataChange, closeModal}) {
     const [pointsCount, setPointsCount] = useState(0);
     const [hasError, setHasError] = useState(true);
     const [tableData, setTableData] = useState([]);
     const {factory} = useContext(FactoryContext)
+
     function changePointsCount(event) {
         setPointsCount(event.target.value);
         setHasError(event.target.value < 2);
@@ -14,7 +15,7 @@ export default function MainSection({ onDataChange, closeModal}) {
 
     function createTable(event) {
         event.preventDefault();
-        const newTableData = Array.from({ length: pointsCount }, (_, index) => {
+        const newTableData = Array.from({length: pointsCount}, (_, index) => {
             return {
                 x: tableData[index] ? tableData[index].x : '',
                 y: tableData[index] ? tableData[index].y : ''
@@ -33,7 +34,7 @@ export default function MainSection({ onDataChange, closeModal}) {
     function handleInputChange(index, field, value) {
         setTableData(prevData =>
             prevData.map((item, idx) =>
-                idx === index ? { ...item, [field]: value } : item
+                idx === index ? {...item, [field]: value} : item
             )
         );
     }
@@ -49,7 +50,7 @@ export default function MainSection({ onDataChange, closeModal}) {
         const postTabArr = {
             arrX: tableData.map(item => item.x),
             arrY: tableData.map(item => item.y),
-            type:factory
+            type: factory
         };
         const username = 'igor';
         const password = '12345';
@@ -70,6 +71,7 @@ export default function MainSection({ onDataChange, closeModal}) {
             })
             .then(data => {
                 console.log('Success:', data);
+
             })
             .catch(error => {
                 console.error('Error:', error);

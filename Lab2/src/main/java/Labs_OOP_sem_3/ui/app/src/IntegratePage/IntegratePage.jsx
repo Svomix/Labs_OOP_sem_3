@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './/IntegratePage.css'
 import FirstPage from "../FirstPage/FirstPage.jsx";
-
+import {FactoryContext} from "../FactoryContext.jsx";
 
 export default function IntegratePage() {
     const [originalFunction, setOriginalFunction] = useState([]);
@@ -12,7 +12,7 @@ export default function IntegratePage() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
     const [fileName, setFileName] = useState('');
-
+    const {factory} = useContext(FactoryContext);
     const openModal = (modalType) => {
         setModalIsOpen(true);
         setActiveModal(modalType);
@@ -28,11 +28,40 @@ export default function IntegratePage() {
     };
 
     const performIntegration = () => {
-        const thread = parseInt(threadCount)
-        // Пример реализации дифференцирования (заглушка)
-        ////////
+       // const thread = parseInt(threadCount)
+        const thread = threadCount;
+        const postTabArr = {
+            arrX: originalFunction.map(item => item.x),
+            arrY: originalFunction.map(item => item.y),
+            type: factory
+        };
+        const username = 'igor';
+        const password = '12345';
+        const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+        const url = new URL('http://localhost:8080/points/integr');
+        url.searchParams.append('th', thread);
+        const result = fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': authHeader,
+            },
+            body: JSON.stringify(postTabArr)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         setIntegratedFunction(result);
-    };
+    }
 
     const saveFunction = async (table, fileName) => {
         try {

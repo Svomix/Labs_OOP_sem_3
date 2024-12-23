@@ -11,6 +11,7 @@ export default function DifferentiationPage() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
     const [fileName, setFileName] = useState('');
+    const { factory } = useContext(FactoryContext);
     const [insertable, setInsertable] = useState(false)
     const [removable, setRemovable] = useState(false)
 
@@ -24,9 +25,7 @@ export default function DifferentiationPage() {
         setActiveModal(null);
     };
 
-    const handleDataChange = (newData, ins, rem) => {
-        setInsertable(ins)
-        setRemovable(rem)
+    const handleDataChange = (newData) => {
         setOriginalFunction(newData);
     };
 
@@ -82,14 +81,6 @@ export default function DifferentiationPage() {
         }
     };
 
-    function handleInsert(setTable) {
-        const newPoint = { x: table1.length + 1, y: 0 }; // Пример новой точки
-        setTable(prev => [...prev, newPoint]);
-    }
-
-    function handleRemove(setTable) {
-        setTable(prev => prev.slice(0, -1))
-    }
     return (
         <div className="differentiation-page-container">
             <div className="buttons-container">
@@ -120,10 +111,6 @@ export default function DifferentiationPage() {
                             ))}
                             </tbody>
                         </table>
-                    )}
-                    {insertable && <Button onClick={() => handleInsert(setOriginalFunction)}>Вставить</Button>}
-                    {removable && (
-                        <Button onClick={() => handleRemove(setOriginalFunction)}>Удалить</Button>
                     )}
                 </div>
 

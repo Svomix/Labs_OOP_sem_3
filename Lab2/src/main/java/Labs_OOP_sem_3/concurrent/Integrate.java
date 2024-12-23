@@ -1,60 +1,68 @@
 package Labs_OOP_sem_3.concurrent;
 
+import Labs_OOP_sem_3.functions.MathFunction;
 import Labs_OOP_sem_3.functions.TabulatedFunction;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
-public class Integrate {
-    private final TabulatedFunction func;
-    private volatile double integral;
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
-    public Integrate(TabulatedFunction func) {
-        this.func = func;
-        integral = 0;
+public class Integrate implements MathFunction, Serializable {
+    @Serial
+    private static final long serialVersionUID = 7604611741409988062L;
+    private final transient ExecutorService executorService;
+    private final int numberOfThreads;
+
+    @JsonCreator
+    public Integrate() {
+        int numberOfThreads = Runtime.getRuntime().availableProcessors() - 1;
+        this.executorService = Executors.newFixedThreadPool(numberOfThreads);
+        this.numberOfThreads = numberOfThreads;
     }
 
-    double SimpsonMethod() throws InterruptedException {
-        double h = (func.rightBound() - func.leftBound()) / func.getCount();
-        Runnable task1 = () -> {
-            for (int i = 1; i < func.getCount() - 1; i += 2) {
-                synchronized (func) {
-                    integral += func.getY(i - 1);
-                }
-            }
-        };
-        Runnable task2 = () -> {
-            for (int i = 1; i < func.getCount() - 1; i += 2) {
-                synchronized (func) {
-                    integral += func.getY(i) * 4;
-                }
-            }
-        };
+    public Integrate(int numberOfThreads) {
+        this.executorService = Executors.newFixedThreadPool(numberOfThreads);
+        this.numberOfThreads = numberOfThreads;
+    }
 
-        Runnable task3 = () -> {
-            for (int i = 1; i < func.getCount() - 1; i += 2) {
-                synchronized (func) {
-                    integral += func.getY(i + 1);
-                }
-            }
-        };
+    public double integrate(TabulatedFunction tabulatedFunction, int overallNumberOfSections) throws InterruptedException, ExecutionException {
+        double integrationSegmentLength = (tabulatedFunction.rightBound() - tabulatedFunction.leftBound()) / numberOfThreads;
+        List<Future<Double>> futures = new ArrayList<>();
+        int sectionsPerThread = Math.max(overallNumberOfSections / numberOfThreads, 1);
 
-        Thread t1 = new Thread(task1);
-        Thread t2 = new Thread(task2);
-        Thread t3 = new Thread(task3);
+        for (int threadIndex = 0; threadIndex < numberOfThreads; threadIndex++) {
+            double leftBound = tabulatedFunction.leftBound() + threadIndex * integrationSegmentLength;
+            double rightBound = leftBound + integrationSegmentLength;
 
-        t1.start();
-        t2.start();
-        t3.start();
-
-        try {
-            t1.join();
-            t2.join();
-            t3.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            IntegrationTask task = new IntegrationTask(tabulatedFunction, leftBound, rightBound, sectionsPerThread);
+            futures.add(executorService.submit(task));
         }
-        synchronized (func) {
-            integral = integral * h / 3;
-        }
-        return integral;
 
+        double summedIntegrationResult = 0;
+        for (Future<Double> future : futures) {
+            summedIntegrationResult += future.get();
+        }
+
+        return summedIntegrationResult;
+    }
+
+    public void shutdown() {
+        executorService.shutdown();
+    }
+
+    @Override
+    public double apply(double x) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int hashCode() {
+        return 462792689;
     }
 }

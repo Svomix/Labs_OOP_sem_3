@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="Lab7">
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FirstPage/FeedbackSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FirstPage/FeedbackSection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/Integrate.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/concurrent/Integrate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/PointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/PointController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/DiffPage/DifferentiationPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/DiffPage/DifferentiationPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FirstPage/MainSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FirstPage/MainSection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FunctionEditorPage/FunctionEditorPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FunctionEditorPage/FunctionEditorPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/IntegratePage/IntegratePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/IntegratePage/IntegratePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/resources/sql/create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/resources/sql/create_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/test/java/Labs_OOP_sem_3/concurrent/IntegrateTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +132,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.Application (1).executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Debug&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
@@ -137,6 +146,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Debug&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;E:/Projects/_NAME_-_PROJECT_/src/main/java/elephant-lab2/Main.java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -212,9 +222,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="App.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$PROJECT_DIR$/../../Node.js/node" nameIsGenerated="true" path-to-js-file="App.js" typescript-loader="bundled" working-dir="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui">
-      <method v="2" />
-    </configuration>
     <configuration name="Unnamed" type="NodeJSConfigurationType" nameIsGenerated="true" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -231,21 +238,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
       <item itemvalue="JUnit.test in Labs_OOP_sem_3" />
       <item itemvalue="JUnit.repositories in Labs_OOP_sem_3" />
       <item itemvalue="Node.js.Unnamed" />
-      <item itemvalue="Node.js.App.js" />
+      <item itemvalue="npm.dev" />
       <item itemvalue="Spring Boot.Application" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="JUnit.java in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.test in Labs_OOP_sem_3" />
         <item itemvalue="JUnit.repositories in Labs_OOP_sem_3" />
-        <item itemvalue="Node.js.App.js" />
       </list>
     </recent_temporary>
   </component>
@@ -312,7 +329,9 @@
       <workItem from="1734519937053" duration="8772000" />
       <workItem from="1734533669079" duration="10961000" />
       <workItem from="1734592734102" duration="748000" />
-      <workItem from="1734787907830" duration="18992000" />
+      <workItem from="1734787907830" duration="19560000" />
+      <workItem from="1734856597472" duration="9054000" />
+      <workItem from="1734962886747" duration="11894000" />
     </task>
     <task id="LOCAL-00001" summary="Entites">
       <option name="closed" value="true" />
@@ -490,7 +509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734808567733</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Lab7">
+      <option name="closed" value="true" />
+      <created>1734811283485</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1734811283485</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,9 +561,9 @@
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/service/FunctionService.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="51" />
+          <url>file://$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/PointController.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
