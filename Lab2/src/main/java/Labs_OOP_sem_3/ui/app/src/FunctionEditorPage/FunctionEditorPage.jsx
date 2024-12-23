@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Chart, registerables } from "chart.js";
+import React, {useEffect, useRef, useState} from "react";
+import {Chart, registerables} from "chart.js";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './FunctionEditorPage.css';
@@ -21,7 +21,7 @@ export default function FunctionEditorPage() {
 
     function modalContent() {
         return (
-            <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
         );
     }
 
@@ -96,9 +96,9 @@ export default function FunctionEditorPage() {
 
             // Временная заглушка для тестирования
             return [
-                { x: 1, y: 2 },
-                { x: 2, y: 4 },
-                { x: 3, y: 6 },
+                {x: 1, y: 2},
+                {x: 2, y: 4},
+                {x: 3, y: 6},
             ];
         } catch (error) {
             console.error('Ошибка при загрузке функции:', error);
@@ -125,38 +125,37 @@ export default function FunctionEditorPage() {
             return;
         }
 
-        // Пример реализации метода apply()
         const applyFunction = (x) => {
-const postTabArr = {
-            arrX: originalFunction.map(item => item.x),
-            arrY: originalFunction.map(item => item.y),
-            type: factory
-        };
-        const username = 'igor';
-        const password = '12345';
-        const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
-        const url = new URL('http://localhost:8080/points/apply');
-        url.searchParams.append('xVal', x);
-        const result = fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': authHeader,
-            },
-            body: JSON.stringify(postTabArr)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
+            const postTabArr = {
+                arrX: originalFunction.map(item => item.x),
+                arrY: originalFunction.map(item => item.y),
+                type: factory
+            };
+            const username = 'igor';
+            const password = '12345';
+            const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+            const url = new URL('http://localhost:8080/points/apply');
+            url.searchParams.append('xVal', x);
+            const result = fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': authHeader,
+                },
+                body: JSON.stringify(postTabArr)
             })
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         };
 
         const y = applyFunction(x);

@@ -1,5 +1,6 @@
 package Labs_OOP_sem_3.controllers;
 
+import Labs_OOP_sem_3.dto.UserDataDto;
 import Labs_OOP_sem_3.entities.UserEntity;
 import Labs_OOP_sem_3.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -27,8 +28,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestBody UserEntity user) throws Exception {
-        Authentication authentication = authenticationProvider.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+    public String loginUser(@RequestBody UserDataDto user) throws Exception {
+        var userReg = UserEntity.builder().password(user.getPassword()).username(user.getName()).build();
+        Authentication authentication = authenticationProvider.authenticate(new UsernamePasswordAuthenticationToken(userReg.getUsername(), userReg.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return "Successfully logged in!";
     }

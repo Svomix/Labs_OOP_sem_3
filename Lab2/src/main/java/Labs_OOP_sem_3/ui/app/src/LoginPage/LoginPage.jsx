@@ -8,13 +8,35 @@ export default function LoginPage() {
 
     const fromPage = location.state?.from?.pathname || '/';
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
         const user = {
-            username: form.username.value,
+            name: form.username.value,
             password: form.password.value,
         };
+
+        try {
+            const username = 'igor';
+            const password = '12345';
+            const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+            const response = await fetch('http://localhost:8080/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
+            });
+
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert('Ошибка входа. Проверьте логин и пароль.');
+            }
+        } catch (error) {
+            console.error('Ошибка при входе:', error);
+            alert('Произошла ошибка при входе.');
+        }
 
         signin(user, () => navigate(fromPage, { replace: true }));
     };
