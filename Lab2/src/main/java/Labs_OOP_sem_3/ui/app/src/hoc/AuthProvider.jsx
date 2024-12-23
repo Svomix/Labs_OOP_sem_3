@@ -1,14 +1,14 @@
-import { createContext, useState } from "react";
+import {createContext, useState} from "react";
 
 export const AuthContext = createContext(null);
 
-export default function AuthProvider({ children }) {
+export default function AuthProvider({children}) {
     const [user, setUser] = useState(null);
 
     // Функция для входа
     const signin = async (newUser, cb) => {
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch('http://localhost:8080/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -17,8 +17,7 @@ export default function AuthProvider({ children }) {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                setUser(data.user); // Сохраняем данные пользователя
+                setUser(newUser); // Сохраняем данные пользователя
                 cb(); // Вызываем колбэк для перенаправления
             } else {
                 alert('Ошибка входа. Проверьте логин и пароль.');
@@ -29,12 +28,13 @@ export default function AuthProvider({ children }) {
         }
     };
 
+
     // Функция для выхода
     const signout = (cb) => {
         setUser(null);
         cb();
     };
 
-    const value = { user, signin, signout };
+    const value = {user, signin, signout};
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
 import Modal from 'react-modal';
@@ -47,13 +47,13 @@ export default function SecondPage() {
 
     function modalContent1() {
         return (
-            <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
         );
     }
 
     function modalContent2() {
         return (
-            <FirstPage onDataChange={handleDataChange2} closeModal={closeModal} />
+            <FirstPage onDataChange={handleDataChange2} closeModal={closeModal}/>
         );
     }
 
@@ -109,9 +109,9 @@ export default function SecondPage() {
 
     const loadFunction = async (fileName) => {
         try {
-            return [{ x: 1, y: 2 },
-                { x: 2, y: 4 },
-                { x: 3, y: 6 },]
+            return [{x: 1, y: 2},
+                {x: 2, y: 4},
+                {x: 3, y: 6},]
         } catch (error) {
             console.error('Ошибка при загрузке функции:', error);
         }
@@ -128,7 +128,7 @@ export default function SecondPage() {
     };
 
     function handleInsert(setTable) {
-        const newPoint = { x: table1.length + 1, y: 0 }; // Пример новой точки
+        const newPoint = {x: table1.length + 1, y: 0}; // Пример новой точки
         setTable(prev => [...prev, newPoint]);
     }
 

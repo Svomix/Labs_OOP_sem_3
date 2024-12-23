@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import './/IntegratePage.css'
 import FirstPage from "../FirstPage/FirstPage.jsx";
 import {FactoryContext} from "../FactoryContext.jsx";
+import useAuth from "../hock/useAuth.jsx";
 
 export default function IntegratePage() {
     const [originalFunction, setOriginalFunction] = useState([]);
@@ -13,6 +14,7 @@ export default function IntegratePage() {
     const [activeModal, setActiveModal] = useState(null);
     const [fileName, setFileName] = useState('');
     const {factory} = useContext(FactoryContext);
+    const {user} = useAuth()
     const openModal = (modalType) => {
         setModalIsOpen(true);
         setActiveModal(modalType);
@@ -28,16 +30,14 @@ export default function IntegratePage() {
     };
 
     const performIntegration = () => {
-       // const thread = parseInt(threadCount)
+        // const thread = parseInt(threadCount)
         const thread = threadCount;
         const postTabArr = {
             arrX: originalFunction.map(item => item.x),
             arrY: originalFunction.map(item => item.y),
             type: factory
         };
-        const username = 'igor';
-        const password = '12345';
-        const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+        const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
         const url = new URL('http://localhost:8080/points/integr');
         url.searchParams.append('th', thread);
         const result = fetch(url, {

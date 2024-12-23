@@ -1,5 +1,6 @@
 import {useContext, useState} from "react";
 import {FactoryContext} from "../FactoryContext.jsx";
+import useAuth from "../hock/useAuth.jsx";
 
 export default function FeedbackSection({onDataChange, closeModal}) {
     const [selectedFunction, setSelectedFunction] = useState("UnitFunction");
@@ -8,6 +9,7 @@ export default function FeedbackSection({onDataChange, closeModal}) {
     const [intervalEnd, setIntervalEnd] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const {factory} = useContext(FactoryContext)
+    const {user} = useAuth()
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -35,9 +37,7 @@ export default function FeedbackSection({onDataChange, closeModal}) {
                 typeFabric: factory,
             };
 
-            const username = 'igor';
-            const password = '12345';
-            const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+            const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
 
             const response = await fetch('http://localhost:8080/points/interval', {
                 method: 'POST',

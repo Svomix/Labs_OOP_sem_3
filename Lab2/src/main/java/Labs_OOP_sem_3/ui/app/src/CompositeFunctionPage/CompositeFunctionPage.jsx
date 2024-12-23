@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './CompositeFunctionPage.css'; // Подключаем CSS файл
@@ -42,7 +42,7 @@ export default function CompositeFunctionPage() {
             name: newFunctionName,
             functions: selectedFunctions,
         };
-        
+
         // Очищаем состояние
         setSelectedFunctions([]);
         setNewFunctionName('');

@@ -7,7 +7,6 @@ import {FactoryProvider} from "./FactoryContext";
 import DifferentiationPage from "./DiffPage/DifferentiationPage.jsx";
 import FunctionEditorPage from "./FunctionEditorPage/FunctionEditorPage.jsx";
 import IntegratePage from "./IntegratePage/IntegratePage.jsx";
-import CompositeFunctionPage from "./CompositeFunctionPage/CompositeFunctionPage.jsx";
 import AuthProvider from "./hoc/AuthProvider.jsx";
 import LoginPage from "./LoginPage/LoginPage.jsx";
 import RegisterPage from "./LoginPage/RegisterPage.jsx";
@@ -23,11 +22,21 @@ export default function App() {
                             <SecondPage/>
                         </RequireAuth>
                         }/>
-                        <Route path='selectFactory' element={<SelectFactory/>}/>
-                        <Route path='diff' element={<DifferentiationPage/>}/>
-                        <Route path='graphic' element={<FunctionEditorPage/>}/>
-                        <Route path='integrate' element={<IntegratePage/>}/>
-                        <Route path='composit' element={<CompositeFunctionPage/>}/>
+                        <Route path='selectFactory' element={<RequireAuth>
+                            <SelectFactory/>
+                        </RequireAuth>}/>
+                        <Route path='diff' element={<RequireAuth>
+                            <DifferentiationPage/>
+                        </RequireAuth>}/>
+                        <Route path='graphic' element={<RequireAuth>
+                            <FunctionEditorPage/>
+                        </RequireAuth>}/>
+                        <Route path='integrate' element={<RequireAuth>
+                            <IntegratePage/>
+                        </RequireAuth>}/>
+                        {/*<Route path='composit' element={<RequireAuth>*/}
+                        {/*    <CompositeFunctionPage/>*/}
+                        {/*</RequireAuth>}/>*/}
                         <Route path='login' element={<LoginPage/>}/>
                         <Route path='register' element={<RegisterPage/>}/>
                     </Route>

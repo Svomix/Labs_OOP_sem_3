@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './DifferentiationPage.css';
-import FirstPage from "../FirstPage/FirstPage.jsx"; // Подключаем CSS файл
+import FirstPage from "../FirstPage/FirstPage.jsx";
+import {FactoryContext} from "../FactoryContext.jsx";
+import useAuth from "../hock/useAuth.jsx"; // Подключаем CSS файл
 
 
 export default function DifferentiationPage() {
@@ -14,6 +16,7 @@ export default function DifferentiationPage() {
     const {factory} = useContext(FactoryContext);
     const [insertable, setInsertable] = useState(false)
     const [removable, setRemovable] = useState(false)
+    const {user} = useAuth()
 
     const openModal = (modalType) => {
         setModalIsOpen(true);
@@ -35,9 +38,7 @@ export default function DifferentiationPage() {
             arrY: originalFunction.map(item => item.y),
             type: factory
         };
-        const username = 'igor';
-        const password = '12345';
-        const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+        const authHeader = `Basic ${btoa(`${user.username}:${user.password}`)}`;
         const url = new URL('http://localhost:8080/points/diff');
         const result = fetch(url, {
             method: 'POST',

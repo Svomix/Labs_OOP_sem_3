@@ -1,12 +1,14 @@
 import Button from "./components/Button/Button.jsx";
 import {useContext, useState} from "react";
 import {FactoryContext} from "../FactoryContext.jsx";
+import useAuth from "../hock/useAuth.jsx";
 
 export default function MainSection({onDataChange, closeModal}) {
     const [pointsCount, setPointsCount] = useState(0);
     const [hasError, setHasError] = useState(true);
     const [tableData, setTableData] = useState([]);
     const {factory} = useContext(FactoryContext)
+    const {user} = useAuth()
 
     function changePointsCount(event) {
         setPointsCount(event.target.value);
@@ -52,9 +54,7 @@ export default function MainSection({onDataChange, closeModal}) {
             arrY: tableData.map(item => item.y),
             type: factory
         };
-        const username = 'igor';
-        const password = '12345';
-        const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+        const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
         fetch('http://localhost:8080/points/table', {
             method: 'POST',
             headers: {

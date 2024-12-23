@@ -1,9 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import {Chart, registerables} from "chart.js";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './FunctionEditorPage.css';
-import FirstPage from "../FirstPage/FirstPage.jsx"; // Подключаем CSS файл
+import FirstPage from "../FirstPage/FirstPage.jsx";
+import {FactoryContext} from "../FactoryContext.jsx";
+import useAuth from "../hock/useAuth.jsx"; // Подключаем CSS файл
 
 Chart.register(...registerables); // Регистрируем все необходимые модули для Chart.js
 
@@ -18,6 +20,7 @@ export default function FunctionEditorPage() {
     const {factory} = useContext(FactoryContext);
     const [insertable, setInsertable] = useState(false)
     const [removable, setRemovable] = useState(false)
+    const {user} = useAuth()
 
     function modalContent() {
         return (
@@ -131,9 +134,7 @@ export default function FunctionEditorPage() {
                 arrY: originalFunction.map(item => item.y),
                 type: factory
             };
-            const username = 'igor';
-            const password = '12345';
-            const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+            const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
             const url = new URL('http://localhost:8080/points/apply');
             url.searchParams.append('xVal', x);
             const result = fetch(url, {

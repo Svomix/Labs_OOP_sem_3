@@ -1,20 +1,21 @@
-import {Navigate, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 export default function RegisterPage() {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const fromPage = location.state?.from?.pathname || '/';
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         const form = event.target;
         const user = {
-            name: form.username.value,
+            username: form.username.value,
             password: form.password.value,
         };
 
         try {
-            const username = 'igor';
-            const password = '12345';
-            const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
             const response = await fetch('http://localhost:8080/users/register', {
                 method: 'POST',
                 headers: {
@@ -24,7 +25,8 @@ export default function RegisterPage() {
             });
 
             if (response.ok) {
-                return response.json();
+                alert('Регистрация прошла успешно');
+                navigate(fromPage, {replace: true});
             } else {
                 alert('Ошибка входа. Проверьте логин и пароль.');
             }
@@ -39,10 +41,10 @@ export default function RegisterPage() {
             <h1>Register Page</h1>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Name: <input name='username' />
+                    Name: <input name='username'/>
                 </label>
                 <label>
-                    Password: <input name='password' type='password' />
+                    Password: <input name='password' type='password'/>
                 </label>
                 <button type='submit'>Register</button>
             </form>

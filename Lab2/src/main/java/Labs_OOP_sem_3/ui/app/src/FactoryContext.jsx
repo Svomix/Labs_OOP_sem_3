@@ -1,10 +1,10 @@
-import React, { createContext, useState } from "react";
+import React, {createContext, useState} from "react";
 
 // Создаем контекст
 export const FactoryContext = createContext();
 
 // Создаем провайдер
-export const FactoryProvider = ({ children }) => {
+export const FactoryProvider = ({children}) => {
     const [factory, setFactory] = useState("ArrayTabulatedFunctionFactory");
 
     // Функция для обновления factory
@@ -13,7 +13,7 @@ export const FactoryProvider = ({ children }) => {
     };
 
     return (
-        <FactoryContext.Provider value={{ factory, updateFactory }}>
+        <FactoryContext.Provider value={{factory, updateFactory}}>
             {children}
         </FactoryContext.Provider>
     );
