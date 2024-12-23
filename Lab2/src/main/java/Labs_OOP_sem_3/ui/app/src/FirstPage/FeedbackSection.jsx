@@ -71,7 +71,6 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             }
 
             const getData = await getResponse.json();
-            debugger
             console.log('Success:', getData);
 
         } catch (error) {
