@@ -127,8 +127,36 @@ export default function FunctionEditorPage() {
 
         // Пример реализации метода apply()
         const applyFunction = (x) => {
-            /////////
-            return null;
+const postTabArr = {
+            arrX: originalFunction.map(item => item.x),
+            arrY: originalFunction.map(item => item.y),
+            type: factory
+        };
+        const username = 'igor';
+        const password = '12345';
+        const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+        const url = new URL('http://localhost:8080/points/apply');
+        url.searchParams.append('xVal', x);
+        const result = fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': authHeader,
+            },
+            body: JSON.stringify(postTabArr)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         };
 
         const y = applyFunction(x);

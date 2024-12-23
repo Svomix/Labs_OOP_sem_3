@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './DifferentiationPage.css';
@@ -11,7 +11,7 @@ export default function DifferentiationPage() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
     const [fileName, setFileName] = useState('');
-    const { factory } = useContext(FactoryContext);
+    const {factory} = useContext(FactoryContext);
     const [insertable, setInsertable] = useState(false)
     const [removable, setRemovable] = useState(false)
 
@@ -30,8 +30,35 @@ export default function DifferentiationPage() {
     };
 
     const performDifferentiation = () => {
-        // Пример реализации дифференцирования (заглушка)
-        ////////
+        const postTabArr = {
+            arrX: originalFunction.map(item => item.x),
+            arrY: originalFunction.map(item => item.y),
+            type: factory
+        };
+        const username = 'igor';
+        const password = '12345';
+        const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+        const url = new URL('http://localhost:8080/points/diff');
+        const result = fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': authHeader,
+            },
+            body: JSON.stringify(postTabArr)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         setDifferentiatedFunction(result);
     };
 
@@ -54,18 +81,19 @@ export default function DifferentiationPage() {
 
             // Временная заглушка для тестирования
             return [
-                { x: 1, y: 2 },
-                { x: 2, y: 4 },
-                { x: 3, y: 6 },
+                {x: 1, y: 2},
+                {x: 2, y: 4},
+                {x: 3, y: 6},
             ];
         } catch (error) {
             console.error('Ошибка при загрузке функции:', error);
             return null;
         }
     };
+
     function modalContent() {
         return (
-            <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
         );
     }
 

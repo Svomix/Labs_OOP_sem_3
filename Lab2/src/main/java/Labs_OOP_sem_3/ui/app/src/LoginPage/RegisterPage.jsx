@@ -7,13 +7,15 @@ export default function RegisterPage() {
         event.preventDefault();
         const form = event.target;
         const user = {
-            username: form.username.value,
+            name: form.username.value,
             password: form.password.value,
-            email: form.email.value,
         };
 
         try {
-            const response = await fetch('/api/register', {
+            const username = 'igor';
+            const password = '12345';
+            const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+            const response = await fetch('http://localhost:8080/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -22,14 +24,13 @@ export default function RegisterPage() {
             });
 
             if (response.ok) {
-                alert('Регистрация прошла успешно!');
-                navigate('/login'); // Перенаправляем на страницу входа
+                return response.json();
             } else {
-                alert('Ошибка регистрации. Попробуйте снова.');
+                alert('Ошибка входа. Проверьте логин и пароль.');
             }
         } catch (error) {
-            console.error('Ошибка при регистрации:', error);
-            alert('Произошла ошибка при регистрации.');
+            console.error('Ошибка при входе:', error);
+            alert('Произошла ошибка при входе.');
         }
     };
 
