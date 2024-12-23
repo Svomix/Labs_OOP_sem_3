@@ -16,6 +16,7 @@ export default function Header() {
                 <CustomLink to="/diff">Дифференцирование</CustomLink>
                 <CustomLink to="/graphic">График</CustomLink>
                 <CustomLink to="/integrate">Интегрирование</CustomLink>
+                <CustomLink to="/composit">Сложные функции</CustomLink>
                 <span>Время сейчас: {now.toLocaleTimeString()}</span>
             </header>
 
