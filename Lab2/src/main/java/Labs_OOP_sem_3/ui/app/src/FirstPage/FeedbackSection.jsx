@@ -72,7 +72,7 @@ export default function FeedbackSection({onDataChange, closeModal}) {
 
             const getData = await getResponse.json();
             console.log('Success:', getData);
-
+            onDataChange(getData, true, true)
         } catch (error) {
             setErrorMessage(error.message);
         }

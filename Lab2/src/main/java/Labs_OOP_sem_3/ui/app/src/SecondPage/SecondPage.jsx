@@ -14,6 +14,10 @@ export default function SecondPage() {
     const [saveModalIsOpen, setSaveModalIsOpen] = useState(false);
     const [loadModalIsOpen, setLoadModalIsOpen] = useState(false);
     const [fileName, setFileName] = useState('');
+    const [insertable1, setInsertable1] = useState(false)
+    const [insertable2, setInsertable2] = useState(false)
+    const [removable1, setRemovable1] = useState(false)
+    const [removable2, setRemovable2] = useState(false)
 
     const openModal = (modalType) => {
         setModalIsOpen(true);
@@ -53,11 +57,15 @@ export default function SecondPage() {
         );
     }
 
-    const handleDataChange = (newData) => {
+    const handleDataChange = (newData, ins, rem) => {
+        setInsertable1(ins)
+        setRemovable1(rem)
         setTable1(newData);
     };
 
-    const handleDataChange2 = (newData) => {
+    const handleDataChange2 = (newData, ins, rem) => {
+        setInsertable1(ins)
+        setRemovable1(rem)
         setTable2(newData);
     };
 
@@ -119,6 +127,15 @@ export default function SecondPage() {
         closeLoadModal();
     };
 
+    function handleInsert(setTable) {
+        const newPoint = { x: table1.length + 1, y: 0 }; // Пример новой точки
+        setTable(prev => [...prev, newPoint]);
+    }
+
+    function handleRemove(setTable) {
+        setTable(prev => prev.slice(0, -1))
+    }
+
     return (
         <div className="second-page-container">
             <div className="buttons-container">
@@ -179,6 +196,10 @@ export default function SecondPage() {
                             </tbody>
                         </table>
                     )}
+                    {insertable1 && <Button onClick={() => handleInsert(setTable1)}>Вставить</Button>}
+                    {removable1 && (
+                        <Button onClick={() => handleRemove(setTable1)}>Удалить</Button>
+                    )}
                 </div>
 
                 <div className="operation-container">
@@ -210,6 +231,10 @@ export default function SecondPage() {
                             ))}
                             </tbody>
                         </table>
+                    )}
+                    {insertable2 && <Button onClick={() => handleInsert(setTable2)}>Вставить</Button>}
+                    {removable2 && (
+                        <Button onClick={() => handleRemove(setTable2)}>Удалить</Button>
                     )}
                 </div>
 
