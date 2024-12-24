@@ -86,7 +86,7 @@ public class PointController {
                 y[i] = data.getArrY().get(i);
             }
             var res = a.deriveSynchronously(new LinkedListTabulatedFunction(x, y));
-            var f = FunctionDtoList.builder().points(new ArrayList<>()).build();
+            var f = FunctionDtoList.builder().points(new ArrayList<>()).type(data.getType()).build();
             for (var p : asPoint(res)) {
                 f.getPoints().add(convert(p));
             }

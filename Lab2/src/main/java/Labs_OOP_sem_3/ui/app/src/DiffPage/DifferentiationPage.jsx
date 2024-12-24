@@ -38,7 +38,8 @@ export default function DifferentiationPage() {
             arrY: originalFunction.map(item => item.y),
             type: factory
         };
-        const authHeader = `Basic ${btoa(`${user.username}:${user.password}`)}`;
+
+        const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
         const url = new URL('http://localhost:8080/points/diff');
         const result = fetch(url, {
             method: 'POST',

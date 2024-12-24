@@ -130,8 +130,8 @@ export default function FunctionEditorPage() {
 
         const applyFunction = (x) => {
             const postTabArr = {
-                arrX: originalFunction.map(item => item.x),
-                arrY: originalFunction.map(item => item.y),
+                arrX: functionData.map(item => item.x),
+                arrY: functionData.map(item => item.y),
                 type: factory
             };
             const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
