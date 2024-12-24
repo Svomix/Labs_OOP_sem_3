@@ -11,6 +11,7 @@ import AuthProvider from "./hoc/AuthProvider.jsx";
 import LoginPage from "./LoginPage/LoginPage.jsx";
 import RegisterPage from "./LoginPage/RegisterPage.jsx";
 import RequireAuth from "./hoc/RequireAuth.jsx";
+import CompositeFunctionPage from "./CompositeFunctionPage/CompositeFunctionPage.jsx";
 
 export default function App() {
     return (
@@ -34,9 +35,9 @@ export default function App() {
                         <Route path='integrate' element={<RequireAuth>
                             <IntegratePage/>
                         </RequireAuth>}/>
-                        {/*<Route path='composit' element={<RequireAuth>*/}
-                        {/*    <CompositeFunctionPage/>*/}
-                        {/*</RequireAuth>}/>*/}
+                        <Route path='composit' element={<RequireAuth>
+                            <CompositeFunctionPage/>
+                        </RequireAuth>}/>
                         <Route path='login' element={<LoginPage/>}/>
                         <Route path='register' element={<RegisterPage/>}/>
                     </Route>
