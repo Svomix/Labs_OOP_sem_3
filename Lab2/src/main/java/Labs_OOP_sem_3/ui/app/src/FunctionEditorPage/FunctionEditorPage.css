@@ -1,26 +1,58 @@
+/* Основные стили для контейнера страницы */
 .function-editor-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Стили для контейнера кнопок */
 .buttons-container {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
+.buttons-container Button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.buttons-container Button:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для контейнера графика */
 .chart-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
+/* Стили для контейнера таблицы */
 .table-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
-.apply-container {
-    margin-top: 20px;
+.table-container h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
 }
 
 table {
@@ -28,15 +60,90 @@ table {
     border-collapse: collapse;
 }
 
-table, th, td {
-    border: 1px solid #ccc;
-}
-
-th, td {
-    padding: 8px;
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
     text-align: center;
 }
 
-th {
-    background-color: #f2f2f2;
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333;
+}
+
+table td {
+    background-color: white;
+    color: #555;
+}
+
+/* Стили для контейнера вычисления значения */
+.apply-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.apply-container h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+.apply-container input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.apply-container Button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.apply-container Button:hover {
+    background-color: #218838;
+}
+
+.apply-container p {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Стили для модального окна */
+.Modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    outline: none;
+    max-width: 500px;
+    width: 100%;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 }

@@ -1,11 +1,11 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
-import {Chart, registerables} from "chart.js";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Chart, registerables } from "chart.js";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
-import './FunctionEditorPage.css';
+import './FunctionEditorPage.css'; // Подключаем CSS файл
 import FirstPage from "../FirstPage/FirstPage.jsx";
-import {FactoryContext} from "../FactoryContext.jsx";
-import useAuth from "../hock/useAuth.jsx"; // Подключаем CSS файл
+import { FactoryContext } from "../FactoryContext.jsx";
+import useAuth from "../hock/useAuth.jsx";
 
 Chart.register(...registerables); // Регистрируем все необходимые модули для Chart.js
 
@@ -17,19 +17,43 @@ export default function FunctionEditorPage() {
     const [calculatedY, setCalculatedY] = useState(null);
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
-    const {factory} = useContext(FactoryContext);
-    const [insertable, setInsertable] = useState(false)
-    const [removable, setRemovable] = useState(false)
-    const {user} = useAuth()
+    const { factory } = useContext(FactoryContext);
+    const { user } = useAuth();
+
+    // Состояние для пагинации
+    const [currentPage, setCurrentPage] = useState(1);
+    const [rowsPerPage] = useState(5); // Количество строк на странице
 
     function modalContent() {
         return (
-            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
         );
     }
 
-    // Инициализация графика
-    useEffect(() => {
+    // Функция для проверки сортировки таблицы
+    const isSorted = (tableData) => {
+        for (let i = 1; i < tableData.length; i++) {
+            const currentX = parseFloat(tableData[i].x);
+            const previousX = parseFloat(tableData[i - 1].x);
+
+            if (isNaN(currentX) || isNaN(previousX)) {
+                return false;
+            }
+
+            if (currentX <= previousX) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    // Функция для проверки заполненности всех ячеек
+    const areAllCellsFilled = (tableData) => {
+        return tableData.every(item => item.x !== '' && item.y !== '');
+    };
+
+    // Функция для обновления графика
+    const updateChart = () => {
         if (chartInstance.current) {
             chartInstance.current.destroy();
         }
@@ -66,7 +90,7 @@ export default function FunctionEditorPage() {
                 }
             }
         });
-    }, [functionData]);
+    };
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -99,9 +123,9 @@ export default function FunctionEditorPage() {
 
             // Временная заглушка для тестирования
             return [
-                {x: 1, y: 2},
-                {x: 2, y: 4},
-                {x: 3, y: 6},
+                { x: 1, y: 2 },
+                { x: 2, y: 4 },
+                { x: 3, y: 6 },
             ];
         } catch (error) {
             console.error('Ошибка при загрузке функции:', error);
@@ -152,6 +176,7 @@ export default function FunctionEditorPage() {
                     return response.json();
                 })
                 .then(data => {
+                    setCalculatedY(data);
                     console.log('Success:', data);
                 })
                 .catch(error => {
@@ -167,12 +192,80 @@ export default function FunctionEditorPage() {
         }
     };
 
+    const handleInsert = () => {
+        const newPoint = { x: '0', y: '0' }; // Пример новой точки
+        setFunctionData(prev => [...prev, newPoint]);
+    };
+
+    const handleRemove = () => {
+        setFunctionData(prev => prev.slice(0, -1));
+    };
+
+    // Функция для подтверждения таблицы
+    const handleConfirmTable = () => {
+        if (!areAllCellsFilled(functionData)) {
+            alert('Не все ячейки исходной функции заполнены');
+            return;
+        }
+        if (!isSorted(functionData)) {
+            alert('Исходная функция не отсортирована');
+            return;
+        }
+        updateChart();
+        alert('Таблица подтверждена, график обновлен.');
+    };
+
+    // Функции для переключения страниц
+    const goToNextPage = () => {
+        if (currentPage < getTotalPages(functionData, rowsPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const goToPreviousPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    // Вычисление данных для текущей страницы
+    const getCurrentRows = (table, currentPage, rowsPerPage) => {
+        const indexOfLastRow = currentPage * rowsPerPage;
+        const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+        return table.slice(indexOfFirstRow, indexOfLastRow);
+    };
+
+    // Вычисление общего количества страниц
+    const getTotalPages = (table, rowsPerPage) => {
+        return Math.ceil(table.length / rowsPerPage);
+    };
+
+    // Функция для проверки допустимости ввода
+    const isValidInput = (key, value) => {
+        // Разрешаем Backspace и Delete
+        if (key === 'Backspace' || key === 'Delete') {
+            return true;
+        }
+        // Разрешаем цифры, точку и минус
+        return /^-?\d*\.?\d*$/.test(value);
+    };
+
+    // Функция для изменения данных в таблице
+    const handleInputChange = (index, field, value) => {
+        setFunctionData(prevData =>
+            prevData.map((item, idx) =>
+                idx === index + (currentPage - 1) * rowsPerPage ? { ...item, [field]: value } : item
+            )
+        );
+    };
+
     return (
         <div className="function-editor-container">
             <div className="buttons-container">
                 <Button onClick={openModal}>Создать функцию</Button>
                 <Button onClick={handleLoad}>Загрузить функцию</Button>
                 <Button onClick={() => saveFunction(fileName)}>Сохранить функцию</Button>
+                <Button onClick={handleConfirmTable}>Подтвердить таблицу</Button>
             </div>
 
             <div className="chart-container">
@@ -181,22 +274,69 @@ export default function FunctionEditorPage() {
 
             <div className="table-container">
                 <h3>Таблица функции</h3>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>X</th>
-                        <th>Y</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {functionData.map((point, index) => (
-                        <tr key={index}>
-                            <td>{point.x}</td>
-                            <td>{point.y}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+                {functionData.length > 0 && (
+                    <>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>X</th>
+                                <th>Y</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {getCurrentRows(functionData, currentPage, rowsPerPage).map((row, index) => (
+                                <tr key={index}>
+                                    <td
+                                        contentEditable
+                                        suppressContentEditableWarning
+                                        onKeyDown={(e) => {
+                                            const value = e.currentTarget.textContent + e.key;
+                                            if (!isValidInput(e.key, value)) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                        onBlur={(e) => handleInputChange(index, 'x', e.currentTarget.textContent)}
+                                    >
+                                        {row.x}
+                                    </td>
+                                    <td
+                                        contentEditable
+                                        suppressContentEditableWarning
+                                        onKeyDown={(e) => {
+                                            const value = e.currentTarget.textContent + e.key;
+                                            if (!isValidInput(e.key, value)) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                        onBlur={(e) => handleInputChange(index, 'y', e.currentTarget.textContent)}
+                                    >
+                                        {row.y}
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                        <div className="pagination">
+                            <Button
+                                onClick={goToPreviousPage}
+                                disabled={currentPage === 1}
+                            >
+                                Назад
+                            </Button>
+                            <span>
+                                Страница {currentPage} из {getTotalPages(functionData, rowsPerPage)}
+                            </span>
+                            <Button
+                                onClick={goToNextPage}
+                                disabled={currentPage === getTotalPages(functionData, rowsPerPage)}
+                            >
+                                Вперёд
+                            </Button>
+                        </div>
+                    </>
+                )}
+                {<Button onClick={handleInsert}>Вставить</Button>}
+                {<Button onClick={handleRemove}>Удалить</Button>}
             </div>
 
             <div className="apply-container">
