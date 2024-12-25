@@ -1,45 +1,81 @@
+/* Основные стили для контейнера страницы */
 .differentiation-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.buttons-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
+/* Стили для контейнера таблиц */
 .tables-container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
     gap: 20px;
 }
 
+/* Стили для обертки таблицы */
 .table-wrapper {
     flex: 1;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    overflow-x: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Стили для заголовков таблиц */
+.table-wrapper h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Стили для таблиц */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 15px;
 }
 
-table, th, td {
-    border: 1px solid #ccc;
-}
-
-th, td {
-    padding: 8px;
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
     text-align: center;
 }
 
-th {
-    background-color: #f2f2f2;
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+table td {
+    background-color: white;
+}
+
+/* Стили для редактируемых ячеек */
+table td[contentEditable="true"] {
+    background-color: #f9f9f9;
+    cursor: text;
+}
+
+table td[contentEditable="true"]:focus {
+    background-color: #fff;
+    outline: 2px solid #007bff;
+}
+
+/* Стили для пагинации */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+.pagination Button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.pagination span {
+    font-size: 14px;
+    color: #555;
 }
