@@ -1,4 +1,4 @@
-import './index.css'
+//import './index.css'
 import Header from "./FirstPage/components/Header/Header.jsx";
 import SelectFactory from "./SelectFactory.jsx";
 import SecondPage from "./SecondPage/SecondPage.jsx";

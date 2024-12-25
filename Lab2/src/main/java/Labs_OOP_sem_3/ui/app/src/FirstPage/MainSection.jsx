@@ -1,14 +1,18 @@
 import Button from "./components/Button/Button.jsx";
-import {useContext, useState} from "react";
-import {FactoryContext} from "../FactoryContext.jsx";
+import { useContext, useState } from "react";
+import { FactoryContext } from "../FactoryContext.jsx";
 import useAuth from "../hock/useAuth.jsx";
 
-export default function MainSection({onDataChange, closeModal}) {
+export default function MainSection({ onDataChange, closeModal }) {
     const [pointsCount, setPointsCount] = useState(0);
     const [hasError, setHasError] = useState(true);
     const [tableData, setTableData] = useState([]);
-    const {factory} = useContext(FactoryContext)
-    const {user} = useAuth()
+    const { factory } = useContext(FactoryContext);
+    const { user } = useAuth();
+
+    // Состояние для пагинации
+    const [currentPage, setCurrentPage] = useState(1);
+    const [rowsPerPage] = useState(5); // Количество строк на странице
 
     function changePointsCount(event) {
         setPointsCount(event.target.value);
@@ -17,7 +21,7 @@ export default function MainSection({onDataChange, closeModal}) {
 
     function createTable(event) {
         event.preventDefault();
-        const newTableData = Array.from({length: pointsCount}, (_, index) => {
+        const newTableData = Array.from({ length: pointsCount }, (_, index) => {
             return {
                 x: tableData[index] ? tableData[index].x : '',
                 y: tableData[index] ? tableData[index].y : ''
@@ -36,7 +40,7 @@ export default function MainSection({onDataChange, closeModal}) {
     function handleInputChange(index, field, value) {
         setTableData(prevData =>
             prevData.map((item, idx) =>
-                idx === index ? {...item, [field]: value} : item
+                idx === index ? { ...item, [field]: value } : item
             )
         );
     }
@@ -45,8 +49,28 @@ export default function MainSection({onDataChange, closeModal}) {
         return tableData.every(item => item.x !== '' && item.y !== '');
     }
 
+    function isSorted() {
+        for (let i = 1; i < tableData.length; i++) {
+            const currentX = parseFloat(tableData[i].x);
+            const previousX = parseFloat(tableData[i - 1].x);
+
+            if (isNaN(currentX) || isNaN(previousX)) {
+                return false;
+            }
+
+            if (currentX <= previousX) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     async function handleSecondButtonClick() {
-        alert('Все ячейки заполнены!');
+        if (!isSorted()) {
+            alert('Функция не отсортирована');
+            return;
+        }
+        alert('Функция подтверждена');
         closeModal(true);
         onDataChange(tableData);
         const postTabArr = {
@@ -71,16 +95,45 @@ export default function MainSection({onDataChange, closeModal}) {
             })
             .then(data => {
                 console.log('Success:', data);
-
             })
             .catch(error => {
                 console.error('Error:', error);
             });
     }
 
+    // Вычисляем данные для текущей страницы
+    const indexOfLastRow = currentPage * rowsPerPage;
+    const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+    const currentRows = tableData.slice(indexOfFirstRow, indexOfLastRow);
+
+    // Вычисляем общее количество страниц
+    const totalPages = Math.ceil(tableData.length / rowsPerPage);
+
+    // Функции для переключения страниц
+    const goToNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const goToPreviousPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    // Функция для проверки допустимости ввода
+    const isValidInput = (key, value) => {
+        // Разрешаем Backspace и Delete
+        if (key === 'Backspace' || key === 'Delete') {
+            return true;
+        }
+        // Разрешаем цифры, точку и минус
+        return /^-?\d*\.?\d*$/.test(value);
+    };
+
     return (
         <section style={styles.container}>
-            <h3 style={styles.title}>Создание табулированной функции</h3>
             <form onSubmit={createTable} style={styles.form}>
                 <label htmlFor="pointsCount" style={styles.label}>
                     Количество точек:
@@ -99,7 +152,6 @@ export default function MainSection({onDataChange, closeModal}) {
                     onClick={createTable}
                     disabled={hasError}
                     isActive={!hasError}
-                    style={styles.button}
                 >
                     Создать
                 </Button>
@@ -115,17 +167,18 @@ export default function MainSection({onDataChange, closeModal}) {
                         </tr>
                         </thead>
                         <tbody>
-                        {tableData.map((row, index) => (
+                        {currentRows.map((row, index) => (
                             <tr key={index}>
                                 <td
                                     contentEditable
                                     suppressContentEditableWarning
                                     onKeyDown={(e) => {
-                                        if (!/[\d]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
+                                        const value = e.currentTarget.textContent + e.key;
+                                        if (!isValidInput(e.key, value)) {
                                             e.preventDefault();
                                         }
                                     }}
-                                    onBlur={(e) => handleInputChange(index, 'x', e.currentTarget.textContent)}
+                                    onBlur={(e) => handleInputChange(indexOfFirstRow + index, 'x', e.currentTarget.textContent)}
                                     style={styles.tableCell}
                                 >
                                     {row.x}
@@ -134,11 +187,12 @@ export default function MainSection({onDataChange, closeModal}) {
                                     contentEditable
                                     suppressContentEditableWarning
                                     onKeyDown={(e) => {
-                                        if (!/[\d]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
+                                        const value = e.currentTarget.textContent + e.key;
+                                        if (!isValidInput(e.key, value)) {
                                             e.preventDefault();
                                         }
                                     }}
-                                    onBlur={(e) => handleInputChange(index, 'y', e.currentTarget.textContent)}
+                                    onBlur={(e) => handleInputChange(indexOfFirstRow + index, 'y', e.currentTarget.textContent)}
                                     style={styles.tableCell}
                                 >
                                     {row.y}
@@ -147,11 +201,30 @@ export default function MainSection({onDataChange, closeModal}) {
                         ))}
                         </tbody>
                     </table>
+
+                    {/* Пагинация */}
+                    <div style={styles.pagination}>
+                        <Button
+                            onClick={goToPreviousPage}
+                            disabled={currentPage === 1}
+                        >
+                            Назад
+                        </Button>
+                        <span style={styles.pageInfo}>
+                            Страница {currentPage} из {totalPages}
+                        </span>
+                        <Button
+                            onClick={goToNextPage}
+                            disabled={currentPage === totalPages}
+                        >
+                            Вперёд
+                        </Button>
+                    </div>
+
                     <Button
                         disabled={!areAllCellsFilled()}
                         isActive={areAllCellsFilled()}
                         onClick={handleSecondButtonClick}
-                        style={styles.button}
                     >
                         Подтвердить все ячейки
                     </Button>
@@ -172,12 +245,6 @@ const styles = {
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         backgroundColor: "#f9f9f9",
     },
-    title: {
-        fontSize: "24px",
-        marginBottom: "20px",
-        textAlign: "center",
-        color: "#333",
-    },
     form: {
         display: "flex",
         flexDirection: "column",
@@ -195,16 +262,6 @@ const styles = {
         borderRadius: "4px",
         border: "1px solid #ccc",
     },
-    button: {
-        padding: "10px",
-        fontSize: "16px",
-        borderRadius: "4px",
-        border: "none",
-        backgroundColor: "#007BFF",
-        color: "#fff",
-        cursor: "pointer",
-        transition: "background-color 0.3s",
-    },
     table: {
         width: "100%",
         borderCollapse: "collapse",
@@ -220,5 +277,16 @@ const styles = {
         padding: "10px",
         border: "1px solid #ccc",
         textAlign: "left",
+    },
+    pagination: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "10px",
+        marginBottom: "20px",
+    },
+    pageInfo: {
+        fontSize: "16px",
+        color: "#555",
     },
 };

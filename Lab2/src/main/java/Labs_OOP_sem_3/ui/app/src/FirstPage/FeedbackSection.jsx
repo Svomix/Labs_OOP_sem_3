@@ -19,11 +19,6 @@ export default function FeedbackSection({onDataChange, closeModal}) {
         const start = parseFloat(intervalStart);
         const end = parseFloat(intervalEnd);
 
-        if (numPoints <= 1) {
-            setErrorMessage("Неверное количество точек разбиения. Число должно быть >=2");
-            return;
-        }
-
 
         try {
             alert("TabulatedFunction создана успешно");
@@ -72,7 +67,11 @@ export default function FeedbackSection({onDataChange, closeModal}) {
 
             const getData = await getResponse.json();
             console.log('Success:', getData);
-            onDataChange(getData, true, true)
+            const tableData = getData.map(item => ({
+                x: item.xvalue,
+                y: item.yvalue
+            }));
+            onDataChange(tableData, true, true)
         } catch (error) {
             setErrorMessage(error.message);
         }
@@ -105,7 +104,7 @@ export default function FeedbackSection({onDataChange, closeModal}) {
                     </label>
                     <input
                         type="number"
-                        min="1"
+                        min="2"
                         value={points}
                         onChange={(e) => setPoints(e.target.value)}
                         required
@@ -143,9 +142,6 @@ export default function FeedbackSection({onDataChange, closeModal}) {
                     Создать
                 </button>
             </form>
-            {errorMessage && (
-                <div style={styles.error}>{errorMessage}</div>
-            )}
         </div>
     );
 }
