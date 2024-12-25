@@ -22,4 +22,8 @@ public class FunctionEntity {
     private String type;
     @Column(name = "id_user", nullable = false)
     private int id_user;
+    @Column(name = "composite")
+    private String composite;
+    @Column(name = "name")
+    private String name;
 }

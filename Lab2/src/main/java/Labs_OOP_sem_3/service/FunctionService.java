@@ -18,7 +18,8 @@ import static Labs_OOP_sem_3.convertos.ConvertorToFuncEntity.convert;
 public class FunctionService {
     private final FunctionRepository functionRepository;
     private final PointRepository pointRepository;
-        public FunctionEntity create(FunctionDtoList funcDto) {
+
+    public FunctionEntity create(FunctionDtoList funcDto) {
         FunctionEntity funcEntity = functionRepository.findByHash(funcDto.getHash());
         if (funcEntity == null) {
             funcDto.setHash("" + HashUtil.hash(funcDto.getPoints()));
@@ -34,6 +35,7 @@ public class FunctionService {
         }
         return funcEntity;
     }
+
     public void update(FunctionDtoList funcDto) {
         FunctionEntity function = functionRepository.findByHash(funcDto.getHash());
         ArrayList<PointEntity> arrP = pointRepository.findByFunction(function.getId());
@@ -64,6 +66,9 @@ public class FunctionService {
         return functionRepository.findById(id).orElse(null);
     }
 
+    public ArrayList<FunctionEntity> readAll(Integer idUser) {
+        return functionRepository.findByIdUser(idUser);
+    }
 
     public FunctionEntity readByName(String name) {
         return functionRepository.findByHash(name);

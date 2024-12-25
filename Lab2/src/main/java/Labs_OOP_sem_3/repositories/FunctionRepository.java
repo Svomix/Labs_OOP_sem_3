@@ -7,11 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @Repository
 @Transactional
 public interface FunctionRepository extends JpaRepository<FunctionEntity, Integer> {
     FunctionEntity findByHash(String functionHash);
-
+    @Query(value = "SELECT f FROM functions f WHERE f.id_user = :id_user",nativeQuery = true)
+    ArrayList<FunctionEntity> findByIdUser(int id_user);
     @Modifying
     @Query(value = "ALTER SEQUENCE functions_id_seq RESTART WITH 1;", nativeQuery = true)
     void restartSeq();

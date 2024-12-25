@@ -5,15 +5,10 @@ import Labs_OOP_sem_3.concurrent.Integrate;
 import Labs_OOP_sem_3.convertos.ConvertToFuncDto;
 import Labs_OOP_sem_3.convertos.ConvertorToFuncEntity;
 import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
-import Labs_OOP_sem_3.dto.DataDtoInterval;
-import Labs_OOP_sem_3.dto.DataDtoTable;
-import Labs_OOP_sem_3.dto.FunctionDtoList;
-import Labs_OOP_sem_3.dto.PointDto;
+import Labs_OOP_sem_3.dto.*;
+import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
-import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
-import Labs_OOP_sem_3.functions.LinkedListTabulatedFunction;
-import Labs_OOP_sem_3.functions.MathFunction;
-import Labs_OOP_sem_3.functions.TabulatedFunction;
+import Labs_OOP_sem_3.functions.*;
 import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
 import Labs_OOP_sem_3.operations.TabulatedDifferentialOperator;
 import Labs_OOP_sem_3.repositories.UserRepository;
@@ -25,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static Labs_OOP_sem_3.convertos.ConvertorPointToPointEntity.convert;
@@ -60,32 +56,33 @@ public class PointController {
             func.getPoints().add(convert(p));
         var f1 = functionService.create(func);
         return ResponseEntity.ok(ConvertToFuncDto.convert(f1));
-       /* switch () {
-            case "UnitFunction":
-                var func1 = new LinkedListTabulatedFunction(new UnitFunction(), data.getStart(), data.getEnd(), data.getNumberOfPoints());
-                for (var p : asPoint(func1))
-                    func.getPoints().add(convert(p));
-                var f1 = functionService.create(func);
-                return ResponseEntity.ok(ConvertToFuncDto.convert(f1));
-            case "SqrFunction":
-                var func2 = new LinkedListTabulatedFunction(new SqrFunction(), data.getStart(), data.getEnd(), data.getNumberOfPoints());
-                for (var p : asPoint(func2))
-                    func.getPoints().add(convert(p));
-                var f2 = functionService.create(func);
-                return ResponseEntity.ok(ConvertToFuncDto.convert(f2));
-            case "ZeroFunction":
-                var func3 = new LinkedListTabulatedFunction(new ZeroFunction(), data.getStart(), data.getEnd(), data.getNumberOfPoints());
-                for (var p : asPoint(func3))
-                    func.getPoints().add(convert(p));
-                var f3 = functionService.create(func);
-                return ResponseEntity.ok(ConvertToFuncDto.convert(f3));
-            case "IdentityFunction":
-                var func4 = new LinkedListTabulatedFunction(new IdentityFunction(), data.getStart(), data.getEnd(), data.getNumberOfPoints());
-                for (var p : asPoint(func4))
-                    func.getPoints().add(convert(p));
-                var f4 = functionService.create(func);
-                return ResponseEntity.ok(ConvertToFuncDto.convert(f4));
-            default:*/
+    }
+
+    @PostMapping("/comp_table")
+    public ResponseEntity<FunctionDtoList> createTable(@RequestBody DataDtoTable data, @RequestParam String userName) {
+        var user = repository.findByUsername(userName);
+        FunctionDtoList func = FunctionDtoList.builder().points(new ArrayList<>()).name(data.getName()).composite(data.getComposite()).id_user(user.get().getId()).type(data.getType()).build();
+        for (int i = 0; i < data.getArrX().size(); ++i) {
+            func.getPoints().add(ConvertorToPointEntity.convertToEntity(PointDto.builder().x(data.getArrX().get(i)).y(data.getArrY().get(i)).function(ConvertorToFuncEntity.convert(func)).build()));
+        }
+        var f = functionService.create(func);
+        return ResponseEntity.ok(ConvertToFuncDto.convert(f));
+    }
+
+    @PostMapping("/comp_create")
+    public ResponseEntity<CompositeFuncDto> createCompTable(@RequestBody DataDtoComposite data, @RequestParam String userName) {
+        var user = repository.findByUsername(userName);
+        var funcArr = new ArrayList<LinkedListTabulatedFunction>();
+        for (var fn: data.getFuncArr()) {
+            var func = new LinkedListTabulatedFunction(fn.getArrX().stream().mapToDouble(Double::doubleValue).toArray(), fn.getArrY().stream().mapToDouble(Double::doubleValue).toArray());
+            funcArr.add(func);
+        }
+        var res = new CompositeFunction(funcArr.get(0),funcArr.get(1));
+        for (int i = 2; i < funcArr.size(); ++i) {
+            res = new CompositeFunction(res, funcArr.get(i));
+        }
+        var cRes = CompositeFuncDto.builder().function(res).funcName(data.getName()).idUser(Math.toIntExact(user.get().getId())).build();
+        return ResponseEntity.ok(cRes);
     }
 
     @PostMapping("/diff")
@@ -152,6 +149,15 @@ public class PointController {
             var res = func.apply(xVal);
             return ResponseEntity.ok(res);
         }
+        return ResponseEntity.status(500).build();
+    }
+
+    @GetMapping("/get_comp")
+    public ResponseEntity<ArrayList<FunctionEntity>> getPartComp(@RequestParam String userName) {
+        var user = repository.findByUsername(userName);
+        var res = functionService.readAll(Math.toIntExact(user.get().getId()));
+        if (res != null)
+            return ResponseEntity.ok(res);
         return ResponseEntity.status(500).build();
     }
 
