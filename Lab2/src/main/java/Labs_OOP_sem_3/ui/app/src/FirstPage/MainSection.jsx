@@ -79,7 +79,9 @@ export default function MainSection({ onDataChange, closeModal }) {
             type: factory
         };
         const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
-        fetch('http://localhost:8080/points/table', {
+          const url = new URL('http://localhost:8080/points/table');
+          url.searchParams.append('userName', user.name);
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

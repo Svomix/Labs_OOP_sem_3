@@ -10,11 +10,16 @@ import Labs_OOP_sem_3.dto.DataDtoTable;
 import Labs_OOP_sem_3.dto.FunctionDtoList;
 import Labs_OOP_sem_3.dto.PointDto;
 import Labs_OOP_sem_3.entities.PointEntity;
-import Labs_OOP_sem_3.functions.*;
+import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
+import Labs_OOP_sem_3.functions.LinkedListTabulatedFunction;
+import Labs_OOP_sem_3.functions.MathFunction;
+import Labs_OOP_sem_3.functions.TabulatedFunction;
 import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
 import Labs_OOP_sem_3.operations.TabulatedDifferentialOperator;
+import Labs_OOP_sem_3.repositories.UserRepository;
 import Labs_OOP_sem_3.service.FunctionService;
 import Labs_OOP_sem_3.service.PointService;
+import Labs_OOP_sem_3.service.ReflectionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,10 +36,13 @@ import static Labs_OOP_sem_3.operations.TabulatedFunctionOperationService.asPoin
 public class PointController {
     private final PointService pointService;
     private final FunctionService functionService;
+    private final ReflectionService reflectionService;
+    UserRepository repository;
 
     @PostMapping("/table")
-    public ResponseEntity<FunctionDtoList> createArr(@RequestBody DataDtoTable data) {
-        FunctionDtoList func = FunctionDtoList.builder().points(new ArrayList<>()).type(data.getType()).build();
+    public ResponseEntity<FunctionDtoList> createArr(@RequestBody DataDtoTable data, @RequestParam String userName) {
+        var user = repository.findByUsername(userName);
+        FunctionDtoList func = FunctionDtoList.builder().points(new ArrayList<>()).id_user(user.get().getId()).type(data.getType()).build();
         for (int i = 0; i < data.getArrX().size(); ++i) {
             func.getPoints().add(ConvertorToPointEntity.convertToEntity(PointDto.builder().x(data.getArrX().get(i)).y(data.getArrY().get(i)).function(ConvertorToFuncEntity.convert(func)).build()));
         }
@@ -43,9 +51,16 @@ public class PointController {
     }
 
     @PostMapping("/interval")
-    public ResponseEntity<FunctionDtoList> createInterval(@RequestBody DataDtoInterval data) {
-        FunctionDtoList func = FunctionDtoList.builder().points(new ArrayList<>()).type(data.getTypeFabric()).build();
-        switch (data.getTypeFunc()) {
+    public ResponseEntity<FunctionDtoList> createInterval(@RequestBody DataDtoInterval data, @RequestParam String userName) {
+        var user = repository.findByUsername(userName);
+        FunctionDtoList func = FunctionDtoList.builder().id_user(user.get().getId()).points(new ArrayList<>()).type(data.getTypeFabric()).build();
+        MathFunction f = reflectionService.create(data.getTypeFunc());
+        var func1 = new LinkedListTabulatedFunction(f, data.getStart(), data.getEnd(), data.getNumberOfPoints());
+        for (var p : asPoint(func1))
+            func.getPoints().add(convert(p));
+        var f1 = functionService.create(func);
+        return ResponseEntity.ok(ConvertToFuncDto.convert(f1));
+       /* switch () {
             case "UnitFunction":
                 var func1 = new LinkedListTabulatedFunction(new UnitFunction(), data.getStart(), data.getEnd(), data.getNumberOfPoints());
                 for (var p : asPoint(func1))
@@ -70,9 +85,7 @@ public class PointController {
                     func.getPoints().add(convert(p));
                 var f4 = functionService.create(func);
                 return ResponseEntity.ok(ConvertToFuncDto.convert(f4));
-            default:
-                return ResponseEntity.status(500).build();
-        }
+            default:*/
     }
 
     @PostMapping("/diff")

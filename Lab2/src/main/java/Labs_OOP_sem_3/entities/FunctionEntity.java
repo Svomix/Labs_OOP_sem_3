@@ -20,4 +20,6 @@ public class FunctionEntity {
     private String hash;
     @Column(name = "function_type", nullable = false)
     private String type;
+    @Column(name = "id_user", nullable = false)
+    private int id_user;
 }

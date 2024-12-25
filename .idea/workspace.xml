@@ -6,9 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="f4deb988-1430-42f6-b162-fdc14311a0b8" name="Changes" comment="Lab7">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/PointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/PointController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/DiffPage/DifferentiationPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/DiffPage/DifferentiationPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FunctionEditorPage/FunctionEditorPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FunctionEditorPage/FunctionEditorPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/convertos/ConvertToFuncDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/convertos/ConvertToFuncDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/convertos/ConvertorToFuncEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/convertos/ConvertorToFuncEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/FunctionDtoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/dto/FunctionDtoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/FunctionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/entities/FunctionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/IdentityFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/IdentityFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/SqrFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/SqrFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/UnitFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/UnitFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/ZeroFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/functions/ZeroFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/CompositeFunctionPage/CompositeFunctionPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/CompositeFunctionPage/CompositeFunctionPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FirstPage/FeedbackSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FirstPage/FeedbackSection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FirstPage/MainSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/ui/app/src/FirstPage/MainSection.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +28,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JavaScript File" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -326,7 +337,8 @@
       <workItem from="1734787907830" duration="19560000" />
       <workItem from="1734856597472" duration="9054000" />
       <workItem from="1734962886747" duration="11894000" />
-      <workItem from="1735022102201" duration="1952000" />
+      <workItem from="1735022102201" duration="2717000" />
+      <workItem from="1735133716135" duration="11395000" />
     </task>
     <task id="LOCAL-00001" summary="Entites">
       <option name="closed" value="true" />
@@ -520,7 +532,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734983869494</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Lab7">
+      <option name="closed" value="true" />
+      <created>1735025026479</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1735025026479</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,8 +585,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Lab2/src/main/java/Labs_OOP_sem_3/controllers/PointController.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="62" />
+          <line>48</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

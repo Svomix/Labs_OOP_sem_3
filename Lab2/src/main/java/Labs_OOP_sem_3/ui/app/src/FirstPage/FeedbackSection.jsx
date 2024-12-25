@@ -33,8 +33,9 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             };
 
             const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
-
-            const response = await fetch('http://localhost:8080/points/interval', {
+            const url1 = new URL('http://localhost:8080/points/interval');
+            url1.searchParams.append('userName', user.name);
+            const response = await fetch(url1, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
