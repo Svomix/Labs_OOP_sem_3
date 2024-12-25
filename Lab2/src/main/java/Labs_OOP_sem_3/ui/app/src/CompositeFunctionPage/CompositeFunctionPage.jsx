@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './CompositeFunctionPage.css';
-import TableComponent from "./TableComponent.jsx";
 import useAuth from "../hock/useAuth.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
 
