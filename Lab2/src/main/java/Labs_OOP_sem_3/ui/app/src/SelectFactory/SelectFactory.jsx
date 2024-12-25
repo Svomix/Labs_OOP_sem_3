@@ -1,8 +1,9 @@
-import React, {useContext} from "react";
-import {FactoryContext} from "./FactoryContext";
+import React, { useContext } from "react";
+import { FactoryContext } from "../FactoryContext.jsx";
+import './SelectFactory.css'; // Подключаем CSS файл
 
 export default function SelectFactory() {
-    const {updateFactory} = useContext(FactoryContext);
+    const { updateFactory } = useContext(FactoryContext);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -10,8 +11,8 @@ export default function SelectFactory() {
     }
 
     return (
-        <section>
-            <form onSubmit={handleSubmit}>
+        <section className="select-factory-section">
+            <form className="select-factory-form" onSubmit={handleSubmit}>
                 <label htmlFor="factorySelect">Выберите функцию:</label>
                 <select
                     id="factorySelect"

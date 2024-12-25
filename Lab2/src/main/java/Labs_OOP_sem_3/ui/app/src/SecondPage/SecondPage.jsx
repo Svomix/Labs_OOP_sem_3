@@ -74,9 +74,52 @@ export default function SecondPage() {
         setRemovable2(rem);
         setTable2(newData);
     };
+    function areAllCellsFilled(tableData) {
+        return tableData.every(item => item.x !== '' && item.y !== '');
+    }
+    function isSorted(tableData) {
+        for (let i = 1; i < tableData.length; i++) {
+            const currentX = parseFloat(tableData[i].x);
+            const previousX = parseFloat(tableData[i - 1].x);
 
+            if (isNaN(currentX) || isNaN(previousX)) {
+                return false;
+            }
+
+            if (currentX <= previousX) {
+                return false;
+            }
+        }
+        return true;
+    }
     const performOperation = (e) => {
         e.preventDefault();
+        if (!areAllCellsFilled(table1)) {
+            alert('Не все ячейки функции 1 заполнены')
+            return;
+        }
+        if (!areAllCellsFilled(table2)) {
+            alert('Не все ячейки функции 2 заполнены')
+            return;
+        }
+        if (table1.length <= 1) {
+            alert('Длина таблицы 1 меньше 2. Добавьте новые строки')
+            return;
+        }
+        if (table2.length <= 1) {
+            alert('Длина таблицы 2 меньше 2. Добавьте новые строки')
+            return;
+        }
+        if (!isSorted(table1)) {
+            alert('Функция 1 не отсортирована');
+            return;
+        }
+        if (!isSorted(table2)) {
+            alert('Функция 2 не отсортирована');
+            return;
+        }
+        console.log(table1)
+        console.log(table2)
         if (table1.length !== 0 && table2.length !== 0) {
             let result = [];
             setTableResult([]); // Принудительно обновляем состояние перед выполнением операции
@@ -248,7 +291,7 @@ export default function SecondPage() {
     };
 
     const handleInsert = (setTable) => {
-        const newPoint = {x: table1.length + 1, y: 0}; // Пример новой точки
+        const newPoint = {x: '0', y: '0'}; // Пример новой точки
         setTable(prev => [...prev, newPoint]);
     };
 
@@ -268,6 +311,21 @@ export default function SecondPage() {
             setCurrentPage(currentPage - 1);
         }
     };
+    function handleInputChange1(index, field, value) {
+        setTable1(prevData =>
+            prevData.map((item, idx) =>
+                idx === index + (currentPage1 - 1) * rowsPerPage ? { ...item, [field]: value } : item
+            )
+        );
+
+    }
+    function handleInputChange2(index, field, value) {
+        setTable2(prevData =>
+            prevData.map((item, idx) =>
+                idx === index + (currentPage1 - 1) * rowsPerPage ? { ...item, [field]: value } : item
+            )
+        );
+    }
 
     // Вычисление данных для текущей страницы
     const getCurrentRows = (table, currentPage, rowsPerPage) => {
@@ -280,6 +338,16 @@ export default function SecondPage() {
     const getTotalPages = (table, rowsPerPage) => {
         return Math.ceil(table.length / rowsPerPage);
     };
+    // Функция для проверки допустимости ввода
+    const isValidInput = (key, value) => {
+        // Разрешаем Backspace и Delete
+        if (key === 'Backspace' || key === 'Delete') {
+            return true;
+        }
+        // Разрешаем цифры, точку и минус
+        return /^-?\d*\.?\d*$/.test(value);
+    };
+
 
     return (
         <div className="second-page-container">
@@ -337,8 +405,29 @@ export default function SecondPage() {
                                 <tbody>
                                 {getCurrentRows(table1, currentPage1, rowsPerPage).map((row, index) => (
                                     <tr key={index}>
-                                        <td>{row.x}</td>
-                                        <td>{row.y}</td>
+                                        <td
+                                             contentEditable
+                                            suppressContentEditableWarning
+                                          onKeyDown={(e) => {
+                                               const value = e.currentTarget.textContent + e.key;
+                                                if (!isValidInput(e.key, value)) {
+                                                   e.preventDefault();
+                                              }
+                                            }}
+                                            onBlur={(e) => handleInputChange1(index, 'x', e.currentTarget.textContent)}
+                                        >{row.x}</td>
+                                        <td
+                                            contentEditable
+                                            suppressContentEditableWarning
+                                        onKeyDown={(e) => {
+                                                const value = e.currentTarget.textContent + e.key;
+                                                if (!isValidInput(e.key, value))
+                                                    e.preventDefault();
+                                                }
+                                            }
+                                           onBlur={(e) => handleInputChange1(index, 'y', e.currentTarget.textContent)}
+                                        >
+                                        {row.y}</td>
                                     </tr>
                                 ))}
                                 </tbody>
@@ -392,8 +481,28 @@ export default function SecondPage() {
                                 <tbody>
                                 {getCurrentRows(table2, currentPage2, rowsPerPage).map((row, index) => (
                                     <tr key={index}>
-                                        <td>{row.x}</td>
-                                        <td>{row.y}</td>
+                                        <td
+                                            contentEditable
+                                            suppressContentEditableWarning
+                                            onKeyDown={(e) => {
+                                                const value = e.currentTarget.textContent + e.key;
+                                                if (!isValidInput(e.key, value)) {
+                                                    e.preventDefault();
+                                                }
+                                            }}
+                                            onBlur={(e) => handleInputChange2(index, 'x', e.currentTarget.textContent)}
+                                         >{row.x}</td>
+                                        <td
+                                            contentEditable
+                                            suppressContentEditableWarning
+                                            onKeyDown={(e) => {
+                                                const value = e.currentTarget.textContent + e.key;
+                                                if (!isValidInput(e.key, value)) {
+                                                    e.preventDefault();
+                                                }
+                                            }}
+                                            onBlur={(e) => handleInputChange2(index, 'y', e.currentTarget.textContent)}
+                                        >{row.y}</td>
                                     </tr>
                                 ))}
                                 </tbody>

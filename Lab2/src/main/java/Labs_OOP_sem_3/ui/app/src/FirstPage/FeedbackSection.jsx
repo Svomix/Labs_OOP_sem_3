@@ -69,8 +69,8 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             const getData = await getResponse.json();
             console.log('Success:', getData);
             const tableData = getData.map(item => ({
-                x: item.xvalue,
-                y: item.yvalue
+                x: item.xvalue + '',
+                y: item.yvalue + ''
             }));
             onDataChange(tableData, true, true)
         } catch (error) {

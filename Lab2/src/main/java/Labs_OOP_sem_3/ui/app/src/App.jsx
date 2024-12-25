@@ -1,6 +1,6 @@
 //import './index.css'
 import Header from "./FirstPage/components/Header/Header.jsx";
-import SelectFactory from "./SelectFactory.jsx";
+import SelectFactory from "./SelectFactory/SelectFactory.jsx";
 import SecondPage from "./SecondPage/SecondPage.jsx";
 import {Route, Routes} from "react-router";
 import {FactoryProvider} from "./FactoryContext";

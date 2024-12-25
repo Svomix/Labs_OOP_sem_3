@@ -2,7 +2,8 @@ CREATE TABLE functions
 (
     id            serial primary key,
     function_type varchar(255),
-    function_hash varchar(255)
+    function_hash varchar(255),
+    id_user int
 );
 
 create table points
