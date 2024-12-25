@@ -1,4 +1,5 @@
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import './RegisterPage.css'; // Подключаем CSS файл
 
 export default function RegisterPage() {
     const navigate = useNavigate();
@@ -26,25 +27,27 @@ export default function RegisterPage() {
 
             if (response.ok) {
                 alert('Регистрация прошла успешно');
-                navigate(fromPage, {replace: true});
+                navigate(fromPage, { replace: true });
             } else {
-                alert('Ошибка входа. Проверьте логин и пароль.');
+                alert('Ошибка регистрации. Проверьте данные.');
             }
         } catch (error) {
-            console.error('Ошибка при входе:', error);
-            alert('Произошла ошибка при входе.');
+            console.error('Ошибка при регистрации:', error);
+            alert('Произошла ошибка при регистрации.');
         }
     };
 
     return (
-        <div>
+        <div className="register-page">
             <h1>Register Page</h1>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Name: <input name='username'/>
+                    Name:
+                    <input name='username' />
                 </label>
                 <label>
-                    Password: <input name='password' type='password'/>
+                    Password:
+                    <input name='password' type='password' />
                 </label>
                 <button type='submit'>Register</button>
             </form>
