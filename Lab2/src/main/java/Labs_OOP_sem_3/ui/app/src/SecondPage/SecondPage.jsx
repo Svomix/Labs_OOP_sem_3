@@ -3,6 +3,7 @@ import Button from "../FirstPage/components/Button/Button.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
 import Modal from 'react-modal';
 import './SecondPage.css'; // Подключаем CSS файл
+import { saveAs } from 'file-saver'; // Импорт библиотеки для сохранения файлов
 
 export default function SecondPage() {
     const [table1, setTable1] = useState([]);
@@ -66,6 +67,34 @@ export default function SecondPage() {
         }
     };
 
+    const saveFunction = (table, format = 'json') => {
+        if (table.length === 0) {
+            alert("Таблица пуста. Нет данных для сохранения.");
+            return;
+        }
+
+        let data, fileName, mimeType;
+
+        if (format === 'json') {
+            // Преобразуем таблицу в JSON
+            data = JSON.stringify(table, null, 2);
+            fileName = "table.json";
+            mimeType = "application/json";
+        } else if (format === 'xml') {
+            // Преобразуем таблицу в XML
+            const xmlData = table.map((row) => `<point><x>${row.x}</x><y>${row.y}</y></point>`).join("");
+            data = `<data>${xmlData}</data>`;
+            fileName = "table.xml";
+            mimeType = "application/xml";
+        } else {
+            alert("Неподдерживаемый формат файла.");
+            return;
+        }
+
+        // Создаем Blob и сохраняем файл
+        const blob = new Blob([data], { type: mimeType });
+        saveAs(blob, fileName);
+    };
 
     const openModal = (modalType) => {
         setModalIsOpen(true);
@@ -272,9 +301,6 @@ export default function SecondPage() {
         return result;
     };
 
-    const saveFunction = (table) => {
-
-    };
 
 
     const handleInsert = (setTable) => {
