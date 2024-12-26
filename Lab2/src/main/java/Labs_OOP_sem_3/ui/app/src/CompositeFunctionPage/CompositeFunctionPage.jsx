@@ -181,7 +181,7 @@ export default function CompositeFunctionPage() {
             composite: "part"
         };
         const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
-        const url = new URL('http://localhost:8080/points/comp_create');
+        const url = new URL("http://localhost:8080/points/comp_table");
         url.searchParams.append('userName', user.name);
         fetch(url, {
             method: 'POST',

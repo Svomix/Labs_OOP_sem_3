@@ -102,6 +102,7 @@ public class PointController {
 //        var cRes = CompositeFuncDto.builder().function(res).funcName(data.getName()).idUser(Math.toIntExact(user.get().getId())).build();
 //        return ResponseEntity.ok(cRes);
     }
+
     @PostMapping(value = "/upload", consumes = "multipart/form-data")
     public ResponseEntity<FunctionDtoArr> handleFunction(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
@@ -220,9 +221,16 @@ public class PointController {
     @GetMapping("/get_comp")
     public ResponseEntity<ArrayList<FunctionEntity>> getPartComp(@RequestParam String userName) {
         var user = repository.findByUsername(userName);
-        var res = functionService.readAll(Math.toIntExact(user.get().getId()));
-        if (res != null)
+        var funcs = functionService.readAll(Math.toIntExact(user.get().getId()));
+        var res = new ArrayList<FunctionEntity>();
+        if (funcs != null) {
+            for (var f : funcs) {
+                if (f.getComposite() == "part" || f.getComposite() == "final") {
+                    res.add(f);
+                }
+            }
             return ResponseEntity.ok(res);
+        }
         return ResponseEntity.status(500).build();
     }
 
