@@ -2,7 +2,7 @@ import React, {useContext, useRef, useState} from "react";
 import {Chart, registerables} from "chart.js";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
-import './FunctionEditorPage.css'; // Подключаем CSS файл
+import './FunctionEditorPage.css';
 import FirstPage from "../FirstPage/FirstPage.jsx";
 import {FactoryContext} from "../FactoryContext.jsx";
 import useAuth from "../hock/useAuth.jsx";
@@ -12,17 +12,15 @@ Chart.register(...registerables); // Регистрируем все необх�
 export default function FunctionEditorPage() {
     const [functionData, setFunctionData] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [fileName, setFileName] = useState('');
     const [inputX, setInputX] = useState('');
     const [calculatedY, setCalculatedY] = useState(null);
-    const chartRef = useRef(null);
     const chartInstance = useRef(null);
     const {factory} = useContext(FactoryContext);
     const {user} = useAuth();
 
-    // Состояние для пагинации
+
     const [currentPage, setCurrentPage] = useState(1);
-    const [rowsPerPage] = useState(5); // Количество строк на странице
+    const [rowsPerPage] = useState(5);
 
     function modalContent() {
         return (
@@ -30,7 +28,7 @@ export default function FunctionEditorPage() {
         );
     }
 
-    // Функция для проверки сортировки таблицы
+
     const isSorted = (tableData) => {
         for (let i = 1; i < tableData.length; i++) {
             const currentX = parseFloat(tableData[i].x);
@@ -47,12 +45,12 @@ export default function FunctionEditorPage() {
         return true;
     };
 
-    // Функция для проверки заполненности всех ячеек
+
     const areAllCellsFilled = (tableData) => {
         return tableData.every(item => item.x !== '' && item.y !== '');
     };
 
-    // Функция для обновления графика
+
     const updateChart = () => {
         if (chartInstance.current) {
             chartInstance.current.destroy();
@@ -259,7 +257,7 @@ export default function FunctionEditorPage() {
         setFunctionData(prev => prev.slice(0, -1));
     };
 
-    // Функция для подтверждения таблицы
+
     const handleConfirmTable = () => {
         if (functionData.length === 0) {
             alert("Таблица пуста. Нельзя создать такую функцию");
@@ -281,7 +279,7 @@ export default function FunctionEditorPage() {
         alert('Таблица подтверждена, график обновлен.');
     };
 
-    // Функции для переключения страниц
+
     const goToNextPage = () => {
         if (currentPage < getTotalPages(functionData, rowsPerPage)) {
             setCurrentPage(currentPage + 1);
@@ -294,19 +292,19 @@ export default function FunctionEditorPage() {
         }
     };
 
-    // Вычисление данных для текущей страницы
+
     const getCurrentRows = (table, currentPage, rowsPerPage) => {
         const indexOfLastRow = currentPage * rowsPerPage;
         const indexOfFirstRow = indexOfLastRow - rowsPerPage;
         return table.slice(indexOfFirstRow, indexOfLastRow);
     };
 
-    // Вычисление общего количества страниц
+
     const getTotalPages = (table, rowsPerPage) => {
         return Math.ceil(table.length / rowsPerPage);
     };
 
-    // Функция для проверки допустимости ввода
+
     const isValidInput = (key, value) => {
         // Разрешаем Backspace и Delete
         if (key === 'Backspace' || key === 'Delete') {
@@ -316,7 +314,7 @@ export default function FunctionEditorPage() {
         return /^-?\d*\.?\d*$/.test(value);
     };
 
-    // Функция для изменения данных в таблице
+
     const handleInputChange = (index, field, value) => {
         setFunctionData(prevData =>
             prevData.map((item, idx) =>

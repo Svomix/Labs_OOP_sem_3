@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
-import './IntegratePage.css'; // Подключаем CSS файл
+import './IntegratePage.css';
 import FirstPage from "../FirstPage/FirstPage.jsx";
 import {FactoryContext} from "../FactoryContext.jsx";
 import useAuth from "../hock/useAuth.jsx";
@@ -11,14 +11,12 @@ export default function IntegratePage() {
     const [threadCount, setThreadCount] = useState('0');
     const [integratedFunction, setIntegratedFunction] = useState(0);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [activeModal, setActiveModal] = useState(null);
-    const [fileName, setFileName] = useState('');
+    const [, setActiveModal] = useState(null);
     const {factory} = useContext(FactoryContext);
     const {user} = useAuth();
 
-    // Состояние для пагинации
     const [currentPage, setCurrentPage] = useState(1);
-    const [rowsPerPage] = useState(5); // Количество строк на странице
+    const [rowsPerPage] = useState(5);
 
     const openModal = (modalType) => {
         setModalIsOpen(true);
@@ -110,54 +108,92 @@ export default function IntegratePage() {
             });
     };
 
-    const saveFunction = async (table, fileName) => {
+    const handleFileChange = async (e, setTable) => {
+        const selectedFile = e.target.files[0];
+        if (!selectedFile) {
+            alert("Выберите файл для загрузки.");
+            return;
+        }
+
+        // Проверка расширения файла
+        const allowedExtensions = [".json", ".xml"];
+        const fileExtension = selectedFile.name.split(".").pop().toLowerCase();
+        if (!allowedExtensions.includes("." + fileExtension)) {
+            alert("Файл должен быть в формате JSON или XML.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
         try {
-            alert('Функция успешно сохранена!');
+            const response = await fetch('http://localhost:8080/points/upload', {
+                method: "POST",
+                headers: {
+                    'Authorization': authHeader,
+                },
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                const tableData = result.x.map((xValue, index) => ({
+                    x: xValue + '',
+                    y: result.y[index] + '',
+                }));
+                setTable(tableData);
+            } else {
+                throw new Error("Ошибка при загрузке файла.");
+            }
         } catch (error) {
-            console.error('Ошибка при сохранении функции:', error);
+            alert(error);
         }
     };
 
-    const loadFunction = async (fileName) => {
-        try {
-            // Здесь должен быть код для загрузки функции из файла
-            // Например, используя fetch или axios
-            // Пример:
-            // const response = await fetch(`/api/loadFunction?fileName=${fileName}`);
-            // const data = await response.json();
-            // return data;
-
-            // Временная заглушка для тестирования
-            return [
-                {x: 1, y: 2},
-                {x: 2, y: 4},
-                {x: 3, y: 6},
-            ];
-        } catch (error) {
-            console.error('Ошибка при загрузке функции:', error);
-            return null;
+    const saveFunction = (table) => {
+        if (table.length === 0) {
+            alert("Таблица пуста. Нет данных для сохранения.");
+            return;
         }
-    };
+        if (table.length === 1) {
+            alert('Нельзя сохранить таблицу с длинной меньше 1');
+            return;
+        }
+        if (!areAllCellsFilled(table)) {
+            alert('Все ячейки должны быть заполнены');
+            return;
+        }
+        if (!isSorted(table)) {
+            alert('Таблица не отсортирована по x');
+            return;
+        }
+        let fileName = prompt("Введите название файла с расширением (например, data.xml или data.json):");
+        let data, mimeType;
+        const format = fileName.split('.').pop().toLowerCase();
 
+        if (format === 'json') {
+            // Преобразуем таблицу в JSON
+            data = JSON.stringify(table, null, 2);
+            mimeType = "application/json";
+        } else if (format === 'xml') {
+            // Преобразуем таблицу в XML
+            const xmlData = table.map((row) => `<point><x>${row.x}</x><y>${row.y}</y></point>`).join("");
+            data = `<data>${xmlData}</data>`;
+            mimeType = "application/xml";
+        } else {
+            alert("Неподдерживаемый формат файла.");
+            return;
+        }
+
+        const blob = new Blob([data], {type: mimeType});
+        saveAs(blob, fileName);
+    };
     function modalContent() {
         return (
             <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
         );
     }
 
-    const handleLoad = async () => {
-        const selectedFile = prompt('Введите имя файла для загрузки:');
-        if (selectedFile) {
-            const loadedFunction = await loadFunction(selectedFile);
-            if (loadedFunction) {
-                setOriginalFunction(loadedFunction);
-            } else {
-                alert('Файл не найден или произошла ошибка при загрузке.');
-            }
-        }
-    };
-
-    // Функции для переключения страниц
     const goToNextPage = () => {
         if (currentPage < getTotalPages(originalFunction, rowsPerPage)) {
             setCurrentPage(currentPage + 1);
@@ -170,19 +206,18 @@ export default function IntegratePage() {
         }
     };
 
-    // Вычисление данных для текущей страницы
+
     const getCurrentRows = (table, currentPage, rowsPerPage) => {
         const indexOfLastRow = currentPage * rowsPerPage;
         const indexOfFirstRow = indexOfLastRow - rowsPerPage;
         return table.slice(indexOfFirstRow, indexOfLastRow);
     };
 
-    // Вычисление общего количества страниц
+
     const getTotalPages = (table, rowsPerPage) => {
         return Math.ceil(table.length / rowsPerPage);
     };
 
-    // Функция для изменения данных в таблице
     const handleInputChange = (index, field, value) => {
         setOriginalFunction(prevData =>
             prevData.map((item, idx) =>
@@ -191,7 +226,7 @@ export default function IntegratePage() {
         );
     };
 
-    // Функция для проверки допустимости ввода
+
     const isValidInput = (key, value) => {
         // Разрешаем Backspace и Delete
         if (key === 'Backspace' || key === 'Delete') {
@@ -205,8 +240,14 @@ export default function IntegratePage() {
         <div className="integrate-page-container">
             <div className="buttons-container">
                 <Button onClick={() => openModal('create')}>Создать функцию</Button>
-                <Button onClick={handleLoad}>Загрузить функцию</Button>
-                <Button onClick={() => saveFunction(originalFunction, fileName)}>Сохранить исходную функцию</Button>
+                <input
+                    type="file"
+                    id="loadFunction"
+                    style={{display: 'none'}}
+                    onChange={(e) => handleFileChange(e, setOriginalFunction)}
+                />
+                <Button onClick={() => document.getElementById('loadFunction').click()}>Загрузить функцию</Button>
+                <Button onClick={() => saveFunction(originalFunction)}>Сохранить исходную функцию</Button>
                 <Button onClick={performIntegration}>Интегрировать</Button>
             </div>
 
