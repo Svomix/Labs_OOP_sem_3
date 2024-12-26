@@ -19,6 +19,7 @@ import Labs_OOP_sem_3.service.FunctionService;
 import Labs_OOP_sem_3.service.PointService;
 import Labs_OOP_sem_3.service.ReflectionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -108,9 +109,21 @@ public class PointController {
         }
 
         try {
+            // Определение типа файла по расширению
+            String fileName = file.getOriginalFilename();
+            boolean isXml = fileName != null && fileName.toLowerCase().endsWith(".xml");
+
             // Чтение файла и преобразование в список точек
-            ObjectMapper objectMapper = new ObjectMapper();
-            List<Point> points = objectMapper.readValue(file.getInputStream(), objectMapper.getTypeFactory().constructCollectionType(List.class, Point.class));
+            List<Point> points;
+            if (isXml) {
+                // Используем XmlMapper для XML
+                XmlMapper xmlMapper = new XmlMapper();
+                points = xmlMapper.readValue(file.getInputStream(), xmlMapper.getTypeFactory().constructCollectionType(List.class, Point.class));
+            } else {
+                // Используем ObjectMapper для JSON
+                ObjectMapper objectMapper = new ObjectMapper();
+                points = objectMapper.readValue(file.getInputStream(), objectMapper.getTypeFactory().constructCollectionType(List.class, Point.class));
+            }
 
             if (points == null || points.isEmpty()) {
                 return ResponseEntity.badRequest().build();
