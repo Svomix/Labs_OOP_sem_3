@@ -22,10 +22,6 @@ export default function CompositeFunctionPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [rowsPerPage] = useState(5); // Количество строк на странице
 
-    // Fetch запрос для получения списка функций
-    // useEffect(() => {
-    //     fetchFunctions();
-    // }, []);
 
     const fetchFunctions = async () => {
         try {
@@ -108,7 +104,9 @@ export default function CompositeFunctionPage() {
             alert(validationError);
             return;
         }
-
+        console.log(selectedFunctions)
+        const func = selectedFunctions.map(item => item.name) //Массив названий функций
+        console.log(func)
         const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
         const url = new URL('http://localhost:8080/points/comp');
         const postData = {
@@ -255,11 +253,6 @@ export default function CompositeFunctionPage() {
         setTables(newTables);
     };
 
-    // Функция для добавления строки в таблицу выбранных функций
-    const addRowToSelectedFunctions = () => {
-        setSelectedFunctions([...selectedFunctions, { id: Date.now(), name: `` }]);
-    };
-
     // Функция для удаления последней строки из таблицы выбранных функций
     const removeLastRowFromSelectedFunctions = () => {
         if (selectedFunctions.length > 0) {
@@ -316,11 +309,7 @@ export default function CompositeFunctionPage() {
                         <tbody>
                         {selectedFunctions.map((func, index) => (
                             <tr key={index}>
-                                <td
-                                    contentEditable
-                                    suppressContentEditableWarning
-                                    onBlur={(e) => handleFunctionNameChange(index, e.currentTarget.textContent)}
-                                >
+                                <td>
                                     {func.name}
                                 </td>
                             </tr>
@@ -342,7 +331,6 @@ export default function CompositeFunctionPage() {
                         </Button>
                     </div>
                     <div className="row-buttons">
-                        <Button onClick={addRowToSelectedFunctions}>Добавить строку</Button>
                         <Button onClick={removeLastRowFromSelectedFunctions}>Удалить последнюю строку</Button>
                     </div>
                 </div>
