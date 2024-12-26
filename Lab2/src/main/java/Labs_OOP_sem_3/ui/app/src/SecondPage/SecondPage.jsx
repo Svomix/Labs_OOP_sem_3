@@ -1,9 +1,10 @@
-import { useState } from "react";
+import {useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
 import Modal from 'react-modal';
 import './SecondPage.css'; // Подключаем CSS файл
-import { saveAs } from 'file-saver'; // Импорт библиотеки для сохранения файлов
+import {saveAs} from 'file-saver';
+import useAuth from "../hock/useAuth.jsx"; // Импорт библиотеки для сохранения файлов
 
 export default function SecondPage() {
     const [table1, setTable1] = useState([]);
@@ -16,7 +17,7 @@ export default function SecondPage() {
     const [insertable2, setInsertable2] = useState(false);
     const [removable1, setRemovable1] = useState(false);
     const [removable2, setRemovable2] = useState(false);
-
+    const {user} = useAuth();
     // Состояние для пагинации
     const [currentPage1, setCurrentPage1] = useState(1);
     const [currentPage2, setCurrentPage2] = useState(1);
@@ -43,11 +44,14 @@ export default function SecondPage() {
 
         const formData = new FormData();
         formData.append("file", selectedFile); // Ключ "file" должен совпадать с тем, что ожидает сервер
-
+        const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
         console.log(formData)
         try {
-            const response = await fetch("http://localhost:5000/upload", {
+            const response = await fetch('http://localhost:8080/points/upload', {
                 method: "POST",
+                 headers: {
+                'Authorization': authHeader,
+            },
                 body: formData,
             });
 
@@ -92,7 +96,7 @@ export default function SecondPage() {
         }
 
         // Создаем Blob и сохраняем файл
-        const blob = new Blob([data], { type: mimeType });
+        const blob = new Blob([data], {type: mimeType});
         saveAs(blob, fileName);
     };
 
@@ -108,13 +112,13 @@ export default function SecondPage() {
 
     function modalContent1() {
         return (
-            <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
         );
     }
 
     function modalContent2() {
         return (
-            <FirstPage onDataChange={handleDataChange2} closeModal={closeModal} />
+            <FirstPage onDataChange={handleDataChange2} closeModal={closeModal}/>
         );
     }
 
@@ -302,9 +306,8 @@ export default function SecondPage() {
     };
 
 
-
     const handleInsert = (setTable) => {
-        const newPoint = { x: '0', y: '0' }; // Пример новой точки
+        const newPoint = {x: '0', y: '0'}; // Пример новой точки
         setTable(prev => [...prev, newPoint]);
     };
 
@@ -327,7 +330,7 @@ export default function SecondPage() {
     const handleInputChange1 = (index, field, value) => {
         setTable1(prevData =>
             prevData.map((item, idx) =>
-                idx === index + (currentPage1 - 1) * rowsPerPage ? { ...item, [field]: value } : item
+                idx === index + (currentPage1 - 1) * rowsPerPage ? {...item, [field]: value} : item
             )
         );
     };
@@ -335,7 +338,7 @@ export default function SecondPage() {
     const handleInputChange2 = (index, field, value) => {
         setTable2(prevData =>
             prevData.map((item, idx) =>
-                idx === index + (currentPage1 - 1) * rowsPerPage ? { ...item, [field]: value } : item
+                idx === index + (currentPage1 - 1) * rowsPerPage ? {...item, [field]: value} : item
             )
         );
     };
@@ -385,7 +388,7 @@ export default function SecondPage() {
                 <input
                     type="file"
                     id="loadFunction1"
-                    style={{ display: 'none' }}
+                    style={{display: 'none'}}
                     onChange={(e) => handleFileChange(e, setTable1)}
                 />
                 <Button onClick={() => document.getElementById('loadFunction1').click()}>Загрузить функцию 1</Button>
@@ -394,7 +397,7 @@ export default function SecondPage() {
                 <input
                     type="file"
                     id="loadFunction2"
-                    style={{ display: 'none' }}
+                    style={{display: 'none'}}
                     onChange={(e) => handleFileChange(e, setTable2)}
                 />
                 <Button onClick={() => document.getElementById('loadFunction2').click()}>Загрузить функцию 2</Button>

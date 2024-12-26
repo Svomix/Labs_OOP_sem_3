@@ -10,10 +10,7 @@ import Labs_OOP_sem_3.dto.*;
 import Labs_OOP_sem_3.entities.CompFuncEntity;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
-import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
-import Labs_OOP_sem_3.functions.LinkedListTabulatedFunction;
-import Labs_OOP_sem_3.functions.MathFunction;
-import Labs_OOP_sem_3.functions.TabulatedFunction;
+import Labs_OOP_sem_3.functions.*;
 import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
 import Labs_OOP_sem_3.operations.TabulatedDifferentialOperator;
 import Labs_OOP_sem_3.repositories.CompRepository;
@@ -21,11 +18,15 @@ import Labs_OOP_sem_3.repositories.UserRepository;
 import Labs_OOP_sem_3.service.FunctionService;
 import Labs_OOP_sem_3.service.PointService;
 import Labs_OOP_sem_3.service.ReflectionService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static Labs_OOP_sem_3.convertos.ConvertorPointToPointEntity.convert;
@@ -100,6 +101,41 @@ public class PointController {
 //        var cRes = CompositeFuncDto.builder().function(res).funcName(data.getName()).idUser(Math.toIntExact(user.get().getId())).build();
 //        return ResponseEntity.ok(cRes);
     }
+    @PostMapping(value = "/upload", consumes = "multipart/form-data")
+    public ResponseEntity<FunctionDtoArr> handleFunction(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        try {
+            // Чтение файла и преобразование в список точек
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<Point> points = objectMapper.readValue(file.getInputStream(), objectMapper.getTypeFactory().constructCollectionType(List.class, Point.class));
+
+            if (points == null || points.isEmpty()) {
+                return ResponseEntity.badRequest().build();
+            }
+
+            // Преобразование списка точек в FunctionDtoArr
+            double[] x = new double[points.size()];
+            double[] y = new double[points.size()];
+            for (int i = 0; i < points.size(); ++i) {
+                x[i] = points.get(i).x;
+                y[i] = points.get(i).y;
+            }
+
+            FunctionDtoArr functionDtoArr = FunctionDtoArr.builder()
+                    .x(x)
+                    .y(y)
+                    .type("ArrayTabulatedFunctionFactory")
+                    .build();
+
+            return ResponseEntity.ok(functionDtoArr);
+        } catch (IOException e) {
+            return ResponseEntity.status(500).build();
+        }
+    }
+
 
     @PostMapping("/diff")
     public ResponseEntity<FunctionDtoList> performDiff(@RequestBody DataDtoTable data) {

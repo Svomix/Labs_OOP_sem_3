@@ -1,13 +1,18 @@
 package Labs_OOP_sem_3.functions;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
+import java.util.Objects;
+@Data
 public class Point {
 
     public final double x;
     public final double y;
 
-    public Point(double x, double y) {
+    @JsonCreator
+    public Point(@JsonProperty("x") double x, @JsonProperty("y") double y) {
         this.x = x;
         this.y = y;
     }
