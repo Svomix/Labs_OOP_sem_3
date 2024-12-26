@@ -8,8 +8,8 @@ export default function FeedbackSection({onDataChange, closeModal}) {
     const [intervalStart, setIntervalStart] = useState("");
     const [intervalEnd, setIntervalEnd] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const {factory} = useContext(FactoryContext)
-    const {user} = useAuth()
+    const {factory} = useContext(FactoryContext);
+    const {user} = useAuth();
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -19,11 +19,17 @@ export default function FeedbackSection({onDataChange, closeModal}) {
         const start = parseFloat(intervalStart);
         const end = parseFloat(intervalEnd);
 
+        if (start === end) {
+            alert('Точки старта и конца отрезка совпадают');
+            return;
+        }
+        if (numPoints >= 1001) {
+            alert('Не может быть больше 1001 точки без добавления руками');
+            return;
+        }
+
 
         try {
-            alert("TabulatedFunction создана успешно");
-            closeModal(true);
-
             const postIntervalArr = {
                 start: start,
                 end: end,
@@ -67,14 +73,16 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             }
 
             const getData = await getResponse.json();
-            console.log('Success:', getData);
             const tableData = getData.map(item => ({
                 x: item.xvalue + '',
                 y: item.yvalue + ''
             }));
-            onDataChange(tableData, true, true)
+            onDataChange(tableData, true, true);
+            alert("TabulatedFunction создана успешно");
+            closeModal(true);
         } catch (error) {
             setErrorMessage(error.message);
+            alert(error.message);
         }
     }
 

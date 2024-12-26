@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { FactoryContext } from "../FactoryContext.jsx";
+import React, {useContext} from "react";
+import {FactoryContext} from "../FactoryContext.jsx";
 import './SelectFactory.css'; // Подключаем CSS файл
 
 export default function SelectFactory() {
-    const { updateFactory } = useContext(FactoryContext);
+    const {updateFactory} = useContext(FactoryContext);
 
     function handleSubmit(event) {
         event.preventDefault();

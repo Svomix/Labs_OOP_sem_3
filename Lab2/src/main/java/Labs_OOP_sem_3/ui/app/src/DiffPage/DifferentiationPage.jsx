@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import FirstPage from "../FirstPage/FirstPage.jsx";
-import { FactoryContext } from "../FactoryContext.jsx";
+import {FactoryContext} from "../FactoryContext.jsx";
 import useAuth from "../hock/useAuth.jsx";
 import './DifferentiationPage.css'
 
@@ -12,10 +12,10 @@ export default function DifferentiationPage() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
     const [fileName, setFileName] = useState('');
-    const { factory } = useContext(FactoryContext);
+    const {factory} = useContext(FactoryContext);
     const [insertable, setInsertable] = useState(false);
     const [removable, setRemovable] = useState(false);
-    const { user } = useAuth();
+    const {user} = useAuth();
 
     // Состояние для пагинации
     const [currentPageOriginal, setCurrentPageOriginal] = useState(1);
@@ -105,9 +105,9 @@ export default function DifferentiationPage() {
 
             // Временная заглушка для тестирования
             return [
-                { x: 1, y: 2 },
-                { x: 2, y: 4 },
-                { x: 3, y: 6 },
+                {x: 1, y: 2},
+                {x: 2, y: 4},
+                {x: 3, y: 6},
             ];
         } catch (error) {
             console.error('Ошибка при загрузке функции:', error);
@@ -128,7 +128,7 @@ export default function DifferentiationPage() {
     };
 
     const handleInsert = () => {
-        const newPoint = { x: '0', y: '0' }; // Пример новой точки
+        const newPoint = {x: '0', y: '0'}; // Пример новой точки
         setOriginalFunction(prev => [...prev, newPoint]);
     };
 
@@ -153,7 +153,7 @@ export default function DifferentiationPage() {
     const handleInputChange = (index, field, value) => {
         setOriginalFunction(prevData =>
             prevData.map((item, idx) =>
-                idx === index + (currentPageOriginal - 1) * rowsPerPage ? { ...item, [field]: value } : item
+                idx === index + (currentPageOriginal - 1) * rowsPerPage ? {...item, [field]: value} : item
             )
         );
     };
@@ -322,7 +322,7 @@ export default function DifferentiationPage() {
                 </div>
             </div>
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-                <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
+                <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
             </Modal>
         </div>
     );

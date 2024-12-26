@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { Chart, registerables } from "chart.js";
+import React, {useContext, useRef, useState} from "react";
+import {Chart, registerables} from "chart.js";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './FunctionEditorPage.css'; // Подключаем CSS файл
 import FirstPage from "../FirstPage/FirstPage.jsx";
-import { FactoryContext } from "../FactoryContext.jsx";
+import {FactoryContext} from "../FactoryContext.jsx";
 import useAuth from "../hock/useAuth.jsx";
 
 Chart.register(...registerables); // Регистрируем все необходимые модули для Chart.js
@@ -17,8 +17,8 @@ export default function FunctionEditorPage() {
     const [calculatedY, setCalculatedY] = useState(null);
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
-    const { factory } = useContext(FactoryContext);
-    const { user } = useAuth();
+    const {factory} = useContext(FactoryContext);
+    const {user} = useAuth();
 
     // Состояние для пагинации
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +26,7 @@ export default function FunctionEditorPage() {
 
     function modalContent() {
         return (
-            <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
         );
     }
 
@@ -123,9 +123,9 @@ export default function FunctionEditorPage() {
 
             // Временная заглушка для тестирования
             return [
-                { x: 1, y: 2 },
-                { x: 2, y: 4 },
-                { x: 3, y: 6 },
+                {x: 1, y: 2},
+                {x: 2, y: 4},
+                {x: 3, y: 6},
             ];
         } catch (error) {
             console.error('Ошибка при загрузке функции:', error);
@@ -193,7 +193,7 @@ export default function FunctionEditorPage() {
     };
 
     const handleInsert = () => {
-        const newPoint = { x: '0', y: '0' }; // Пример новой точки
+        const newPoint = {x: '0', y: '0'}; // Пример новой точки
         setFunctionData(prev => [...prev, newPoint]);
     };
 
@@ -254,7 +254,7 @@ export default function FunctionEditorPage() {
     const handleInputChange = (index, field, value) => {
         setFunctionData(prevData =>
             prevData.map((item, idx) =>
-                idx === index + (currentPage - 1) * rowsPerPage ? { ...item, [field]: value } : item
+                idx === index + (currentPage - 1) * rowsPerPage ? {...item, [field]: value} : item
             )
         );
     };

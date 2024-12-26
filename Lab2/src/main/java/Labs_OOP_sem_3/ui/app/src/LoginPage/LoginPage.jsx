@@ -1,11 +1,11 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import useAuth from "../hock/useAuth";
 import './LoginPage.css'; // Подключаем CSS файл
 
 export default function LoginPage() {
     const navigate = useNavigate();
     const location = useLocation();
-    const { signin } = useAuth();
+    const {signin} = useAuth();
 
     const fromPage = location.state?.from?.pathname || '/';
 
@@ -16,7 +16,7 @@ export default function LoginPage() {
             name: form.username.value,
             password: form.password.value,
         };
-        signin(user, () => navigate(fromPage, { replace: true }));
+        signin(user, () => navigate(fromPage, {replace: true}));
     };
 
     return (
@@ -25,11 +25,11 @@ export default function LoginPage() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Name:
-                    <input name='username' />
+                    <input name='username'/>
                 </label>
                 <label>
                     Password:
-                    <input name='password' type='password' />
+                    <input name='password' type='password'/>
                 </label>
                 <button type='submit'>Login</button>
             </form>

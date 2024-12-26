@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import './RegisterPage.css'; // Подключаем CSS файл
 
 export default function RegisterPage() {
@@ -27,7 +27,7 @@ export default function RegisterPage() {
 
             if (response.ok) {
                 alert('Регистрация прошла успешно');
-                navigate(fromPage, { replace: true });
+                navigate(fromPage, {replace: true});
             } else {
                 alert('Ошибка регистрации. Проверьте данные.');
             }
@@ -43,11 +43,11 @@ export default function RegisterPage() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Name:
-                    <input name='username' />
+                    <input name='username'/>
                 </label>
                 <label>
                     Password:
-                    <input name='password' type='password' />
+                    <input name='password' type='password'/>
                 </label>
                 <button type='submit'>Register</button>
             </form>

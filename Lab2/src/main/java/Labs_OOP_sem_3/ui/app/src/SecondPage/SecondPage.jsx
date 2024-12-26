@@ -2,9 +2,9 @@ import {useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
 import Modal from 'react-modal';
-import './SecondPage.css'; // Подключаем CSS файл
+import './SecondPage.css';
 import {saveAs} from 'file-saver';
-import useAuth from "../hock/useAuth.jsx"; // Импорт библиотеки для сохранения файлов
+import useAuth from "../hock/useAuth.jsx";
 
 export default function SecondPage() {
     const [table1, setTable1] = useState([]);
@@ -18,13 +18,13 @@ export default function SecondPage() {
     const [removable1, setRemovable1] = useState(false);
     const [removable2, setRemovable2] = useState(false);
     const {user} = useAuth();
-    // Состояние для пагинации
+
     const [currentPage1, setCurrentPage1] = useState(1);
     const [currentPage2, setCurrentPage2] = useState(1);
     const [currentPageResult, setCurrentPageResult] = useState(1);
-    const [rowsPerPage] = useState(5); // Количество строк на странице
+    const [rowsPerPage] = useState(5);
 
-    const [uploadStatus, setUploadStatus] = useState("");
+    const [, setUploadStatus] = useState("");
 
     const handleFileChange = async (e, setTable) => {
         const selectedFile = e.target.files[0];
@@ -49,9 +49,9 @@ export default function SecondPage() {
         try {
             const response = await fetch('http://localhost:8080/points/upload', {
                 method: "POST",
-                 headers: {
-                'Authorization': authHeader,
-            },
+                headers: {
+                    'Authorization': authHeader,
+                },
                 body: formData,
             });
 

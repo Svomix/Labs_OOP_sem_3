@@ -1,6 +1,6 @@
-import { useState } from "react";
+import {useState} from "react";
 import CustomLink from "../Link/CustomLink.jsx";
-import { Outlet } from "react-router";
+import {Outlet} from "react-router";
 import './Header.css'; // Подключаем CSS файл
 
 export default function Header() {
@@ -20,7 +20,7 @@ export default function Header() {
             </header>
 
             <main>
-                <Outlet />
+                <Outlet/>
             </main>
         </>
     );

@@ -1,18 +1,17 @@
 import Button from "./components/Button/Button.jsx";
-import { useContext, useState } from "react";
-import { FactoryContext } from "../FactoryContext.jsx";
+import {useContext, useState} from "react";
+import {FactoryContext} from "../FactoryContext.jsx";
 import useAuth from "../hock/useAuth.jsx";
 
-export default function MainSection({ onDataChange, closeModal }) {
+export default function MainSection({onDataChange, closeModal}) {
     const [pointsCount, setPointsCount] = useState(0);
     const [hasError, setHasError] = useState(true);
     const [tableData, setTableData] = useState([]);
-    const { factory } = useContext(FactoryContext);
-    const { user } = useAuth();
+    const {factory} = useContext(FactoryContext);
+    const {user} = useAuth();
 
-    // Состояние для пагинации
     const [currentPage, setCurrentPage] = useState(1);
-    const [rowsPerPage] = useState(5); // Количество строк на странице
+    const [rowsPerPage] = useState(5); // Количество ячеек на странице
 
     function changePointsCount(event) {
         setPointsCount(event.target.value);
@@ -21,7 +20,11 @@ export default function MainSection({ onDataChange, closeModal }) {
 
     function createTable(event) {
         event.preventDefault();
-        const newTableData = Array.from({ length: pointsCount }, (_, index) => {
+        if (pointsCount >= 1001) {
+            alert('Не может быть больше 1001 точки без добавления руками');
+            return;
+        }
+        const newTableData = Array.from({length: pointsCount}, (_, index) => {
             return {
                 x: tableData[index] ? tableData[index].x : '',
                 y: tableData[index] ? tableData[index].y : ''
@@ -40,7 +43,7 @@ export default function MainSection({ onDataChange, closeModal }) {
     function handleInputChange(index, field, value) {
         setTableData(prevData =>
             prevData.map((item, idx) =>
-                idx === index ? { ...item, [field]: value } : item
+                idx === index ? {...item, [field]: value} : item
             )
         );
     }
@@ -73,46 +76,14 @@ export default function MainSection({ onDataChange, closeModal }) {
         alert('Функция подтверждена');
         closeModal(true);
         onDataChange(tableData);
-        const postTabArr = {
-            arrX: tableData.map(item => item.x),
-            arrY: tableData.map(item => item.y),
-            type: factory
-        };
-        const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
-          const url = new URL('http://localhost:8080/points/table');
-          url.searchParams.append('userName', user.name);
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': authHeader,
-            },
-            body: JSON.stringify(postTabArr)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
     }
 
-    // Вычисляем данные для текущей страницы
     const indexOfLastRow = currentPage * rowsPerPage;
     const indexOfFirstRow = indexOfLastRow - rowsPerPage;
     const currentRows = tableData.slice(indexOfFirstRow, indexOfLastRow);
 
-    // Вычисляем общее количество страниц
     const totalPages = Math.ceil(tableData.length / rowsPerPage);
 
-    // Функции для переключения страниц
     const goToNextPage = () => {
         if (currentPage < totalPages) {
             setCurrentPage(currentPage + 1);

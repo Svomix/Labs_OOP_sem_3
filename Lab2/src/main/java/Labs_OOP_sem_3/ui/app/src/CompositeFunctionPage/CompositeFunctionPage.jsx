@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './CompositeFunctionPage.css';
 import useAuth from "../hock/useAuth.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
-import { FactoryContext } from "../FactoryContext.jsx";
+import {FactoryContext} from "../FactoryContext.jsx";
 
 export default function CompositeFunctionPage() {
     const [functions, setFunctions] = useState([]); // Список функций
@@ -15,8 +15,8 @@ export default function CompositeFunctionPage() {
     const [tables, setTables] = useState([]); // Таблицы для отправки данных
     const [confirmedTables, setConfirmedTables] = useState([]); // Подтвержденные таблицы
     const [activeTableIndex, setActiveTableIndex] = useState(null); // Индекс активной таблицы
-    const { user } = useAuth();
-    const { factory } = useContext(FactoryContext);
+    const {user} = useAuth();
+    const {factory} = useContext(FactoryContext);
 
     // Состояние для пагинации
     const [currentPage, setCurrentPage] = useState(1);
@@ -139,6 +139,7 @@ export default function CompositeFunctionPage() {
             .catch(error => {
                 console.error('Error:', error);
             });
+        setModalFunctionIsOpen(false)
     };
 
     const handleAddTable = () => {
@@ -285,18 +286,20 @@ export default function CompositeFunctionPage() {
                 <div className="function-list">
                     <h3>Доступные функции:</h3>
                     <ul>
-                        {functions.map((func) => (
-                            <li key={func.id}>
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        checked={selectedFunctions.includes(func)}
-                                        onChange={() => handleFunctionSelect(func)}
-                                    />
-                                    {func.name}
-                                </label>
-                            </li>
-                        ))}
+                        {
+                            functions.map((func, index) => (
+                                <li key={index}>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedFunctions.includes(func)} // Проверяем, выбрана ли функция
+                                            onChange={() => handleFunctionSelect(func)} // Обрабатываем выбор
+                                        />
+                                        {func} {/* Отображаем имя функции */}
+                                    </label>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
 
@@ -312,7 +315,7 @@ export default function CompositeFunctionPage() {
                         {selectedFunctions.map((func, index) => (
                             <tr key={index}>
                                 <td>
-                                    {func.name}
+                                    {func}
                                 </td>
                             </tr>
                         ))}
@@ -359,7 +362,7 @@ export default function CompositeFunctionPage() {
                             <Button onClick={() => openTableModal(index)}>Создать функцию</Button>
                             <Button onClick={() => handleConfirmTable(index)}>Подтвердить таблицу</Button>
                             <Modal isOpen={modalTableIsOpen} onRequestClose={closeTableModal}>
-                                <FirstPage onDataChange={handleDataChange} closeModal={closeTableModal} />
+                                <FirstPage onDataChange={handleDataChange} closeModal={closeTableModal}/>
                             </Modal>
                             <table>
                                 <thead>
@@ -396,7 +399,8 @@ export default function CompositeFunctionPage() {
                                 <span>
                                     Страница {currentPage} из {getTotalPages(table, rowsPerPage)}
                                 </span>
-                                <Button onClick={goToNextPage} disabled={currentPage === getTotalPages(table, rowsPerPage)}>
+                                <Button onClick={goToNextPage}
+                                        disabled={currentPage === getTotalPages(table, rowsPerPage)}>
                                     Вперёд
                                 </Button>
                             </div>

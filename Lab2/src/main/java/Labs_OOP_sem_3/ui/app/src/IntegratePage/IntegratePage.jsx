@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './IntegratePage.css'; // Подключаем CSS файл
 import FirstPage from "../FirstPage/FirstPage.jsx";
-import { FactoryContext } from "../FactoryContext.jsx";
+import {FactoryContext} from "../FactoryContext.jsx";
 import useAuth from "../hock/useAuth.jsx";
 
 export default function IntegratePage() {
@@ -13,8 +13,8 @@ export default function IntegratePage() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
     const [fileName, setFileName] = useState('');
-    const { factory } = useContext(FactoryContext);
-    const { user } = useAuth();
+    const {factory} = useContext(FactoryContext);
+    const {user} = useAuth();
 
     // Состояние для пагинации
     const [currentPage, setCurrentPage] = useState(1);
@@ -69,11 +69,11 @@ export default function IntegratePage() {
             alert('Исходная функция не отсортирована');
             return;
         }
-        if (parseInt(threadCount) < 1){
+        if (parseInt(threadCount) < 1) {
             alert('Невозможно использовать меньше 1 потока');
             return;
         }
-        if (parseInt(threadCount) > 32){
+        if (parseInt(threadCount) > 32) {
             alert('Невозможно использовать больше 32 потоков');
             return;
         }
@@ -129,9 +129,9 @@ export default function IntegratePage() {
 
             // Временная заглушка для тестирования
             return [
-                { x: 1, y: 2 },
-                { x: 2, y: 4 },
-                { x: 3, y: 6 },
+                {x: 1, y: 2},
+                {x: 2, y: 4},
+                {x: 3, y: 6},
             ];
         } catch (error) {
             console.error('Ошибка при загрузке функции:', error);
@@ -141,7 +141,7 @@ export default function IntegratePage() {
 
     function modalContent() {
         return (
-            <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
         );
     }
 
@@ -186,7 +186,7 @@ export default function IntegratePage() {
     const handleInputChange = (index, field, value) => {
         setOriginalFunction(prevData =>
             prevData.map((item, idx) =>
-                idx === index + (currentPage - 1) * rowsPerPage ? { ...item, [field]: value } : item
+                idx === index + (currentPage - 1) * rowsPerPage ? {...item, [field]: value} : item
             )
         );
     };
