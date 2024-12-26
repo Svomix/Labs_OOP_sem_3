@@ -296,7 +296,7 @@ public class PointController {
 
     @GetMapping("/point")
     public ResponseEntity<ArrayList<PointEntity>> findByFunc(@RequestParam String hash) {
-        var func = functionService.readByName(hash);
+        var func = functionService.readByHash(hash);
         if (func != null) {
             ArrayList<PointEntity> res = pointService.findByFunc(func.getId());
             return ResponseEntity.ok(res);

@@ -73,6 +73,10 @@ public class FunctionService {
     public FunctionEntity readByName(String name) {
         return functionRepository.findByName(name);
     }
+    public FunctionEntity readByHash(String hash) {
+        return functionRepository.findByHash(hash);
+    }
+
     public ArrayList< FunctionEntity> readByIdComp(int id) {
         return functionRepository.findByIdComp(id);
     }
