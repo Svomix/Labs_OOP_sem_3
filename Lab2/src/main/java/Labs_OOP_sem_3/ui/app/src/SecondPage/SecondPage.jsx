@@ -58,9 +58,12 @@ export default function SecondPage() {
             if (response.ok) {
                 const result = await response.json();
                 setUploadStatus("Файл успешно загружен: " + result.message);
-
+                console.log(result)
                 // Преобразуем данные в таблицу и обновляем состояние
-                const tableData = result.data; // Предполагаем, что сервер возвращает данные в формате [{ x: 1, y: 2 }, ...]
+                const tableData = result.x.map((xValue, index) => ({
+                    x: xValue + '', // Преобразуем в строку, если нужно
+                    y: result.y[index] + '', // Преобразуем в строку, если нужно
+                }));
                 setTable(tableData);
             } else {
                 setUploadStatus("Ошибка при загрузке файла.");
@@ -71,7 +74,7 @@ export default function SecondPage() {
         }
     };
 
-    const saveFunction = (table, format = 'json') => {
+    const saveFunction = (table, format = 'xml') => {
         if (table.length === 0) {
             alert("Таблица пуста. Нет данных для сохранения.");
             return;
