@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
 import Modal from 'react-modal';
@@ -11,9 +11,6 @@ export default function SecondPage() {
     const [operation, setOperation] = useState('+');
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
-    const [saveModalIsOpen, setSaveModalIsOpen] = useState(false);
-    const [loadModalIsOpen, setLoadModalIsOpen] = useState(false);
-    const [fileName, setFileName] = useState('');
     const [insertable1, setInsertable1] = useState(false);
     const [insertable2, setInsertable2] = useState(false);
     const [removable1, setRemovable1] = useState(false);
@@ -25,6 +22,51 @@ export default function SecondPage() {
     const [currentPageResult, setCurrentPageResult] = useState(1);
     const [rowsPerPage] = useState(5); // Количество строк на странице
 
+    const [uploadStatus, setUploadStatus] = useState("");
+
+    const handleFileChange = async (e, setTable) => {
+        const selectedFile = e.target.files[0];
+        if (!selectedFile) {
+            alert("Выберите файл для загрузки.");
+            return;
+        }
+        console.log(selectedFile)
+
+        // Проверка расширения файла
+        const allowedExtensions = [".json", ".xml"];
+        const fileExtension = selectedFile.name.split(".").pop().toLowerCase();
+        if (!allowedExtensions.includes("." + fileExtension)) {
+            alert("Файл должен быть в формате JSON или XML.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", selectedFile); // Ключ "file" должен совпадать с тем, что ожидает сервер
+
+        console.log(formData)
+        try {
+            const response = await fetch("http://localhost:5000/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                setUploadStatus("Файл успешно загружен: " + result.message);
+
+                // Преобразуем данные в таблицу и обновляем состояние
+                const tableData = result.data; // Предполагаем, что сервер возвращает данные в формате [{ x: 1, y: 2 }, ...]
+                setTable(tableData);
+            } else {
+                setUploadStatus("Ошибка при загрузке файла.");
+            }
+        } catch (error) {
+            console.error("Ошибка:", error);
+            setUploadStatus("Ошибка при загрузке файла.");
+        }
+    };
+
+
     const openModal = (modalType) => {
         setModalIsOpen(true);
         setActiveModal(modalType);
@@ -35,31 +77,15 @@ export default function SecondPage() {
         setActiveModal(null);
     };
 
-    const openSaveModal = () => {
-        setSaveModalIsOpen(true);
-    };
-
-    const closeSaveModal = () => {
-        setSaveModalIsOpen(false);
-    };
-
-    const openLoadModal = () => {
-        setLoadModalIsOpen(true);
-    };
-
-    const closeLoadModal = () => {
-        setLoadModalIsOpen(false);
-    };
-
     function modalContent1() {
         return (
-            <FirstPage onDataChange={handleDataChange} closeModal={closeModal}/>
+            <FirstPage onDataChange={handleDataChange} closeModal={closeModal} />
         );
     }
 
     function modalContent2() {
         return (
-            <FirstPage onDataChange={handleDataChange2} closeModal={closeModal}/>
+            <FirstPage onDataChange={handleDataChange2} closeModal={closeModal} />
         );
     }
 
@@ -74,10 +100,242 @@ export default function SecondPage() {
         setRemovable2(rem);
         setTable2(newData);
     };
-    function areAllCellsFilled(tableData) {
+
+    const performOperation = (e) => {
+        e.preventDefault();
+        if (!areAllCellsFilled(table1)) {
+            alert('Не все ячейки функции 1 заполнены');
+            return;
+        }
+        if (!areAllCellsFilled(table2)) {
+            alert('Не все ячейки функции 2 заполнены');
+            return;
+        }
+        if (table1.length <= 1) {
+            alert('Длина таблицы 1 меньше 2. Добавьте новые строки');
+            return;
+        }
+        if (table2.length <= 1) {
+            alert('Длина таблицы 2 меньше 2. Добавьте новые строки');
+            return;
+        }
+        if (!isSorted(table1)) {
+            alert('Функция 1 не отсортирована');
+            return;
+        }
+        if (!isSorted(table2)) {
+            alert('Функция 2 не отсортирована');
+            return;
+        }
+
+        let result = [];
+        setTableResult([]); // Принудительно обновляем состояние перед выполнением операции
+
+        switch (operation) {
+            case '+': {
+                result = performAddition(table1, table2);
+                break;
+            }
+            case '-': {
+                result = performSubtraction(table1, table2);
+                break;
+            }
+            case '*': {
+                result = performMultiplication(table1, table2);
+                break;
+            }
+            case '/': {
+                result = performDivision(table1, table2);
+                break;
+            }
+            default:
+                break;
+        }
+
+        setTableResult(result); // Обновляем состояние результата
+    };
+
+    const performAddition = (table1, table2) => {
+        let result = [];
+        let i = 0, j = 0;
+
+        while (i < table1.length || j < table2.length) {
+            let res = [];
+
+            if (i < table1.length && j < table2.length) {
+                if (table1[i].x === table2[j].x) {
+                    res = [table1[i].x, '' + (parseFloat(table1[i].y) + parseFloat(table2[j].y))];
+                    i++;
+                    j++;
+                } else if (table1[i].x < table2[j].x) {
+                    res = [table1[i].x, table1[i].y];
+                    i++;
+                } else {
+                    res = [table2[j].x, table2[j].y];
+                    j++;
+                }
+            } else if (i < table1.length) {
+                res = [table1[i].x, table1[i].y];
+                i++;
+            } else if (j < table2.length) {
+                res = [table2[j].x, table2[j].y];
+                j++;
+            }
+
+            result.push(res);
+        }
+
+        return result;
+    };
+
+    const performSubtraction = (table1, table2) => {
+        let result = [];
+        let i = 0, j = 0;
+
+        while (i < table1.length || j < table2.length) {
+            let res = [];
+
+            if (i < table1.length && j < table2.length) {
+                if (table1[i].x === table2[j].x) {
+                    res = [table1[i].x, '' + (parseFloat(table1[i].y) - parseFloat(table2[j].y))];
+                    i++;
+                    j++;
+                } else if (table1[i].x < table2[j].x) {
+                    res = [table1[i].x, table1[i].y];
+                    i++;
+                } else {
+                    res = [table2[j].x, '-' + table2[j].y];
+                    j++;
+                }
+            } else if (i < table1.length) {
+                res = [table1[i].x, table1[i].y];
+                i++;
+            } else if (j < table2.length) {
+                res = [table2[j].x, '-' + table2[j].y];
+                j++;
+            }
+
+            result.push(res);
+        }
+
+        return result;
+    };
+
+    const performMultiplication = (table1, table2) => {
+        if (table1.length !== table2.length) {
+            alert('Разные длины функций');
+            return [];
+        }
+
+        let result = [];
+        let i = 0, j = 0;
+
+        while (i < table1.length && j < table2.length) {
+            if (table1[i].x === table2[j].x) {
+                result.push([table1[i].x, '' + (parseFloat(table1[i].y) * parseFloat(table2[j].y))]);
+                i++;
+                j++;
+            } else {
+                alert('У функций различаются x');
+                return [];
+            }
+        }
+
+        return result;
+    };
+
+    const performDivision = (table1, table2) => {
+        if (table1.length !== table2.length) {
+            alert('Разные длины функций');
+            return [];
+        }
+
+        let result = [];
+        let i = 0, j = 0;
+
+        while (i < table1.length && j < table2.length) {
+            if (table1[i].x === table2[j].x) {
+                const y2 = parseFloat(table2[j].y);
+                if (y2 === 0) {
+                    alert('Деление на ноль');
+                    return [];
+                }
+                result.push([table1[i].x, '' + (parseFloat(table1[i].y) / y2)]);
+                i++;
+                j++;
+            } else {
+                alert('У функций различаются x');
+                return [];
+            }
+        }
+
+        return result;
+    };
+
+    const saveFunction = (table) => {
+
+    };
+
+
+    const handleInsert = (setTable) => {
+        const newPoint = { x: '0', y: '0' }; // Пример новой точки
+        setTable(prev => [...prev, newPoint]);
+    };
+
+    const handleRemove = (setTable) => {
+        setTable(prev => prev.slice(0, -1));
+    };
+
+    const goToNextPage = (setCurrentPage, currentPage, totalPages) => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const goToPreviousPage = (setCurrentPage, currentPage) => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const handleInputChange1 = (index, field, value) => {
+        setTable1(prevData =>
+            prevData.map((item, idx) =>
+                idx === index + (currentPage1 - 1) * rowsPerPage ? { ...item, [field]: value } : item
+            )
+        );
+    };
+
+    const handleInputChange2 = (index, field, value) => {
+        setTable2(prevData =>
+            prevData.map((item, idx) =>
+                idx === index + (currentPage1 - 1) * rowsPerPage ? { ...item, [field]: value } : item
+            )
+        );
+    };
+
+    const getCurrentRows = (table, currentPage, rowsPerPage) => {
+        const indexOfLastRow = currentPage * rowsPerPage;
+        const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+        return table.slice(indexOfFirstRow, indexOfLastRow);
+    };
+
+    const getTotalPages = (table, rowsPerPage) => {
+        return Math.ceil(table.length / rowsPerPage);
+    };
+
+    const isValidInput = (key, value) => {
+        if (key === 'Backspace' || key === 'Delete') {
+            return true;
+        }
+        return /^-?\d*\.?\d*$/.test(value);
+    };
+
+    const areAllCellsFilled = (tableData) => {
         return tableData.every(item => item.x !== '' && item.y !== '');
-    }
-    function isSorted(tableData) {
+    };
+
+    const isSorted = (tableData) => {
         for (let i = 1; i < tableData.length; i++) {
             const currentX = parseFloat(tableData[i].x);
             const previousX = parseFloat(tableData[i - 1].x);
@@ -91,304 +349,34 @@ export default function SecondPage() {
             }
         }
         return true;
-    }
-    const performOperation = (e) => {
-        e.preventDefault();
-        if (!areAllCellsFilled(table1)) {
-            alert('Не все ячейки функции 1 заполнены')
-            return;
-        }
-        if (!areAllCellsFilled(table2)) {
-            alert('Не все ячейки функции 2 заполнены')
-            return;
-        }
-        if (table1.length <= 1) {
-            alert('Длина таблицы 1 меньше 2. Добавьте новые строки')
-            return;
-        }
-        if (table2.length <= 1) {
-            alert('Длина таблицы 2 меньше 2. Добавьте новые строки')
-            return;
-        }
-        if (!isSorted(table1)) {
-            alert('Функция 1 не отсортирована');
-            return;
-        }
-        if (!isSorted(table2)) {
-            alert('Функция 2 не отсортирована');
-            return;
-        }
-        console.log(table1)
-        console.log(table2)
-        if (table1.length !== 0 && table2.length !== 0) {
-            let result = [];
-            setTableResult([]); // Принудительно обновляем состояние перед выполнением операции
-
-            switch (operation) {
-                case '+': {
-                    let i = 0, j = 0;
-
-                    while (i < table1.length || j < table2.length) {
-                        let res = [];
-
-                        if (i < table1.length && j < table2.length) {
-                            if (table1[i].x === table2[j].x) {
-                                // Если значения x совпадают, складываем y
-                                res = [table1[i].x, '' + (parseFloat(table1[i].y) + parseFloat(table2[j].y))];
-                                i++;
-                                j++;
-                            } else if (table1[i].x < table2[j].x) {
-                                // Если x из table1 меньше, добавляем строку из table1
-                                res = [table1[i].x, table1[i].y];
-                                i++;
-                            } else {
-                                // Если x из table2 меньше, добавляем строку из table2
-                                res = [table2[j].x, table2[j].y];
-                                j++;
-                            }
-                        } else if (i < table1.length) {
-                            // Если table2 закончилась, добавляем оставшиеся строки из table1
-                            res = [table1[i].x, table1[i].y];
-                            i++;
-                        } else if (j < table2.length) {
-                            // Если table1 закончилась, добавляем оставшиеся строки из table2
-                            res = [table2[j].x, table2[j].y];
-                            j++;
-                        }
-
-                        result.push(res);
-                    }
-                    break;
-                }
-                case '-': {
-                    let i = 0;
-                    let j = 0;
-
-                    while (i < table1.length || j < table2.length) {
-                        let res = [];
-
-                        if (i < table1.length && j < table2.length) {
-                            if (table1[i].x === table2[j].x) {
-                                // Если значения x совпадают, вычитаем y
-                                res = [table1[i].x, '' + (parseFloat(table1[i].y) - parseFloat(table2[j].y))];
-                                i++;
-                                j++;
-                            } else if (table1[i].x < table2[j].x) {
-                                // Если x из table1 меньше, добавляем строку из table1
-                                res = [table1[i].x, table1[i].y];
-                                i++;
-                            } else {
-                                // Если x из table2 меньше, добавляем строку из table2 с отрицательным y
-                                res = [table2[j].x, '-' + table2[j].y];
-                                j++;
-                            }
-                        } else if (i < table1.length) {
-                            // Если table2 закончилась, добавляем оставшиеся строки из table1
-                            res = [table1[i].x, table1[i].y];
-                            i++;
-                        } else if (j < table2.length) {
-                            // Если table1 закончилась, добавляем оставшиеся строки из table2 с отрицательным y
-                            res = [table2[j].x, '-' + table2[j].y];
-                            j++;
-                        }
-
-                        result.push(res);
-                    }
-                    break;
-                }
-                case '*': {
-                    if (table1.length !== table2.length) {
-                        alert('Разные длины функций');
-                        return;
-                    }
-                    let i = 0;
-                    let j = 0;
-
-                    while (i < table1.length || j < table2.length) {
-                        let res = [];
-
-                        if (i < table1.length && j < table2.length) {
-                            if (table1[i].x === table2[j].x) {
-                                // Если значения x совпадают, умножаем y
-                                res = [table1[i].x, '' + (parseFloat(table1[i].y) * parseFloat(table2[j].y))];
-                                i++;
-                                j++;
-                            } else {
-                                alert('У функций различаются x');
-                                return;
-                            }
-                        }
-                        result.push(res);
-                    }
-                    break;
-                }
-                case '/': {
-                    if (table1.length !== table2.length) {
-                        alert('Разные длины функций');
-                        return;
-                    }
-                    let i = 0;
-                    let j = 0;
-
-                    while (i < table1.length || j < table2.length) {
-                        let res = [];
-
-                        if (i < table1.length && j < table2.length) {
-                            if (table1[i].x === table2[j].x) {
-                                // Если значения x совпадают, делим y
-                                const y2 = parseFloat(table2[j].y);
-                                if (y2 === 0) {
-                                    alert('Деление на ноль');
-                                    return;
-                                }
-                                res = [table1[i].x, '' + (parseFloat(table1[i].y) / y2)];
-                                i++;
-                                j++;
-                            } else {
-                                alert('У функций различаются x');
-                                return;
-                            }
-                        }
-                        result.push(res);
-                    }
-                    break;
-                }
-            }
-            setTableResult(result); // Обновляем состояние результата
-        } else {
-            alert('Не создана одна или обе функции');
-        }
     };
-
-    const saveFunction = async (table, fileName) => {
-        try {
-            alert('Функция успешно сохранена!');
-        } catch (error) {
-            console.error('Ошибка при сохранении функции:', error);
-        }
-    };
-
-    const loadFunction = async (fileName) => {
-        try {
-            return [
-                {x: 1, y: 2},
-                {x: 2, y: 4},
-                {x: 3, y: 6},
-            ];
-        } catch (error) {
-            console.error('Ошибка при загрузке функции:', error);
-        }
-    };
-
-    const handleLoad = async (tableSetter) => {
-        openLoadModal();
-        const selectedFile = prompt('Введите имя файла для загрузки:');
-        if (selectedFile) {
-            const loadedFunction = await loadFunction(selectedFile);
-            tableSetter(loadedFunction);
-        }
-        closeLoadModal();
-    };
-
-    const handleInsert = (setTable) => {
-        const newPoint = {x: '0', y: '0'}; // Пример новой точки
-        setTable(prev => [...prev, newPoint]);
-    };
-
-    const handleRemove = (setTable) => {
-        setTable(prev => prev.slice(0, -1));
-    };
-
-    // Функции для переключения страниц
-    const goToNextPage = (setCurrentPage, currentPage, totalPages) => {
-        if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
-
-    const goToPreviousPage = (setCurrentPage, currentPage) => {
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
-        }
-    };
-    function handleInputChange1(index, field, value) {
-        setTable1(prevData =>
-            prevData.map((item, idx) =>
-                idx === index + (currentPage1 - 1) * rowsPerPage ? { ...item, [field]: value } : item
-            )
-        );
-
-    }
-    function handleInputChange2(index, field, value) {
-        setTable2(prevData =>
-            prevData.map((item, idx) =>
-                idx === index + (currentPage1 - 1) * rowsPerPage ? { ...item, [field]: value } : item
-            )
-        );
-    }
-
-    // Вычисление данных для текущей страницы
-    const getCurrentRows = (table, currentPage, rowsPerPage) => {
-        const indexOfLastRow = currentPage * rowsPerPage;
-        const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-        return table.slice(indexOfFirstRow, indexOfLastRow);
-    };
-
-    // Вычисление общего количества страниц
-    const getTotalPages = (table, rowsPerPage) => {
-        return Math.ceil(table.length / rowsPerPage);
-    };
-    // Функция для проверки допустимости ввода
-    const isValidInput = (key, value) => {
-        // Разрешаем Backspace и Delete
-        if (key === 'Backspace' || key === 'Delete') {
-            return true;
-        }
-        // Разрешаем цифры, точку и минус
-        return /^-?\d*\.?\d*$/.test(value);
-    };
-
 
     return (
         <div className="second-page-container">
             <div className="buttons-container">
                 <Button onClick={() => openModal('modal1')}>Создать функцию для таблицы 1</Button>
                 <Button onClick={() => saveFunction(table1)}>Сохранить функцию 1</Button>
-                <Button onClick={() => handleLoad(setTable1)}>Загрузить функцию 1</Button>
+                <input
+                    type="file"
+                    id="loadFunction1"
+                    style={{ display: 'none' }}
+                    onChange={(e) => handleFileChange(e, setTable1)}
+                />
+                <Button onClick={() => document.getElementById('loadFunction1').click()}>Загрузить функцию 1</Button>
                 <Button onClick={() => openModal('modal2')}>Создать функцию для таблицы 2</Button>
                 <Button onClick={() => saveFunction(table2)}>Сохранить функцию 2</Button>
-                <Button onClick={() => handleLoad(setTable2)}>Загрузить функцию 2</Button>
+                <input
+                    type="file"
+                    id="loadFunction2"
+                    style={{ display: 'none' }}
+                    onChange={(e) => handleFileChange(e, setTable2)}
+                />
+                <Button onClick={() => document.getElementById('loadFunction2').click()}>Загрузить функцию 2</Button>
                 <Button onClick={() => saveFunction(tableResult)}>Сохранить результат</Button>
             </div>
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal-content">
                 {activeModal === 'modal1' ? modalContent1() : modalContent2()}
-            </Modal>
-
-            <Modal isOpen={saveModalIsOpen} onRequestClose={closeSaveModal} className="modal-content">
-                <h2>Сохранить функцию</h2>
-                <input
-                    type="text"
-                    placeholder="Введите имя файла"
-                    value={fileName}
-                    onChange={(e) => setFileName(e.target.value)}
-                />
-                <Button onClick={() => {
-                    saveFunction(table1, fileName);
-                    closeSaveModal();
-                }}>Сохранить</Button>
-            </Modal>
-
-            <Modal isOpen={loadModalIsOpen} onRequestClose={closeLoadModal} className="modal-content">
-                <h2>Загрузить функцию</h2>
-                <input
-                    type="text"
-                    placeholder="Введите имя файла"
-                />
-                <Button onClick={() => {
-                    handleLoad(setTable1);
-                    closeLoadModal();
-                }}>Загрузить</Button>
             </Modal>
 
             <div className="tables-container">
@@ -406,28 +394,27 @@ export default function SecondPage() {
                                 {getCurrentRows(table1, currentPage1, rowsPerPage).map((row, index) => (
                                     <tr key={index}>
                                         <td
-                                             contentEditable
+                                            contentEditable
                                             suppressContentEditableWarning
-                                          onKeyDown={(e) => {
-                                               const value = e.currentTarget.textContent + e.key;
+                                            onKeyDown={(e) => {
+                                                const value = e.currentTarget.textContent + e.key;
                                                 if (!isValidInput(e.key, value)) {
-                                                   e.preventDefault();
-                                              }
+                                                    e.preventDefault();
+                                                }
                                             }}
                                             onBlur={(e) => handleInputChange1(index, 'x', e.currentTarget.textContent)}
                                         >{row.x}</td>
                                         <td
                                             contentEditable
                                             suppressContentEditableWarning
-                                        onKeyDown={(e) => {
+                                            onKeyDown={(e) => {
                                                 const value = e.currentTarget.textContent + e.key;
-                                                if (!isValidInput(e.key, value))
+                                                if (!isValidInput(e.key, value)) {
                                                     e.preventDefault();
                                                 }
-                                            }
-                                           onBlur={(e) => handleInputChange1(index, 'y', e.currentTarget.textContent)}
-                                        >
-                                        {row.y}</td>
+                                            }}
+                                            onBlur={(e) => handleInputChange1(index, 'y', e.currentTarget.textContent)}
+                                        >{row.y}</td>
                                     </tr>
                                 ))}
                                 </tbody>
@@ -491,7 +478,7 @@ export default function SecondPage() {
                                                 }
                                             }}
                                             onBlur={(e) => handleInputChange2(index, 'x', e.currentTarget.textContent)}
-                                         >{row.x}</td>
+                                        >{row.x}</td>
                                         <td
                                             contentEditable
                                             suppressContentEditableWarning

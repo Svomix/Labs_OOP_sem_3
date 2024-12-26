@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "../FirstPage/components/Button/Button.jsx";
 import Modal from 'react-modal';
 import './CompositeFunctionPage.css';
 import useAuth from "../hock/useAuth.jsx";
 import FirstPage from "../FirstPage/FirstPage.jsx";
-import {FactoryContext} from "../FactoryContext.jsx";
+import { FactoryContext } from "../FactoryContext.jsx";
 
 export default function CompositeFunctionPage() {
     const [functions, setFunctions] = useState([]); // Список функций
@@ -12,10 +12,15 @@ export default function CompositeFunctionPage() {
     const [newFunctionName, setNewFunctionName] = useState(''); // Имя новой функции
     const [modalFunctionIsOpen, setModalFunctionIsOpen] = useState(false); // Состояние модального окна для создания функции
     const [modalTableIsOpen, setModalTableIsOpen] = useState(false); // Состояние модального окна для таблицы
-    const [tables, setTables] = useState([[]]); // Таблицы для отправки данных
-    const [table, setTable] = useState([]);
-    const {user} = useAuth();
-    const {factory} = useContext(FactoryContext)
+    const [tables, setTables] = useState([]); // Таблицы для отправки данных
+    const [confirmedTables, setConfirmedTables] = useState([]); // Подтвержденные таблицы
+    const [activeTableIndex, setActiveTableIndex] = useState(null); // Индекс активной таблицы
+    const { user } = useAuth();
+    const { factory } = useContext(FactoryContext);
+
+    // Состояние для пагинации
+    const [currentPage, setCurrentPage] = useState(1);
+    const [rowsPerPage] = useState(5); // Количество строк на странице
 
     // Fetch запрос для получения списка функций
     useEffect(() => {
@@ -42,7 +47,7 @@ export default function CompositeFunctionPage() {
                 })
                 .then(data => {
                     console.log('Success:', data);
-
+                    setFunctions(data); // Предполагаем, что данные приходят в формате массива функций
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -53,6 +58,10 @@ export default function CompositeFunctionPage() {
     };
 
     const openFunctionModal = () => {
+        if (tables.length > 0 && tables.length !== confirmedTables.length) {
+            alert('Не все таблицы подтверждены. Пожалуйста, подтвердите все таблицы перед созданием новой функции.');
+            return;
+        }
         setModalFunctionIsOpen(true);
     };
 
@@ -60,7 +69,8 @@ export default function CompositeFunctionPage() {
         setModalFunctionIsOpen(false);
     };
 
-    const openTableModal = () => {
+    const openTableModal = (index) => {
+        setActiveTableIndex(index); // Устанавливаем индекс активной таблицы
         setModalTableIsOpen(true);
     };
 
@@ -74,39 +84,6 @@ export default function CompositeFunctionPage() {
         }
     };
 
-    const loadFunction = async (fileName) => {
-        try {
-            // Здесь должен быть код для загрузки функции из файла
-            // Например, используя fetch или axios
-            // Пример:
-            // const response = await fetch(`/api/loadFunction?fileName=${fileName}`);
-            // const data = await response.json();
-            // return data;
-
-            // Временная заглушка для тестирования
-            return [
-                {x: 1, y: 2},
-                {x: 2, y: 4},
-                {x: 3, y: 6},
-            ];
-        } catch (error) {
-            console.error('Ошибка при загрузке функции:', error);
-            return null;
-        }
-    };
-
-    const handleLoad = async () => {
-        const selectedFile = prompt('Введите имя файла для загрузки:');
-        if (selectedFile) {
-            const loadedFunction = await loadFunction(selectedFile);
-            if (loadedFunction) {
-                setTable(loadedFunction);
-            } else {
-                alert('Файл не найден или произошла ошибка при загрузке.');
-            }
-        }
-    };
-
     const handleFunctionRemove = (func) => {
         setSelectedFunctions(selectedFunctions.filter(f => f !== func));
     };
@@ -117,36 +94,37 @@ export default function CompositeFunctionPage() {
             return;
         }
 
-        // Создаем новую сложную функцию
-        /* const newCompositeFunction = {
-             name: newFunctionName,
-             functions: selectedFunctions.map(f => f.id), // Используем ID функций
-         };*/
         const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
-        const url = new URL('http://localhost:8080/points/comp_create');
+        const url = new URL('http://localhost:8080/points/comp');
+        const postData = {
+            name: newFunctionName,
+            functions: selectedFunctions.map(f => f.id), // Используем ID функций
+        };
         fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': authHeader,
             },
-            body: JSON.stringify()
+            body: JSON.stringify(postData),
         })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-
                 return response.json();
             })
             .then(data => {
                 console.log('Success:', data);
-
+                setFunctions([...functions, data]); // Добавляем новую функцию в список
+                setSelectedFunctions([]); // Очищаем выбранные функции
+                setNewFunctionName(''); // Очищаем поле имени
+                closeFunctionModal(); // Закрываем модальное окно
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-    }
+    };
 
     const handleAddTable = () => {
         setTables([...tables, []]); // Добавляем новую таблицу
@@ -154,13 +132,47 @@ export default function CompositeFunctionPage() {
 
     const handleDataChange = (data) => {
         const newTables = [...tables];
-        newTables[newTables.length - 1] = data;
+        newTables[activeTableIndex] = data; // Обновляем конкретную таблицу
         setTables(newTables);
-        setTable(data);
+    };
+
+    // Функция для проверки заполненности всех ячеек
+    const areAllCellsFilled = (tableData) => {
+        return tableData.every(item => item.x !== '' && item.y !== '');
+    };
+
+    // Функция для проверки сортировки таблицы
+    const isSorted = (tableData) => {
+        for (let i = 1; i < tableData.length; i++) {
+            const currentX = parseFloat(tableData[i].x);
+            const previousX = parseFloat(tableData[i - 1].x);
+
+            if (isNaN(currentX) || isNaN(previousX)) {
+                return false;
+            }
+
+            if (currentX <= previousX) {
+                return false;
+            }
+        }
+        return true;
     };
 
     const handleConfirmTable = (index) => {
         const tableData = tables[index];
+
+        // Проверка заполненности ячеек
+        if (!areAllCellsFilled(tableData)) {
+            alert('Не все ячейки таблицы заполнены.');
+            return;
+        }
+
+        // Проверка сортировки
+        if (!isSorted(tableData)) {
+            alert('Таблица не отсортирована по значениям X.');
+            return;
+        }
+
         const postTabArr = {
             arrX: tableData.map(point => point.x),
             arrY: tableData.map(point => point.y),
@@ -187,14 +199,44 @@ export default function CompositeFunctionPage() {
             })
             .then(data => {
                 console.log('Success:', data);
-
+                setConfirmedTables([...confirmedTables, index]); // Добавляем индекс подтвержденной таблицы
             })
             .catch(error => {
                 console.error('Error:', error);
             });
+    };
 
-        // Удаляем таблицу из списка
-        const newTables = tables.filter((_, i) => i !== index);
+    // Функции для пагинации
+    const goToNextPage = () => {
+        if (currentPage < getTotalPages(tables[activeTableIndex], rowsPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const goToPreviousPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    // Вычисление данных для текущей страницы
+    const getCurrentRows = (table, currentPage, rowsPerPage) => {
+        const indexOfLastRow = currentPage * rowsPerPage;
+        const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+        return table.slice(indexOfFirstRow, indexOfLastRow);
+    };
+
+    // Вычисление общего количества страниц
+    const getTotalPages = (table, rowsPerPage) => {
+        return Math.ceil(table.length / rowsPerPage);
+    };
+
+    // Функция для изменения данных в таблице
+    const handleInputChange = (index, field, value) => {
+        const newTable = [...tables[activeTableIndex]];
+        newTable[index][field] = value;
+        const newTables = [...tables];
+        newTables[activeTableIndex] = newTable;
         setTables(newTables);
     };
 
@@ -255,31 +297,55 @@ export default function CompositeFunctionPage() {
             {/* Таблицы */}
             <div className="tables-container">
                 {tables.map((table, index) => (
-                    <div key={index} className="table-wrapper">
-                        <h3>Таблица {index + 1}</h3>
-                        <Button onClick={openTableModal}>Создать функцию</Button>
-                        <Button onClick={handleLoad}>Загрузить функцию</Button>
-                        <Button onClick={() => handleConfirmTable(index)}>Подтвердить таблицу</Button>
-                        <Modal isOpen={modalTableIsOpen} onRequestClose={closeTableModal}>
-                            <FirstPage onDataChange={handleDataChange} closeModal={closeTableModal}/>
-                        </Modal>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>X</th>
-                                <th>Y</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {table.map((point, index) => (
-                                <tr key={index}>
-                                    <td>{point.x}</td>
-                                    <td>{point.y}</td>
+                    !confirmedTables.includes(index) && (
+                        <div key={index} className="table-wrapper">
+                            <h3>Таблица {index + 1}</h3>
+                            <Button onClick={() => openTableModal(index)}>Создать функцию</Button>
+                            <Button onClick={() => handleConfirmTable(index)}>Подтвердить таблицу</Button>
+                            <Modal isOpen={modalTableIsOpen} onRequestClose={closeTableModal}>
+                                <FirstPage onDataChange={handleDataChange} closeModal={closeTableModal} />
+                            </Modal>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>X</th>
+                                    <th>Y</th>
                                 </tr>
-                            ))}
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                {getCurrentRows(table, currentPage, rowsPerPage).map((row, idx) => (
+                                    <tr key={idx}>
+                                        <td
+                                            contentEditable
+                                            suppressContentEditableWarning
+                                            onBlur={(e) => handleInputChange(idx, 'x', e.currentTarget.textContent)}
+                                        >
+                                            {row.x}
+                                        </td>
+                                        <td
+                                            contentEditable
+                                            suppressContentEditableWarning
+                                            onBlur={(e) => handleInputChange(idx, 'y', e.currentTarget.textContent)}
+                                        >
+                                            {row.y}
+                                        </td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                            <div className="pagination">
+                                <Button onClick={goToPreviousPage} disabled={currentPage === 1}>
+                                    Назад
+                                </Button>
+                                <span>
+                                    Страница {currentPage} из {getTotalPages(table, rowsPerPage)}
+                                </span>
+                                <Button onClick={goToNextPage} disabled={currentPage === getTotalPages(table, rowsPerPage)}>
+                                    Вперёд
+                                </Button>
+                            </div>
+                        </div>
+                    )
                 ))}
             </div>
         </div>
