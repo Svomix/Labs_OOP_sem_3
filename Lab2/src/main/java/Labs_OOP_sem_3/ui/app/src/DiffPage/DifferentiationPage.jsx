@@ -10,17 +10,15 @@ export default function DifferentiationPage() {
     const [originalFunction, setOriginalFunction] = useState([]);
     const [differentiatedFunction, setDifferentiatedFunction] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [activeModal, setActiveModal] = useState(null);
-    const [fileName, setFileName] = useState('');
+    const [, setActiveModal] = useState(null);
     const {factory} = useContext(FactoryContext);
     const [insertable, setInsertable] = useState(false);
     const [removable, setRemovable] = useState(false);
     const {user} = useAuth();
-
-    // Состояние для пагинации
+    const [, setUploadStatus] = useState("");
     const [currentPageOriginal, setCurrentPageOriginal] = useState(1);
     const [currentPageDifferentiated, setCurrentPageDifferentiated] = useState(1);
-    const [rowsPerPage] = useState(10); // Количество строк на странице
+    const [rowsPerPage] = useState(10);
 
     const openModal = (modalType) => {
         setModalIsOpen(true);
@@ -47,7 +45,6 @@ export default function DifferentiationPage() {
             alert('Исходная функция не отсортирована');
             return;
         }
-        console.log(originalFunction)
 
         const postTabArr = {
             arrX: originalFunction.map(item => item.x),
@@ -72,9 +69,7 @@ export default function DifferentiationPage() {
                 return response.json();
             })
             .then(data => {
-                console.log('Success:', data);
                 const res = data.points
-                console.log(res)
                 const tableData = res.map(item => ({
                     x: item.xvalue + '',
                     y: item.yvalue + ''
@@ -86,47 +81,88 @@ export default function DifferentiationPage() {
             });
     };
 
-    const saveFunction = async (table, fileName) => {
-        try {
-            alert('Функция успешно сохранена!');
-        } catch (error) {
-            console.error('Ошибка при сохранении функции:', error);
+    const handleFileChange = async (e, setTable) => {
+        const selectedFile = e.target.files[0];
+        if (!selectedFile) {
+            alert("Выберите файл для загрузки.");
+            return;
         }
-    };
 
-    const loadFunction = async (fileName) => {
-        try {
-            // Здесь должен быть код для загрузки функции из файла
-            // Например, используя fetch или axios
-            // Пример:
-            // const response = await fetch(`/api/loadFunction?fileName=${fileName}`);
-            // const data = await response.json();
-            // return data;
-
-            // Временная заглушка для тестирования
-            return [
-                {x: 1, y: 2},
-                {x: 2, y: 4},
-                {x: 3, y: 6},
-            ];
-        } catch (error) {
-            console.error('Ошибка при загрузке функции:', error);
-            return null;
+        // Проверка расширения файла
+        const allowedExtensions = [".json", ".xml"];
+        const fileExtension = selectedFile.name.split(".").pop().toLowerCase();
+        if (!allowedExtensions.includes("." + fileExtension)) {
+            alert("Файл должен быть в формате JSON или XML.");
+            return;
         }
-    };
 
-    const handleLoad = async () => {
-        const selectedFile = prompt('Введите имя файла для загрузки:');
-        if (selectedFile) {
-            const loadedFunction = await loadFunction(selectedFile);
-            if (loadedFunction) {
-                setOriginalFunction(loadedFunction);
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
+        try {
+            const response = await fetch('http://localhost:8080/points/upload', {
+                method: "POST",
+                headers: {
+                    'Authorization': authHeader,
+                },
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                setUploadStatus("Файл успешно загружен: " + result.message);
+                const tableData = result.x.map((xValue, index) => ({
+                    x: xValue + '',
+                    y: result.y[index] + '',
+                }));
+                setTable(tableData);
             } else {
-                alert('Файл не найден или произошла ошибка при загрузке.');
+                throw new Error("Ошибка при загрузке файла.");
             }
+        } catch (error) {
+            alert(error);
+            setUploadStatus("Ошибка при загрузке файла.");
         }
     };
 
+    const saveFunction = (table) => {
+        if (table.length === 0) {
+            alert("Таблица пуста. Нет данных для сохранения.");
+            return;
+        }
+        if (table.length === 1) {
+            alert('Нельзя сохранить таблицу с длинной меньше 1');
+            return;
+        }
+        if (!areAllCellsFilled(table)) {
+            alert('Все ячейки должны быть заполнены');
+            return;
+        }
+        if (!isSorted(table)) {
+            alert('Таблица не отсортирована по x');
+            return;
+        }
+        let fileName = prompt("Введите название файла с расширением (например, data.xml или data.json):");
+        let data, mimeType;
+        const format = fileName.split('.').pop().toLowerCase();
+
+        if (format === 'json') {
+            // Преобразуем таблицу в JSON
+            data = JSON.stringify(table, null, 2);
+            mimeType = "application/json";
+        } else if (format === 'xml') {
+            // Преобразуем таблицу в XML
+            const xmlData = table.map((row) => `<point><x>${row.x}</x><y>${row.y}</y></point>`).join("");
+            data = `<data>${xmlData}</data>`;
+            mimeType = "application/xml";
+        } else {
+            alert("Неподдерживаемый формат файла.");
+            return;
+        }
+
+        const blob = new Blob([data], {type: mimeType});
+        saveAs(blob, fileName);
+    };
     const handleInsert = () => {
         const newPoint = {x: '0', y: '0'}; // Пример новой точки
         setOriginalFunction(prev => [...prev, newPoint]);
@@ -206,10 +242,16 @@ export default function DifferentiationPage() {
         <div className="differentiation-page-container">
             <div className="buttons-container">
                 <Button onClick={() => openModal('create')}>Создать функцию</Button>
-                <Button onClick={handleLoad}>Загрузить функцию</Button>
-                <Button onClick={() => saveFunction(originalFunction, fileName)}>Сохранить исходную функцию</Button>
-                <Button onClick={() => saveFunction(differentiatedFunction, fileName)}>Сохранить результат</Button>
+                <input
+                    type="file"
+                    id="loadFunction"
+                    style={{display: 'none'}}
+                    onChange={(e) => handleFileChange(e, setOriginalFunction)}
+                />
+                <Button onClick={() => document.getElementById('loadFunction').click()}>Загрузить функцию</Button>
+                <Button onClick={() => saveFunction(originalFunction)}>Сохранить исходную функцию</Button>
                 <Button onClick={performDifferentiation}>Дифференцировать</Button>
+                <Button onClick={() => saveFunction(differentiatedFunction)}>Сохранить результат</Button>
             </div>
 
             <div className="tables-container">

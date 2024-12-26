@@ -104,51 +104,109 @@ export default function FunctionEditorPage() {
         setFunctionData(newData);
     };
 
-    const saveFunction = async (fileName) => {
-        try {
-            alert('Функция успешно сохранена!');
-        } catch (error) {
-            console.error('Ошибка при сохранении функции:', error);
+    const handleFileChange = async (e, setTable) => {
+        const selectedFile = e.target.files[0];
+        if (!selectedFile) {
+            alert("Выберите файл для загрузки.");
+            return;
         }
-    };
 
-    const loadFunction = async (fileName) => {
-        try {
-            // Здесь должен быть код для загрузки функции из файла
-            // Например, используя fetch или axios
-            // Пример:
-            // const response = await fetch(`/api/loadFunction?fileName=${fileName}`);
-            // const data = await response.json();
-            // return data;
-
-            // Временная заглушка для тестирования
-            return [
-                {x: 1, y: 2},
-                {x: 2, y: 4},
-                {x: 3, y: 6},
-            ];
-        } catch (error) {
-            console.error('Ошибка при загрузке функции:', error);
-            return null;
+        // Проверка расширения файла
+        const allowedExtensions = [".json", ".xml"];
+        const fileExtension = selectedFile.name.split(".").pop().toLowerCase();
+        if (!allowedExtensions.includes("." + fileExtension)) {
+            alert("Файл должен быть в формате JSON или XML.");
+            return;
         }
-    };
 
-    const handleLoad = async () => {
-        const selectedFile = prompt('Введите имя файла для загрузки:');
-        if (selectedFile) {
-            const loadedFunction = await loadFunction(selectedFile);
-            if (loadedFunction) {
-                setFunctionData(loadedFunction);
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
+        try {
+            const response = await fetch('http://localhost:8080/points/upload', {
+                method: "POST",
+                headers: {
+                    'Authorization': authHeader,
+                },
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                setUploadStatus("Файл успешно загружен: " + result.message);
+                const tableData = result.x.map((xValue, index) => ({
+                    x: xValue + '',
+                    y: result.y[index] + '',
+                }));
+                setTable(tableData);
             } else {
-                alert('Файл не найден или произошла ошибка при загрузке.');
+                throw new Error("Ошибка при загрузке файла.");
             }
+        } catch (error) {
+            alert(error);
+            setUploadStatus("Ошибка при загрузке файла.");
         }
+    };
+
+    const saveFunction = (table) => {
+        if (table.length === 0) {
+            alert("Таблица пуста. Нет данных для сохранения.");
+            return;
+        }
+        if (table.length === 1) {
+            alert('Нельзя сохранить таблицу с длинной меньше 1');
+            return;
+        }
+        if (!areAllCellsFilled(table)) {
+            alert('Все ячейки должны быть заполнены');
+            return;
+        }
+        if (!isSorted(table)) {
+            alert('Таблица не отсортирована по x');
+            return;
+        }
+        let fileName = prompt("Введите название файла с расширением (например, data.xml или data.json):");
+        let data, mimeType;
+        const format = fileName.split('.').pop().toLowerCase();
+
+        if (format === 'json') {
+            // Преобразуем таблицу в JSON
+            data = JSON.stringify(table, null, 2);
+            mimeType = "application/json";
+        } else if (format === 'xml') {
+            // Преобразуем таблицу в XML
+            const xmlData = table.map((row) => `<point><x>${row.x}</x><y>${row.y}</y></point>`).join("");
+            data = `<data>${xmlData}</data>`;
+            mimeType = "application/xml";
+        } else {
+            alert("Неподдерживаемый формат файла.");
+            return;
+        }
+
+        const blob = new Blob([data], {type: mimeType});
+        saveAs(blob, fileName);
     };
 
     const handleApply = () => {
         const x = parseFloat(inputX);
         if (isNaN(x)) {
             alert('Введите корректное значение X.');
+            return;
+        }
+        if (functionData.length === 0) {
+            alert("Таблица пуста. Нельзя посчитать значение");
+            return;
+        }
+        if (functionData.length === 1) {
+            alert('Нельзя посчитать значение функции с 1 точкой');
+            return;
+        }
+        if (!areAllCellsFilled(functionData)) {
+            alert('Все ячейки должны быть заполнены');
+            return;
+        }
+        if (!isSorted(functionData)) {
+            alert('Таблица не отсортирована по x');
             return;
         }
 
@@ -203,6 +261,14 @@ export default function FunctionEditorPage() {
 
     // Функция для подтверждения таблицы
     const handleConfirmTable = () => {
+        if (functionData.length === 0) {
+            alert("Таблица пуста. Нельзя создать такую функцию");
+            return;
+        }
+        if (functionData.length === 1) {
+            alert('Нельзя посчитать функцию с 1 точкой');
+            return;
+        }
         if (!areAllCellsFilled(functionData)) {
             alert('Не все ячейки исходной функции заполнены');
             return;
@@ -263,8 +329,14 @@ export default function FunctionEditorPage() {
         <div className="function-editor-container">
             <div className="buttons-container">
                 <Button onClick={openModal}>Создать функцию</Button>
-                <Button onClick={handleLoad}>Загрузить функцию</Button>
-                <Button onClick={() => saveFunction(fileName)}>Сохранить функцию</Button>
+                <input
+                    type="file"
+                    id="loadFunction"
+                    style={{display: 'none'}}
+                    onChange={(e) => handleFileChange(e, setFunctionData)}
+                />
+                <Button onClick={() => document.getElementById('loadFunction').click()}>Загрузить функцию</Button>
+                <Button onClick={() => saveFunction(functionData)}>Сохранить функцию</Button>
                 <Button onClick={handleConfirmTable}>Подтвердить таблицу</Button>
             </div>
 
@@ -277,7 +349,7 @@ export default function FunctionEditorPage() {
                 {functionData.length > 0 && (
                     <>
                         <table>
-                            <thead>
+                        <thead>
                             <tr>
                                 <th>X</th>
                                 <th>Y</th>

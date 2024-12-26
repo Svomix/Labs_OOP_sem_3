@@ -32,7 +32,6 @@ export default function SecondPage() {
             alert("Выберите файл для загрузки.");
             return;
         }
-        console.log(selectedFile)
 
         // Проверка расширения файла
         const allowedExtensions = [".json", ".xml"];
@@ -43,9 +42,8 @@ export default function SecondPage() {
         }
 
         const formData = new FormData();
-        formData.append("file", selectedFile); // Ключ "file" должен совпадать с тем, что ожидает сервер
+        formData.append("file", selectedFile);
         const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
-        console.log(formData)
         try {
             const response = await fetch('http://localhost:8080/points/upload', {
                 method: "POST",
@@ -58,47 +56,55 @@ export default function SecondPage() {
             if (response.ok) {
                 const result = await response.json();
                 setUploadStatus("Файл успешно загружен: " + result.message);
-                console.log(result)
-                // Преобразуем данные в таблицу и обновляем состояние
                 const tableData = result.x.map((xValue, index) => ({
-                    x: xValue + '', // Преобразуем в строку, если нужно
-                    y: result.y[index] + '', // Преобразуем в строку, если нужно
+                    x: xValue + '',
+                    y: result.y[index] + '',
                 }));
                 setTable(tableData);
             } else {
-                setUploadStatus("Ошибка при загрузке файла.");
+                throw new Error("Ошибка при загрузке файла.");
             }
         } catch (error) {
-            console.error("Ошибка:", error);
+            alert(error);
             setUploadStatus("Ошибка при загрузке файла.");
         }
     };
 
-    const saveFunction = (table, format = 'xml') => {
+    const saveFunction = (table) => {
         if (table.length === 0) {
             alert("Таблица пуста. Нет данных для сохранения.");
             return;
         }
-
-        let data, fileName, mimeType;
+        if (table.length === 1) {
+            alert('Нельзя сохранить таблицу с длинной меньше 1');
+            return;
+        }
+        if (!areAllCellsFilled(table)) {
+            alert('Все ячейки должны быть заполнены');
+            return;
+        }
+        if (!isSorted(table)) {
+            alert('Таблица не отсортирована по x');
+            return;
+        }
+        let fileName = prompt("Введите название файла с расширением (например, data.xml или data.json):");
+        let data, mimeType;
+        const format = fileName.split('.').pop().toLowerCase();
 
         if (format === 'json') {
             // Преобразуем таблицу в JSON
             data = JSON.stringify(table, null, 2);
-            fileName = "table.json";
             mimeType = "application/json";
         } else if (format === 'xml') {
             // Преобразуем таблицу в XML
             const xmlData = table.map((row) => `<point><x>${row.x}</x><y>${row.y}</y></point>`).join("");
             data = `<data>${xmlData}</data>`;
-            fileName = "table.xml";
             mimeType = "application/xml";
         } else {
             alert("Неподдерживаемый формат файла.");
             return;
         }
 
-        // Создаем Blob и сохраняем файл
         const blob = new Blob([data], {type: mimeType});
         saveAs(blob, fileName);
     };
@@ -196,25 +202,25 @@ export default function SecondPage() {
         let i = 0, j = 0;
 
         while (i < table1.length || j < table2.length) {
-            let res = [];
+            let res = {};
 
             if (i < table1.length && j < table2.length) {
                 if (table1[i].x === table2[j].x) {
-                    res = [table1[i].x, '' + (parseFloat(table1[i].y) + parseFloat(table2[j].y))];
+                    res = {x: table1[i].x, y: '' + (parseFloat(table1[i].y) + parseFloat(table2[j].y))};
                     i++;
                     j++;
                 } else if (table1[i].x < table2[j].x) {
-                    res = [table1[i].x, table1[i].y];
+                    res = {x: table1[i].x, y: table1[i].y};
                     i++;
                 } else {
-                    res = [table2[j].x, table2[j].y];
+                    res = {x: table2[j].x, y: table2[j].y};
                     j++;
                 }
             } else if (i < table1.length) {
-                res = [table1[i].x, table1[i].y];
+                res = {x: table1[i].x, y: table1[i].y};
                 i++;
             } else if (j < table2.length) {
-                res = [table2[j].x, table2[j].y];
+                res = {x: table2[j].x, y: table2[j].y};
                 j++;
             }
 
@@ -229,25 +235,25 @@ export default function SecondPage() {
         let i = 0, j = 0;
 
         while (i < table1.length || j < table2.length) {
-            let res = [];
+            let res = {};
 
             if (i < table1.length && j < table2.length) {
                 if (table1[i].x === table2[j].x) {
-                    res = [table1[i].x, '' + (parseFloat(table1[i].y) - parseFloat(table2[j].y))];
+                    res = {x: table1[i].x, y: '' + (parseFloat(table1[i].y) - parseFloat(table2[j].y))};
                     i++;
                     j++;
                 } else if (table1[i].x < table2[j].x) {
-                    res = [table1[i].x, table1[i].y];
+                    res = {x: table1[i].x, y: table1[i].y};
                     i++;
                 } else {
-                    res = [table2[j].x, '-' + table2[j].y];
+                    res = {x: table2[j].x, y: '-' + table2[j].y};
                     j++;
                 }
             } else if (i < table1.length) {
-                res = [table1[i].x, table1[i].y];
+                res = {x: table1[i].x, y: table1[i].y};
                 i++;
             } else if (j < table2.length) {
-                res = [table2[j].x, '-' + table2[j].y];
+                res = {x: table2[j].x, y: '-' + table2[j].y};
                 j++;
             }
 
@@ -268,7 +274,7 @@ export default function SecondPage() {
 
         while (i < table1.length && j < table2.length) {
             if (table1[i].x === table2[j].x) {
-                result.push([table1[i].x, '' + (parseFloat(table1[i].y) * parseFloat(table2[j].y))]);
+                result.push({x: table1[i].x, y: '' + (parseFloat(table1[i].y) * parseFloat(table2[j].y))});
                 i++;
                 j++;
             } else {
@@ -296,7 +302,7 @@ export default function SecondPage() {
                     alert('Деление на ноль');
                     return [];
                 }
-                result.push([table1[i].x, '' + (parseFloat(table1[i].y) / y2)]);
+                result.push({x: table1[i].x, y: '' + (parseFloat(table1[i].y) / y2)});
                 i++;
                 j++;
             } else {
@@ -564,8 +570,8 @@ export default function SecondPage() {
                                 <tbody>
                                 {getCurrentRows(tableResult, currentPageResult, rowsPerPage).map((row, index) => (
                                     <tr key={index}>
-                                        <td>{row[0]}</td>
-                                        <td>{row[1]}</td>
+                                        <td>{row.x}</td>
+                                        <td>{row.y}</td>
                                     </tr>
                                 ))}
                                 </tbody>
@@ -578,8 +584,8 @@ export default function SecondPage() {
                                     Назад
                                 </Button>
                                 <span>
-                                    Страница {currentPageResult} из {getTotalPages(tableResult, rowsPerPage)}
-                                </span>
+                    Страница {currentPageResult} из {getTotalPages(tableResult, rowsPerPage)}
+                </span>
                                 <Button
                                     onClick={() => goToNextPage(setCurrentPageResult, currentPageResult, getTotalPages(tableResult, rowsPerPage))}
                                     disabled={currentPageResult === getTotalPages(tableResult, rowsPerPage)}

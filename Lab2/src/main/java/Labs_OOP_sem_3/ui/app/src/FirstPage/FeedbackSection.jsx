@@ -67,6 +67,7 @@ export default function FeedbackSection({onDataChange, closeModal}) {
                     'Authorization': authHeader,
                 },
             });
+            console.log(getResponse)
 
             if (!getResponse.ok) {
                 throw new Error('Network response was not ok');
@@ -82,7 +83,6 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             closeModal(true);
         } catch (error) {
             setErrorMessage(error.message);
-            alert(error.message);
         }
     }
 
