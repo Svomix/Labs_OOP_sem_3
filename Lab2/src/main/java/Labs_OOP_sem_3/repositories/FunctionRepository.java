@@ -15,8 +15,13 @@ import java.util.ArrayList;
 public interface FunctionRepository extends JpaRepository<FunctionEntity, Integer> {
     FunctionEntity findByHash(String functionHash);
 
+    FunctionEntity findByName(String name);
+
     @Query(value = "SELECT id, function_hash, function_type, id_user, composite, name, id_comp FROM functions WHERE id_user = :id_user", nativeQuery = true)
     ArrayList<FunctionEntity> findByIdUser(@Param("id_user") int id_user);
+
+    @Query(value = "SELECT id, function_hash, function_type, id_user, composite, name, id_comp FROM functions WHERE id_COMP = :id", nativeQuery = true)
+    ArrayList<FunctionEntity> findByIdComp(@Param("id") int id);
 
     @Modifying
     @Query(value = "ALTER SEQUENCE functions_id_seq RESTART WITH 1;", nativeQuery = true)

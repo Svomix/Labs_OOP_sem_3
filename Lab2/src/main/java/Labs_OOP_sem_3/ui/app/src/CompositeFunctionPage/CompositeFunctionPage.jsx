@@ -108,7 +108,9 @@ export default function CompositeFunctionPage() {
         const func = selectedFunctions.map(item => item.name) //Массив названий функций
         console.log(func)
         const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
-        const url = new URL('http://localhost:8080/points/comp');
+        const url = new URL('http://localhost:8080/points/comp_create');
+        url.searchParams.append('username', user.name);
+        url.searchParams.append('name', newFunctionName);
         const postData = {
             name: newFunctionName,
             functions: selectedFunctions.map(f => f.id), // Используем ID функций

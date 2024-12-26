@@ -8,7 +8,6 @@ import Labs_OOP_sem_3.convertos.ConvertorToFuncEntity;
 import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
 import Labs_OOP_sem_3.dto.*;
 import Labs_OOP_sem_3.entities.CompFuncEntity;
-import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.functions.*;
 import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
@@ -78,14 +77,29 @@ public class PointController {
     }
 
     @PostMapping("/comp_create")
-    public ResponseEntity<CompFuncEntity> createCompTable(@RequestBody DataDtoComposite data, @RequestParam String userName) {
+    public ResponseEntity<CompFuncEntity> createCompTable(@RequestBody ArrayList<String> names, @RequestParam String userName, @RequestParam String name) {
         var user = repository.findByUsername(userName);
-        var comp = CompDto.builder().name(data.getName()).id_user(user.get().getId()).build();
+        var comp = CompDto.builder().name(name).id_user(user.get().getId()).build();
         var sComp = compRepository.save(ConvertorToCompEntity.convert(comp));
-        for (var f : data.getFuncArr()) {
-            FunctionDtoList func = FunctionDtoList.builder().points(new ArrayList<>()).id_comp(sComp.getId()).composite(data.getComposite()).id_user(user.get().getId()).type(f.getType()).build();
-            for (int i = 0; i < f.getArrX().size(); ++i) {
-                func.getPoints().add(ConvertorToPointEntity.convertToEntity(PointDto.builder().x(f.getArrX().get(i)).y(f.getArrY().get(i)).function(ConvertorToFuncEntity.convert(func)).build()));
+        int pr = 1;
+        for (var nameF : names) {
+            var f = functionService.readByName(nameF);
+            if (f == null) {
+                var compF = compRepository.findByName(nameF);
+                if (compF == null)
+                    return ResponseEntity.badRequest().body(null);
+                var fArr = functionService.readByIdComp(compF.getId());
+                for (var f1: fArr)
+                {
+                    f1.setId_comp(sComp.getId());
+                    functionService.create(ConvertToFuncDto.convert(f1));
+                }
+                break;
+            }
+            var arrF = pointService.findByFunc(f.getId());
+            FunctionDtoList func = FunctionDtoList.builder().points(new ArrayList<>()).id_comp(sComp.getId()).composite(Integer.toString(pr)).id_user(user.get().getId()).type(f.getType()).build();
+            for (int i = 0; i < arrF.size(); ++i) {
+                func.getPoints().add(ConvertorToPointEntity.convertToEntity(PointDto.builder().x(arrF.get(i).getXValue()).y(arrF.get(i).getYValue()).function(ConvertorToFuncEntity.convert(func)).build()));
             }
             functionService.create(func);
         }
@@ -214,14 +228,18 @@ public class PointController {
     }
 
     @GetMapping("/get_comp")
-    public ResponseEntity<ArrayList<FunctionEntity>> getPartComp(@RequestParam String userName) {
+    public ResponseEntity<ArrayList<String>> getPartComp(@RequestParam String userName) {
         var user = repository.findByUsername(userName);
         var funcs = functionService.readAll(Math.toIntExact(user.get().getId()));
-        var res = new ArrayList<FunctionEntity>();
+        var cNames = compRepository.findByIdUser(Math.toIntExact(user.get().getId()));
+        var res = new ArrayList<String>();
+        for (var name : cNames) {
+            res.add(name);
+        }
         if (funcs != null) {
             for (var f : funcs) {
-                if (f.getComposite() != null && (f.getComposite().equals( "part") || f.getComposite().equals("final"))) {
-                    res.add(f);
+                if (f.getComposite() != null) {
+                    res.add(f.getName());
                 }
             }
             return ResponseEntity.ok(res);
