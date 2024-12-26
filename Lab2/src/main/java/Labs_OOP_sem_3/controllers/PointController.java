@@ -171,11 +171,6 @@ public class PointController {
         return ResponseEntity.status(500).build();
     }
 
-//    @PostMapping("/file")
-//    public ResponseEntity<FunctionDtoList> saveFile(@RequestBody DataDtoTable data, @RequestParam String filename) {
-//
-//    }
-
     @PostMapping("integr")
     public ResponseEntity<Double> performIntegr(@RequestBody DataDtoTable data, @RequestParam int th) throws ExecutionException, InterruptedException {
         if (data != null) {
@@ -225,7 +220,7 @@ public class PointController {
         var res = new ArrayList<FunctionEntity>();
         if (funcs != null) {
             for (var f : funcs) {
-                if (f.getComposite() == "part" || f.getComposite() == "final") {
+                if (f.getComposite() != null && (f.getComposite().equals( "part") || f.getComposite().equals("final"))) {
                     res.add(f);
                 }
             }
