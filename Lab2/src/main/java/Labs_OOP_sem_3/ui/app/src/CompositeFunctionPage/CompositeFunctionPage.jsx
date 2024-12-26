@@ -25,7 +25,7 @@ export default function CompositeFunctionPage() {
     // Fetch запрос для получения списка функций
     useEffect(() => {
         fetchFunctions();
-    }, []);
+    }, [modalFunctionIsOpen]);
 
     const fetchFunctions = async () => {
         try {
@@ -88,9 +88,23 @@ export default function CompositeFunctionPage() {
         setSelectedFunctions(selectedFunctions.filter(f => f !== func));
     };
 
+    const validateFunctionName = (name) => {
+        if (!name) {
+            return "Имя функции не может быть пустым.";
+        }
+        if (functions.some(func => func.name === name)) {
+            return "Функция с таким именем уже существует.";
+        }
+        if (name.startsWith("Таблица")) {
+            return "Имя функции не может начинаться с 'Таблица'.";
+        }
+        return null;
+    };
+
     const handleCreateCompositeFunction = async () => {
-        if (!newFunctionName) {
-            alert('Введите имя для новой функции.');
+        const validationError = validateFunctionName(newFunctionName);
+        if (validationError) {
+            alert(validationError);
             return;
         }
 
@@ -240,6 +254,27 @@ export default function CompositeFunctionPage() {
         setTables(newTables);
     };
 
+    // Функция для добавления строки в таблицу выбранных функций
+    const addRowToSelectedFunctions = () => {
+        setSelectedFunctions([...selectedFunctions, { id: Date.now(), name: `` }]);
+    };
+
+    // Функция для удаления последней строки из таблицы выбранных функций
+    const removeLastRowFromSelectedFunctions = () => {
+        if (selectedFunctions.length > 0) {
+            const newSelectedFunctions = [...selectedFunctions];
+            newSelectedFunctions.pop();
+            setSelectedFunctions(newSelectedFunctions);
+        }
+    };
+
+    // Функция для изменения имени функции в таблице выбранных функций
+    const handleFunctionNameChange = (index, newName) => {
+        const updatedFunctions = [...selectedFunctions];
+        updatedFunctions[index].name = newName;
+        setSelectedFunctions(updatedFunctions);
+    };
+
     return (
         <div className="composite-function-container">
             <h2>Создание сложной функции</h2>
@@ -271,14 +306,44 @@ export default function CompositeFunctionPage() {
 
                 <div className="selected-functions">
                     <h3>Выбранные функции:</h3>
-                    <ul>
-                        {selectedFunctions.map((func) => (
-                            <li key={func.id}>
-                                {func.name}
-                                <Button onClick={() => handleFunctionRemove(func)}>Удалить</Button>
-                            </li>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Имя функции</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {selectedFunctions.map((func, index) => (
+                            <tr key={index}>
+                                <td
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onBlur={(e) => handleFunctionNameChange(index, e.currentTarget.textContent)}
+                                >
+                                    {func.name}
+                                </td>
+                            </tr>
                         ))}
-                    </ul>
+                        </tbody>
+                    </table>
+                    <div className="pagination">
+                        <Button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+                            Назад
+                        </Button>
+                        <span>
+                            Страница {currentPage} из {Math.ceil(selectedFunctions.length / rowsPerPage)}
+                        </span>
+                        <Button
+                            onClick={() => setCurrentPage(currentPage + 1)}
+                            disabled={currentPage === Math.ceil(selectedFunctions.length / rowsPerPage)}
+                        >
+                            Вперёд
+                        </Button>
+                    </div>
+                    <div className="row-buttons">
+                        <Button onClick={addRowToSelectedFunctions}>Добавить строку</Button>
+                        <Button onClick={removeLastRowFromSelectedFunctions}>Удалить последнюю строку</Button>
+                    </div>
                 </div>
 
                 <div className="function-name">
