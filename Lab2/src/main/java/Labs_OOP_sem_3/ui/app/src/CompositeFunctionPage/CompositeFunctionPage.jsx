@@ -23,9 +23,9 @@ export default function CompositeFunctionPage() {
     const [rowsPerPage] = useState(5); // Количество строк на странице
 
     // Fetch запрос для получения списка функций
-    useEffect(() => {
-        fetchFunctions();
-    }, [modalFunctionIsOpen]);
+    // useEffect(() => {
+    //     fetchFunctions();
+    // }, []);
 
     const fetchFunctions = async () => {
         try {
@@ -62,6 +62,7 @@ export default function CompositeFunctionPage() {
             alert('Не все таблицы подтверждены. Пожалуйста, подтвердите все таблицы перед созданием новой функции.');
             return;
         }
+        fetchFunctions()
         setModalFunctionIsOpen(true);
     };
 
