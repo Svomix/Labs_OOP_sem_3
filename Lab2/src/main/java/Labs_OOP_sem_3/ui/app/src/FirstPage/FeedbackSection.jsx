@@ -57,7 +57,7 @@ export default function FeedbackSection({onDataChange, closeModal}) {
             const data = await response.json();
             const hash = data.hash;
 
-            const url = new URL('http://localhost:8080/points');
+            const url = new URL("http://localhost:8080/points/point");
             url.searchParams.append('hash', hash);
 
             const getResponse = await fetch(url, {

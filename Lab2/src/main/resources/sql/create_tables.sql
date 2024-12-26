@@ -11,7 +11,7 @@ CREATE TABLE functions
 
 CREATE TABLE comp_func
 (
-    id   INT PRIMARY KEY,
+    id   serial PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     id_user INT
 );

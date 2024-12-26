@@ -55,45 +55,44 @@ public class PointController {
         var f = functionService.create(func);
         return ResponseEntity.ok(ConvertToFuncDto.convert(f));
     }
-
     @PostMapping("/interval")
     public ResponseEntity<FunctionDtoList> createInterval(@RequestBody DataDtoInterval data, @RequestParam String userName) {
         var user = repository.findByUsername(userName);
         FunctionDtoList func = FunctionDtoList.builder().id_user(user.get().getId()).points(new ArrayList<>()).type(data.getTypeFabric()).build();
         MathFunction f = reflectionService.create(data.getTypeFunc());
-        if (f == null) {
-            var cFunc = compRepository.findByName(data.getTypeFunc());
-            if (cFunc == null) {
-                return ResponseEntity.badRequest().build();
-            }
-            var arrF = functionService.readByIdComp(cFunc.getId());
-            Collections.sort(arrF, Comparator.comparing(FunctionEntity::getComposite));
-            var funcArr = new ArrayList<LinkedListTabulatedFunction>();
-            for (var fn : arrF) {
-                var points = pointService.findByFunc(fn.getId());
-                if (points == null || points.isEmpty()) {
-                    throw new IllegalArgumentException("Массив точек не может быть null или пустым");
-                }
-                double[] xArray = new double[points.size()];
-                double[] yArray = new double[points.size()];
-
-                for (int i = 0; i < points.size(); i++) {
-                    xArray[i] = points.get(i).getXValue();
-                    xArray[i] = points.get(i).getYValue();
-                }
-                var F = new LinkedListTabulatedFunction(xArray, yArray);
-                funcArr.add(F);
-            }
-            var res = new CompositeFunction(funcArr.get(0), funcArr.get(1));
-            for (int i = 2; i < funcArr.size(); ++i) {
-                res = new CompositeFunction(res, funcArr.get(i));
-            }
-            var fun = new LinkedListTabulatedFunction(res, data.getStart(), data.getEnd(), data.getNumberOfPoints());
-            for (var p : asPoint(fun))
-                func.getPoints().add(convert(p));
-            var f1 = functionService.create(func);
-            return ResponseEntity.ok(ConvertToFuncDto.convert(f1));
-        }
+//        if (f == null) {
+//            var cFunc = compRepository.findByName(data.getTypeFunc());
+//            if (cFunc == null) {
+//                return ResponseEntity.badRequest().build();
+//            }
+//            var arrF = functionService.readByIdComp(cFunc.getId());
+//            Collections.sort(arrF, Comparator.comparing(FunctionEntity::getComposite));
+//            var funcArr = new ArrayList<LinkedListTabulatedFunction>();
+//            for (var fn : arrF) {
+//                var points = pointService.findByFunc(fn.getId());
+//                if (points == null || points.isEmpty()) {
+//                    throw new IllegalArgumentException("Массив точек не может быть null или пустым");
+//                }
+//                double[] xArray = new double[points.size()];
+//                double[] yArray = new double[points.size()];
+//
+//                for (int i = 0; i < points.size(); i++) {
+//                    xArray[i] = points.get(i).getXValue();
+//                    xArray[i] = points.get(i).getYValue();
+//                }
+//                var F = new LinkedListTabulatedFunction(xArray, yArray);
+//                funcArr.add(F);
+//            }
+//            var res = new CompositeFunction(funcArr.get(0), funcArr.get(1));
+//            for (int i = 2; i < funcArr.size(); ++i) {
+//                res = new CompositeFunction(res, funcArr.get(i));
+//            }
+//            var fun = new LinkedListTabulatedFunction(res, data.getStart(), data.getEnd(), data.getNumberOfPoints());
+//            for (var p : asPoint(fun))
+//                func.getPoints().add(convert(p));
+//            var f1 = functionService.create(func);
+//            return ResponseEntity.ok(ConvertToFuncDto.convert(f1));
+//        }
         var func1 = new LinkedListTabulatedFunction(f, data.getStart(), data.getEnd(), data.getNumberOfPoints());
         for (var p : asPoint(func1))
             func.getPoints().add(convert(p));
@@ -123,7 +122,7 @@ public class PointController {
             if (f == null) {
                 var compF = compRepository.findByName(nameF);
                 if (compF == null)
-                    return ResponseEntity.badRequest().body(null);
+                    return ResponseEntity.internalServerError().build();
                 var fArr = functionService.readByIdComp(compF.getId());
                 for (var f1 : fArr) {
                     f1.setId_comp(sComp.getId());
@@ -295,7 +294,7 @@ public class PointController {
         return ResponseEntity.ok(ConvertorToPointEntity.convertToEntity(pointDto));
     }
 
-    @GetMapping
+    @GetMapping("/point")
     public ResponseEntity<ArrayList<PointEntity>> findByFunc(@RequestParam String hash) {
         var func = functionService.readByName(hash);
         if (func != null) {

@@ -113,7 +113,7 @@ export default function CompositeFunctionPage() {
         url.searchParams.append('name', newFunctionName);
         const postData = {
             name: newFunctionName,
-            functions: selectedFunctions.map(f => f), // Используем ID функцийx
+            functions: selectedFunctions.map(f => f), // Используем ID функций
         };
         console.log(postData)
         fetch(url, {

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @Transactional
 public interface FunctionRepository extends JpaRepository<FunctionEntity, Integer> {
     FunctionEntity findByHash(String functionHash);
-
+    @Query(value = "SELECT id, function_hash, function_type, id_user, composite, name, id_comp FROM functions WHERE name = :name", nativeQuery = true)
     FunctionEntity findByName(String name);
 
     @Query(value = "SELECT id, function_hash, function_type, id_user, composite, name, id_comp FROM functions WHERE id_user = :id_user", nativeQuery = true)
