@@ -8,6 +8,7 @@ import Labs_OOP_sem_3.convertos.ConvertorToFuncEntity;
 import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
 import Labs_OOP_sem_3.dto.*;
 import Labs_OOP_sem_3.entities.CompFuncEntity;
+import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
 import Labs_OOP_sem_3.functions.*;
 import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
@@ -26,6 +27,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -58,6 +61,39 @@ public class PointController {
         var user = repository.findByUsername(userName);
         FunctionDtoList func = FunctionDtoList.builder().id_user(user.get().getId()).points(new ArrayList<>()).type(data.getTypeFabric()).build();
         MathFunction f = reflectionService.create(data.getTypeFunc());
+        if (f == null) {
+            var cFunc = compRepository.findByName(data.getTypeFunc());
+            if (cFunc == null) {
+                return ResponseEntity.badRequest().build();
+            }
+            var arrF = functionService.readByIdComp(cFunc.getId());
+            Collections.sort(arrF, Comparator.comparing(FunctionEntity::getComposite));
+            var funcArr = new ArrayList<LinkedListTabulatedFunction>();
+            for (var fn : arrF) {
+                var points = pointService.findByFunc(fn.getId());
+                if (points == null || points.isEmpty()) {
+                    throw new IllegalArgumentException("Массив точек не может быть null или пустым");
+                }
+                double[] xArray = new double[points.size()];
+                double[] yArray = new double[points.size()];
+
+                for (int i = 0; i < points.size(); i++) {
+                    xArray[i] = points.get(i).getXValue();
+                    xArray[i] = points.get(i).getYValue();
+                }
+                var F = new LinkedListTabulatedFunction(xArray, yArray);
+                funcArr.add(F);
+            }
+            var res = new CompositeFunction(funcArr.get(0), funcArr.get(1));
+            for (int i = 2; i < funcArr.size(); ++i) {
+                res = new CompositeFunction(res, funcArr.get(i));
+            }
+            var fun = new LinkedListTabulatedFunction(res, data.getStart(), data.getEnd(), data.getNumberOfPoints());
+            for (var p : asPoint(fun))
+                func.getPoints().add(convert(p));
+            var f1 = functionService.create(func);
+            return ResponseEntity.ok(ConvertToFuncDto.convert(f1));
+        }
         var func1 = new LinkedListTabulatedFunction(f, data.getStart(), data.getEnd(), data.getNumberOfPoints());
         for (var p : asPoint(func1))
             func.getPoints().add(convert(p));
@@ -89,9 +125,9 @@ public class PointController {
                 if (compF == null)
                     return ResponseEntity.badRequest().body(null);
                 var fArr = functionService.readByIdComp(compF.getId());
-                for (var f1: fArr)
-                {
+                for (var f1 : fArr) {
                     f1.setId_comp(sComp.getId());
+                    f1.setComposite(Integer.toString(pr));
                     functionService.create(ConvertToFuncDto.convert(f1));
                 }
                 break;
@@ -104,7 +140,7 @@ public class PointController {
             functionService.create(func);
         }
         return ResponseEntity.ok(sComp);
-        // var funcArr = new ArrayList<LinkedListTabulatedFunction>();
+//        var funcArr = new ArrayList<LinkedListTabulatedFunction>();
 //        for (var fn: data.getFuncArr()) {
 //            var func = new LinkedListTabulatedFunction(fn.getArrX().stream().mapToDouble(Double::doubleValue).toArray(), fn.getArrY().stream().mapToDouble(Double::doubleValue).toArray());
 //            funcArr.add(func);
@@ -114,7 +150,7 @@ public class PointController {
 //            res = new CompositeFunction(res, funcArr.get(i));
 //        }
 //        var cRes = CompositeFuncDto.builder().function(res).funcName(data.getName()).idUser(Math.toIntExact(user.get().getId())).build();
-//        return ResponseEntity.ok(cRes);
+       // return ResponseEntity.ok(cRes);
     }
 
     @PostMapping(value = "/upload", consumes = "multipart/form-data")
