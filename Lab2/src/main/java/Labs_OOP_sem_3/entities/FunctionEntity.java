@@ -26,4 +26,6 @@ public class FunctionEntity {
     private String composite;
     @Column(name = "name")
     private String name;
+    @Column(name = "id_comp")
+    private int id_comp;
 }

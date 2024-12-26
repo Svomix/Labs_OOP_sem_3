@@ -123,14 +123,14 @@ export default function CompositeFunctionPage() {
              functions: selectedFunctions.map(f => f.id), // Используем ID функций
          };*/
         const authHeader = `Basic ${btoa(`${user.name}:${user.password}`)}`;
-        const url = new URL('http://localhost:8080/points/comp');
+        const url = new URL('http://localhost:8080/points/comp_create');
         fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': authHeader,
             },
-            body: JSON.stringify(postTabArr)
+            body: JSON.stringify()
         })
             .then(response => {
                 if (!response.ok) {

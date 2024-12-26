@@ -4,6 +4,16 @@ CREATE TABLE functions
     function_type varchar(255),
     function_hash varchar(255),
     id_user INT
+    composite varchar(255)
+    name varchar(255)
+    id_comp INT
+);
+
+CREATE TABLE comp_func
+(
+    id   INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    id_user INT
 );
 
 create table points

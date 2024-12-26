@@ -17,6 +17,7 @@ public class FunctionDtoList {
     private String type;
     private String hash;
     private Long id_user;
+    private int id_comp;
     private String name;
     private String composite;
     private List<PointEntity> points;

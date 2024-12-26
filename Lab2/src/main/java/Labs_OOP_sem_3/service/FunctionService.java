@@ -21,7 +21,7 @@ public class FunctionService {
 
     public FunctionEntity create(FunctionDtoList funcDto) {
         FunctionEntity funcEntity = functionRepository.findByHash(funcDto.getHash());
-        if (funcEntity == null) {
+        if (funcEntity == null || funcDto.getName() != null) {
             funcDto.setHash("" + HashUtil.hash(funcDto.getPoints()));
             var func = functionRepository.save(convert(funcDto));
             var arrP = funcDto.getPoints();

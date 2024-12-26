@@ -13,8 +13,6 @@ import java.util.ArrayList;
 public class DataDtoComposite
 {
     private ArrayList<DataDtoTable> funcArr;
-    private String type;
     private String composite;
     private String name;
-    private String functionName;
 }

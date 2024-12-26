@@ -3,14 +3,20 @@ package Labs_OOP_sem_3.controllers;
 
 import Labs_OOP_sem_3.concurrent.Integrate;
 import Labs_OOP_sem_3.convertos.ConvertToFuncDto;
+import Labs_OOP_sem_3.convertos.ConvertorToCompEntity;
 import Labs_OOP_sem_3.convertos.ConvertorToFuncEntity;
 import Labs_OOP_sem_3.convertos.ConvertorToPointEntity;
 import Labs_OOP_sem_3.dto.*;
+import Labs_OOP_sem_3.entities.CompFuncEntity;
 import Labs_OOP_sem_3.entities.FunctionEntity;
 import Labs_OOP_sem_3.entities.PointEntity;
-import Labs_OOP_sem_3.functions.*;
+import Labs_OOP_sem_3.functions.ArrayTabulatedFunction;
+import Labs_OOP_sem_3.functions.LinkedListTabulatedFunction;
+import Labs_OOP_sem_3.functions.MathFunction;
+import Labs_OOP_sem_3.functions.TabulatedFunction;
 import Labs_OOP_sem_3.functions.factory.LinkedListTabulatedFunctionFactory;
 import Labs_OOP_sem_3.operations.TabulatedDifferentialOperator;
+import Labs_OOP_sem_3.repositories.CompRepository;
 import Labs_OOP_sem_3.repositories.UserRepository;
 import Labs_OOP_sem_3.service.FunctionService;
 import Labs_OOP_sem_3.service.PointService;
@@ -20,7 +26,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static Labs_OOP_sem_3.convertos.ConvertorPointToPointEntity.convert;
@@ -33,6 +38,7 @@ public class PointController {
     private final PointService pointService;
     private final FunctionService functionService;
     private final ReflectionService reflectionService;
+    CompRepository compRepository;
     UserRepository repository;
 
     @PostMapping("/table")
@@ -70,19 +76,29 @@ public class PointController {
     }
 
     @PostMapping("/comp_create")
-    public ResponseEntity<CompositeFuncDto> createCompTable(@RequestBody DataDtoComposite data, @RequestParam String userName) {
+    public ResponseEntity<CompFuncEntity> createCompTable(@RequestBody DataDtoComposite data, @RequestParam String userName) {
         var user = repository.findByUsername(userName);
-        var funcArr = new ArrayList<LinkedListTabulatedFunction>();
-        for (var fn: data.getFuncArr()) {
-            var func = new LinkedListTabulatedFunction(fn.getArrX().stream().mapToDouble(Double::doubleValue).toArray(), fn.getArrY().stream().mapToDouble(Double::doubleValue).toArray());
-            funcArr.add(func);
+        var comp = CompDto.builder().name(data.getName()).id_user(user.get().getId()).build();
+        var sComp = compRepository.save(ConvertorToCompEntity.convert(comp));
+        for (var f : data.getFuncArr()) {
+            FunctionDtoList func = FunctionDtoList.builder().points(new ArrayList<>()).id_comp(sComp.getId()).composite(data.getComposite()).id_user(user.get().getId()).type(f.getType()).build();
+            for (int i = 0; i < f.getArrX().size(); ++i) {
+                func.getPoints().add(ConvertorToPointEntity.convertToEntity(PointDto.builder().x(f.getArrX().get(i)).y(f.getArrY().get(i)).function(ConvertorToFuncEntity.convert(func)).build()));
+            }
+            functionService.create(func);
         }
-        var res = new CompositeFunction(funcArr.get(0),funcArr.get(1));
-        for (int i = 2; i < funcArr.size(); ++i) {
-            res = new CompositeFunction(res, funcArr.get(i));
-        }
-        var cRes = CompositeFuncDto.builder().function(res).funcName(data.getName()).idUser(Math.toIntExact(user.get().getId())).build();
-        return ResponseEntity.ok(cRes);
+        return ResponseEntity.ok(sComp);
+        // var funcArr = new ArrayList<LinkedListTabulatedFunction>();
+//        for (var fn: data.getFuncArr()) {
+//            var func = new LinkedListTabulatedFunction(fn.getArrX().stream().mapToDouble(Double::doubleValue).toArray(), fn.getArrY().stream().mapToDouble(Double::doubleValue).toArray());
+//            funcArr.add(func);
+//        }
+//        var res = new CompositeFunction(funcArr.get(0),funcArr.get(1));
+//        for (int i = 2; i < funcArr.size(); ++i) {
+//            res = new CompositeFunction(res, funcArr.get(i));
+//        }
+//        var cRes = CompositeFuncDto.builder().function(res).funcName(data.getName()).idUser(Math.toIntExact(user.get().getId())).build();
+//        return ResponseEntity.ok(cRes);
     }
 
     @PostMapping("/diff")

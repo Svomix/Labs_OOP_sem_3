@@ -1,6 +1,6 @@
 package Labs_OOP_sem_3.dto;
 
-import Labs_OOP_sem_3.functions.CompositeFunction;
+import Labs_OOP_sem_3.entities.FunctionEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +10,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CompositeFuncDto {
-    private String funcName;
-    private int idUser;
+public class CompDto {
+    private int id;
+    private String name;
+    private Long id_user;
 }
